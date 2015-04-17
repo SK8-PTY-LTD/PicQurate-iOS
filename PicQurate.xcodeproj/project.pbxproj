@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C4D19201AE0D6C100613CAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */; };
+		3C4D19221AE0D6C100613CAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19211AE0D6C100613CAB /* ViewController.swift */; };
+		3C4D19251AE0D6C100613CAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19231AE0D6C100613CAB /* Main.storyboard */; };
+		3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19261AE0D6C100613CAB /* Images.xcassets */; };
+		3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */; };
+		3C4D19361AE0D6C100613CAB /* PicQurateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C4D19301AE0D6C100613CAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C4D19121AE0D6C100613CAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C4D19191AE0D6C100613CAB;
+			remoteInfo = PicQurate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C4D191A1AE0D6C100613CAB /* PicQurate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicQurate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C4D191E1AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3C4D19211AE0D6C100613CAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3C4D19241AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3C4D19261AE0D6C100613CAB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3C4D19291AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicQurateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C4D19341AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicQurateTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C4D19171AE0D6C100613CAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C4D192C1AE0D6C100613CAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C4D19111AE0D6C100613CAB = {
+			isa = PBXGroup;
+			children = (
+				3C4D191C1AE0D6C100613CAB /* PicQurate */,
+				3C4D19321AE0D6C100613CAB /* PicQurateTests */,
+				3C4D191B1AE0D6C100613CAB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3C4D191B1AE0D6C100613CAB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C4D191A1AE0D6C100613CAB /* PicQurate.app */,
+				3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C4D191C1AE0D6C100613CAB /* PicQurate */ = {
+			isa = PBXGroup;
+			children = (
+				3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */,
+				3C4D19211AE0D6C100613CAB /* ViewController.swift */,
+				3C4D19231AE0D6C100613CAB /* Main.storyboard */,
+				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
+				3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */,
+				3C4D191D1AE0D6C100613CAB /* Supporting Files */,
+			);
+			path = PicQurate;
+			sourceTree = "<group>";
+		};
+		3C4D191D1AE0D6C100613CAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C4D191E1AE0D6C100613CAB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C4D19321AE0D6C100613CAB /* PicQurateTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */,
+				3C4D19331AE0D6C100613CAB /* Supporting Files */,
+			);
+			path = PicQurateTests;
+			sourceTree = "<group>";
+		};
+		3C4D19331AE0D6C100613CAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C4D19341AE0D6C100613CAB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3C4D19191AE0D6C100613CAB /* PicQurate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C4D19391AE0D6C100613CAB /* Build configuration list for PBXNativeTarget "PicQurate" */;
+			buildPhases = (
+				3C4D19161AE0D6C100613CAB /* Sources */,
+				3C4D19171AE0D6C100613CAB /* Frameworks */,
+				3C4D19181AE0D6C100613CAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PicQurate;
+			productName = PicQurate;
+			productReference = 3C4D191A1AE0D6C100613CAB /* PicQurate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3C4D192E1AE0D6C100613CAB /* PicQurateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C4D193C1AE0D6C100613CAB /* Build configuration list for PBXNativeTarget "PicQurateTests" */;
+			buildPhases = (
+				3C4D192B1AE0D6C100613CAB /* Sources */,
+				3C4D192C1AE0D6C100613CAB /* Frameworks */,
+				3C4D192D1AE0D6C100613CAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C4D19311AE0D6C100613CAB /* PBXTargetDependency */,
+			);
+			name = PicQurateTests;
+			productName = PicQurateTests;
+			productReference = 3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C4D19121AE0D6C100613CAB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "SK8 PTY LTD";
+				TargetAttributes = {
+					3C4D19191AE0D6C100613CAB = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					3C4D192E1AE0D6C100613CAB = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 3C4D19191AE0D6C100613CAB;
+					};
+				};
+			};
+			buildConfigurationList = 3C4D19151AE0D6C100613CAB /* Build configuration list for PBXProject "PicQurate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3C4D19111AE0D6C100613CAB;
+			productRefGroup = 3C4D191B1AE0D6C100613CAB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3C4D19191AE0D6C100613CAB /* PicQurate */,
+				3C4D192E1AE0D6C100613CAB /* PicQurateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C4D19181AE0D6C100613CAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C4D19251AE0D6C100613CAB /* Main.storyboard in Resources */,
+				3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */,
+				3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C4D192D1AE0D6C100613CAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C4D19161AE0D6C100613CAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C4D19221AE0D6C100613CAB /* ViewController.swift in Sources */,
+				3C4D19201AE0D6C100613CAB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C4D192B1AE0D6C100613CAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C4D19361AE0D6C100613CAB /* PicQurateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C4D19311AE0D6C100613CAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C4D19191AE0D6C100613CAB /* PicQurate */;
+			targetProxy = 3C4D19301AE0D6C100613CAB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3C4D19231AE0D6C100613CAB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C4D19241AE0D6C100613CAB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C4D19291AE0D6C100613CAB /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3C4D19371AE0D6C100613CAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3C4D19381AE0D6C100613CAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3C4D193A1AE0D6C100613CAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PicQurate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3C4D193B1AE0D6C100613CAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PicQurate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3C4D193D1AE0D6C100613CAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PicQurateTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PicQurate.app/PicQurate";
+			};
+			name = Debug;
+		};
+		3C4D193E1AE0D6C100613CAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PicQurateTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PicQurate.app/PicQurate";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C4D19151AE0D6C100613CAB /* Build configuration list for PBXProject "PicQurate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C4D19371AE0D6C100613CAB /* Debug */,
+				3C4D19381AE0D6C100613CAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C4D19391AE0D6C100613CAB /* Build configuration list for PBXNativeTarget "PicQurate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C4D193A1AE0D6C100613CAB /* Debug */,
+				3C4D193B1AE0D6C100613CAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3C4D193C1AE0D6C100613CAB /* Build configuration list for PBXNativeTarget "PicQurateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C4D193D1AE0D6C100613CAB /* Debug */,
+				3C4D193E1AE0D6C100613CAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3C4D19121AE0D6C100613CAB /* Project object */;
+}
