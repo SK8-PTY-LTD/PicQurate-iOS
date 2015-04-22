@@ -13,6 +13,8 @@
 		3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19261AE0D6C100613CAB /* Images.xcassets */; };
 		3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */; };
 		3C4D19361AE0D6C100613CAB /* PicQurateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */; };
+		3C5FD83B1AE7945F001F86F0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */; };
+		3C5FD83D1AE79477001F86F0 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5FD83C1AE79477001F86F0 /* FBSDKCoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,9 @@
 		3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicQurateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D19341AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicQurateTests.swift; sourceTree = "<group>"; };
+		3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3C5FD83C1AE79477001F86F0 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		3C5FD83E1AE7A27A001F86F0 /* PicQurate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicQurate-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C5FD83B1AE7945F001F86F0 /* MobileCoreServices.framework in Frameworks */,
+				3C5FD83D1AE79477001F86F0 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +90,7 @@
 				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
 				3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */,
 				3C4D191D1AE0D6C100613CAB /* Supporting Files */,
+				3C5FD83E1AE7A27A001F86F0 /* PicQurate-Bridging-Header.h */,
 			);
 			path = PicQurate;
 			sourceTree = "<group>";
@@ -90,6 +98,8 @@
 		3C4D191D1AE0D6C100613CAB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3C5FD83C1AE79477001F86F0 /* FBSDKCoreKit.framework */,
+				3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */,
 				3C4D191E1AE0D6C100613CAB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -340,9 +350,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,9 +367,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +432,7 @@
 				3C4D193B1AE0D6C100613CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C4D193C1AE0D6C100613CAB /* Build configuration list for PBXNativeTarget "PicQurateTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +441,7 @@
 				3C4D193E1AE0D6C100613CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
