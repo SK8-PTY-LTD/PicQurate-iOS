@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3C4D19201AE0D6C100613CAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */; };
-		3C4D19221AE0D6C100613CAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19211AE0D6C100613CAB /* ViewController.swift */; };
+		3C4D19221AE0D6C100613CAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19211AE0D6C100613CAB /* LoginViewController.swift */; };
 		3C4D19251AE0D6C100613CAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19231AE0D6C100613CAB /* Main.storyboard */; };
 		3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19261AE0D6C100613CAB /* Images.xcassets */; };
 		3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */; };
 		3C4D19361AE0D6C100613CAB /* PicQurateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */; };
-		3C5FD83B1AE7945F001F86F0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */; };
-		3C5FD83D1AE79477001F86F0 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5FD83C1AE79477001F86F0 /* FBSDKCoreKit.framework */; };
+		3C59ED7B1AE7EC1300383EF0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */; };
+		3CB3F1711AE7A47000BADB8C /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F16F1AE7A47000BADB8C /* AVOSCloud.framework */; };
+		3CB3F1721AE7A47000BADB8C /* AVOSCloudSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1701AE7A47000BADB8C /* AVOSCloudSNS.framework */; };
+		3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,16 +33,19 @@
 		3C4D191A1AE0D6C100613CAB /* PicQurate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicQurate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D191E1AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3C4D19211AE0D6C100613CAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3C4D19211AE0D6C100613CAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3C4D19241AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C4D19261AE0D6C100613CAB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C4D19291AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicQurateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D19341AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicQurateTests.swift; sourceTree = "<group>"; };
+		3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		3C5FD83C1AE79477001F86F0 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3C5FD83E1AE7A27A001F86F0 /* PicQurate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicQurate-Bridging-Header.h"; sourceTree = "<group>"; };
+		3CB3F16F1AE7A47000BADB8C /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
+		3CB3F1701AE7A47000BADB8C /* AVOSCloudSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloudSNS.framework; sourceTree = "<group>"; };
+		3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +53,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C5FD83B1AE7945F001F86F0 /* MobileCoreServices.framework in Frameworks */,
-				3C5FD83D1AE79477001F86F0 /* FBSDKCoreKit.framework in Frameworks */,
+				3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */,
+				3CB3F1721AE7A47000BADB8C /* AVOSCloudSNS.framework in Frameworks */,
+				3C59ED7B1AE7EC1300383EF0 /* FBSDKLoginKit.framework in Frameworks */,
+				3CB3F1711AE7A47000BADB8C /* AVOSCloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */,
-				3C4D19211AE0D6C100613CAB /* ViewController.swift */,
+				3C4D19211AE0D6C100613CAB /* LoginViewController.swift */,
 				3C4D19231AE0D6C100613CAB /* Main.storyboard */,
 				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
 				3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */,
@@ -98,7 +105,10 @@
 		3C4D191D1AE0D6C100613CAB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3C5FD83C1AE79477001F86F0 /* FBSDKCoreKit.framework */,
+				3CB3F16F1AE7A47000BADB8C /* AVOSCloud.framework */,
+				3CB3F1701AE7A47000BADB8C /* AVOSCloudSNS.framework */,
+				3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */,
+				3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */,
 				3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */,
 				3C4D191E1AE0D6C100613CAB /* Info.plist */,
 			);
@@ -222,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C4D19221AE0D6C100613CAB /* ViewController.swift in Sources */,
+				3C4D19221AE0D6C100613CAB /* LoginViewController.swift in Sources */,
 				3C4D19201AE0D6C100613CAB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +364,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PicQurate",
 				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -371,6 +382,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PicQurate",
 				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
