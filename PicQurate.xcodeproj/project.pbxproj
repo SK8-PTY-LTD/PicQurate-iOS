@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3C4D19201AE0D6C100613CAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */; };
-		3C4D19221AE0D6C100613CAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19211AE0D6C100613CAB /* LoginViewController.swift */; };
+		3C4D19221AE0D6C100613CAB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19211AE0D6C100613CAB /* LandingViewController.swift */; };
 		3C4D19251AE0D6C100613CAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19231AE0D6C100613CAB /* Main.storyboard */; };
 		3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19261AE0D6C100613CAB /* Images.xcassets */; };
 		3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */; };
 		3C4D19361AE0D6C100613CAB /* PicQurateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */; };
 		3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56922E1AE9F736006FA95D /* AVImageView.swift */; };
 		3C5692311AE9F772006FA95D /* PQLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692301AE9F772006FA95D /* PQLog.swift */; };
+		3C5692331AE9FFD6006FA95D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692321AE9FFD6006FA95D /* LoginViewController.swift */; };
 		3C59ED7B1AE7EC1300383EF0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */; };
 		3C84E6B51AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6AE1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m */; };
 		3C84E6B61AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6B01AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m */; };
@@ -49,7 +50,7 @@
 		3C4D191A1AE0D6C100613CAB /* PicQurate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicQurate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D191E1AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3C4D19211AE0D6C100613CAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3C4D19211AE0D6C100613CAB /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		3C4D19241AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C4D19261AE0D6C100613CAB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C4D19291AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicQurateTests.swift; sourceTree = "<group>"; };
 		3C56922E1AE9F736006FA95D /* AVImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVImageView.swift; path = objects/AVImageView.swift; sourceTree = "<group>"; };
 		3C5692301AE9F772006FA95D /* PQLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQLog.swift; path = objects/PQLog.swift; sourceTree = "<group>"; };
+		3C5692321AE9FFD6006FA95D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3C5FD83E1AE7A27A001F86F0 /* PicQurate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicQurate-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -211,7 +213,8 @@
 		3C87F7FB1AE8C42600C9E172 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3C4D19211AE0D6C100613CAB /* LoginViewController.swift */,
+				3C4D19211AE0D6C100613CAB /* LandingViewController.swift */,
+				3C5692321AE9FFD6006FA95D /* LoginViewController.swift */,
 				3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */,
 			);
 			name = ViewControllers;
@@ -317,11 +320,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C5692331AE9FFD6006FA95D /* LoginViewController.swift in Sources */,
 				3C84E6B61AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */,
 				3C84E6B71AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m in Sources */,
 				3C87F7FA1AE8C42100C9E172 /* PQ.swift in Sources */,
-				3C4D19221AE0D6C100613CAB /* LoginViewController.swift in Sources */,
+				3C4D19221AE0D6C100613CAB /* LandingViewController.swift in Sources */,
 				3C5692311AE9F772006FA95D /* PQLog.swift in Sources */,
 				3C84E6B81AE922E50056C1B8 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				3C87F7F71AE8C31400C9E172 /* PQUser.swift in Sources */,

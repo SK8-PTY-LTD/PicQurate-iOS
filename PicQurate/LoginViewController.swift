@@ -1,133 +1,80 @@
 //
-//  ViewController.swift
+//  SignUpViewController.swift
 //  PicQurate
 //
-//  Created by SongXujie on 17/04/2015.
+//  Created by SongXujie on 24/04/2015.
 //  Copyright (c) 2015 SK8 PTY LTD. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
-
-    override func viewDidLoad () {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.fbLoginButton.delegate = self;
-        self.fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"];
-    }
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    override func viewWillAppear(animated: Bool) {
-        if let user = PQ.currentUser {
-            self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                
-            });
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidLoad() {
+        
     }
     
     @IBAction func loginButtonClicked(sender: UIButton) {
-//        //Check if it's already signing up
-//        if activityIndicator.isAnimating() {
-//            return
-//        }
-//        //Check if sign up criteria is good enough
-//        var email : String = self.emailTextField.text;
-//        if (!StringIsValidEmail(email)) {
-//            return
-//        }
-//        var passWord = self.passwordTextField.text;
-//        
-//        activityIndicator.startAnimating()
-//        
-//        //If it's logging in/Signing up, and criteria is good
-//        PQUser.logInWithUsernameInBackground(email, password: passWord) { (user, error) -> Void in
-//            if let e = error {
-//                PQ.showError(e);
-//            } else {
-//                var user = PQUser.currentUser() as PQUser;
-//                PQ.currentUser = user;
-//                if let method = PQ.delegate?.onUserRefreshed {
-//                    method();
-//                }
-//                self.dismissViewControllerAnimated(true, completion: nil)
-//                NSLog("Done logging in " + user.getProfileName()!);
-//            }
-//            self.activityIndicator.stopAnimating();
-//        }
-    }
-    
-    @IBAction func signupButtonClicked(sender: UIButton) {
-        self.performSegueWithIdentifier("signupSegue", sender: nil);
-    }
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        FBSDKGraphRequest(graphPath: "me", parameters: nil).startWithCompletionHandler { (connection, user, error) -> Void in
+        //Check if it's already signing up
+        if activityIndicator.isAnimating() {
+            return
+        }
+        //Check if sign up criteria is good enough
+        var email : String = self.emailTextField.text;
+        if (!StringIsValidEmail(email)) {
+            return
+        }
+        var passWord = self.passwordTextField.text;
+        
+        activityIndicator.startAnimating()
+        
+        //If it's logging in/Signing up, and criteria is good
+        PQUser.logInWithUsernameInBackground(email, password: passWord) { (user, error) -> Void in
             if let e = error {
                 PQ.showError(e);
             } else {
-//                var authData = ["id": result.token.userID, "access_token": result.token.tokenString, "expires_at": result.token.expirationDate.description, "platform": "facebook"];
-//                NSLog("%@", authData);
-//                AVUser.loginWithAuthData(authData, block: { (user, error) -> Void in
-//                    if let e = error {
-//                        PQ.showError(e);
-//                    } else {
-//                        NSLog("Facebook log in successful");
-//                    }
-                //                })
-                var email = user["email"] as! String;
-                var id = user["id"] as! String;
-                var name = user["name"] as! String;
-                
-                var user = PQUser(email: email, password: id, profileName: name);
-                var urlString: String = "https://graph.facebook.com/" + id + "/picture?type=normal";
-                var data = NSData(contentsOfURL: NSURL(string: urlString)!);
-                var profileImage = UIImage(data: data!);
-                user.signUpInBackgroundWithBlock({ (success, error) -> Void in
-                    if let e = error {
-                        AVUser.logInWithUsernameInBackground(email, password: id, block: { (user, error) -> Void in
-                            if let e = error {
-                                AVUser.requestPasswordResetForEmailInBackground(email, block: { (success, error) -> Void in
-                                    if let e = error {
-                                        PQ.showError(e);
-                                    } else {
-                                        PQ.promote("Password was incorrect. Please check your mailbox to reset pasasword");
-                                    }
-                                })
-                            } else {
-                                NSLog("Facebook log in successful");
-                            }
-                        })
-                    } else {
-                        user.setProfileImage(profileImage!);
-                        PQ.currentUser = user;
-                        NSLog("Facebook sign up successful");
-                        if let method = PQ.delegate?.onUserRefreshed {
-                            method();
-                        }
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    }
-                })
+                var user = PQUser.currentUser() as PQUser;
+                PQ.currentUser = user;
+                NSLog("Email user log in successful");
+                if let method = PQ.delegate?.onUserRefreshed {
+                    method();
+                }
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
+            self.activityIndicator.stopAnimating();
         }
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        AVUser.logOut();
-        NSLog("Facebook user logged out");
+    @IBAction func cancelButtonClicked(sender: UIBarButtonItem!) {
+        self.dismissViewControllerAnimated(true, completion: nil);
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "signupSegue") {
-            
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == self.emailTextField {
+            self.passwordTextField.becomeFirstResponder()
+        }
+        return true
+    }
+    
+    func StringIsValidEmail(email : String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        var emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let result = emailTest.evaluateWithObject(email)
+        if result {
+            return result
+        } else {
+            var alert = UIAlertView()
+            alert.message = "Please enter a valid email!"
+            alert.addButtonWithTitle("OK!")
+            alert.show()
+            return result
         }
     }
-
+    
 }
-

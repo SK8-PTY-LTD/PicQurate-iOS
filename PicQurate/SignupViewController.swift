@@ -9,9 +9,9 @@
 import Foundation
 
 
-class SignupViewController: UIViewController, UITextFieldDelegate {
+class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var profileImageView: AVImageView!
+    @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -61,7 +61,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             } else {
                 var user = PQUser.currentUser();
                 user.refresh();
-                if let image = self.profileImageView.image {
+                if let image = self.profileImageButton.imageForState(.Normal) {
                     if image != UIImage(named: "default_profile") {
                         user.setProfileImage(image);
                     }
@@ -75,6 +75,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             }
             self.activityIndicator.stopAnimating();
         }
+    }
+    
+    @IBAction func cancelButtonClicked(sender: UIBarButtonItem!) {
+        self.dismissViewControllerAnimated(true, completion: nil);
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -100,9 +104,39 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func cancelButtonClicked(sender: UIBarButtonItem!) {
-        self.dismissViewControllerAnimated(true, completion: nil);
+    @IBAction func profileImageViewClicked(sender: UIButton) {
+        //Check if sign up criteria is good enough
+        var alert = UIActionSheet();
+        alert.title = "Pick your profile image from: "
+        alert.delegate = self
+        alert.addButtonWithTitle("Camera")
+        alert.addButtonWithTitle("Photo Albums")
+        alert.addButtonWithTitle("Cancel")
+        alert.showInView(self.view.superview);
     }
+    
+    func actionSheet(actionSheet: UIActionSheet, didDismissWithButtonIndex buttonIndex: Int) {
+        if (buttonIndex == 0) {
+            var picker = UIImagePickerController();
+            picker.delegate = self;
+            picker.allowsEditing = true;
+            picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera)!;
+            picker.sourceType = UIImagePickerControllerSourceType.Camera;
+            self.presentViewController(picker, animated: true, completion: nil);
+        } else if (buttonIndex == 1) {
+            var picker = UIImagePickerController();
+            picker.delegate = self;
+            picker.allowsEditing = true;
+            picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            self.presentViewController(picker, animated: true, completion: nil);
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        self.profileImageButton.setImage(image, forState: .Normal);
+        picker.dismissViewControllerAnimated(true, completion: nil);
+    }
+
     
 
 }
