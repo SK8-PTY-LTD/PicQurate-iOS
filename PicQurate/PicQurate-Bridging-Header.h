@@ -7,3 +7,4 @@
 #import <AVOSCloudSNS/AVUser+SNS.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "ViewPagerController.h"

@@ -94,7 +94,7 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         
         // Custom Variables required by PQ Library, but is dependent on End App
         // Set them in init() method
-//        static let ORANGE_PRIMARY: UIColor = UIColor(hex: "#ff6600");
+        static let PRIMARY_COLOR: UIColor = UIColor(hex: "#BE0004");
 //        static let ORANGE_SECONDARY: UIColor = UIColor(hex: "#ff9933");
 //        static let WHITE: UIColor = UIColor(hex: "#ffffff");
 //        static let GREY_LIGHTEST = UIColor(hex: "#f7f7f7");
@@ -118,11 +118,10 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         set { Static.verificationCode = newValue }
     }
     
-//    class var currentShop: SHShop! {
-//        get { return Static.currentShop }
-//        set { Static.currentShop = newValue }
-//    }
-//    
+    class var primaryColor: UIColor {
+        get { return Static.PRIMARY_COLOR }
+    }
+//
 //    class var currentSeller: PQUser! {
 //        get { return Static.currentSeller }
 //        set { Static.currentSeller = newValue }

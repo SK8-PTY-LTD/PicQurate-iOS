@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let type = FBSDKLoginButton.self;
         
         PQ.initialize(launchOptions);
+        
+        UITabBar.appearance().tintColor = PQ.primaryColor;
+        
         return true
     }
 
