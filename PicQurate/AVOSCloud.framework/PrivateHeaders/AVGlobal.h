@@ -22,6 +22,7 @@
 #define smsCodeTag      @"smsCode"
 #define deviceTypeTag   @"deviceType"
 #define installationIdTag @"installationId"
+#define authDataTag @"authData"
 
 #define enableTag       @"enable"
 

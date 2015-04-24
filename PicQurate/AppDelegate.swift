@@ -16,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions);
+        FBSDKProfile.enableUpdatesOnAccessTokenChange(true);
         let type = FBSDKLoginButton.self;
+        
+        PQ.initialize(launchOptions);
         return true
     }
 

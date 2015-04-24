@@ -13,10 +13,26 @@
 		3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19261AE0D6C100613CAB /* Images.xcassets */; };
 		3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */; };
 		3C4D19361AE0D6C100613CAB /* PicQurateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */; };
+		3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56922E1AE9F736006FA95D /* AVImageView.swift */; };
+		3C5692311AE9F772006FA95D /* PQLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692301AE9F772006FA95D /* PQLog.swift */; };
 		3C59ED7B1AE7EC1300383EF0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */; };
+		3C84E6B51AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6AE1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m */; };
+		3C84E6B61AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6B01AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m */; };
+		3C84E6B71AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6B21AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m */; };
+		3C84E6B81AE922E50056C1B8 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6B41AE922E50056C1B8 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		3C84E6BD1AE9D0880056C1B8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C84E6BC1AE9D0880056C1B8 /* CFNetwork.framework */; };
+		3C87F7F71AE8C31400C9E172 /* PQUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87F7F61AE8C31400C9E172 /* PQUser.swift */; };
+		3C87F7FA1AE8C42100C9E172 /* PQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C87F7F91AE8C42100C9E172 /* PQ.swift */; };
+		3C87F7FD1AE8C57F00C9E172 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F7FC1AE8C57F00C9E172 /* Bolts.framework */; };
+		3C87F7FF1AE8C90300C9E172 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F7FE1AE8C90300C9E172 /* SystemConfiguration.framework */; };
+		3C87F8001AE8C90800C9E172 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */; };
+		3C87F8021AE8C90E00C9E172 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F8011AE8C90E00C9E172 /* CoreTelephony.framework */; };
+		3C87F8041AE8C91300C9E172 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F8031AE8C91300C9E172 /* CoreLocation.framework */; };
 		3CB3F1711AE7A47000BADB8C /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F16F1AE7A47000BADB8C /* AVOSCloud.framework */; };
 		3CB3F1721AE7A47000BADB8C /* AVOSCloudSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1701AE7A47000BADB8C /* AVOSCloudSNS.framework */; };
 		3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */; };
+		3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F8051AE8C91D00C9E172 /* libicucore.dylib */; };
+		3CB7B7FD1AE90C2B00FBC677 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,12 +56,31 @@
 		3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicQurateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D19341AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicQurateTests.swift; sourceTree = "<group>"; };
-		3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		3C56922E1AE9F736006FA95D /* AVImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVImageView.swift; path = objects/AVImageView.swift; sourceTree = "<group>"; };
+		3C5692301AE9F772006FA95D /* PQLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQLog.swift; path = objects/PQLog.swift; sourceTree = "<group>"; };
+		3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3C5FD83E1AE7A27A001F86F0 /* PicQurate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicQurate-Bridging-Header.h"; sourceTree = "<group>"; };
+		3C84E6AD1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		3C84E6AE1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		3C84E6AF1AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		3C84E6B01AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		3C84E6B11AE922E50056C1B8 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		3C84E6B21AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		3C84E6B31AE922E50056C1B8 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		3C84E6B41AE922E50056C1B8 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		3C84E6BC1AE9D0880056C1B8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3C87F7F61AE8C31400C9E172 /* PQUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQUser.swift; path = objects/PQUser.swift; sourceTree = "<group>"; };
+		3C87F7F91AE8C42100C9E172 /* PQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQ.swift; sourceTree = "<group>"; };
+		3C87F7FC1AE8C57F00C9E172 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		3C87F7FE1AE8C90300C9E172 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3C87F8011AE8C90E00C9E172 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		3C87F8031AE8C91300C9E172 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3C87F8051AE8C91D00C9E172 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		3CB3F16F1AE7A47000BADB8C /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		3CB3F1701AE7A47000BADB8C /* AVOSCloudSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloudSNS.framework; sourceTree = "<group>"; };
 		3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +88,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C84E6BD1AE9D0880056C1B8 /* CFNetwork.framework in Frameworks */,
+				3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */,
+				3C87F8041AE8C91300C9E172 /* CoreLocation.framework in Frameworks */,
+				3C87F8021AE8C90E00C9E172 /* CoreTelephony.framework in Frameworks */,
+				3C87F8001AE8C90800C9E172 /* MobileCoreServices.framework in Frameworks */,
+				3C87F7FF1AE8C90300C9E172 /* SystemConfiguration.framework in Frameworks */,
+				3C87F7FD1AE8C57F00C9E172 /* Bolts.framework in Frameworks */,
 				3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */,
-				3CB3F1721AE7A47000BADB8C /* AVOSCloudSNS.framework in Frameworks */,
 				3C59ED7B1AE7EC1300383EF0 /* FBSDKLoginKit.framework in Frameworks */,
 				3CB3F1711AE7A47000BADB8C /* AVOSCloud.framework in Frameworks */,
+				3CB3F1721AE7A47000BADB8C /* AVOSCloudSNS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +115,7 @@
 		3C4D19111AE0D6C100613CAB = {
 			isa = PBXGroup;
 			children = (
+				3C84E6BC1AE9D0880056C1B8 /* CFNetwork.framework */,
 				3C4D191C1AE0D6C100613CAB /* PicQurate */,
 				3C4D19321AE0D6C100613CAB /* PicQurateTests */,
 				3C4D191B1AE0D6C100613CAB /* Products */,
@@ -92,7 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */,
-				3C4D19211AE0D6C100613CAB /* LoginViewController.swift */,
+				3C87F7F91AE8C42100C9E172 /* PQ.swift */,
+				3C84E6AC1AE922E50056C1B8 /* TPKeyboardAvoiding */,
+				3C87F7FB1AE8C42600C9E172 /* ViewControllers */,
+				3C87F7F81AE8C31900C9E172 /* objects */,
 				3C4D19231AE0D6C100613CAB /* Main.storyboard */,
 				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
 				3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */,
@@ -105,6 +151,11 @@
 		3C4D191D1AE0D6C100613CAB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3C87F8051AE8C91D00C9E172 /* libicucore.dylib */,
+				3C87F8031AE8C91300C9E172 /* CoreLocation.framework */,
+				3C87F8011AE8C90E00C9E172 /* CoreTelephony.framework */,
+				3C87F7FE1AE8C90300C9E172 /* SystemConfiguration.framework */,
+				3C87F7FC1AE8C57F00C9E172 /* Bolts.framework */,
 				3CB3F16F1AE7A47000BADB8C /* AVOSCloud.framework */,
 				3CB3F1701AE7A47000BADB8C /* AVOSCloudSNS.framework */,
 				3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */,
@@ -130,6 +181,40 @@
 				3C4D19341AE0D6C100613CAB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C84E6AC1AE922E50056C1B8 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				3C84E6AD1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.h */,
+				3C84E6AE1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m */,
+				3C84E6AF1AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.h */,
+				3C84E6B01AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m */,
+				3C84E6B11AE922E50056C1B8 /* TPKeyboardAvoidingTableView.h */,
+				3C84E6B21AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m */,
+				3C84E6B31AE922E50056C1B8 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				3C84E6B41AE922E50056C1B8 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+			);
+			path = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		3C87F7F81AE8C31900C9E172 /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				3C56922E1AE9F736006FA95D /* AVImageView.swift */,
+				3C5692301AE9F772006FA95D /* PQLog.swift */,
+				3C87F7F61AE8C31400C9E172 /* PQUser.swift */,
+			);
+			name = objects;
+			sourceTree = "<group>";
+		};
+		3C87F7FB1AE8C42600C9E172 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C4D19211AE0D6C100613CAB /* LoginViewController.swift */,
+				3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +317,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C84E6B61AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */,
+				3C84E6B71AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m in Sources */,
+				3C87F7FA1AE8C42100C9E172 /* PQ.swift in Sources */,
 				3C4D19221AE0D6C100613CAB /* LoginViewController.swift in Sources */,
+				3C5692311AE9F772006FA95D /* PQLog.swift in Sources */,
+				3C84E6B81AE922E50056C1B8 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				3C87F7F71AE8C31400C9E172 /* PQUser.swift in Sources */,
 				3C4D19201AE0D6C100613CAB /* AppDelegate.swift in Sources */,
+				3C84E6B51AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				3CB7B7FD1AE90C2B00FBC677 /* SignupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +462,7 @@
 				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -386,6 +481,7 @@
 				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 			};

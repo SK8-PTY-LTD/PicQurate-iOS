@@ -25,6 +25,12 @@ typedef enum : NSUInteger {
     AVGroupEventReject
 } AVGroupEvent;
 
+typedef uint64_t AVGroupOption;
+enum : AVGroupOption {
+    AVGroupOptionNone = 0,
+    AVGroupOptionTransient = 1 << 0,
+};
+
 typedef void (^AVGroupResultBlock)(AVGroup *group, NSError *error);
 @interface AVGroup : NSObject
 
@@ -40,6 +46,18 @@ typedef void (^AVGroupResultBlock)(AVGroup *group, NSError *error);
  */
 + (void)createGroupWithSession:(AVSession *)session
                  groupDelegate:(id<AVGroupDelegate>)groupDelegate
+                      callback:(AVGroupResultBlock)callback;
+
+/*!
+ *  异步创建一个新group并加入此group
+ *  @param session group依赖的服务器会话
+ *  @param groupDelegate group使用的delegate
+ *  @param options － 可选参数，可以使用或 “|” 操作表示多个选项
+ *  @param callback group创建成功或失败的回调
+ */
++ (void)createGroupWithSession:(AVSession *)session
+                 groupDelegate:(id<AVGroupDelegate>)groupDelegate
+                       options:(AVGroupOption)options
                       callback:(AVGroupResultBlock)callback;
 
 /*!
