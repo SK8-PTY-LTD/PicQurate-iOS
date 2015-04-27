@@ -132,7 +132,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         self.profileImageButton.setImage(image, forState: .Normal);
         picker.dismissViewControllerAnimated(true, completion: nil);
     }

@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="539" y="439"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="c0w-tC-Sfg">
             <objects>
-                <tabBarController id="WJQ-dO-acF" sceneMemberID="viewController">
+                <tabBarController id="WJQ-dO-acF" customClass="TabViewController" customModule="PicQurate" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="BJ1-JN-yCy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -122,6 +122,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="q2A-xN-5E6" kind="relationship" relationship="viewControllers" id="gLi-p6-KRf"/>
+                        <segue destination="z5s-MH-NZu" kind="relationship" relationship="viewControllers" id="zn3-08-3CM"/>
+                        <segue destination="xpf-pV-tWg" kind="presentation" identifier="segueToCamera" id="zmn-CS-46C"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksZ-WO-jin" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,6 +179,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNh-dh-XHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2904" y="-624"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="33V-dW-l1t">
+            <objects>
+                <viewController id="z5s-MH-NZu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jhe-sl-XD3"/>
+                        <viewControllerLayoutGuide type="bottom" id="YV2-3T-vGC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rFh-3L-lJS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="hVY-Wh-DPc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NF0-9K-L0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2238" y="440"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="VGu-m6-muv">
+            <objects>
+                <viewController id="xpf-pV-tWg" customClass="CameraViewController" customModule="PicQurate" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bnh-8I-2Ip"/>
+                        <viewControllerLayoutGuide type="bottom" id="1cp-4V-Owo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iOX-Lm-HHr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a8L-sq-B6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1494" y="-244"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="S3A-Tp-K0Z">
