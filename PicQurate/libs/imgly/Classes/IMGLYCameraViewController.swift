@@ -204,7 +204,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate, IMGLYCameraCont
         }
     }
     
-    @objc private func image(image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafePointer<Void>) {
+    @objc func image(image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafePointer<Void>) {
         cameraView!.setLastImageFromRollAsPreview()
     }
 }

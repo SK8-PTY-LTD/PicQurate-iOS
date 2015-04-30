@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TabViewController: UITabBarController, CameraViewControllerDelegate {
+class TabViewController: UITabBarController {
     
     override func viewWillAppear(animated: Bool) {
         var button = UIButton()
@@ -33,18 +33,15 @@ class TabViewController: UITabBarController, CameraViewControllerDelegate {
     }
     
     func cameraButtonClicked() {
-        self.performSegueWithIdentifier("segueToCamera", sender: nil);
+        self.performSegueWithIdentifier("segueToUpload", sender: nil);
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "segueToCamera") {
-            var VC = segue.destinationViewController as! CameraViewController;
-            VC.delegate = self;
+        if (segue.identifier == "segueToUpload") {
+            var VC = segue.destinationViewController as! UploadViewController;
         }
     }
     
-    func onPhotoTaken(image: UIImage) {
-        
-    }
+    
     
 }

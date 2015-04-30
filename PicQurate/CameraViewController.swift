@@ -15,16 +15,15 @@ import GPUImage
 
 class CameraViewController: IMGLYCameraViewController {
     
-    weak var delegate:CameraViewControllerDelegate?
+    var delegate:CameraViewControllerDelegate?
     
-    // MARK: - Completion
-    override
-    func editorCompletionBlock(result:IMGLYEditorResult, image:UIImage?) {
-        if let image = image where result == IMGLYEditorResult.Done {
-            UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil);
+    @objc override
+    func image(image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafePointer<Void>) {
+        cameraView!.setLastImageFromRollAsPreview();
+        //Custom methods
+        self.dismissViewControllerAnimated(false, completion: { () -> Void in
             self.delegate?.onPhotoTaken(image);
-        }
-        self.dismissViewControllerAnimated(true, completion: nil);
+        });
     }
     
 }

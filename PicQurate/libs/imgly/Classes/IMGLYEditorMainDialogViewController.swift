@@ -93,7 +93,7 @@ public class IMGLYEditorMainDialogViewController: UIViewController, UIViewContro
     public func doneButtonPressed() {
         hiResImage! = hiResImage!.imgly_rotateImageToMatchOrientation()
         var filteredHiResImage = IMGLYPhotoProcessor.processWithUIImage(hiResImage!, filters:fixedFilterStack_!.activeFilters)
-        self.dismissViewControllerAnimated(true, completion: {
+        self.dismissViewControllerAnimated(false, completion: {
             self.completionBlock?(IMGLYEditorResult.Done, filteredHiResImage)
         })
     }
