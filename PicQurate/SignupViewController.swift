@@ -63,7 +63,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
                 user.refresh();
                 if let image = self.profileImageButton.imageForState(.Normal) {
                     if image != UIImage(named: "default_profile") {
-                        user.setProfileImage(image);
+                        user.setProfileUIImage(image);
                     }
                 }
                 PQ.currentUser = user;

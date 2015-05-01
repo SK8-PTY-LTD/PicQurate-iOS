@@ -165,7 +165,9 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOption);
         AVAnalytics.setCrashReportEnabled(true);
         
-        
+        if let user = PQUser.currentUser() {
+            PQ.currentUser = PQUser.currentUser();
+        }
         
     }
     

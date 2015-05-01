@@ -17,7 +17,7 @@ class PQUser : AVUser, AVSubclassing {
         return "_User"
     }
     
-    private override init() {
+    override init() {
         super.init();
     }
     
@@ -35,7 +35,7 @@ class PQUser : AVUser, AVSubclassing {
         self.username = email;
         self.email = email;
         self.password = password;
-        self.setProfileName(profileName);
+        self.profileName = profileName;
     }
     
     // ================================================================================
@@ -192,8 +192,8 @@ class PQUser : AVUser, AVSubclassing {
 //    @NSManaged var messengerId: String?
 //    @NSManaged var messengerToken: String?
 //    @NSManaged var mobileNumber: String?
-//    @NSManaged var profileImage: AVFile?
-//    @NSManaged var profileName: String?
+    @NSManaged var profileImage: AVFile?
+    @NSManaged var profileName: String?
 //    @NSManaged var realName: String?
 //    @NSManaged var voipAccount: String?
 //    @NSManaged var voipPassword: String?
@@ -280,11 +280,11 @@ class PQUser : AVUser, AVSubclassing {
         self.saveInBackground();
     }
     
-    func getProfileImage() -> AVFile? {
-        return self.objectForKey("profileImage") as? AVFile;
-    }
-    
-    func setProfileImage(profileImage: UIImage) {
+//    func getProfileImage() -> AVFile? {
+//        return self.objectForKey("profileImage") as? AVFile;
+//    }
+//    
+    func setProfileUIImage(profileImage: UIImage) {
         var imageFile: AVFile = AVFile.fileWithName("profile.jpg", data: UIImageJPEGRepresentation(profileImage, 1.0)) as! AVFile;
         imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
             if let e = error {
@@ -295,14 +295,14 @@ class PQUser : AVUser, AVSubclassing {
             }
         }
     }
-    
-    func getProfileName() -> String? {
-        return self.objectForKey("profileName") as? String;
-    }
-
-    func setProfileName(profileName: String) {
-        self.setObject(profileName, forKey: "profileName");
-    }
+//
+//    func getProfileName() -> String? {
+//        return self.objectForKey("profileName") as? String;
+//    }
+//
+//    func setProfileName(profileName: String) {
+//        self.setObject(profileName, forKey: "profileName");
+//    }
     
     func getRealName() -> String? {
         return self.objectForKey("realName") as? String;

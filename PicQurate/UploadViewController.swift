@@ -11,6 +11,9 @@ import Foundation
 class UploadViewController: UIViewController, UITextViewDelegate, CameraViewControllerDelegate {
     
     @IBOutlet weak var imageButton:UIButton!
+    @IBOutlet weak var textView:UITextView!
+    @IBOutlet weak var activityIndicator:UIActivityIndicatorView!
+    
     var firsLaunch = true;
     
     override func viewDidAppear(animated: Bool) {
@@ -22,6 +25,40 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
     
     @IBAction func cancelButtonClicked(sender: UIBarButtonItem!) {
         self.dismissViewControllerAnimated(true, completion: nil);
+    }
+    
+    @IBAction func saveButtonClicked(sender: UIBarButtonItem!) {
+        self.chainPhoto();
+    }
+    
+    @IBAction func saveClicked(sender: UIButton!) {
+        self.chainPhoto();
+    }
+    
+    func chainPhoto() {
+        self.activityIndicator.startAnimating();
+        if let image = self.imageButton.imageForState(.Normal) {
+            var file = AVFile.fileWithData(UIImageJPEGRepresentation(image, 1.0)) as! AVFile;
+            file.setValue(self.textView.text, forKey: "caption");
+            file.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if let e = error {
+                    PQ.showError(e);
+                    self.activityIndicator.stopAnimating();
+                } else {
+                    var chain = PQChain(photo: file);
+                    chain.saveInBackgroundWithBlock({ (success, error) -> Void in
+                        if let e = error{
+                            PQ.showError(e);
+                            self.activityIndicator.stopAnimating();
+                        } else {
+                            self.activityIndicator.stopAnimating();
+                            PQ.promote("Photo chained!");
+                            self.dismissViewControllerAnimated(true, completion: nil);
+                        }
+                    })
+                }
+            })
+        }
     }
     
     func launchCamera() {

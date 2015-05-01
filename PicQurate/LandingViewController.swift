@@ -74,17 +74,22 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                                     }
                                 })
                             } else {
+                                PQ.currentUser = PQUser.currentUser();
                                 NSLog("Facebook log in successful");
+                                if let method = PQ.delegate?.onUserRefreshed {
+                                    method();
+                                }
+                                self.dismissViewControllerAnimated(true, completion: nil);
                             }
                         })
                     } else {
-                        user.setProfileImage(profileImage!);
+                        user.setProfileUIImage(profileImage!);
                         PQ.currentUser = user;
                         NSLog("Facebook sign up successful");
                         if let method = PQ.delegate?.onUserRefreshed {
                             method();
                         }
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.dismissViewControllerAnimated(true, completion: nil);
                     }
                 })
             }

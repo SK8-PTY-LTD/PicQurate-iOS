@@ -245,6 +245,8 @@
 		3CA0F23D1AEBDA8800CBFBE8 /* IMGLYTextDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA0F1671AEBDA8800CBFBE8 /* IMGLYTextDialogView.xib */; };
 		3CA0F23F1AECC87E00CBFBE8 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA0F23E1AECC87E00CBFBE8 /* TabViewController.swift */; };
 		3CA0F2411AF25D7200CBFBE8 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA0F2401AF25D7200CBFBE8 /* UploadViewController.swift */; };
+		3CB088691AF300D200A15ADE /* PQChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB088681AF300D200A15ADE /* PQChain.swift */; };
+		3CB0886B1AF30A6A00A15ADE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */; };
 		3CB3F1721AE7A47000BADB8C /* AVOSCloudSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1701AE7A47000BADB8C /* AVOSCloudSNS.framework */; };
 		3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */; };
 		3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F8051AE8C91D00C9E172 /* libicucore.dylib */; };
@@ -528,6 +530,8 @@
 		3CA0F1671AEBDA8800CBFBE8 /* IMGLYTextDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMGLYTextDialogView.xib; sourceTree = "<group>"; };
 		3CA0F23E1AECC87E00CBFBE8 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		3CA0F2401AF25D7200CBFBE8 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		3CB088681AF300D200A15ADE /* PQChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQChain.swift; path = objects/PQChain.swift; sourceTree = "<group>"; };
+		3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3CB3F1701AE7A47000BADB8C /* AVOSCloudSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVOSCloudSNS.framework; path = libs/AVOSCloudSNS.framework; sourceTree = "<group>"; };
 		3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = libs/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -668,6 +672,7 @@
 				3C56922E1AE9F736006FA95D /* AVImageView.swift */,
 				3C5692301AE9F772006FA95D /* PQLog.swift */,
 				3C87F7F61AE8C31400C9E172 /* PQUser.swift */,
+				3CB088681AF300D200A15ADE /* PQChain.swift */,
 			);
 			name = objects;
 			sourceTree = "<group>";
@@ -682,6 +687,7 @@
 				3CBF21191AEB16370000B9A3 /* CameraViewController.swift */,
 				3CA0F23E1AECC87E00CBFBE8 /* TabViewController.swift */,
 				3CA0F2401AF25D7200CBFBE8 /* UploadViewController.swift */,
+				3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1277,6 +1283,8 @@
 				3CA0F1951AEBDA8800CBFBE8 /* IMGLYFixedFilterStack.swift in Sources */,
 				3CA0F1D61AEBDA8800CBFBE8 /* IMGLYTextDialogViewController.swift in Sources */,
 				3CA0F19B1AEBDA8800CBFBE8 /* IMGLYFoodFilter.swift in Sources */,
+				3CB0886B1AF30A6A00A15ADE /* ProfileViewController.swift in Sources */,
+				3CB088691AF300D200A15ADE /* PQChain.swift in Sources */,
 				3CA0F1A11AEBDA8800CBFBE8 /* IMGLYHighcarbFilter.swift in Sources */,
 				3CA0F1CC1AEBDA8800CBFBE8 /* IMGLYStickersDataSource.swift in Sources */,
 				3CA0F1791AEBDA8800CBFBE8 /* IMGLYCBSBaseViewController.swift in Sources */,
