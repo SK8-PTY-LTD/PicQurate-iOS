@@ -254,6 +254,7 @@
 		3CBF20F71AEA56F00000B9A3 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBF20F61AEA56F00000B9A3 /* AVOSCloud.framework */; };
 		3CBF20FB1AEA57150000B9A3 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF20FA1AEA57150000B9A3 /* ViewPagerController.m */; };
 		3CBF211A1AEB16370000B9A3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF21191AEB16370000B9A3 /* CameraViewController.swift */; };
+		3CEE1AC71AF3A141005600D6 /* PQPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -539,6 +540,7 @@
 		3CBF20F91AEA57150000B9A3 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
 		3CBF20FA1AEA57150000B9A3 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		3CBF21191AEB16370000B9A3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQPhoto.swift; path = objects/PQPhoto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -673,6 +675,7 @@
 				3C5692301AE9F772006FA95D /* PQLog.swift */,
 				3C87F7F61AE8C31400C9E172 /* PQUser.swift */,
 				3CB088681AF300D200A15ADE /* PQChain.swift */,
+				3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */,
 			);
 			name = objects;
 			sourceTree = "<group>";
@@ -1287,6 +1290,7 @@
 				3CB088691AF300D200A15ADE /* PQChain.swift in Sources */,
 				3CA0F1A11AEBDA8800CBFBE8 /* IMGLYHighcarbFilter.swift in Sources */,
 				3CA0F1CC1AEBDA8800CBFBE8 /* IMGLYStickersDataSource.swift in Sources */,
+				3CEE1AC71AF3A141005600D6 /* PQPhoto.swift in Sources */,
 				3CA0F1791AEBDA8800CBFBE8 /* IMGLYCBSBaseViewController.swift in Sources */,
 				3CA0F1891AEBDA8800CBFBE8 /* IMGLYCropRectComponent.swift in Sources */,
 				3CA0F1731AEBDA8800CBFBE8 /* IMGLYBreezeFilter.swift in Sources */,

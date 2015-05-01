@@ -15,6 +15,7 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
     @IBOutlet weak var activityIndicator:UIActivityIndicatorView!
     
     var firsLaunch = true;
+    var imageWidth: CGFloat = 320.0;
     
     override func viewDidAppear(animated: Bool) {
         if (firsLaunch) {
@@ -37,15 +38,42 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
     
     func chainPhoto() {
         self.activityIndicator.startAnimating();
-        if let image = self.imageButton.imageForState(.Normal) {
-            var file = AVFile.fileWithData(UIImageJPEGRepresentation(image, 1.0)) as! AVFile;
-            file.setValue(self.textView.text, forKey: "caption");
+        if let image = self.imageButton.backgroundImageForState(.Normal) {
+            //Croping
+            var originalWidth = image.size.width;
+            var originalHeight = image.size.height;
+            var cropRect: CGRect?
+            var scale: CGFloat?
+            if (originalWidth <= originalHeight) {
+                var difference = (originalHeight - originalWidth) / 2;
+                var y = difference;
+                cropRect = CGRectMake(0, y, image.size.width, image.size.width);
+                scale = 640/image.size.width;
+            } else {
+                var difference = (originalWidth - originalHeight) / 2;
+                var x = difference;
+                cropRect = CGRectMake(x, 0, image.size.height, image.size.height);
+                scale = 640/image.size.height;
+            }
+            var imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect!);
+            var croppedImage = UIImage(CGImage: imageRef, scale: scale!, orientation: image.imageOrientation);
+            //Scaling
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(imageWidth, imageWidth), false, 0.0);
+            croppedImage?.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
+            var scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+
+            //Saving
+            var file = AVFile.fileWithName("photo.jpg", data: UIImageJPEGRepresentation(scaledImage, 1.0)) as! AVFile;
             file.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if let e = error {
                     PQ.showError(e);
                     self.activityIndicator.stopAnimating();
                 } else {
-                    var chain = PQChain(photo: file);
+                    var photo = PQPhoto(file: file);
+                    photo.caption = self.textView.text;
+                    var chain = PQChain(photo: photo);
+                    chain.original = chain;
                     chain.saveInBackgroundWithBlock({ (success, error) -> Void in
                         if let e = error{
                             PQ.showError(e);
@@ -58,6 +86,9 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
                     })
                 }
             })
+        } else {
+            PQ.promote("Please take a photo");
+            self.activityIndicator.stopAnimating();
         }
     }
     

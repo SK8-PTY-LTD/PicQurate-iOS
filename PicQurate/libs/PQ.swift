@@ -159,6 +159,8 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
 //        SHPurchaseEntry.registerSubclass();
 //        SHShop.registerSubclass();
         PQUser.registerSubclass();
+        PQChain.registerSubclass();
+        PQPhoto.registerSubclass();
         
         AVOSCloud.useAVCloudUS();
         AVOSCloud.setApplicationId(PQ.Static.AV_APP_ID, clientKey: PQ.Static.AV_APP_KEY);
