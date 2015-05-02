@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if let e = error {
                 PQ.showError(e);
             } else {
-                var user = PQUser.currentUser() as PQUser;
+                var user = user as! PQUser;
                 PQ.currentUser = user;
                 NSLog("Email user log in successful");
                 if let method = PQ.delegate?.onUserRefreshed {

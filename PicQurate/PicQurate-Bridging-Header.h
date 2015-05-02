@@ -4,7 +4,6 @@
 
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloud/AVObject+Subclass.h>
-#import <AVOSCloudSNS/AVUser+SNS.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "ViewPagerController.h"

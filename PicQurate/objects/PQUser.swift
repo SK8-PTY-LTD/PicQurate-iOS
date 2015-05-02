@@ -7,13 +7,13 @@
 
 import Foundation
 
-class PQUser : AVUser, AVSubclassing {
+public class PQUser : AVUser, AVSubclassing {
     
     // ================================================================================
     // Constructors
     // ================================================================================
     
-    class func parseClassName() -> String {
+    public class func parseClassName() -> String {
         return "_User"
     }
     
@@ -35,6 +35,7 @@ class PQUser : AVUser, AVSubclassing {
         self.username = email;
         self.email = email;
         self.password = password;
+        self.balance = 0;
         self.profileName = profileName;
     }
     
@@ -125,9 +126,9 @@ class PQUser : AVUser, AVSubclassing {
 //        }
 //    }
     
-    func getCurrentUser() -> PQUser? {
-        return AVUser.currentUser() as? PQUser;
-    }
+//    func getCurrentUser() -> PQUser? {
+//        return AVUser.currentUser() as? PQUser;
+//    }
     
 //    func getMembershipWithCallback(shop: SHShop, callback: (membership :SHMembership, error: NSError?) ->()) {
 //        // Retrieve Membership
@@ -186,17 +187,18 @@ class PQUser : AVUser, AVSubclassing {
     
 //    @NSManaged var addressId: String?
 //    @NSManaged var backgroundImage: AVFile?
-//    @NSManaged var bio: String?
-//    @NSManaged var emailVerified: Bool
-//    @NSManaged var installationId: String?
-//    @NSManaged var messengerId: String?
-//    @NSManaged var messengerToken: String?
+    @NSManaged var bio: String?
+    @NSManaged var balance: Int
+    @NSManaged var emailVerified: Bool
+    @NSManaged var gender: Bool
+    @NSManaged var installationId: String?
+    @NSManaged var location: AVGeoPoint?
+    @NSManaged var locationString: String?
 //    @NSManaged var mobileNumber: String?
     @NSManaged var profileImage: AVFile?
     @NSManaged var profileName: String?
-//    @NSManaged var realName: String?
-//    @NSManaged var voipAccount: String?
-//    @NSManaged var voipPassword: String?
+    @NSManaged var realName: String?
+    @NSManaged var url: String?
     
 //    var address: SHAddress? {
 //        get {
@@ -262,14 +264,6 @@ class PQUser : AVUser, AVSubclassing {
         }
     }
     
-//    func getMessengerId() -> String? {
-//        return self.objectForKey("messengerId") as? String;
-//    }
-//    
-//    func getMessengerToken() -> String? {
-//        return self.objectForKey("messengerToken") as? String;
-//    }
-    
     func getMobileNumber() -> String? {
         return self.objectForKey("mobileNumber") as? String;
     }
@@ -280,10 +274,10 @@ class PQUser : AVUser, AVSubclassing {
         self.saveInBackground();
     }
     
-//    func getProfileImage() -> AVFile? {
-//        return self.objectForKey("profileImage") as? AVFile;
-//    }
-//    
+    func getProfileImage() -> AVFile? {
+        return self.objectForKey("profileImage") as? AVFile;
+    }
+
     func setProfileUIImage(profileImage: UIImage) {
         var imageFile: AVFile = AVFile.fileWithName("profile.jpg", data: UIImageJPEGRepresentation(profileImage, 1.0)) as! AVFile;
         imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
@@ -295,30 +289,14 @@ class PQUser : AVUser, AVSubclassing {
             }
         }
     }
-//
-//    func getProfileName() -> String? {
-//        return self.objectForKey("profileName") as? String;
-//    }
-//
-//    func setProfileName(profileName: String) {
-//        self.setObject(profileName, forKey: "profileName");
-//    }
-    
-    func getRealName() -> String? {
-        return self.objectForKey("realName") as? String;
+
+    func getProfileName() -> String? {
+        return self.objectForKey("profileName") as? String;
     }
-    
-    func setRealName(realName: String) {
-        self.setObject(realName, forKey: "realName");
+
+    private func setProfileName(profileName: String) {
+        self.setObject(profileName, forKey: "profileName");
     }
-    
-//    func getVoipAccount() -> String? {
-//        return self.objectForKey("voipAccount") as? String;
-//    }
-//    
-//    func getVoipPassword() -> String? {
-//        return self.objectForKey("voipPassword") as? String;
-//    }
     
     // ================================================================================
     // Export class

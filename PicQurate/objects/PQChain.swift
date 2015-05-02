@@ -17,7 +17,7 @@ class PQChain : AVObject, AVSubclassing {
         return "Chain"
     }
     
-    private override init() {
+    override init() {
         super.init();
     }
     

@@ -17,7 +17,7 @@ class PQPhoto : AVObject, AVSubclassing {
         return "Photo"
     }
     
-    private override init() {
+    override init() {
         super.init();
     }
     

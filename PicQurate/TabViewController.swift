@@ -42,6 +42,13 @@ class TabViewController: UITabBarController {
         }
     }
     
+    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        if let user = PQ.currentUser {
+            //User logged in, do nothing
+        } else {
+            self.performSegueWithIdentifier("segueToLogin", sender: nil);
+        }
+    }
     
     
 }

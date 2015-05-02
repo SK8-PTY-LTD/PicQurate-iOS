@@ -17,14 +17,6 @@ class HomeViewController: ViewPagerController, ViewPagerDelegate, ViewPagerDataS
         self.delegate = self;
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        if let user = PQ.currentUser {
-            //User logged in, do nothing
-        } else {
-            self.performSegueWithIdentifier("segueToLogin", sender: nil);
-        }
-    }
-    
     //pragma mark - ViewPagerDataSource
     func numberOfTabsForViewPager(viewPager: ViewPagerController!) -> UInt {
         return 3;
@@ -57,12 +49,6 @@ class HomeViewController: ViewPagerController, ViewPagerDelegate, ViewPagerDataS
             return PQ.primaryColor;
         default:
             return color;
-        }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "segueToLogin") {
-            var VC = segue.destinationViewController as! LandingViewController;
         }
     }
 }

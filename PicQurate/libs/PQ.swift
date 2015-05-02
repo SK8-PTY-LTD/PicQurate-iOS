@@ -158,6 +158,7 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
 //        SHPurchase.registerSubclass();
 //        SHPurchaseEntry.registerSubclass();
 //        SHShop.registerSubclass();
+        
         PQUser.registerSubclass();
         PQChain.registerSubclass();
         PQPhoto.registerSubclass();
@@ -165,10 +166,9 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         AVOSCloud.useAVCloudUS();
         AVOSCloud.setApplicationId(PQ.Static.AV_APP_ID, clientKey: PQ.Static.AV_APP_KEY);
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOption);
-        AVAnalytics.setCrashReportEnabled(true);
         
         if let user = PQUser.currentUser() {
-            PQ.currentUser = PQUser.currentUser();
+            PQ.currentUser = user;
         }
         
     }

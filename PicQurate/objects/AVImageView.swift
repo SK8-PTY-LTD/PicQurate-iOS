@@ -42,13 +42,9 @@ class AVImageView: UIImageView {
                     PQLog.e("Failed to load becuase image file had not uploaded and its data is nil");
                 }
             } else {
-                imageFile.getThumbnail(false, width: Int32(width * self.scale), height: Int32(height * self.scale), withBlock: { (image, error) -> Void in
-                    if let e = error {
-                        PQLog.e(e.localizedDescription);
-                    } else {
-                        self.image = image;
-                    }
-                })
+                var data = imageFile.getData();
+                var image = UIImage(data: data);
+                self.image = image;
             }
         } else {
             PQLog.e("Error loading image: file hadn't been set.");
@@ -104,17 +100,15 @@ class AVImageView: UIImageView {
                     PQLog.e("Failed to load becuase image file had not uploaded and its data is nil");
                 }
             } else {
-                imageFile.getThumbnail(false, width: Int32(width * self.scale), height: Int32(height * self.scale), withBlock: { (downloadedImage, error) -> Void in
+                imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
                     if let e = error {
                         block(nil, error);
                         PQLog.e(e.localizedDescription);
                     } else {
-                        self.image = downloadedImage;
-                        var data = UIImagePNGRepresentation(downloadedImage);
-                        var query: AVFile?
+                        self.image = UIImage(data: data);
                         block(data, nil);
                     }
-                })
+                });
             }
         } else {
             PQLog.e("Error loading image: file hadn't been set.");

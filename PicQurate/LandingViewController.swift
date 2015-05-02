@@ -45,15 +45,6 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let e = error {
                 PQ.showError(e);
             } else {
-//                var authData = ["id": result.token.userID, "access_token": result.token.tokenString, "expires_at": result.token.expirationDate.description, "platform": "facebook"];
-//                NSLog("%@", authData);
-//                AVUser.loginWithAuthData(authData, block: { (user, error) -> Void in
-//                    if let e = error {
-//                        PQ.showError(e);
-//                    } else {
-//                        NSLog("Facebook log in successful");
-//                    }
-                //                })
                 var email = user["email"] as! String;
                 var id = user["id"] as! String;
                 var name = user["name"] as! String;
@@ -64,7 +55,7 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                 var profileImage = UIImage(data: data!);
                 user.signUpInBackgroundWithBlock({ (success, error) -> Void in
                     if let e = error {
-                        AVUser.logInWithUsernameInBackground(email, password: id, block: { (user, error) -> Void in
+                        PQUser.logInWithUsernameInBackground(email, password: id, block: { (user, error) -> Void in
                             if let e = error {
                                 AVUser.requestPasswordResetForEmailInBackground(email, block: { (success, error) -> Void in
                                     if let e = error {
@@ -74,7 +65,7 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                                     }
                                 })
                             } else {
-                                PQ.currentUser = PQUser.currentUser();
+                                PQ.currentUser = user as! PQUser;
                                 NSLog("Facebook log in successful");
                                 if let method = PQ.delegate?.onUserRefreshed {
                                     method();
