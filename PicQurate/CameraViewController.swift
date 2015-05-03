@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import GPUImage
 
 @objc public protocol CameraViewControllerDelegate {
     func onPhotoTaken(image: UIImage);
