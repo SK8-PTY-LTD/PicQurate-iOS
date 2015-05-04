@@ -62,6 +62,14 @@ class ProfileCollectionReusableView: UICollectionReusableView {
         self.urlButton.setTitle(self.user!.url, forState: .Normal);
     }
     
+    @IBAction func followerButtonClicked(sender: UIButton) {
+        
+    }
+    
+    @IBAction func followingButtonClicked(sender: UIButton) {
+        
+    }
+    
     @IBAction func followButtonClicked(sender: UIButton) {
         if (self.followButton.titleForState(.Normal) == "Follow") {
             self.followButton.setTitle("Unfollow", forState: .Normal);

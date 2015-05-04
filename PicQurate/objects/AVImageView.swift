@@ -42,9 +42,14 @@ class AVImageView: UIImageView {
                     PQLog.e("Failed to load becuase image file had not uploaded and its data is nil");
                 }
             } else {
-                var data = imageFile.getData();
-                var image = UIImage(data: data);
-                self.image = image;
+                imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                    if let e = error {
+                        NSLog(e.localizedDescription);
+                    } else {
+                        var image = UIImage(data: data);
+                        self.image = image;
+                    }
+                });
             }
         } else {
             PQLog.e("Error loading image: file hadn't been set.");

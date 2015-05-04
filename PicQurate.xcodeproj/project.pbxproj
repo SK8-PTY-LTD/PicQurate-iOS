@@ -249,6 +249,13 @@
 		3CA0F23D1AEBDA8800CBFBE8 /* IMGLYTextDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA0F1671AEBDA8800CBFBE8 /* IMGLYTextDialogView.xib */; };
 		3CA0F23F1AECC87E00CBFBE8 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA0F23E1AECC87E00CBFBE8 /* TabViewController.swift */; };
 		3CA0F2411AF25D7200CBFBE8 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA0F2401AF25D7200CBFBE8 /* UploadViewController.swift */; };
+		3CA1A5271AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A5261AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift */; };
+		3CA1A5311AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A52A1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayout.m */; };
+		3CA1A5321AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A52C1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.m */; };
+		3CA1A5331AF71F6E00A5E2C9 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3CA1A52E1AF71F6E00A5E2C9 /* .gitkeep */; };
+		3CA1A5341AF71F6E00A5E2C9 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3CA1A5301AF71F6E00A5E2C9 /* .gitkeep */; };
+		3CA1A5361AF7208900A5E2C9 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA1A5351AF7208800A5E2C9 /* ProfileHeaderView.xib */; };
+		3CA1A53A1AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A5391AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift */; };
 		3CB088691AF300D200A15ADE /* PQChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB088681AF300D200A15ADE /* PQChain.swift */; };
 		3CB0886B1AF30A6A00A15ADE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */; };
 		3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */; };
@@ -538,6 +545,15 @@
 		3CA0F1671AEBDA8800CBFBE8 /* IMGLYTextDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMGLYTextDialogView.xib; sourceTree = "<group>"; };
 		3CA0F23E1AECC87E00CBFBE8 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		3CA0F2401AF25D7200CBFBE8 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		3CA1A5261AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewSegmentCell.swift; sourceTree = "<group>"; };
+		3CA1A5291AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSStickyHeaderFlowLayout.h; sourceTree = "<group>"; };
+		3CA1A52A1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSStickyHeaderFlowLayout.m; sourceTree = "<group>"; };
+		3CA1A52B1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSStickyHeaderFlowLayoutAttributes.h; sourceTree = "<group>"; };
+		3CA1A52C1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSStickyHeaderFlowLayoutAttributes.m; sourceTree = "<group>"; };
+		3CA1A52E1AF71F6E00A5E2C9 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		3CA1A5301AF71F6E00A5E2C9 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		3CA1A5351AF7208800A5E2C9 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileHeaderView.xib; path = views/ProfileHeaderView.xib; sourceTree = "<group>"; };
+		3CA1A5391AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		3CB088681AF300D200A15ADE /* PQChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQChain.swift; path = objects/PQChain.swift; sourceTree = "<group>"; };
 		3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = libs/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -603,6 +619,7 @@
 				3C87F7FB1AE8C42600C9E172 /* ViewControllers */,
 				3C87F7F81AE8C31900C9E172 /* objects */,
 				3C4D19231AE0D6C100613CAB /* Main.storyboard */,
+				3CA1A5351AF7208800A5E2C9 /* ProfileHeaderView.xib */,
 				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
 				3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */,
 				3C4D191D1AE0D6C100613CAB /* Supporting Files */,
@@ -651,6 +668,7 @@
 				3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */,
 				3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */,
 				3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */,
+				3CA1A5281AF71F6E00A5E2C9 /* StickyHeader */,
 				3CA0F08B1AEBDA8800CBFBE8 /* imgly */,
 				3CBF20F81AEA57150000B9A3 /* ICViewPager */,
 				3C84E6AC1AE922E50056C1B8 /* TPKeyboardAvoiding */,
@@ -698,6 +716,8 @@
 				3CA0F2401AF25D7200CBFBE8 /* UploadViewController.swift */,
 				3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */,
 				3C33BAEA1AF5CDAF00CA2E84 /* ProfileCollectionReusableView.swift */,
+				3CA1A5261AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift */,
+				3CA1A5391AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift */,
 				3C9B148E1AF4D46D00BA5CB0 /* EditProfileViewController.swift */,
 				3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */,
 			);
@@ -960,6 +980,36 @@
 			path = XIBs;
 			sourceTree = "<group>";
 		};
+		3CA1A5281AF71F6E00A5E2C9 /* StickyHeader */ = {
+			isa = PBXGroup;
+			children = (
+				3CA1A5291AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayout.h */,
+				3CA1A52A1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayout.m */,
+				3CA1A52B1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.h */,
+				3CA1A52C1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.m */,
+				3CA1A52D1AF71F6E00A5E2C9 /* ios */,
+				3CA1A52F1AF71F6E00A5E2C9 /* osx */,
+			);
+			name = StickyHeader;
+			path = "../../External Libs/CSStickyHeaderFlowLayout/Classes";
+			sourceTree = "<group>";
+		};
+		3CA1A52D1AF71F6E00A5E2C9 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				3CA1A52E1AF71F6E00A5E2C9 /* .gitkeep */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		3CA1A52F1AF71F6E00A5E2C9 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				3CA1A5301AF71F6E00A5E2C9 /* .gitkeep */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
 		3CBF20F81AEA57150000B9A3 /* ICViewPager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1054,6 +1104,7 @@
 			files = (
 				3CA0F1F41AEBDA8800CBFBE8 /* Food.png in Resources */,
 				3CA0F2341AEBDA8800CBFBE8 /* IMGLYCameraView.xib in Resources */,
+				3CA1A5361AF7208900A5E2C9 /* ProfileHeaderView.xib in Resources */,
 				3CA0F1E71AEBDA8800CBFBE8 /* BW.png in Resources */,
 				3CA0F1DE1AEBDA8800CBFBE8 /* A15.png in Resources */,
 				3CA0F2101AEBDA8800CBFBE8 /* Prelude.png in Resources */,
@@ -1097,6 +1148,7 @@
 				3CA0F2351AEBDA8800CBFBE8 /* IMGLYCropDialogView.xib in Resources */,
 				3CA0F2241AEBDA8800CBFBE8 /* Bender-Inline.otf in Resources */,
 				3CA0F20A1AEBDA8800CBFBE8 /* Orchid.png in Resources */,
+				3CA1A5341AF71F6E00A5E2C9 /* .gitkeep in Resources */,
 				3CA0F1E51AEBDA8800CBFBE8 /* BlueShadows.png in Resources */,
 				3CA0F22A1AEBDA8800CBFBE8 /* Haymaker.ttf in Resources */,
 				3CA0F1681AEBDA8800CBFBE8 /* Assets.xcassets in Resources */,
@@ -1110,6 +1162,7 @@
 				3CA0F1F01AEBDA8800CBFBE8 /* Elder.png in Resources */,
 				3CA0F20C1AEBDA8800CBFBE8 /* Pitched.png in Resources */,
 				3CA0F2151AEBDA8800CBFBE8 /* Seventies.png in Resources */,
+				3CA1A5331AF71F6E00A5E2C9 /* .gitkeep in Resources */,
 				3CA0F1FD1AEBDA8800CBFBE8 /* K6.png in Resources */,
 				3CA0F1E41AEBDA8800CBFBE8 /* Blues.png in Resources */,
 				3CA0F2381AEBDA8800CBFBE8 /* IMGLYFocusDialogView.xib in Resources */,
@@ -1188,6 +1241,7 @@
 				3CA0F1C41AEBDA8800CBFBE8 /* IMGLYSettledFilter.swift in Sources */,
 				3CA0F1BB1AEBDA8800CBFBE8 /* IMGLYPlateFilter.swift in Sources */,
 				3CA0F1AB1AEBDA8800CBFBE8 /* IMGLYLomoFilter.swift in Sources */,
+				3CA1A5321AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.m in Sources */,
 				3CA0F1B11AEBDA8800CBFBE8 /* IMGLYNoGreenFilter.swift in Sources */,
 				3CA0F17E1AEBDA8800CBFBE8 /* IMGLYColorButton.swift in Sources */,
 				3C5692331AE9FFD6006FA95D /* LoginViewController.swift in Sources */,
@@ -1206,6 +1260,7 @@
 				3CA0F18A1AEBDA8800CBFBE8 /* IMGLYEditorMainDialogView.swift in Sources */,
 				3CA0F1A21AEBDA8800CBFBE8 /* IMGLYInstanceFactory.swift in Sources */,
 				3C4D19221AE0D6C100613CAB /* LandingViewController.swift in Sources */,
+				3CA1A5311AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayout.m in Sources */,
 				3CA0F19F1AEBDA8800CBFBE8 /* IMGLYGobblinFilter.swift in Sources */,
 				3CA0F1851AEBDA8800CBFBE8 /* IMGLYCreamyFilter.swift in Sources */,
 				3CA0F1901AEBDA8800CBFBE8 /* IMGLYEveningFilter.swift in Sources */,
@@ -1298,11 +1353,13 @@
 				3CA0F1951AEBDA8800CBFBE8 /* IMGLYFixedFilterStack.swift in Sources */,
 				3CA0F1D61AEBDA8800CBFBE8 /* IMGLYTextDialogViewController.swift in Sources */,
 				3CA0F19B1AEBDA8800CBFBE8 /* IMGLYFoodFilter.swift in Sources */,
+				3CA1A53A1AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift in Sources */,
 				3CB0886B1AF30A6A00A15ADE /* ProfileViewController.swift in Sources */,
 				3CB088691AF300D200A15ADE /* PQChain.swift in Sources */,
 				3CA0F1A11AEBDA8800CBFBE8 /* IMGLYHighcarbFilter.swift in Sources */,
 				3CA0F1CC1AEBDA8800CBFBE8 /* IMGLYStickersDataSource.swift in Sources */,
 				3CEE1AC71AF3A141005600D6 /* PQPhoto.swift in Sources */,
+				3CA1A5271AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift in Sources */,
 				3CA0F1791AEBDA8800CBFBE8 /* IMGLYCBSBaseViewController.swift in Sources */,
 				3CA0F1891AEBDA8800CBFBE8 /* IMGLYCropRectComponent.swift in Sources */,
 				3CA0F1731AEBDA8800CBFBE8 /* IMGLYBreezeFilter.swift in Sources */,
@@ -1386,7 +1443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1424,7 +1481,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
