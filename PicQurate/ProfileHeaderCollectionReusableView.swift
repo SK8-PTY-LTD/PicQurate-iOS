@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
-class ProfileCollectionReusableView: UICollectionReusableView {
+class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var profileImageView: AVImageView!
     @IBOutlet weak var profileNameLabel: UILabel!

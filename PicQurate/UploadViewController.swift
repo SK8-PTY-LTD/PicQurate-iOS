@@ -72,9 +72,11 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
                 } else {
                     var photo = PQPhoto(file: file);
                     photo.caption = self.textView.text;
-                    var chain = PQChain(photo: photo);
-                    chain.original = chain;
-                    chain.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    photo.user = PQ.currentUser;
+                    photo.location = PQ.currentUser.location;
+                    photo.locationString = PQ.currentUser.locationString;
+                    
+                    PQ.currentUser.chainPhotoWithCallBack(photo, originalChain: nil, callback: { (success, error) -> () in
                         if let e = error{
                             PQ.showError(e);
                             self.activityIndicator.stopAnimating();
@@ -83,7 +85,7 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
                             PQ.promote("Photo chained!");
                             self.dismissViewControllerAnimated(true, completion: nil);
                         }
-                    })
+                    });
                 }
             })
         } else {

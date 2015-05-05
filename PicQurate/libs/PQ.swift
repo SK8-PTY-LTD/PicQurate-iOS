@@ -94,6 +94,7 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         
         // Custom Variables required by PQ Library, but is dependent on End App
         // Set them in init() method
+        
         static let PRIMARY_COLOR: UIColor = UIColor(hex: "#BE0004");
 //        static let ORANGE_SECONDARY: UIColor = UIColor(hex: "#ff9933");
 //        static let WHITE: UIColor = UIColor(hex: "#ffffff");
@@ -125,6 +126,7 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
 //    class var currentSeller: PQUser! {
 //        get { return Static.currentSeller }
 //        set { Static.currentSeller = newValue }
+    //    }
 //    }
     
     class var currentUser: PQUser! {
@@ -357,45 +359,6 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         } else {
             return true;
         }
-    }
-    
-    class func playRefreshSound() {
-        AudioServicesPlaySystemSound(1322);
-    }
-    
-    class func playSentSound() {
-        AudioServicesPlaySystemSound (1004);
-    }
-    
-    class func playReceivedSound() {
-        AudioServicesPlaySystemSound (1003);
-    }
-    
-    class func playAlarmSound() {
-        var fileURL = NSURL(string: "/System/Library/Audio/UISounds/sq_alarm.caf");
-        var soundID = SystemSoundID();
-        AudioServicesCreateSystemSoundID(fileURL, &soundID);
-        AudioServicesPlaySystemSound(soundID);
-    }
-    
-    class func playTriTone() {
-        AudioServicesPlaySystemSound (1016);
-    }
-    
-    class func playCustomSound() {
-        var soundPath = NSBundle.mainBundle().pathForResource("refresh", ofType: "mp3");
-        var soundID = SystemSoundID();
-        var fileURL = NSURL(fileURLWithPath: soundPath!);
-        AudioServicesCreateSystemSoundID(fileURL, &soundID);
-        AudioServicesPlaySystemSound (soundID);
-    }
-    
-    class func muteShutterSound() {
-        var soundPath = NSBundle.mainBundle().pathForResource("photoShutter2", ofType: "caf");
-        var soundID = SystemSoundID();
-        var fileURL = NSURL(fileURLWithPath: soundPath!);
-        AudioServicesCreateSystemSoundID(fileURL, &soundID);
-        AudioServicesPlaySystemSound (soundID);
     }
     
 }

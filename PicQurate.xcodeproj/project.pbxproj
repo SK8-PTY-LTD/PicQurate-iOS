@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C33BAEB1AF5CDAF00CA2E84 /* ProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33BAEA1AF5CDAF00CA2E84 /* ProfileCollectionReusableView.swift */; };
+		3C33BAEB1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */; };
 		3C4D19201AE0D6C100613CAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */; };
 		3C4D19221AE0D6C100613CAB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19211AE0D6C100613CAB /* LandingViewController.swift */; };
 		3C4D19251AE0D6C100613CAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19231AE0D6C100613CAB /* Main.storyboard */; };
@@ -254,8 +254,8 @@
 		3CA1A5321AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A52C1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.m */; };
 		3CA1A5331AF71F6E00A5E2C9 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3CA1A52E1AF71F6E00A5E2C9 /* .gitkeep */; };
 		3CA1A5341AF71F6E00A5E2C9 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3CA1A5301AF71F6E00A5E2C9 /* .gitkeep */; };
-		3CA1A5361AF7208900A5E2C9 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA1A5351AF7208800A5E2C9 /* ProfileHeaderView.xib */; };
-		3CA1A53A1AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A5391AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift */; };
+		3CA1A5361AF7208900A5E2C9 /* ProfileHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA1A5351AF7208800A5E2C9 /* ProfileHeaderCollectionReusableView.xib */; };
+		3CA1A53A1AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A5391AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift */; };
 		3CB088691AF300D200A15ADE /* PQChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB088681AF300D200A15ADE /* PQChain.swift */; };
 		3CB0886B1AF30A6A00A15ADE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */; };
 		3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */; };
@@ -290,7 +290,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3C33BAEA1AF5CDAF00CA2E84 /* ProfileCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionReusableView.swift; sourceTree = "<group>"; };
+		3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		3C4D191A1AE0D6C100613CAB /* PicQurate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicQurate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D191E1AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -552,8 +552,8 @@
 		3CA1A52C1AF71F6E00A5E2C9 /* CSStickyHeaderFlowLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSStickyHeaderFlowLayoutAttributes.m; sourceTree = "<group>"; };
 		3CA1A52E1AF71F6E00A5E2C9 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		3CA1A5301AF71F6E00A5E2C9 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		3CA1A5351AF7208800A5E2C9 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileHeaderView.xib; path = views/ProfileHeaderView.xib; sourceTree = "<group>"; };
-		3CA1A5391AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		3CA1A5351AF7208800A5E2C9 /* ProfileHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileHeaderCollectionReusableView.xib; path = views/ProfileHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		3CA1A5391AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3CB088681AF300D200A15ADE /* PQChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQChain.swift; path = objects/PQChain.swift; sourceTree = "<group>"; };
 		3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = libs/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -616,10 +616,10 @@
 			children = (
 				3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */,
 				3C87F7F91AE8C42100C9E172 /* PQ.swift */,
+				3C93635A1AF86F0C001C3EE0 /* View */,
 				3C87F7FB1AE8C42600C9E172 /* ViewControllers */,
 				3C87F7F81AE8C31900C9E172 /* objects */,
 				3C4D19231AE0D6C100613CAB /* Main.storyboard */,
-				3CA1A5351AF7208800A5E2C9 /* ProfileHeaderView.xib */,
 				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
 				3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */,
 				3C4D191D1AE0D6C100613CAB /* Supporting Files */,
@@ -695,7 +695,6 @@
 		3C87F7F81AE8C31900C9E172 /* objects */ = {
 			isa = PBXGroup;
 			children = (
-				3C56922E1AE9F736006FA95D /* AVImageView.swift */,
 				3C5692301AE9F772006FA95D /* PQLog.swift */,
 				3C87F7F61AE8C31400C9E172 /* PQUser.swift */,
 				3CB088681AF300D200A15ADE /* PQChain.swift */,
@@ -715,13 +714,22 @@
 				3CA0F23E1AECC87E00CBFBE8 /* TabViewController.swift */,
 				3CA0F2401AF25D7200CBFBE8 /* UploadViewController.swift */,
 				3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */,
-				3C33BAEA1AF5CDAF00CA2E84 /* ProfileCollectionReusableView.swift */,
-				3CA1A5261AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift */,
-				3CA1A5391AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift */,
 				3C9B148E1AF4D46D00BA5CB0 /* EditProfileViewController.swift */,
-				3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3C93635A1AF86F0C001C3EE0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C56922E1AE9F736006FA95D /* AVImageView.swift */,
+				3CA1A5391AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift */,
+				3CA1A5261AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift */,
+				3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */,
+				3CA1A5351AF7208800A5E2C9 /* ProfileHeaderCollectionReusableView.xib */,
+				3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		3CA0F08B1AEBDA8800CBFBE8 /* imgly */ = {
@@ -1104,7 +1112,7 @@
 			files = (
 				3CA0F1F41AEBDA8800CBFBE8 /* Food.png in Resources */,
 				3CA0F2341AEBDA8800CBFBE8 /* IMGLYCameraView.xib in Resources */,
-				3CA1A5361AF7208900A5E2C9 /* ProfileHeaderView.xib in Resources */,
+				3CA1A5361AF7208900A5E2C9 /* ProfileHeaderCollectionReusableView.xib in Resources */,
 				3CA0F1E71AEBDA8800CBFBE8 /* BW.png in Resources */,
 				3CA0F1DE1AEBDA8800CBFBE8 /* A15.png in Resources */,
 				3CA0F2101AEBDA8800CBFBE8 /* Prelude.png in Resources */,
@@ -1231,7 +1239,7 @@
 				3CA0F17D1AEBDA8800CBFBE8 /* IMGLYClassicFilter.swift in Sources */,
 				3CA0F1BF1AEBDA8800CBFBE8 /* IMGLYPro400Filter.swift in Sources */,
 				3CA0F1A51AEBDA8800CBFBE8 /* IMGLYK6Filter.swift in Sources */,
-				3C33BAEB1AF5CDAF00CA2E84 /* ProfileCollectionReusableView.swift in Sources */,
+				3C33BAEB1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				3CA0F1A01AEBDA8800CBFBE8 /* IMGLYGradientViewDelegate.swift in Sources */,
 				3CA0F1CD1AEBDA8800CBFBE8 /* IMGLYStickersDialogView.swift in Sources */,
 				3CA0F1781AEBDA8800CBFBE8 /* IMGLYCameraViewController.swift in Sources */,
@@ -1353,7 +1361,7 @@
 				3CA0F1951AEBDA8800CBFBE8 /* IMGLYFixedFilterStack.swift in Sources */,
 				3CA0F1D61AEBDA8800CBFBE8 /* IMGLYTextDialogViewController.swift in Sources */,
 				3CA0F19B1AEBDA8800CBFBE8 /* IMGLYFoodFilter.swift in Sources */,
-				3CA1A53A1AF7B2A300A5E2C9 /* ImageViewCollectionViewCell.swift in Sources */,
+				3CA1A53A1AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift in Sources */,
 				3CB0886B1AF30A6A00A15ADE /* ProfileViewController.swift in Sources */,
 				3CB088691AF300D200A15ADE /* PQChain.swift in Sources */,
 				3CA0F1A11AEBDA8800CBFBE8 /* IMGLYHighcarbFilter.swift in Sources */,
@@ -1500,6 +1508,7 @@
 					"$(PROJECT_DIR)/PicQurate/libs",
 				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1520,6 +1529,7 @@
 					"$(PROJECT_DIR)/PicQurate/libs",
 				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

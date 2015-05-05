@@ -29,7 +29,6 @@ class PQChain : AVObject, AVSubclassing {
     init(photo: PQPhoto) {
         super.init();
         self.photo = photo;
-        self.user = photo.user;
     }
     
     // ================================================================================
@@ -58,6 +57,9 @@ class PQChain : AVObject, AVSubclassing {
     @NSManaged var photo: PQPhoto?
     @NSManaged var user: PQUser?
     @NSManaged var original: PQChain?
+    @NSManaged var originalLocation: AVGeoPoint?
+    @NSManaged var location: AVGeoPoint?
+    @NSManaged var locationString: String?
     
 //    func getOriginal() -> PQChain? {
 //        return self.objectForKey("original") as? PQChain;

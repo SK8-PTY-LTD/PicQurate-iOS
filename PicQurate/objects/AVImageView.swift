@@ -10,7 +10,9 @@ class AVImageView: UIImageView {
     
     let MINIMUM_WIDTH: CGFloat = 160;
     let MINIMUM_Height: CGFloat = 160;
+    
     internal var file: AVFile?;
+    private var cachedfile: AVFile?;
     internal var scale: CGFloat = UIScreen.mainScreen().scale;
     
     required init(coder aDecoder: NSCoder) {
@@ -19,38 +21,54 @@ class AVImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame);
-        if let imageFile = file {
+        if let imageFile = self.file {
             self.loadInBackground();
         }
     }
     
     func loadInBackground() {
+        
+        if (self.cachedfile?.objectId == self.file?.objectId) {
+            //Image already loaded, do nothing
+            return;
+        } else {
+            self.cachedfile = self.file;
+        }
+        
         if let imageFile = self.file {
-            var width = self.frame.width;
-            if (width < MINIMUM_WIDTH) {
-                width = MINIMUM_WIDTH;
-            }
-            var height = self.frame.height;
-            if (height < MINIMUM_Height) {
-                height = MINIMUM_Height;
-            }
-            if (!imageFile.isDirty) {
-                if let data = imageFile.getData() {
+            imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                if let e = error {
+                    NSLog(e.localizedDescription);
+                } else {
                     var image = UIImage(data: data);
                     self.image = image;
-                } else {
-                    PQLog.e("Failed to load becuase image file had not uploaded and its data is nil");
                 }
-            } else {
-                imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                    if let e = error {
-                        NSLog(e.localizedDescription);
-                    } else {
-                        var image = UIImage(data: data);
-                        self.image = image;
-                    }
-                });
-            }
+            });
+//            var width = self.frame.width;
+//            if (width < MINIMUM_WIDTH) {
+//                width = MINIMUM_WIDTH;
+//            }
+//            var height = self.frame.height;
+//            if (height < MINIMUM_Height) {
+//                height = MINIMUM_Height;
+//            }
+//            if (!imageFile.isDirty) {
+//                if let data = imageFile.getData() {
+//                    var image = UIImage(data: data);
+//                    self.image = image;
+//                } else {
+//                    PQLog.e("Failed to load becuase image file had not uploaded and its data is nil");
+//                }
+//            } else {
+//                imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//                    if let e = error {
+//                        NSLog(e.localizedDescription);
+//                    } else {
+//                        var image = UIImage(data: data);
+//                        self.image = image;
+//                    }
+//                });
+//            }
         } else {
             PQLog.e("Error loading image: file hadn't been set.");
         }
@@ -88,40 +106,53 @@ class AVImageView: UIImageView {
 //    }
     
     func loadInBackground(block: AVDataResultBlock!) {
+        
+        if (self.cachedfile?.objectId == self.file?.objectId) {
+            //Image already loaded, do nothing
+            return;
+        } else {
+            self.cachedfile = self.file;
+        }
+        
         if let imageFile = self.file {
-            var width = self.frame.width;
-            if (width < MINIMUM_WIDTH) {
-                width = MINIMUM_WIDTH;
-            }
-            var height = self.frame.height;
-            if (height < MINIMUM_Height) {
-                height = MINIMUM_Height;
-            }
-            if (!imageFile.isDirty) {
-                if let data = imageFile.getData() {
-                    var image = UIImage(data: data);
-                    self.image = image;
+            imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                if let e = error {
+                    block(nil, error);
+                    PQLog.e(e.localizedDescription);
                 } else {
-                    PQLog.e("Failed to load becuase image file had not uploaded and its data is nil");
+                    self.image = UIImage(data: data);
+                    block(data, nil);
                 }
-            } else {
-                imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                    if let e = error {
-                        block(nil, error);
-                        PQLog.e(e.localizedDescription);
-                    } else {
-                        self.image = UIImage(data: data);
-                        block(data, nil);
-                    }
-                });
-            }
+            });
+//            var width = self.frame.width;
+//            if (width < MINIMUM_WIDTH) {
+//                width = MINIMUM_WIDTH;
+//            }
+//            var height = self.frame.height;
+//            if (height < MINIMUM_Height) {
+//                height = MINIMUM_Height;
+//            }
+//            if (!imageFile.isDirty) {
+//                if let data = imageFile.getData() {
+//                    var image = UIImage(data: data);
+//                    self.image = image;
+//                } else {
+//                    PQLog.e("Failed to load becuase image file had not uploaded and its data is nil");
+//                }
+//            } else {
+//                imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//                    if let e = error {
+//                        block(nil, error);
+//                        PQLog.e(e.localizedDescription);
+//                    } else {
+//                        self.image = UIImage(data: data);
+//                        block(data, nil);
+//                    }
+//                });
+//            }
         } else {
             PQLog.e("Error loading image: file hadn't been set.");
         }
-    }
-    
-    func setAVFile(file: AVFile) {
-        self.file = file;
     }
     
     

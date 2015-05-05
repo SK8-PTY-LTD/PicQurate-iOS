@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileCollectionReusableView" customModule="PicQurate" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileHeaderCollectionReusableView" customModule="PicQurate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -243,7 +243,7 @@
                 <constraint firstItem="ZR5-My-l5c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ve1-H0-pZw"/>
             </constraints>
             <connections>
-                <outlet property="QptsLabel" destination="LB3-iv-QKR" id="mn5-bX-h7D"/>
+                <outlet property="QptsLabel" destination="LB3-iv-QKR" id="4Hz-EE-BQw"/>
                 <outlet property="followButton" destination="p4x-AN-Vmk" id="hKK-eY-GRE"/>
                 <outlet property="followerButton" destination="JzE-R6-q7o" id="kRy-1F-csj"/>
                 <outlet property="followingButton" destination="zcr-3Q-MR7" id="4YW-Hg-DSF"/>

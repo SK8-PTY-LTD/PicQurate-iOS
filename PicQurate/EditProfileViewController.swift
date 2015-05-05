@@ -71,7 +71,9 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func getLocation() {
-        self.locationManager.requestWhenInUseAuthorization();
+        if (self.locationManager.respondsToSelector(Selector("requestWhenInUseAuthorization"))) {
+            self.locationManager.requestWhenInUseAuthorization();
+        }
         self.locationManager.delegate = self;
         self.locationManager.distanceFilter = kCLDistanceFilterNone;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
