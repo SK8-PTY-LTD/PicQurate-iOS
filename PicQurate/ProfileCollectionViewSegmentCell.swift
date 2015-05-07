@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ProfileCollectionReusableViewDelegate {
+protocol ProfileCollectionViewSegmentCellDelegate {
     func segmentSelected(index: Int);
 }
 
@@ -16,7 +16,7 @@ class ProfileCollectionViewSegmentCell: UICollectionReusableView {
     
     @IBOutlet weak var postsLabel: UILabel!;
     
-    var delegate: ProfileCollectionReusableViewDelegate!;
+    var delegate: ProfileCollectionViewSegmentCellDelegate!;
     
     @IBAction func segmentOneSelected(sender: UIButton) {
         self.delegate.segmentSelected(0);

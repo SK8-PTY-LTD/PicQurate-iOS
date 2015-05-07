@@ -48,8 +48,15 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                 var email = user["email"] as! String;
                 var id = user["id"] as! String;
                 var name = user["name"] as! String;
+                var gender = false;
+                if (user["gender"] as! String == "male") {
+                    self.setValue(NSNumber(bool: true), forKey: "gender");
+                } else {
+                    self.setValue(NSNumber(bool: false), forKey: "gender");
+                }
                 
                 var user = PQUser(email: email, password: id, profileName: name);
+                user.gender = gender;
                 var urlString: String = "https://graph.facebook.com/" + id + "/picture?type=normal";
                 var data = NSData(contentsOfURL: NSURL(string: urlString)!);
                 var profileImage = UIImage(data: data!);

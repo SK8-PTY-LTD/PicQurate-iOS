@@ -62,32 +62,17 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
             croppedImage?.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
             var scaledImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
-
-            //Saving
-            var file = AVFile.fileWithName("photo.jpg", data: UIImageJPEGRepresentation(scaledImage, 1.0)) as! AVFile;
-            file.saveInBackgroundWithBlock({ (success, error) -> Void in
-                if let e = error {
+            
+            PQ.currentUser.uploadPhotoWithBlock(scaledImage, caption: self.textView.text, block: { (success, error) -> () in
+                if let e = error{
                     PQ.showError(e);
                     self.activityIndicator.stopAnimating();
                 } else {
-                    var photo = PQPhoto(file: file);
-                    photo.caption = self.textView.text;
-                    photo.user = PQ.currentUser;
-                    photo.location = PQ.currentUser.location;
-                    photo.locationString = PQ.currentUser.locationString;
-                    
-                    PQ.currentUser.chainPhotoWithCallBack(photo, originalChain: nil, callback: { (success, error) -> () in
-                        if let e = error{
-                            PQ.showError(e);
-                            self.activityIndicator.stopAnimating();
-                        } else {
-                            self.activityIndicator.stopAnimating();
-                            PQ.promote("Photo chained!");
-                            self.dismissViewControllerAnimated(true, completion: nil);
-                        }
-                    });
+                    self.activityIndicator.stopAnimating();
+                    PQ.promote("Photo chained!");
+                    self.dismissViewControllerAnimated(true, completion: nil);
                 }
-            })
+            });
         } else {
             PQ.promote("Please take a photo");
             self.activityIndicator.stopAnimating();

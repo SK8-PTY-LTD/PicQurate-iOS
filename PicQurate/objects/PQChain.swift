@@ -56,6 +56,7 @@ class PQChain : AVObject, AVSubclassing {
     
     @NSManaged var photo: PQPhoto?
     @NSManaged var user: PQUser?
+    @NSManaged var gender: Bool
     @NSManaged var original: PQChain?
     @NSManaged var originalLocation: AVGeoPoint?
     @NSManaged var location: AVGeoPoint?

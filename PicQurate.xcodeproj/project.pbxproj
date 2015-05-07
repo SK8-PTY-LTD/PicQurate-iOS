@@ -30,6 +30,11 @@
 		3C87F8001AE8C90800C9E172 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */; };
 		3C87F8021AE8C90E00C9E172 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F8011AE8C90E00C9E172 /* CoreTelephony.framework */; };
 		3C87F8041AE8C91300C9E172 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F8031AE8C91300C9E172 /* CoreLocation.framework */; };
+		3C93635C1AF9952A001C3EE0 /* ChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93635B1AF9952A001C3EE0 /* ChainViewController.swift */; };
+		3C93635E1AFA484B001C3EE0 /* ChainHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93635D1AFA484B001C3EE0 /* ChainHistoryViewController.swift */; };
+		3C9363601AFAD343001C3EE0 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93635F1AFAD343001C3EE0 /* UserTableViewController.swift */; };
+		3C9363621AFADF6D001C3EE0 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9363611AFADF6D001C3EE0 /* UserTableViewCell.swift */; };
+		3C9363681AFAEC54001C3EE0 /* HomeHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9363671AFAEC54001C3EE0 /* HomeHeaderCollectionReusableView.xib */; };
 		3C9B148B1AF4905C00BA5CB0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C84E6BC1AE9D0880056C1B8 /* CFNetwork.framework */; };
 		3C9B148F1AF4D46D00BA5CB0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B148E1AF4D46D00BA5CB0 /* EditProfileViewController.swift */; };
 		3C9B14911AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */; };
@@ -324,6 +329,11 @@
 		3C87F8011AE8C90E00C9E172 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3C87F8031AE8C91300C9E172 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3C87F8051AE8C91D00C9E172 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		3C93635B1AF9952A001C3EE0 /* ChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainViewController.swift; sourceTree = "<group>"; };
+		3C93635D1AFA484B001C3EE0 /* ChainHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainHistoryViewController.swift; sourceTree = "<group>"; };
+		3C93635F1AFAD343001C3EE0 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		3C9363611AFADF6D001C3EE0 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		3C9363671AFAEC54001C3EE0 /* HomeHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeHeaderCollectionReusableView.xib; path = views/HomeHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		3C9B148C1AF4A99500BA5CB0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3C9B148E1AF4D46D00BA5CB0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -620,8 +630,8 @@
 				3C87F7FB1AE8C42600C9E172 /* ViewControllers */,
 				3C87F7F81AE8C31900C9E172 /* objects */,
 				3C4D19231AE0D6C100613CAB /* Main.storyboard */,
-				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
 				3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */,
+				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
 				3C4D191D1AE0D6C100613CAB /* Supporting Files */,
 				3C5FD83E1AE7A27A001F86F0 /* PicQurate-Bridging-Header.h */,
 			);
@@ -715,6 +725,9 @@
 				3CA0F2401AF25D7200CBFBE8 /* UploadViewController.swift */,
 				3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */,
 				3C9B148E1AF4D46D00BA5CB0 /* EditProfileViewController.swift */,
+				3C93635B1AF9952A001C3EE0 /* ChainViewController.swift */,
+				3C93635D1AFA484B001C3EE0 /* ChainHistoryViewController.swift */,
+				3C93635F1AFAD343001C3EE0 /* UserTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -723,11 +736,13 @@
 			isa = PBXGroup;
 			children = (
 				3C56922E1AE9F736006FA95D /* AVImageView.swift */,
+				3C9363671AFAEC54001C3EE0 /* HomeHeaderCollectionReusableView.xib */,
 				3CA1A5391AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift */,
 				3CA1A5261AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift */,
 				3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */,
 				3CA1A5351AF7208800A5E2C9 /* ProfileHeaderCollectionReusableView.xib */,
 				3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */,
+				3C9363611AFADF6D001C3EE0 /* UserTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1119,6 +1134,7 @@
 				3CA0F23C1AEBDA8800CBFBE8 /* IMGLYStickersDialogView.xib in Resources */,
 				3CA0F2331AEBDA8800CBFBE8 /* vevey.ttf in Resources */,
 				3CA0F1F21AEBDA8800CBFBE8 /* Fall.png in Resources */,
+				3C9363681AFAEC54001C3EE0 /* HomeHeaderCollectionReusableView.xib in Resources */,
 				3CA0F1FA1AEBDA8800CBFBE8 /* HighContrast.png in Resources */,
 				3CA0F1F11AEBDA8800CBFBE8 /* Evening.png in Resources */,
 				3CA0F20F1AEBDA8800CBFBE8 /* PolaSX.png in Resources */,
@@ -1274,6 +1290,7 @@
 				3CA0F1901AEBDA8800CBFBE8 /* IMGLYEveningFilter.swift in Sources */,
 				3CA0F1C91AEBDA8800CBFBE8 /* IMGLYSticker.swift in Sources */,
 				3CA0F1D91AEBDA8800CBFBE8 /* IMGLYTwilightFilter.swift in Sources */,
+				3C9363621AFADF6D001C3EE0 /* UserTableViewCell.swift in Sources */,
 				3CA0F1841AEBDA8800CBFBE8 /* IMGLYCottonCandyFilter.swift in Sources */,
 				3CA0F1A61AEBDA8800CBFBE8 /* IMGLYKDynamicFilter.swift in Sources */,
 				3CA0F1881AEBDA8800CBFBE8 /* IMGLYCropFilter.swift in Sources */,
@@ -1297,7 +1314,9 @@
 				3CA0F1871AEBDA8800CBFBE8 /* IMGLYCropDialogViewController.swift in Sources */,
 				3CA0F1761AEBDA8800CBFBE8 /* IMGLYCameraController.swift in Sources */,
 				3CA0F1C11AEBDA8800CBFBE8 /* IMGLYResponseFilter.swift in Sources */,
+				3C9363601AFAD343001C3EE0 /* UserTableViewController.swift in Sources */,
 				3CA0F1AA1AEBDA8800CBFBE8 /* IMGLYLomo100Filter.swift in Sources */,
+				3C93635E1AFA484B001C3EE0 /* ChainHistoryViewController.swift in Sources */,
 				3CA0F1C31AEBDA8800CBFBE8 /* IMGLYSepiaHighFilter.swift in Sources */,
 				3CA0F1B61AEBDA8800CBFBE8 /* IMGLYOrientationDialogView.swift in Sources */,
 				3CA0F1981AEBDA8800CBFBE8 /* IMGLYFocusDialogViewController.swift in Sources */,
@@ -1354,6 +1373,7 @@
 				3CA0F1DC1AEBDA8800CBFBE8 /* LUTToNSDataConverter.m in Sources */,
 				3CA0F1AD1AEBDA8800CBFBE8 /* IMGLYMellowFilter.swift in Sources */,
 				3CA0F1BD1AEBDA8800CBFBE8 /* IMGLYPolaSXFIlter.swift in Sources */,
+				3C93635C1AF9952A001C3EE0 /* ChainViewController.swift in Sources */,
 				3CA0F1BE1AEBDA8800CBFBE8 /* IMGLYPreludeFilter.swift in Sources */,
 				3CA0F16C1AEBDA8800CBFBE8 /* IMGLYAncientFilter.swift in Sources */,
 				3CA0F1771AEBDA8800CBFBE8 /* IMGLYCameraView.swift in Sources */,

@@ -28,7 +28,7 @@ class AVImageView: UIImageView {
     
     func loadInBackground() {
         
-        if (self.cachedfile?.objectId == self.file?.objectId) {
+        if (self.cachedfile?.objectId == self.file?.objectId && self.image != nil) {
             //Image already loaded, do nothing
             return;
         } else {
@@ -107,7 +107,7 @@ class AVImageView: UIImageView {
     
     func loadInBackground(block: AVDataResultBlock!) {
         
-        if (self.cachedfile?.objectId == self.file?.objectId) {
+        if (self.cachedfile?.objectId == self.file?.objectId && self.image != nil) {
             //Image already loaded, do nothing
             return;
         } else {

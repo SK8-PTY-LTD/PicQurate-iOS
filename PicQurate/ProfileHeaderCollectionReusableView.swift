@@ -10,6 +10,13 @@ import Foundation
 import CoreLocation
 import MapKit
 
+protocol ProfileHeaderCollectionReusableViewDelegate {
+    
+    func followerButtonClicked();
+    func followeeButtonClicked();
+    
+}
+
 class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var profileImageView: AVImageView!
@@ -21,6 +28,8 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var summaryTextView: UITextView!
     @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
+    
+    var delegate: ProfileHeaderCollectionReusableViewDelegate!;
     
     var user: PQUser!
     
@@ -63,11 +72,11 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     @IBAction func followerButtonClicked(sender: UIButton) {
-        
+        self.delegate.followerButtonClicked();
     }
     
     @IBAction func followingButtonClicked(sender: UIButton) {
-        
+        self.delegate.followeeButtonClicked();
     }
     
     @IBAction func followButtonClicked(sender: UIButton) {
@@ -96,6 +105,5 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
             mapItem.openInMapsWithLaunchOptions(nil);
         }
     }
-    
     
 }

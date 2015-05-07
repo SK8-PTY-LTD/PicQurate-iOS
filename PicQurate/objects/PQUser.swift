@@ -73,73 +73,81 @@ public class PQUser : AVUser, AVSubclassing {
         return self.emailVerified;
     }
     
-//    func hasVerifiedMobileNumber() -> Bool {
-//        if let mobileNumber = self.getMobileNumber() {
-//            return true;
-//        } else {
-//            return false;
-//        }
-    //    }
+    func uploadPhotoWithBlock(image: UIImage, caption: String, block: (success: Bool, error: NSError?) -> ()) {
+        //Save file
+        var file = AVFile.fileWithName("photo.jpg", data: UIImageJPEGRepresentation(image, 1.0)) as! AVFile;
+        file.saveInBackgroundWithBlock({ (success, error) -> Void in
+            if let e = error {
+                block(success: false, error: e);
+            } else {
+                //Save PQPhoto
+                var photo = PQPhoto(file: file);
+                photo.caption = caption;
+                photo.user = self;
+                photo.setValue(self.gender, forKey: "gender");
+                photo.location = PQ.currentUser.location;
+                photo.locationString = PQ.currentUser.locationString;
+                photo.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    if let e = error{
+                        block(success: false, error: e);
+                    } else {
+                        //Save chain
+                        self.initiateChainWithBlock(photo, block: { (success, error) -> () in
+                            if let e = error{
+                                block(success: false, error: e);
+                            } else {
+                                //Successful
+                                block(success: true, error: nil);
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
     
-    func chainPhoto(photo: PQPhoto, originalChain: PQChain?) {
-        // Add product to like query
+    private func initiateChainWithBlock(photo: PQPhoto, block: (success: Bool, error: NSError?) -> ()) {
+        
         var relation = self.relationforKey("photoChained");
         relation.addObject(photo);
-        self.saveInBackground();
         
         var chain = PQChain(photo: photo);
         chain.user = self;
-        chain.original = originalChain;
-        chain.originalLocation = originalChain?.location;
-        chain.location = PQ.currentUser.location;
-        chain.locationString = PQ.currentUser.locationString;
+        chain.setValue(self.gender, forKey: "gender");
+        chain.location = self.location;
+        chain.locationString = self.locationString;
         
-        AVObject.saveAll([self, chain]);
+        AVObject.saveAllInBackground([self, chain], block: { (success, error) -> Void in
+            if let e = error{
+                block(success: false, error: e);
+            } else {
+                //Successful
+                block(success: true, error: nil);
+            }
+        });
         
-        // Send a notification to the owner;
-        //        var message = self.getProfileName()! + " just liked your " + product.getName()!;
-        //        var query = AVInstallation.query();
-        //        query.whereKey("userId", equalTo: product.getSeller()!.objectId);
-        //        Shelf.sendPush(query, message: message);
     }
     
-    func chainPhotoWithCallBack(photo: PQPhoto, originalChain: PQChain?, callback: (success :Bool, error: NSError?) -> ()) {
+    func chainPhotoWithBlock(originalChain: PQChain, block: (success: Bool, error: NSError?) -> ()) {
         // Add product to like query
-        if let id = photo.objectId {
-            var relation = self.relationforKey("photoChained");
-            relation.addObject(photo);
-            
-            var chain = PQChain(photo: photo);
-            chain.user = self;
-            chain.original = originalChain;
-            chain.originalLocation = originalChain?.location;
-            chain.location = PQ.currentUser.location;
-            chain.locationString = PQ.currentUser.locationString;
-            
-            AVObject.saveAllInBackground([self, chain], block: { (success, error) -> Void in
-                callback(success: success, error: error);
-            });
-        } else {
-            photo.saveInBackgroundWithBlock({ (success, error) -> Void in
-                if let e = error {
-                    PQ.showError(e);
-                } else {
-                    var relation = self.relationforKey("photoChained");
-                    relation.addObject(photo);
-                    
-                    var chain = PQChain(photo: photo);
-                    chain.user = self;
-                    chain.original = originalChain;
-                    chain.originalLocation = originalChain?.location;
-                    chain.location = PQ.currentUser.location;
-                    chain.locationString = PQ.currentUser.locationString;
-                    
-                    AVObject.saveAllInBackground([self, chain], block: { (success, error) -> Void in
-                        callback(success: success, error: error);
-                    });
-                }
-            })
-        }
+        var relation = self.relationforKey("photoChained");
+        relation.addObject(originalChain.photo);
+        
+        var chain = PQChain(photo: originalChain.photo!);
+        chain.user = self;
+        chain.gender = originalChain.gender;
+        chain.original = originalChain;
+        chain.location = self.location;
+        chain.locationString = self.locationString;
+        
+        AVObject.saveAllInBackground([self, chain], block: { (success, error) -> Void in
+            if let e = error{
+                block(success: false, error: e);
+            } else {
+                //Successful
+                block(success: true, error: nil);
+            }
+        });
         
         // Send a notification to the owner;
         //        var message = self.getProfileName()! + " just liked your " + product.getName()!;
@@ -164,7 +172,7 @@ public class PQUser : AVUser, AVSubclassing {
 //        Shelf.sendPush(query, message: message);
     }
 
-    func likePhotoWithCallBack(photo: PQPhoto, like: Bool, callback: (liked :Bool, error: NSError?) -> ()) {
+    func likePhotoWithBlock(photo: PQPhoto, like: Bool, block: (liked: Bool, error: NSError?) -> ()) {
         // Add product to like query
         var relation = self.relationforKey("photoLiked");
         if (like) {
@@ -173,7 +181,7 @@ public class PQUser : AVUser, AVSubclassing {
             relation.removeObject(photo);
         }
         self.saveInBackgroundWithBlock { (succeed, error) -> Void in
-            callback(liked: like, error: error);
+            block(liked: like, error: error);
         }
         // Send a notification to the owner;
 //        var message = self.getProfileName()! + " just liked your " + product.getName()!;

@@ -50,9 +50,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
         //Saving profile image
         var user = PQUser(email: email, password: passWord, profileName: username);
         if (self.genderSegmentControl.selectedSegmentIndex == 0) {
-            user.setObject(true, forKey: "gender");
+            self.setValue(NSNumber(bool: true), forKey: "gender");
         } else if (self.genderSegmentControl.selectedSegmentIndex == 1) {
-            user.setObject(false, forKey: "gender");
+            self.setValue(NSNumber(bool: false), forKey: "gender");
         }
         //        user.setProfileImage(slider.slider.currentBackgroundImage!);
         user.signUpInBackgroundWithBlock { (succeeded, error) -> Void in

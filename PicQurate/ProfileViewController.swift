@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ProfileCollectionReusableViewDelegate, CLLocationManagerDelegate {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ProfileCollectionViewSegmentCellDelegate, ProfileHeaderCollectionReusableViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var flowLayout: CSStickyHeaderFlowLayout!
@@ -41,7 +41,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         var headerNib = UINib(nibName: "ProfileHeaderCollectionReusableView", bundle: nil);
         self.collectionView.registerNib(headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header");
-        var sectionHeaderNib = UINib(nibName: "ProfileSegmentControl", bundle: nil);
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -157,6 +156,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                 self.headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView;
                 if let user = self.user {
                     self.headerView.initWithUser(user);
+                    self.headerView.delegate = self;
                     return self.headerView;
                 } else {
                     return UICollectionReusableView();
@@ -180,7 +180,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imageArray.count;
-//        return 0;
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -234,6 +233,26 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                 }
             }
         })
+    }
+    
+    func followerButtonClicked() {
+        var query = AVUser.followerQuery(self.user?.objectId);
+        self.performSegueWithIdentifier("segueToUserTableView", sender: [query, "Follower"]);
+    }
+    
+    func followeeButtonClicked() {
+        var query = AVUser.followeeQuery(self.user?.objectId);
+        self.performSegueWithIdentifier("segueToUserTableView", sender: [query, "Followee"]);
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "segueToUserTableView") {
+            var VC = segue.destinationViewController as! UserTableViewController;
+            VC.query = (sender as! [AnyObject])[0] as! AVQuery;
+            VC.title = (sender as! [AnyObject])[1] as? String;
+        } else {
+            
+        }
     }
     
 }
