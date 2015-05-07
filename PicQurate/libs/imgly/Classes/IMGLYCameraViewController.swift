@@ -207,4 +207,47 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate, IMGLYCameraCont
     @objc func image(image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafePointer<Void>) {
         cameraView!.setLastImageFromRollAsPreview()
     }
+    
+    // find where the video box is positioned within the preview layer based on the video size and gravity
+    public class func videoPreviewBoxForGravity(gravity: String, frameSize: CGSize, apertureSize: CGSize)-> CGRect {
+        let apertureRatio = apertureSize.height / apertureSize.width;
+        let viewRatio = frameSize.width / frameSize.height;
+        
+        var size = CGSizeZero;
+        if (gravity == AVLayerVideoGravityResizeAspectFill) {
+            if (viewRatio > apertureRatio) {
+                size.width = frameSize.width;
+                size.height = apertureSize.width * (frameSize.width / apertureSize.height);
+            } else {
+                size.width = apertureSize.height * (frameSize.height / apertureSize.width);
+                size.height = frameSize.height;
+            }
+        } else if (gravity == AVLayerVideoGravityResizeAspect) {
+            if (viewRatio > apertureRatio) {
+                size.width = apertureSize.height * (frameSize.height / apertureSize.width);
+                size.height = frameSize.height;
+            } else {
+                size.width = frameSize.width;
+                size.height = apertureSize.width * (frameSize.width / apertureSize.height);
+            }
+        } else if (gravity == AVLayerVideoGravityResize) {
+            size.width = frameSize.width;
+            size.height = frameSize.height;
+        }
+        
+        var videoBox = CGRect();
+        videoBox.size = size;
+        if (size.width < frameSize.width) {
+            videoBox.origin.x = (frameSize.width - size.width) / 2;
+        } else {
+            videoBox.origin.x = (size.width - frameSize.width) / 2;
+        }
+        if ( size.height < frameSize.height) {
+            videoBox.origin.y = (frameSize.height - size.height) / 2;
+        } else {
+            videoBox.origin.y = (size.height - frameSize.height) / 2;
+        }
+        
+        return videoBox;
+    }
 }

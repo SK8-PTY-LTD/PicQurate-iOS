@@ -242,7 +242,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func followeeButtonClicked() {
         var query = AVUser.followeeQuery(self.user?.objectId);
-        self.performSegueWithIdentifier("segueToUserTableView", sender: [query, "Followee"]);
+        self.performSegueWithIdentifier("segueToUserTableView", sender: [query, "Following"]);
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

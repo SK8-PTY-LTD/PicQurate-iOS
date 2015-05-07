@@ -29,14 +29,19 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
     }
     
     @IBAction func saveButtonClicked(sender: UIBarButtonItem!) {
-        self.chainPhoto();
+        self.uploadPhoto();
     }
     
     @IBAction func saveClicked(sender: UIButton!) {
-        self.chainPhoto();
+        self.uploadPhoto();
     }
     
-    func chainPhoto() {
+    func uploadPhoto() {
+        
+        if (self.activityIndicator.isAnimating()) {
+            return;
+        }
+        
         self.activityIndicator.startAnimating();
         if let image = self.imageButton.backgroundImageForState(.Normal) {
             //Croping
@@ -62,6 +67,15 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
             croppedImage?.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
             var scaledImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
+            
+            var detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]);
+            var ciImage = CIImage(image: scaledImage);
+            var features = detector.featuresInImage(ciImage);
+            if (features.count == 0) {
+                PQ.promote("Hey dear, to upload a selfie, please have a face in it. :)");
+                self.activityIndicator.stopAnimating();
+                return;
+            }
             
             PQ.currentUser.uploadPhotoWithBlock(scaledImage, caption: self.textView.text, block: { (success, error) -> () in
                 if let e = error{

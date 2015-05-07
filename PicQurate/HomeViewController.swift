@@ -22,17 +22,17 @@ class HomeViewController: ViewPagerController, ViewPagerDelegate, ViewPagerDataS
     
     //pragma mark - ViewPagerDataSource
     func numberOfTabsForViewPager(viewPager: ViewPagerController!) -> UInt {
-        return 3;
+        return 2;
     }
     
     func viewPager(viewPager: ViewPagerController!, viewForTabAtIndex index: UInt) -> UIView! {
         var label = UILabel();
         switch index {
+//        case 0:
+//            label.text = "World";
         case 0:
-            label.text = "World";
-        case 1:
             label.text = "Daily";
-        case 2:
+        case 1:
             label.text = "Local";
         default:
             label.text = "New Tab";
@@ -44,19 +44,19 @@ class HomeViewController: ViewPagerController, ViewPagerDelegate, ViewPagerDataS
     
     func viewPager(viewPager: ViewPagerController!, contentViewControllerForTabAtIndex index: UInt) -> UIViewController! {
         switch index {
+//        case 0:
+//            var VC = self.storyboard?.instantiateViewControllerWithIdentifier("HomeDetail1") as! HomeDetailViewController;
+//            self.controller = VC;
+//            VC.gender = self.gender;
+//            VC.displayPhotoByWorld();
+//            return VC;
         case 0:
-            var VC = self.storyboard?.instantiateViewControllerWithIdentifier("HomeDetail1") as! HomeDetailViewController;
-            self.controller = VC;
-            VC.gender = self.gender;
-            VC.displayPhotoByWorld();
-            return VC;
-        case 1:
             var VC = self.storyboard?.instantiateViewControllerWithIdentifier("HomeDetail2") as! HomeDetailViewController;
             self.controller = VC;
             VC.gender = self.gender;
             VC.displayPhotoByDay();
             return VC;
-        case 2:
+        case 1:
             var VC = self.storyboard?.instantiateViewControllerWithIdentifier("HomeDetail3") as! HomeDetailViewController;
             self.controller = VC;
             VC.gender = self.gender;
@@ -113,11 +113,11 @@ class HomeDetailViewController: UIViewController {
     func reloadPhoto() {
         //Display photo
         switch displayMode {
+//        case 0:
+//            self.displayPhotoByWorld();
         case 0:
-            self.displayPhotoByWorld();
-        case 1:
             self.displayPhotoByDay();
-        case 2:
+        case 1:
             self.displayPhotoByLocation();
         default:
             break;
@@ -241,17 +241,17 @@ class HomeDetailViewController: UIViewController {
             } else {
                 self.headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! HomeHeaderCollectionReusableView;
                 switch self.displayMode {
+//                case 0:
+//                    if (self.chainArray0.count > 0) {
+//                        self.headerView.imageView.file = self.chainArray0[0].photo?.file;
+//                        self.headerView.imageView.loadInBackground();
+//                    }
                 case 0:
-                    if (self.chainArray0.count > 0) {
-                        self.headerView.imageView.file = self.chainArray0[0].photo?.file;
-                        self.headerView.imageView.loadInBackground();
-                    }
-                case 1:
                     if (self.chainArray1.count > 0) {
                         self.headerView.imageView.file = self.chainArray1[0].photo?.file;
                         self.headerView.imageView.loadInBackground();
                     }
-                case 2:
+                case 1:
                     if (self.chainArray2.count > 0) {
                         self.headerView.imageView.file = self.chainArray2[0].photo?.file;
                         self.headerView.imageView.loadInBackground();
@@ -276,15 +276,15 @@ class HomeDetailViewController: UIViewController {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch self.displayMode {
+//        case 0:
+//            if (self.chainArray0.count > 0) {
+//                return self.chainArray0.count - 1;
+//            }
         case 0:
-            if (self.chainArray0.count > 0) {
-                return self.chainArray0.count - 1;
-            }
-        case 1:
             if (self.chainArray1.count > 0) {
                 return self.chainArray1.count - 1;
             }
-        case 2:
+        case 1:
             if (self.chainArray2.count > 0) {
                 return self.chainArray2.count - 1;
             }
@@ -297,11 +297,11 @@ class HomeDetailViewController: UIViewController {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
         switch self.displayMode {
+//        case 0:
+//            cell.initializeWithPhoto(self.chainArray0[indexPath.row + 1].photo!);
         case 0:
-            cell.initializeWithPhoto(self.chainArray0[indexPath.row + 1].photo!);
-        case 1:
             cell.initializeWithPhoto(self.chainArray1[indexPath.row + 1].photo!);
-        case 2:
+        case 1:
             cell.initializeWithPhoto(self.chainArray2[indexPath.row + 1].photo!);
         default:
             break;

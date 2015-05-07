@@ -695,7 +695,6 @@
                                             <outlet property="imageView" destination="OWB-Rd-mLa" id="BAl-gF-v3b"/>
                                             <outlet property="likeButton" destination="d0P-IP-Pfb" id="RNp-DL-MOo"/>
                                             <outlet property="locationButton" destination="UdH-4f-eAu" id="MIb-Kr-Dvk"/>
-                                            <segue destination="ZZy-Ue-Q0G" kind="show" identifier="segueToUserTableView" id="HfJ-Uv-KyY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -908,6 +907,7 @@
                     <connections>
                         <outlet property="collectionView" destination="IPp-ld-6Ub" id="FtF-JV-6jw"/>
                         <segue destination="oRl-74-xJc" kind="presentation" identifier="editProfileSegue" id="iOA-1F-xaE"/>
+                        <segue destination="ZZy-Ue-Q0G" kind="show" identifier="segueToUserTableView" id="KDR-Sx-1xB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97l-Ay-XVe" userLabel="First Responder" sceneMemberID="firstResponder"/>

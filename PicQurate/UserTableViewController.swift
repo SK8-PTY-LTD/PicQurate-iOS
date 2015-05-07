@@ -23,7 +23,7 @@ class UserTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func downloadUser() {
 //        self.query?
-        PQUser.query().findObjectsInBackgroundWithBlock({ (array, error) -> Void in
+        self.query?.findObjectsInBackgroundWithBlock({ (array, error) -> Void in
             if let e = error {
                 PQ.showError(e)
             } else {
