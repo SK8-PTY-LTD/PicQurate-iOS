@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>792263B4-ADB7-4B30-A6BA-6E3882A335D9</string>
 	<key>IDESourceControlProjectName</key>
-	<string>PicQurate</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>701B5006D938B65FD42237DDAF25824304CA7A66</key>
@@ -16,7 +16,7 @@
 		<string>https://github.com/SK8-PTY-LTD/PicQurate-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>PicQurate.xcodeproj</string>
+	<string>PicQurate.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>701B5006D938B65FD42237DDAF25824304CA7A66</key>

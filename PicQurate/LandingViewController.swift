@@ -50,9 +50,9 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                 var name = user["name"] as! String;
                 var gender = false;
                 if (user["gender"] as! String == "male") {
-                    self.setValue(NSNumber(bool: true), forKey: "gender");
+                    gender = true;
                 } else {
-                    self.setValue(NSNumber(bool: false), forKey: "gender");
+                    gender = false;
                 }
                 
                 var user = PQUser(email: email, password: id, profileName: name);

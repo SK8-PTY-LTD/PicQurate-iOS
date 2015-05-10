@@ -227,9 +227,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                 for (var i = 0; i < placemarks.count; i++) {
                     var placemark = placemarks[i] as! CLPlacemark;
                     var geoPoint = AVGeoPoint(latitude: placemark.location.coordinate.latitude, longitude: placemark.location.coordinate.longitude);
-                    PQ.currentUser.location = geoPoint;
-                    PQ.currentUser.locationString = "\(placemark.administrativeArea), \(placemark.country)";
-                    PQ.currentUser.saveEventually();
+                    if let user = PQ.currentUser {
+                        PQ.currentUser.location = geoPoint;
+                        PQ.currentUser.locationString = "\(placemark.administrativeArea), \(placemark.country)";
+                        PQ.currentUser.saveEventually();
+                    }
                 }
             }
         })

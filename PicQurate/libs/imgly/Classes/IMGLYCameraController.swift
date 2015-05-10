@@ -50,7 +50,6 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     private var cameraObserversAdded = false
     private let focusIndicatorLayer = CALayer()
     private var previewView: UIView?
-    private var previewLayer: AVCaptureVideoPreviewLayer!
     private var videoPreviewFrame = CGRectZero
     private var videoPreviewView : GLKView!
     private var currentVideoDimensions_ : CMVideoDimensions?
@@ -69,7 +68,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     public var effectFilter: CIFilter?
     
     //Facial recognition
-    let detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]);
+    let detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyLow]);
     
     // MARK:- init functions
     public init(previewView: UIView) {
@@ -111,8 +110,14 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
             videoPreviewView = GLKView(frame: CGRectZero, context: glContext_)
             videoPreviewView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
             
-            let transformation = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
-            videoPreviewView.transform = transformation;
+            if (self.cameraPosition_ == AVCaptureDevicePosition.Back) {
+                let transformation = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+                videoPreviewView.transform = transformation;
+            } else if(self.cameraPosition_ == AVCaptureDevicePosition.Front) {
+                var transformation = CGAffineTransformMakeRotation(CGFloat(M_PI_2));
+                transformation = CGAffineTransformTranslate(transformation, 0.0, CGFloat(M_PI_2)) ;
+                videoPreviewView.transform = transformation;
+            }
             
             if previewView != nil {
                 videoPreviewView!.frame = previewView!.bounds
@@ -126,6 +131,17 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
             ciContext_ = CIContext(EAGLContext: glContext_, options:nil)
             videoPreviewView.bindDrawable()
             videoPreviewAdded_ = true
+        } else {
+            if (self.cameraPosition_ == AVCaptureDevicePosition.Back) {
+                NSLog("Fucked");
+                let transformation = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+                videoPreviewView.transform = transformation;
+            } else if(self.cameraPosition_ == AVCaptureDevicePosition.Front) {
+                NSLog("Fucked 2");
+                var transformation = CGAffineTransformMakeRotation(CGFloat(M_PI_2));
+                transformation = CGAffineTransformScale(transformation, 1, -1);
+                videoPreviewView.transform = transformation;
+            }
         }
     }
     
@@ -174,21 +190,15 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
             self.addStillImageOutput()
             
             //Adding a preview layer
-            self.previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession_);
-            self.previewLayer.backgroundColor = UIColor.blackColor().CGColor;
-            self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-            
-            var bounds:CGRect = (self.delegate as! UIViewController).view.layer.bounds
-            self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-            self.previewLayer.bounds = bounds
-            self.previewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
-            var rootLayer = self.previewView?.layer;
-            rootLayer?.addSublayer(self.previewLayer);
-            
+//            self.previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession_);
+//            self.previewLayer.backgroundColor = UIColor.blackColor().CGColor;
+//            self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+//            
+//            var bounds:CGRect = (self.delegate as! UIViewController).view.layer.bounds
+//            self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+//            self.previewLayer.bounds = bounds
+//            self.previewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
 //            var rootLayer = self.previewView?.layer;
-//            rootLayer?.masksToBounds = true;
-//            self.previewLayer.frame = rootLayer!.bounds;
-//            NSLog("\(self.previewLayer.frame)");
 //            rootLayer?.addSublayer(self.previewLayer);
             
             self.captureSession_!.commitConfiguration()
@@ -460,29 +470,12 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
         let sourceImage = CIImage(CVPixelBuffer:imageBuffer as CVPixelBufferRef, options: attachments as [NSObject : AnyObject]);
         
         //Facial regocnition
-        let filteredImage: CIImage?
+        var filteredImage: CIImage?
         if let effectFilter = effectFilter {
             filteredImage = IMGLYPhotoProcessor.processWithCIImage(sourceImage, filters: [effectFilter])
         } else {
             filteredImage = sourceImage
         }
-        
-        //Facial detection
-        var curDeviceOrientation = UIDevice.currentDevice().orientation;
-        var features = self.detector.featuresInImage(sourceImage);
-        // get the clean aperture
-        // the clean aperture is a rectangle that defines the portion of the encoded pixel dimensions
-        // that represents image data valid for display.
-        
-        // get the clean aperture
-        // the clean aperture is a rectangle that defines the portion of the encoded pixel dimensions
-        // that represents image data valid for display.
-        var fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
-        var cleanAperture = CMVideoFormatDescriptionGetCleanAperture(fdesc, 0);
-        
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.drawFaces(features, clearAperture: cleanAperture, orientation: curDeviceOrientation);
-        })
         
         let sourceExtent = sourceImage.extent()
         let targetRect = CGRect(x: 0, y: 0, width: videoPreviewView.drawableWidth, height: videoPreviewView.drawableHeight)
@@ -498,114 +491,36 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
         glClearColor(0, 0, 0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
         
-        if let filteredImage = filteredImage {
-            ciContext_.drawImage(filteredImage, inRect: videoPreviewFrame, fromRect: sourceExtent)
+        if (filteredImage != nil) {
+            
+            var features = detector.featuresInImage(filteredImage, options: [CIDetectorImageOrientation: 6]);
+            for (var i = 0; i < features.count; i++) {
+                var ff = features[i] as! CIFaceFeature;
+                // find the correct position for the square layer within the previewLayer
+                // the feature box originates in the bottom left of the video frame.
+                // (Bottom right if mirroring is turned on)
+                var faceRect = ff.bounds;
+                
+                // Adjust faceRect position
+                faceRect.origin.y = self.videoPreviewView.frame.width - faceRect.origin.y - (faceRect.width - videoPreviewView.frame.width);
+                
+                var image = UIImage(CIImage: filteredImage!);
+                UIGraphicsBeginImageContext(image!.size);
+                image?.drawAtPoint(CGPointZero);
+                var ctx = UIGraphicsGetCurrentContext();
+                UIColor.yellowColor().setStroke();
+                CGContextSetLineWidth(ctx, 1.5);
+                CGContextStrokeRect(ctx, faceRect);
+                var faceImage = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                
+                filteredImage = CIImage(CGImage: faceImage.CGImage);
+            }
+            
+            ciContext_.drawImage(filteredImage, inRect: videoPreviewFrame, fromRect: sourceExtent);
         }
         
         videoPreviewView.display()
-    }
-    
-    //Facial recognition
-    private func drawFaces(features: [AnyObject]!, clearAperture: CGRect, orientation: UIDeviceOrientation) {
-        let sublayers = self.previewLayer.sublayers as! [CALayer];
-        let sublayersCount = sublayers.count;
-        var currentSublayer = 0;
-        let featuresCount = features.count;
-        var currentFeature = 0;
-        
-        CATransaction.begin();
-        
-        //hide all face layers
-        for layer in sublayers {
-            if let name = layer.name where name == "FaceLayer" {
-                layer.hidden = true;
-            }
-        }
-        
-        if (featuresCount == 0) {
-            CATransaction.commit();
-            return;
-        }
-        
-        let parentFrameSize = self.previewView!.frame.size;
-        let gravity = self.previewLayer.videoGravity;
-        var isMirrored = false;
-        if (self.previewLayer.respondsToSelector("connection")) {
-            isMirrored = self.previewLayer.connection.videoMirrored;
-        } else {
-//            inMirrored = self.previewLayer.isMirrord;
-        }
-        var previewBox = IMGLYCameraViewController.videoPreviewBoxForGravity(gravity, frameSize: parentFrameSize, apertureSize: clearAperture.size);
-        
-        for (var i = 0; i < features.count; i++) {
-            var ff = features[i] as! CIFaceFeature;
-            // find the correct position for the square layer within the previewLayer
-            // the feature box originates in the bottom left of the video frame.
-            // (Bottom right if mirroring is turned on)
-            var faceRect = ff.bounds;
-            
-            // flip preview width and height
-            var temp = faceRect.size.width;
-            faceRect.size.width = faceRect.size.height;
-            faceRect.size.height = temp;
-            temp = faceRect.origin.x;
-            faceRect.origin.x = faceRect.origin.y;
-            faceRect.origin.y = temp;
-            // scale coordinates so they fit in the preview box, which may be scaled
-            var widthScaleBy = previewBox.size.width / clearAperture.size.height;
-            var heightScaleBy = previewBox.size.height / clearAperture.size.width;
-            faceRect.size.width *= widthScaleBy;
-            faceRect.size.height *= heightScaleBy;
-            faceRect.origin.x *= widthScaleBy;
-            faceRect.origin.y *= heightScaleBy;
-            
-            if (isMirrored) {
-                faceRect = CGRectOffset(faceRect, previewBox.origin.x + previewBox.size.width - faceRect.size.width - (faceRect.origin.x * 2), previewBox.origin.y);
-            } else {
-                faceRect = CGRectOffset(faceRect, previewBox.origin.x, previewBox.origin.y);
-            }
-            
-            var featureLayer: CALayer!;
-            
-            // re-use an existing layer if possible
-            while (featureLayer == nil && currentSublayer < sublayersCount ) {
-                var currentLayer = sublayers[currentSublayer++];
-                featureLayer = currentLayer;
-                currentLayer.hidden = false;
-            }
-            
-            // create a new one if necessary
-            if (featureLayer == nil) {
-                NSLog("featureLayer is nil");
-                featureLayer = CALayer();
-                featureLayer.borderColor = UIColor.yellowColor().CGColor;
-                featureLayer.borderWidth = 1.0;
-                featureLayer.name = "FaceLayer";
-                self.previewLayer.addSublayer(featureLayer);
-            }
-            featureLayer.frame = faceRect;
-            self.previewLayer.addSublayer(featureLayer);
-            
-            switch orientation {
-            case .Portrait:
-                featureLayer.setAffineTransform( CGAffineTransformMakeRotation(CGFloat(0/180.0*M_PI)));
-                break;
-            case .PortraitUpsideDown:
-                featureLayer.setAffineTransform(CGAffineTransformMakeRotation(CGFloat(180/180.0*M_PI)));
-                break;
-            case .LandscapeLeft:
-                featureLayer.setAffineTransform(CGAffineTransformMakeRotation(CGFloat(90/180.0*M_PI)));
-                break;
-            case .LandscapeRight:
-                featureLayer.setAffineTransform(CGAffineTransformMakeRotation(CGFloat(-90/180.0*M_PI)));
-                break;
-            default:
-                break; // leave the layer in its last known orientation
-            }
-            currentFeature++;
-        }
-        CATransaction.commit();
-        
     }
     
     // MARK: - Helpers
