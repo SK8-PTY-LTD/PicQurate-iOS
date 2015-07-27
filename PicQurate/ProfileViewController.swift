@@ -129,10 +129,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func setColumns(numberOfColumns: Int) {
         self.column = numberOfColumns;
         var itemWidth = self.view.frame.size.width / CGFloat(self.column);
-        if (self.column != 1) {
-            self.flowLayout.itemSize = CGSizeMake(itemWidth-1, itemWidth-1);
-        } else {
-            self.flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth + 120);
+        if let layout = self.flowLayout {
+            if (self.column != 1) {
+                layout.itemSize = CGSizeMake(itemWidth-1, itemWidth-1);
+            } else {
+                layout.itemSize = CGSizeMake(itemWidth, itemWidth + 120);
+            }
         }
         self.collectionView.reloadData();
         self.collectionView.layoutIfNeeded();

@@ -60,9 +60,10 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                 var urlString: String = "https://graph.facebook.com/" + id + "/picture?type=normal";
                 var data = NSData(contentsOfURL: NSURL(string: urlString)!);
                 var profileImage = UIImage(data: data!);
+                
                 user.signUpInBackgroundWithBlock({ (success, error) -> Void in
                     if let e = error {
-                        PQUser.logInWithUsernameInBackground(email, password: id, block: { (user, error) -> Void in
+                        PQUser.logInWithUsernameInBackground(email, password: id, block: { (u, error) -> Void in
                             if let e = error {
                                 AVUser.requestPasswordResetForEmailInBackground(email, block: { (success, error) -> Void in
                                     if let e = error {
@@ -70,17 +71,19 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                                     } else {
                                         PQ.promote("Password was incorrect. Please check your mailbox to reset pasasword");
                                     }
-                                })
+                                });
                             } else {
-                                PQ.currentUser = user as! PQUser;
+                                var user = u as! PQUser;
+                                PQ.currentUser = user;
                                 NSLog("Facebook log in successful");
                                 if let method = PQ.delegate?.onUserRefreshed {
                                     method();
                                 }
-                                self.dismissViewControllerAnimated(true, completion: nil);
+                                self.dismissViewControllerAnimated(true, completion: nil)
                             }
-                        })
+                        });
                     } else {
+                        NSLog("FB login success, setting profile image");
                         user.setProfileUIImage(profileImage!);
                         PQ.currentUser = user;
                         NSLog("Facebook sign up successful");
@@ -90,19 +93,16 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                         self.dismissViewControllerAnimated(true, completion: nil);
                     }
                 })
+                
+                
+                
             }
         }
     }
-    
+
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         AVUser.logOut();
         NSLog("Facebook user logged out");
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "signupSegue") {
-            
-        }
     }
 
 }

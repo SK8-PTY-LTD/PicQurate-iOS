@@ -26,3 +26,9 @@ class CameraViewController: IMGLYCameraViewController {
     }
     
 }
+
+class CameraNoFilterViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    var pickerReference: UIImagePickerController!
+    
+}

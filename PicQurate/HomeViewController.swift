@@ -84,7 +84,7 @@ class HomeViewController: ViewPagerController, ViewPagerDelegate, ViewPagerDataS
     }
 }
 
-class HomeDetailViewController: UIViewController {
+class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var flowLayout: CSStickyHeaderFlowLayout!
@@ -307,6 +307,29 @@ class HomeDetailViewController: UIViewController {
             break;
         }
         return cell;
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let photo: PQPhoto!;
+        switch self.displayMode {
+//        case 0:
+//            photo = self.chainArray0[indexPath.row + 1].photo!;
+        case 0:
+            photo = self.chainArray1[indexPath.row + 1].photo!;
+            self.performSegueWithIdentifier("segueToPhoto", sender: photo);
+        case 1:
+            photo = self.chainArray2[indexPath.row + 1].photo!;
+            self.performSegueWithIdentifier("segueToPhoto", sender: photo);
+        default:
+            break;
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "segueToPhoto") {
+            let VC = segue.destinationViewController as! PhotoViewController;
+            VC.initializeWithPhoto(sender as! PQPhoto);
+        }
     }
     
 }

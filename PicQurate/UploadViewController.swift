@@ -19,6 +19,7 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
     
     override func viewDidAppear(animated: Bool) {
         if (firsLaunch) {
+            NSLog("Called");
             self.launchCamera();
             self.firsLaunch = false;
         }
@@ -94,7 +95,29 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
     }
     
     func launchCamera() {
-        self.performSegueWithIdentifier("segueToCamera", sender: nil);
+        NSLog("Called 2");
+        //Old camera, with filter
+//        self.performSegueWithIdentifier("segueToCamera", sender: nil);
+        
+        //New camera, without filter
+        var picker = UIImagePickerController();
+        picker.sourceType = UIImagePickerControllerSourceType.Camera;
+        picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureMode.Photo;
+        picker.cameraDevice = UIImagePickerControllerCameraDevice.Rear;
+        picker.showsCameraControls = false;
+        
+//        var overlayView = NSBundle.mainBundle().loadNibNamed("CameraNoFilterViewController", owner: self, options: nil)[0] as? UIView;
+//        var overlay = CameraNoFilterViewController(nibName: "CameraNoFilterViewController", bundle: nil);
+//            NSLog("Called 3");
+//            overlay.pickerReference = picker;
+//            picker.cameraOverlayView = overlay.view;
+//            picker.delegate = overlay;
+        
+            self.presentViewController(picker, animated: true) { () -> Void in
+                
+            }
+            
+        
     }
     
     func onPhotoTaken(image: UIImage) {

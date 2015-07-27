@@ -33,7 +33,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
 //        var leftImageView = UIImageView
         
         self.indicatorImageView.center.y = self.scrollView.center.y;
-        self.indicatorImageView.image = UIImage(named: "mail");
+        self.indicatorImageView.image = UIImage(named: "icon_chain");
         self.view.addSubview(self.indicatorImageView);
         
         self.imageView = AVImageView(frame: CGRectMake(self.view.frame.width, 0, self.view.frame.width, self.view.frame.width));
@@ -86,8 +86,13 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func chainButtonClicked(sender: UIButton) {
-        PQ.currentUser.chainPhotoWithBlock(self.chainArray.last!, block: { (success, error) -> () in
-            
+        var chain = self.chainArray.last!
+        PQ.currentUser.chainPhotoWithBlock(chain, block: { (success, error) -> () in
+            var query = PQUser.query();
+            query.whereKey("userId", equalTo: chain.user?.objectId);
+            PQ.sendPushWithCallBack(query, message: "\(PQ.currentUser.profileName) just chained your photo! " , callback: { (success, error) -> Void in
+                //Send push callback
+            })
         });
         self.scrollView.scrollRectToVisible(CGRectMake(0, 0, self.view.frame.width, self.view.frame.width), animated: true);
         self.dismissImage();

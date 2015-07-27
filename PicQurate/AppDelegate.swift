@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var notificationSelector : Selector = "registerUserNotificationSettings:"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -20,6 +21,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let type = FBSDKLoginButton.self;
         
         PQ.initialize(launchOptions);
+        
+        if application.respondsToSelector(notificationSelector) {
+            // iOS 8 Notifications
+            var types = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+            var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+            application.registerUserNotificationSettings(settings);
+            application.registerForRemoteNotifications();
+        } else {
+            // iOS < 8 Notifications
+            var types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound | UIRemoteNotificationType.Alert
+            application.registerForRemoteNotificationTypes(types);
+        }
+        
+        // Extract the notification data
+        if let notificatinoPayload = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject] {
+            if let userId = notificatinoPayload["userId"] as? String{
+                var storyboard = UIStoryboard(name: "Main", bundle: nil);
+                var VC = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController;
+                var user = PQUser(userId: userId);
+                user.fetchInBackgroundWithBlock({ (downloadedUser, error) -> Void in
+                    if let e = error {
+                        PQ.showError(e);
+                    } else {
+                        VC.user = user as PQUser;
+                        VC.title = user.profileName;
+                    }
+                })
+            }
+        }
+        
+        
+        
         
         UITabBar.appearance().tintColor = PQ.primaryColor;
         
@@ -42,6 +75,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        //Clear push notification badge
+        var num = application.applicationIconBadgeNumber;
+        if (num != 0) {
+            var currentInstallation = AVInstallation.currentInstallation();
+            currentInstallation.badge = 0;
+            currentInstallation.saveEventually();
+            application.applicationIconBadgeNumber = 0;
+        }
+        application.cancelAllLocalNotifications();
+        
         FBSDKAppEvents.activateApp();
     }
 
@@ -51,6 +95,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation);
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        if let currentUser = PQ.currentUser {
+            var installation = AVInstallation.currentInstallation();
+            installation.setDeviceTokenFromData(deviceToken);
+            installation.setObject(currentUser.objectId, forKey: "userId");
+            installation.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if (success) {
+                    currentUser.setInstallation(installation);
+                    currentUser.saveInBackground();
+                } else {
+                    PQ.showError(error);
+                }
+            });
+        }
     }
 
 

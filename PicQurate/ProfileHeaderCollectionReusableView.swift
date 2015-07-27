@@ -59,7 +59,13 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
             } else {
                 self.followButton.setTitle("Follow", forState: .Normal);
             }
-            self.followButton.enabled = true;
+            if (currentUser.objectId != self.user!.objectId) {
+                self.followButton.hidden = false;
+                self.followButton.enabled = true;
+            } else {
+                self.followButton.hidden = true;
+                self.followButton.enabled = false;
+            }
         } else {
             self.followButton.enabled = false;
         }
@@ -82,10 +88,19 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     @IBAction func followButtonClicked(sender: UIButton) {
         if (self.followButton.titleForState(.Normal) == "Follow") {
             self.followButton.setTitle("Unfollow", forState: .Normal);
-            PQ.currentUser.follow(user!.objectId, andCallback: nil)
+            PQ.currentUser.follow(user!.objectId, andCallback: nil);
         } else if (self.followButton.titleForState(.Normal) == "Unfollow") {
             self.followButton.setTitle("Follow", forState: .Normal);
-            PQ.currentUser.unfollow(user!.objectId, andCallback: nil)
+            PQ.currentUser.unfollow(user!.objectId, andCallback: nil);
+            //Send push to notify user
+            var pushQuery = AVInstallation.query();
+            pushQuery.whereKey("userId", equalTo: user!.objectId);
+            
+            var push = AVPush();
+            push.setQuery(pushQuery);
+            push.setMessage(user!.profileName! + " just started following you.");
+            push.setData(["userId": user!.objectId, "badge": "Increment"]);
+            push.sendPushInBackground();
         }
     }
     

@@ -12,8 +12,8 @@ class TabViewController: UITabBarController {
     
     override func viewWillAppear(animated: Bool) {
         var button = UIButton()
-        var buttonImage = UIImage(named: "camera");
-        button.frame = CGRectMake(0.0, 0.0, buttonImage!.size.width, buttonImage!.size.height);
+        var buttonImage = UIImage(named: "tab_camera_0");
+        button.frame = CGRectMake(0.0, 0.0, self.tabBar.frame.width/5, self.tabBar.frame.height);
         button.setBackgroundImage(buttonImage!, forState: .Normal);
         //        button.setBackgroundImage(highlightImage!, forState: .Highlighted);
         //        [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];

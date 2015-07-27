@@ -259,7 +259,7 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
 //            }
 //        });
     }
-    
+
     class func sendPush(query: AVQuery, message: String) -> NSError? {
         var error: NSError?
         var push = AVPush();
@@ -270,10 +270,13 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
     }
     
     class func sendPushWithCallBack(query: AVQuery, message: String, callback: AVBooleanResultBlock) {
-        var push = AVPush();
-        push.setQuery(query);
-        push.setMessage(message);
-        push.sendPushInBackgroundWithBlock(callback);
+        var notification = AVPush();
+        notification.setQuery(query);
+        notification.setMessage(message);
+        notification.sendPushInBackgroundWithBlock(callback);
+        
+        var push = PQPush(message: message, user: PQ.currentUser);
+        push.saveInBackground();
     }
     
     func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {

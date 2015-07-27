@@ -13,12 +13,13 @@
 		3C4D19251AE0D6C100613CAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19231AE0D6C100613CAB /* Main.storyboard */; };
 		3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19261AE0D6C100613CAB /* Images.xcassets */; };
 		3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */; };
-		3C4D19361AE0D6C100613CAB /* PicQurateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */; };
 		3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56922E1AE9F736006FA95D /* AVImageView.swift */; };
 		3C5692311AE9F772006FA95D /* PQLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692301AE9F772006FA95D /* PQLog.swift */; };
 		3C5692331AE9FFD6006FA95D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692321AE9FFD6006FA95D /* LoginViewController.swift */; };
 		3C5692351AEA0720006FA95D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692341AEA0720006FA95D /* HomeViewController.swift */; };
 		3C59ED7B1AE7EC1300383EF0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */; };
+		3C7B9F291B536CD30034FF2C /* PQPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B9F281B536CD30034FF2C /* PQPush.swift */; };
+		3C7B9F2D1B5377540034FF2C /* CameraNoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C7B9F2C1B5377540034FF2C /* CameraNoFilterViewController.xib */; };
 		3C84E6B51AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6AE1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m */; };
 		3C84E6B61AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6B01AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m */; };
 		3C84E6B71AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C84E6B21AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m */; };
@@ -269,18 +270,9 @@
 		3CBF20F71AEA56F00000B9A3 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBF20F61AEA56F00000B9A3 /* AVOSCloud.framework */; };
 		3CBF20FB1AEA57150000B9A3 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF20FA1AEA57150000B9A3 /* ViewPagerController.m */; };
 		3CBF211A1AEB16370000B9A3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF21191AEB16370000B9A3 /* CameraViewController.swift */; };
+		3CE2E3881AFF1D86000BBE20 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */; };
 		3CEE1AC71AF3A141005600D6 /* PQPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3C4D19301AE0D6C100613CAB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3C4D19121AE0D6C100613CAB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3C4D19191AE0D6C100613CAB;
-			remoteInfo = PicQurate;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3CBF21181AEB15AE0000B9A3 /* CopyFiles */ = {
@@ -303,7 +295,6 @@
 		3C4D19241AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C4D19261AE0D6C100613CAB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C4D19291AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicQurateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D19341AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicQurateTests.swift; sourceTree = "<group>"; };
 		3C56922E1AE9F736006FA95D /* AVImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVImageView.swift; path = objects/AVImageView.swift; sourceTree = "<group>"; };
@@ -313,6 +304,8 @@
 		3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = libs/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3C5FD83E1AE7A27A001F86F0 /* PicQurate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicQurate-Bridging-Header.h"; sourceTree = "<group>"; };
+		3C7B9F281B536CD30034FF2C /* PQPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQPush.swift; path = objects/PQPush.swift; sourceTree = "<group>"; };
+		3C7B9F2C1B5377540034FF2C /* CameraNoFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraNoFilterViewController.xib; sourceTree = "<group>"; };
 		3C84E6AD1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		3C84E6AE1AE922E50056C1B8 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
 		3C84E6AF1AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -572,6 +565,7 @@
 		3CBF20F91AEA57150000B9A3 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
 		3CBF20FA1AEA57150000B9A3 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		3CBF21191AEB16370000B9A3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQPhoto.swift; path = objects/PQPhoto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -593,13 +587,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3C4D192C1AE0D6C100613CAB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -616,7 +603,6 @@
 			isa = PBXGroup;
 			children = (
 				3C4D191A1AE0D6C100613CAB /* PicQurate.app */,
-				3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -630,6 +616,7 @@
 				3C87F7FB1AE8C42600C9E172 /* ViewControllers */,
 				3C87F7F81AE8C31900C9E172 /* objects */,
 				3C4D19231AE0D6C100613CAB /* Main.storyboard */,
+				3C7B9F2C1B5377540034FF2C /* CameraNoFilterViewController.xib */,
 				3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */,
 				3C4D19261AE0D6C100613CAB /* Images.xcassets */,
 				3C4D191D1AE0D6C100613CAB /* Supporting Files */,
@@ -709,6 +696,7 @@
 				3C87F7F61AE8C31400C9E172 /* PQUser.swift */,
 				3CB088681AF300D200A15ADE /* PQChain.swift */,
 				3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */,
+				3C7B9F281B536CD30034FF2C /* PQPush.swift */,
 			);
 			name = objects;
 			sourceTree = "<group>";
@@ -728,6 +716,7 @@
 				3C93635B1AF9952A001C3EE0 /* ChainViewController.swift */,
 				3C93635D1AFA484B001C3EE0 /* ChainHistoryViewController.swift */,
 				3C93635F1AFAD343001C3EE0 /* UserTableViewController.swift */,
+				3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -739,8 +728,8 @@
 				3C9363671AFAEC54001C3EE0 /* HomeHeaderCollectionReusableView.xib */,
 				3CA1A5391AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift */,
 				3CA1A5261AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift */,
-				3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */,
 				3CA1A5351AF7208800A5E2C9 /* ProfileHeaderCollectionReusableView.xib */,
+				3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */,
 				3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */,
 				3C9363611AFADF6D001C3EE0 /* UserTableViewCell.swift */,
 			);
@@ -1014,7 +1003,7 @@
 				3CA1A52F1AF71F6E00A5E2C9 /* osx */,
 			);
 			name = StickyHeader;
-			path = "../../External Libs/CSStickyHeaderFlowLayout/Classes";
+			path = ../../Library/CSStickyHeaderFlowLayout/Classes;
 			sourceTree = "<group>";
 		};
 		3CA1A52D1AF71F6E00A5E2C9 /* ios */ = {
@@ -1064,24 +1053,6 @@
 			productReference = 3C4D191A1AE0D6C100613CAB /* PicQurate.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3C4D192E1AE0D6C100613CAB /* PicQurateTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3C4D193C1AE0D6C100613CAB /* Build configuration list for PBXNativeTarget "PicQurateTests" */;
-			buildPhases = (
-				3C4D192B1AE0D6C100613CAB /* Sources */,
-				3C4D192C1AE0D6C100613CAB /* Frameworks */,
-				3C4D192D1AE0D6C100613CAB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3C4D19311AE0D6C100613CAB /* PBXTargetDependency */,
-			);
-			name = PicQurateTests;
-			productName = PicQurateTests;
-			productReference = 3C4D192F1AE0D6C100613CAB /* PicQurateTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1093,10 +1064,7 @@
 				TargetAttributes = {
 					3C4D19191AE0D6C100613CAB = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					3C4D192E1AE0D6C100613CAB = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 3C4D19191AE0D6C100613CAB;
+						DevelopmentTeam = YJE74QXLCC;
 					};
 				};
 			};
@@ -1115,7 +1083,6 @@
 			projectRoot = "";
 			targets = (
 				3C4D19191AE0D6C100613CAB /* PicQurate */,
-				3C4D192E1AE0D6C100613CAB /* PicQurateTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1125,6 +1092,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7B9F2D1B5377540034FF2C /* CameraNoFilterViewController.xib in Resources */,
 				3CA0F1F41AEBDA8800CBFBE8 /* Food.png in Resources */,
 				3CA0F2341AEBDA8800CBFBE8 /* IMGLYCameraView.xib in Resources */,
 				3CA1A5361AF7208900A5E2C9 /* ProfileHeaderCollectionReusableView.xib in Resources */,
@@ -1232,13 +1200,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3C4D192D1AE0D6C100613CAB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1273,6 +1234,7 @@
 				3CA0F1801AEBDA8800CBFBE8 /* IMGLYContainerViewHelper.swift in Sources */,
 				3C84E6B61AE922E50056C1B8 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				3CA0F17C1AEBDA8800CBFBE8 /* IMGLYCircleGradientView.swift in Sources */,
+				3CE2E3881AFF1D86000BBE20 /* PhotoViewController.swift in Sources */,
 				3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */,
 				3CA0F1B01AEBDA8800CBFBE8 /* IMGLYNepalFilter.swift in Sources */,
 				3C84E6B71AE922E50056C1B8 /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -1383,6 +1345,7 @@
 				3CA0F19B1AEBDA8800CBFBE8 /* IMGLYFoodFilter.swift in Sources */,
 				3CA1A53A1AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift in Sources */,
 				3CB0886B1AF30A6A00A15ADE /* ProfileViewController.swift in Sources */,
+				3C7B9F291B536CD30034FF2C /* PQPush.swift in Sources */,
 				3CB088691AF300D200A15ADE /* PQChain.swift in Sources */,
 				3CA0F1A11AEBDA8800CBFBE8 /* IMGLYHighcarbFilter.swift in Sources */,
 				3CA0F1CC1AEBDA8800CBFBE8 /* IMGLYStickersDataSource.swift in Sources */,
@@ -1397,23 +1360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3C4D192B1AE0D6C100613CAB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3C4D19361AE0D6C100613CAB /* PicQurateTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3C4D19311AE0D6C100613CAB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3C4D19191AE0D6C100613CAB /* PicQurate */;
-			targetProxy = 3C4D19301AE0D6C100613CAB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3C4D19231AE0D6C100613CAB /* Main.storyboard */ = {
@@ -1521,6 +1468,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SK8 PTY LTD (YJE74QXLCC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1532,6 +1481,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1542,6 +1492,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SK8 PTY LTD (YJE74QXLCC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1553,41 +1505,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		3C4D193D1AE0D6C100613CAB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PicQurateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PicQurate.app/PicQurate";
-			};
-			name = Debug;
-		};
-		3C4D193E1AE0D6C100613CAB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PicQurateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PicQurate.app/PicQurate";
 			};
 			name = Release;
 		};
@@ -1608,15 +1527,6 @@
 			buildConfigurations = (
 				3C4D193A1AE0D6C100613CAB /* Debug */,
 				3C4D193B1AE0D6C100613CAB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3C4D193C1AE0D6C100613CAB /* Build configuration list for PBXNativeTarget "PicQurateTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3C4D193D1AE0D6C100613CAB /* Debug */,
-				3C4D193E1AE0D6C100613CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

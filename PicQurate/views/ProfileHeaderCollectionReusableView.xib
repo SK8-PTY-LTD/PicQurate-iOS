@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -40,15 +39,13 @@
                                 <rect key="frame" x="274" y="77" width="82" height="17"/>
                             </variation>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEL-7L-ops">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEL-7L-ops">
                             <rect key="frame" x="256" y="24" width="40" height="40"/>
-                            <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="lf3-Xf-a6y"/>
                                 <constraint firstAttribute="height" constant="40" id="vge-Hp-zkJ"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="Acheiv">
+                            <state key="normal" image="acheive_bronze">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -156,19 +153,10 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LB3-iv-QKR">
                             <rect key="frame" x="266" y="0.0" width="21" height="22"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="widthClass=compact" misplaced="YES">
                                 <rect key="frame" x="304" y="0.0" width="21" height="22"/>
-                            </variation>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qpts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dl-0S-JDD">
-                            <rect key="frame" x="257" y="22" width="38" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                            <variation key="widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="295" y="21" width="38" height="21"/>
                             </variation>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sam-55-0jr">
@@ -178,12 +166,11 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFO-vA-gUH">
-                            <rect key="frame" x="20" y="120" width="77" height="16"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFO-vA-gUH">
+                            <rect key="frame" x="20" y="120" width="111" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="UJs-oQ-zro"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="www.sk8.asia">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,13 +179,12 @@
                                 <action selector="urlClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="dHR-FN-bSa"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAG-oq-s0u">
-                            <rect key="frame" x="20" y="140" width="107" height="12"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAG-oq-s0u">
+                            <rect key="frame" x="20" y="140" width="170" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="12" id="Gka-kZ-Zkh"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="Canberra, Australia">
+                            <state key="normal" title="Canberra, Australia" image="icon_location">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -206,6 +192,9 @@
                                 <action selector="locationClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Q6b-a4-r15"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qpts" translatesAutoresizingMaskIntoConstraints="NO" id="ilc-1Q-2LE">
+                            <rect key="frame" x="252" y="22" width="49" height="21"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -215,11 +204,10 @@
                             <variation key="widthClass=compact" constant="18"/>
                         </constraint>
                         <constraint firstAttribute="height" constant="160" id="4qR-2l-Nqa"/>
-                        <constraint firstItem="LB3-iv-QKR" firstAttribute="centerX" secondItem="9dl-0S-JDD" secondAttribute="centerX" id="EjC-R2-tem"/>
-                        <constraint firstItem="Sam-55-0jr" firstAttribute="top" secondItem="9dl-0S-JDD" secondAttribute="bottom" id="FCC-AV-5dP"/>
+                        <constraint firstItem="LB3-iv-QKR" firstAttribute="centerX" secondItem="ilc-1Q-2LE" secondAttribute="centerX" id="Dat-Ma-Bgi"/>
                         <constraint firstItem="hFO-vA-gUH" firstAttribute="leading" secondItem="Br3-SR-3iZ" secondAttribute="leading" constant="20" id="GrD-T8-CSg"/>
-                        <constraint firstItem="9dl-0S-JDD" firstAttribute="top" secondItem="LB3-iv-QKR" secondAttribute="bottom" id="Izg-A2-XV4"/>
                         <constraint firstItem="qAG-oq-s0u" firstAttribute="leading" secondItem="Br3-SR-3iZ" secondAttribute="leading" constant="20" id="UVo-LZ-gSd"/>
+                        <constraint firstItem="ilc-1Q-2LE" firstAttribute="top" secondItem="LB3-iv-QKR" secondAttribute="bottom" id="VcR-DJ-T0i"/>
                         <constraint firstItem="qAG-oq-s0u" firstAttribute="top" secondItem="hFO-vA-gUH" secondAttribute="bottom" constant="4" id="YME-e5-7PW"/>
                         <constraint firstItem="hFO-vA-gUH" firstAttribute="top" secondItem="Sam-55-0jr" secondAttribute="bottom" id="beO-HV-Nlv"/>
                         <constraint firstItem="Sam-55-0jr" firstAttribute="leading" secondItem="Br3-SR-3iZ" secondAttribute="leading" constant="14" id="jcd-0C-qQg"/>
@@ -228,6 +216,7 @@
                             <variation key="widthClass=compact" constant="4"/>
                         </constraint>
                         <constraint firstAttribute="trailing" secondItem="Sam-55-0jr" secondAttribute="trailing" constant="8" id="zH1-bb-T4P"/>
+                        <constraint firstItem="Sam-55-0jr" firstAttribute="top" secondItem="ilc-1Q-2LE" secondAttribute="bottom" id="zOm-Sq-u0J"/>
                     </constraints>
                 </view>
             </subviews>
@@ -255,4 +244,9 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="acheive_bronze" width="28" height="28"/>
+        <image name="icon_location" width="15" height="18"/>
+        <image name="qpts" width="49" height="21"/>
+    </resources>
 </document>

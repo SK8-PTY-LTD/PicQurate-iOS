@@ -45,14 +45,14 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
         var username = self.usernameTextField.text;
         
         //If it's logging in/Signing up, and criteria is good
-        activityIndicator.startAnimating()
+        activityIndicator.startAnimating();
         
         //Saving profile image
         var user = PQUser(email: email, password: passWord, profileName: username);
         if (self.genderSegmentControl.selectedSegmentIndex == 0) {
-            self.setValue(NSNumber(bool: true), forKey: "gender");
+            user.setValue(NSNumber(bool: true), forKey: "gender");
         } else if (self.genderSegmentControl.selectedSegmentIndex == 1) {
-            self.setValue(NSNumber(bool: false), forKey: "gender");
+            user.setValue(NSNumber(bool: false), forKey: "gender");
         }
         //        user.setProfileImage(slider.slider.currentBackgroundImage!);
         user.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
