@@ -74,6 +74,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     
     func reloadData() {
         if (self.chainArray.count > 0) {
+            NSLog(self.chainArray.last!.objectId!);
             self.imageView.file = self.chainArray.last?.photo!.file!;
             self.imageView.loadInBackground();
         }
@@ -104,11 +105,13 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
         if (x < 0) {
             self.indicatorImageView.frame.origin.x = -x - self.indicatorImageView.frame.width;
             self.indicatorImageView.alpha = (-x / self.view.frame.width);
+            self.indicatorImageView.image = UIImage(named: "icon_dismiss");
         } else if (x == 0) {
             self.indicatorImageView.center.x = -100;
         } else {
             self.indicatorImageView.frame.origin.x = -x + self.view.frame.width;
             self.indicatorImageView.alpha = (x / self.view.frame.width);
+            self.indicatorImageView.image = UIImage(named: "icon_chain");
         }
         if (self.scrollView.contentOffset.x == 0) {
             self.dismissImage();
@@ -116,6 +119,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
             PQ.currentUser.chainPhotoWithBlock(self.chainArray.last!, block: { (success, error) -> () in
                 
             });
+            NSLog("Dismissed");
             self.dismissImage();
         }
     }

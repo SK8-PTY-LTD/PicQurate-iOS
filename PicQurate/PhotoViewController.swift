@@ -87,7 +87,19 @@ class PhotoViewController: UIViewController {
     }
     
     @IBAction func chainButtonClicked(sender: UIButton) {
-        self.performSegueWithIdentifier("segueToChain", sender: self.photo);
+//        self.performSegueWithIdentifier("segueToChain", sender: self.photo);
+        if (photo.user == PQ.currentUser) {
+            PQ.promote("You can't chain your own selfie!");
+        } else {
+            var lastChain = PQChain(chainId: photo.lastChainId!);
+            PQ.currentUser.chainPhotoWithBlock(lastChain, block: { (chain, error) -> () in
+                if let e = error {
+                    PQ.showError(e);
+                } else {
+                    PQ.promote("Photo chained!");
+                }
+            })
+        }
     }
     
     @IBAction func locationButtonClicked(sender: UIButton) {

@@ -75,6 +75,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func queryPhotoByHistory() {
         var query = PQPhoto.query();
         query.whereKey("user", equalTo: user);
+        query.includeKey("user.profileImage");
         query.orderByDescending("createdAt");
         query.findObjectsInBackgroundWithBlock({ (array, error) -> Void in
             if let e = error {
@@ -198,6 +199,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var photo = self.imageArray[indexPath.row];
+        self.performSegueWithIdentifier("segueToPhoto", sender: photo);
+    }
+    
     func refreshLocation() {
         if (self.locationManager.respondsToSelector(Selector("requestWhenInUseAuthorization"))) {
             self.locationManager.requestWhenInUseAuthorization();
@@ -254,8 +260,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             var VC = segue.destinationViewController as! UserTableViewController;
             VC.query = (sender as! [AnyObject])[0] as! AVQuery;
             VC.title = (sender as! [AnyObject])[1] as? String;
-        } else {
-            
+        } else if (segue.identifier == "segueToPhoto"){
+            var VC = segue.destinationViewController as! PhotoViewController;
+            VC.photo = sender as! PQPhoto;
+            VC.title = (sender as! PQPhoto).user?.profileName;
         }
     }
     

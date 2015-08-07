@@ -92,12 +92,19 @@ public class PQUser : AVUser, AVSubclassing {
                         block(success: false, error: e);
                     } else {
                         //Save chain
-                        self.initiateChainWithBlock(photo, block: { (success, error) -> () in
+                        self.initiateChainWithBlock(photo, block: { (chain, error) -> () in
                             if let e = error{
                                 block(success: false, error: e);
                             } else {
                                 //Successful
-                                block(success: true, error: nil);
+                                photo.lastChainId = chain!.objectId;
+                                photo.saveInBackgroundWithBlock({ (success, error) -> Void in
+                                    if let e = error{
+                                        block(success: false, error: e);
+                                    } else {
+                                        block(success: true, error: nil);
+                                    }
+                                });
                             }
                         })
                     }
@@ -106,7 +113,7 @@ public class PQUser : AVUser, AVSubclassing {
         })
     }
     
-    private func initiateChainWithBlock(photo: PQPhoto, block: (success: Bool, error: NSError?) -> ()) {
+    private func initiateChainWithBlock(photo: PQPhoto, block: (chain: PQChain?, error: NSError?) -> ()) {
         
         var relation = self.relationforKey("photoChained");
         relation.addObject(photo);
@@ -119,16 +126,16 @@ public class PQUser : AVUser, AVSubclassing {
         
         AVObject.saveAllInBackground([self, chain], block: { (success, error) -> Void in
             if let e = error{
-                block(success: false, error: e);
+                block(chain: chain, error: e);
             } else {
                 //Successful
-                block(success: true, error: nil);
+                block(chain: nil, error: nil);
             }
         });
         
     }
     
-    func chainPhotoWithBlock(originalChain: PQChain, block: (success: Bool, error: NSError?) -> ()) {
+    func chainPhotoWithBlock(originalChain: PQChain, block: (chain: PQChain?, error: NSError?) -> ()) {
         // Add product to like query
         var relation = self.relationforKey("photoChained");
         relation.addObject(originalChain.photo);
@@ -141,11 +148,17 @@ public class PQUser : AVUser, AVSubclassing {
         chain.locationString = self.locationString;
         
         AVObject.saveAllInBackground([self, chain], block: { (success, error) -> Void in
-            if let e = error{
-                block(success: false, error: e);
+            if let e = error {
+                block(chain: chain, error: e);
             } else {
-                //Successful
-                block(success: true, error: nil);
+                chain.photo?.lastChainId = chain.objectId;
+                chain.photo?.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    if let e = error {
+                        block(chain: nil, error: e);
+                    } else {
+                        block(chain: chain, error: nil);
+                    }
+                });
             }
         });
         

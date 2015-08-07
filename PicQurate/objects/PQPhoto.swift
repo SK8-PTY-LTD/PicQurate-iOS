@@ -56,6 +56,7 @@ class PQPhoto : AVObject, AVSubclassing {
     // ================================================================================
     
     @NSManaged var caption: String?
+    @NSManaged var lastChainId: String?
     @NSManaged var file: AVFile?
     @NSManaged var gender: Bool
     @NSManaged var user: PQUser?

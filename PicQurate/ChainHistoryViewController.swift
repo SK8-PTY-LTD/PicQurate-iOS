@@ -108,6 +108,11 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
         return cell;
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var photo = self.photoArray[indexPath.row];
+        self.performSegueWithIdentifier("segueToPhoto", sender: photo);
+    }
+    
     func segmentSelected(index: Int) {
         switch index {
         case 0:
@@ -116,6 +121,14 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
             self.queryPhotoByPopularity();
         default:
             break;
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "segueToPhoto"){
+            var VC = segue.destinationViewController as! PhotoViewController;
+            VC.photo = sender as! PQPhoto;
+            VC.title = (sender as! PQPhoto).user?.profileName;
         }
     }
 

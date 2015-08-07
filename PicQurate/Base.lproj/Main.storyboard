@@ -187,7 +187,7 @@
                                             <constraint firstAttribute="height" constant="100" id="Oiq-QR-ixK"/>
                                             <constraint firstAttribute="width" constant="100" id="znv-qi-mdZ"/>
                                         </constraints>
-                                        <state key="normal">
+                                        <state key="normal" backgroundImage="logo">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -252,6 +252,9 @@
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="800" height="400"/>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         </variation>
                     </scrollView>
                     <tabBarItem key="tabBarItem" title="Item" id="fgM-pU-RxR"/>
@@ -403,8 +406,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LEj-Q0-Yv3" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="118" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LEj-Q0-Yv3" secondAttribute="height" id="2hO-Af-v7g"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-qn-vCm">
+                                <rect key="frame" x="16" y="726" width="189.5" height="24"/>
+                                <state key="normal" title="0" image="icon_clock_0">
+                                    <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="likeButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="L2s-jG-nfE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-qV-2bJ">
+                                <rect key="frame" x="205" y="726" width="189.5" height="24"/>
+                                <state key="normal" title="0" image="icon_chian_0">
+                                    <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="chainButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="ETW-bX-x6x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOS-hT-pbA">
+                                <rect key="frame" x="394.5" y="726" width="189.5" height="24"/>
+                                <state key="normal" title="0" image="icon_like_0">
+                                    <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="locationButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="Hsy-bu-n5U"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hn7-51-hx5">
+                                <rect key="frame" x="16" y="766" width="21" height="21"/>
+                                <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="5Dx-im-Sx4"/>
+                                    <constraint firstAttribute="width" constant="21" id="TbN-Qb-3aB"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQO-3H-8q5">
+                                <rect key="frame" x="37" y="758" width="547" height="72"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="hNO-ti-yIC"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuo-Hi-Nmu">
-                                <rect key="frame" x="0.0" y="20" width="600" height="54"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="54"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bc6-UB-cAe" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                         <rect key="frame" x="20" y="7" width="40" height="40"/>
@@ -429,60 +486,6 @@
                                     <constraint firstAttribute="height" constant="54" id="sFa-ak-mzc"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LEj-Q0-Yv3" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="74" width="600" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="LEj-Q0-Yv3" secondAttribute="height" multiplier="1:0.2" id="2hO-Af-v7g"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-qn-vCm">
-                                <rect key="frame" x="16" y="194" width="189" height="24"/>
-                                <state key="normal" title="0" image="icon_clock_0">
-                                    <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="likeButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="L2s-jG-nfE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-qV-2bJ">
-                                <rect key="frame" x="205" y="194" width="190" height="24"/>
-                                <state key="normal" title="0" image="icon_chian_0">
-                                    <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="chainButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="ETW-bX-x6x"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOS-hT-pbA">
-                                <rect key="frame" x="395" y="194" width="189" height="24"/>
-                                <state key="normal" title="0" image="icon_like_0">
-                                    <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="locationButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="Hsy-bu-n5U"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hn7-51-hx5">
-                                <rect key="frame" x="16" y="234" width="21" height="21"/>
-                                <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="5Dx-im-Sx4"/>
-                                    <constraint firstAttribute="width" constant="21" id="TbN-Qb-3aB"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQO-3H-8q5">
-                                <rect key="frame" x="37" y="226" width="547" height="72"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="hNO-ti-yIC"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -496,17 +499,25 @@
                             <constraint firstItem="iGP-qV-2bJ" firstAttribute="centerY" secondItem="BOS-hT-pbA" secondAttribute="centerY" id="OmB-QR-aOV"/>
                             <constraint firstItem="iGP-qV-2bJ" firstAttribute="width" secondItem="tbv-qn-vCm" secondAttribute="width" id="PPr-79-r8a"/>
                             <constraint firstItem="yQO-3H-8q5" firstAttribute="trailing" secondItem="1AD-xB-fxh" secondAttribute="trailingMargin" id="QV7-0e-nnU"/>
-                            <constraint firstItem="iGP-qV-2bJ" firstAttribute="top" secondItem="LEj-Q0-Yv3" secondAttribute="bottom" id="XRU-O4-0xH"/>
+                            <constraint firstItem="iGP-qV-2bJ" firstAttribute="top" secondItem="LEj-Q0-Yv3" secondAttribute="bottom" constant="8" id="XRU-O4-0xH"/>
                             <constraint firstItem="yQO-3H-8q5" firstAttribute="leading" secondItem="hn7-51-hx5" secondAttribute="trailing" id="YgY-F3-Tsn"/>
                             <constraint firstItem="hn7-51-hx5" firstAttribute="leading" secondItem="1AD-xB-fxh" secondAttribute="leadingMargin" id="btH-6C-jiy"/>
                             <constraint firstItem="LEj-Q0-Yv3" firstAttribute="top" secondItem="Fuo-Hi-Nmu" secondAttribute="bottom" id="dC5-Oo-ch7"/>
+                            <constraint firstItem="Fuo-Hi-Nmu" firstAttribute="top" secondItem="DdB-kh-X48" secondAttribute="bottom" id="eNT-qO-y2x"/>
                             <constraint firstAttribute="centerX" secondItem="LEj-Q0-Yv3" secondAttribute="centerX" id="f70-2z-J0H"/>
                             <constraint firstItem="iGP-qV-2bJ" firstAttribute="leading" secondItem="tbv-qn-vCm" secondAttribute="trailing" id="fYC-tR-N8i"/>
                             <constraint firstItem="tbv-qn-vCm" firstAttribute="leading" secondItem="1AD-xB-fxh" secondAttribute="leadingMargin" id="gsQ-dV-ZOC"/>
                             <constraint firstItem="hn7-51-hx5" firstAttribute="top" secondItem="yQO-3H-8q5" secondAttribute="top" constant="8" id="iFE-3o-7AK"/>
                             <constraint firstItem="iGP-qV-2bJ" firstAttribute="width" secondItem="BOS-hT-pbA" secondAttribute="width" id="vgr-SC-xdM"/>
+                            <constraint firstItem="Fuo-Hi-Nmu" firstAttribute="top" secondItem="DdB-kh-X48" secondAttribute="bottom" id="wT6-Qw-T4H"/>
                             <constraint firstAttribute="centerX" secondItem="Fuo-Hi-Nmu" secondAttribute="centerX" id="xQV-2A-Ucv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AEm-Ig-yDq"/>
+                                <exclude reference="wT6-Qw-T4H"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="captionTextView" destination="yQO-3H-8q5" id="yHR-Rx-ddg"/>
@@ -787,27 +798,27 @@
                                                     </variation>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0P-IP-Pfb">
-                                                    <rect key="frame" x="8" y="300" width="97" height="22"/>
-                                                    <state key="normal" title="0" image="mail">
+                                                    <rect key="frame" x="8" y="300" width="97.5" height="22"/>
+                                                    <state key="normal" title="0" image="like-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhX-te-4Wi">
-                                                    <rect key="frame" x="105" y="300" width="98" height="22"/>
-                                                    <state key="normal" title="0" image="mail">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhX-te-4Wi">
+                                                    <rect key="frame" x="105.5" y="300" width="97" height="22"/>
+                                                    <state key="normal" title="0" image="chain-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdH-4f-eAu">
-                                                    <rect key="frame" x="203" y="300" width="97" height="22"/>
-                                                    <state key="normal" title="0" image="mail">
+                                                    <rect key="frame" x="202.5" y="300" width="97.5" height="22"/>
+                                                    <state key="normal" title="0" image="location-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ci0-Yj-3iT">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ci0-Yj-3iT" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="330" width="21" height="21"/>
                                                     <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -853,6 +864,7 @@
                                             <outlet property="imageView" destination="OWB-Rd-mLa" id="BAl-gF-v3b"/>
                                             <outlet property="likeButton" destination="d0P-IP-Pfb" id="RNp-DL-MOo"/>
                                             <outlet property="locationButton" destination="UdH-4f-eAu" id="MIb-Kr-Dvk"/>
+                                            <outlet property="profileImageView" destination="ci0-Yj-3iT" id="GWi-BR-vlP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -944,7 +956,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="7Co-JQ-Lg1"/>
                                             </constraints>
-                                            <state key="normal" image="mail">
+                                            <state key="normal" image="like-icon">
                                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -964,7 +976,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="ByZ-nv-eI6"/>
                                             </constraints>
-                                            <state key="normal" image="mail">
+                                            <state key="normal" image="chain-icon">
                                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -984,7 +996,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="t1B-yi-MmM"/>
                                             </constraints>
-                                            <state key="normal" image="mail">
+                                            <state key="normal" image="location-icon">
                                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -1037,6 +1049,11 @@
                                         <constraint firstItem="gvJ-KA-Xu3" firstAttribute="leading" secondItem="sjL-aZ-4T7" secondAttribute="leadingMargin" id="yX6-nJ-Z0G"/>
                                         <constraint firstItem="Qtw-S8-Mby" firstAttribute="leading" secondItem="wK8-OT-XiH" secondAttribute="trailing" constant="8" id="zAK-4s-bMV"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="chainSegmentButton" destination="tvK-6E-ojo" id="CYz-Mb-pV6"/>
+                                        <outlet property="likeSegmentButton" destination="gvJ-KA-Xu3" id="rDS-Jx-kJJ"/>
+                                        <outlet property="locationSegmentButton" destination="93q-Hm-3vs" id="yvZ-gN-dcl"/>
+                                    </connections>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="xUg-Bg-e0s" id="JvC-4u-dxA"/>
@@ -1064,6 +1081,7 @@
                         <outlet property="collectionView" destination="IPp-ld-6Ub" id="FtF-JV-6jw"/>
                         <segue destination="oRl-74-xJc" kind="presentation" identifier="editProfileSegue" id="iOA-1F-xaE"/>
                         <segue destination="ZZy-Ue-Q0G" kind="show" identifier="segueToUserTableView" id="KDR-Sx-1xB"/>
+                        <segue destination="rpa-53-4pO" kind="show" identifier="segueToPhoto" id="ta3-m0-Ka4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97l-Ay-XVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,7 +1191,6 @@
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFY-s2-cTK">
                                 <rect key="frame" x="0.0" y="132" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XFY-s2-cTK" secondAttribute="height" multiplier="1:1" id="MvN-Kj-7ev"/>
                                 </constraints>
@@ -1198,7 +1215,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Chain Share" id="fc1-TH-jX0">
                         <barButtonItem key="backBarButtonItem" title=" " id="xm8-IA-Kzx"/>
-                        <barButtonItem key="rightBarButtonItem" title="View" id="taZ-fB-6JL">
+                        <barButtonItem key="rightBarButtonItem" image="view-more-icon" id="taZ-fB-6JL">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="5Qk-Ch-zGm" kind="show" id="rTI-lA-2ZA"/>
                             </connections>
@@ -1315,6 +1333,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="gqe-mm-pMd" id="aVb-l1-JNx"/>
+                        <segue destination="rpa-53-4pO" kind="show" identifier="segueToPhoto" id="2fq-0F-wEU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEY-lT-B6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1731,6 +1750,9 @@
                         <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="800" height="400"/>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                        </variation>
                     </scrollView>
                     <connections>
                         <outlet property="activityIndicator" destination="4EG-K3-DMm" id="7GK-Hc-yEO"/>
@@ -1907,6 +1929,9 @@
                         <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="800" height="400"/>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                        </variation>
                     </scrollView>
                     <connections>
                         <outlet property="activityIndicator" destination="2f3-UX-tO6" id="qpd-do-jpS"/>
@@ -1926,12 +1951,15 @@
         <image name="acheive_bronze" width="28" height="28"/>
         <image name="acheive_gold" width="28" height="28"/>
         <image name="acheive_silter" width="29" height="28"/>
+        <image name="chain-icon" width="19" height="18"/>
         <image name="default_profile" width="100" height="100"/>
         <image name="icon_chain" width="64" height="64"/>
         <image name="icon_chian_0" width="25" height="24"/>
         <image name="icon_clock_0" width="24" height="24"/>
         <image name="icon_dismiss" width="64" height="64"/>
         <image name="icon_like_0" width="28" height="24"/>
+        <image name="like-icon" width="21" height="19"/>
+        <image name="location-icon" width="15" height="18"/>
         <image name="loginBackground" width="250" height="444"/>
         <image name="logo" width="93" height="93"/>
         <image name="mail" width="16" height="16"/>
@@ -1943,10 +1971,11 @@
         <image name="tab_profile_0" width="20" height="25"/>
         <image name="tagline" width="385" height="89"/>
         <image name="tagline_reverse" width="133" height="35"/>
+        <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="2fq-0F-wEU"/>
+        <segue reference="g0u-Mo-Vtm"/>
         <segue reference="lLR-Rh-DwL"/>
-        <segue reference="KDR-Sx-1xB"/>
-        <segue reference="7iy-Gc-hK1"/>
     </inferredMetricsTieBreakers>
 </document>

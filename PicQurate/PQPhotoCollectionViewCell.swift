@@ -11,6 +11,7 @@ import Foundation
 class PQPhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: AVImageView!
+    @IBOutlet weak var profileImageView: AVImageView!
     @IBOutlet weak var likeButton: UIButton?
     @IBOutlet weak var chainButton: UIButton?
     @IBOutlet weak var locationButton: UIButton?
@@ -22,6 +23,14 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
     func initializeWithPhoto(photo: PQPhoto) {
         
         self.photo = photo;
+        if let image = self.photo.user?.profileImage {
+            NSLog("Image exists");
+            if let imageView = profileImageView {
+                NSLog("ImageView exists");
+                imageView.file = image;
+                
+            }
+        }
         
         if (self.cachedPhoto?.objectId == self.photo?.objectId) {
             //View already initialized, do nothing
@@ -53,6 +62,7 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
             self.locationButton?.setTitle(self.photo.locationString, forState: .Normal);
             
             self.captionTextView?.text = self.photo.caption;
+            
             
         }
         
