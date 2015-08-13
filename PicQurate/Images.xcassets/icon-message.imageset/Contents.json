@@ -2,16 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "icon-message.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "icon-message@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "male_filled-32.png"
+      "filename" : "icon-message@3x.png"
     }
   ],
   "info" : {

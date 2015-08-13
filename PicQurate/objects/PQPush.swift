@@ -28,6 +28,7 @@ class PQPush : AVObject, AVSubclassing {
     
     init(message: String, user: PQUser) {
         super.init();
+        self.sender = PQ.currentUser;
         self.user = user;
         self.message = message;
     }

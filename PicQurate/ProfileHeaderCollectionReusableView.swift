@@ -112,13 +112,13 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     @IBAction func locationClicked(sender: UIButton) {
-        if let location = PQ.currentUser.location {
-            var coord = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude), longitude: CLLocationDegrees(location.longitude));
-            var placemark = MKPlacemark(coordinate: coord, addressDictionary: nil);
-            var mapItem = MKMapItem(placemark: placemark);
-            mapItem.name = PQ.currentUser.profileName;
-            mapItem.openInMapsWithLaunchOptions(nil);
-        }
+//        if let location = PQ.currentUser.location {
+//            var coord = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude), longitude: CLLocationDegrees(location.longitude));
+//            var placemark = MKPlacemark(coordinate: coord, addressDictionary: nil);
+//            var mapItem = MKMapItem(placemark: placemark);
+//            mapItem.name = PQ.currentUser.profileName;
+//            mapItem.openInMapsWithLaunchOptions(nil);
+//        }
     }
     
 }

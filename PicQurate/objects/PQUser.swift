@@ -80,6 +80,8 @@ public class PQUser : AVUser, AVSubclassing {
             if let e = error {
                 block(success: false, error: e);
             } else {
+                //Set lastPhoto
+                
                 //Save PQPhoto
                 var photo = PQPhoto(file: file);
                 photo.caption = caption;
@@ -124,15 +126,17 @@ public class PQUser : AVUser, AVSubclassing {
         chain.location = self.location;
         chain.locationString = self.locationString;
         
-        AVObject.saveAllInBackground([self, chain], block: { (success, error) -> Void in
+        self.saveInBackground();
+        chain.saveInBackgroundWithBlock { (success, error) -> Void in
             if let e = error{
-                block(chain: chain, error: e);
+                block(chain: nil, error: e);
             } else {
                 //Successful
-                block(chain: nil, error: nil);
+                block(chain: chain, error: nil);
+                chain.photo?.lastChainId = chain.objectId;
+                chain.photo?.saveInBackground();
             }
-        });
-        
+        }
     }
     
     func chainPhotoWithBlock(originalChain: PQChain, block: (chain: PQChain?, error: NSError?) -> ()) {
@@ -147,7 +151,8 @@ public class PQUser : AVUser, AVSubclassing {
         chain.location = self.location;
         chain.locationString = self.locationString;
         
-        AVObject.saveAllInBackground([self, chain], block: { (success, error) -> Void in
+        self.saveInBackground();
+        chain.saveInBackgroundWithBlock { (success, error) -> Void in
             if let e = error {
                 block(chain: chain, error: e);
             } else {
@@ -160,13 +165,22 @@ public class PQUser : AVUser, AVSubclassing {
                     }
                 });
             }
-        });
+        }
         
         // Send a notification to the owner;
-        //        var message = self.getProfileName()! + " just liked your " + product.getName()!;
-        //        var query = AVInstallation.query();
-        //        query.whereKey("userId", equalTo: product.getSeller()!.objectId);
-        //        Shelf.sendPush(query, message: message);
+        var message = self.getProfileName()! + " just chained your photo";
+        originalChain.fetchIfNeededInBackgroundWithBlock { (chain, error) -> Void in
+            if let c = chain as? PQChain {
+                var query = AVInstallation.query();
+                query.whereKey("userId", equalTo: c.user?.objectId);
+                PQ.sendPushWithCallBack(query, message: message) { (success, error) -> Void in
+                    var push = PQPush(message: message, user: c.user!);
+                    push.saveInBackground();
+                }
+            } else {
+                NSLog("Chain Push not sent.");
+            }
+        }
     }
     
     func likePhoto(photo: PQPhoto, like: Bool) {
@@ -178,11 +192,30 @@ public class PQUser : AVUser, AVSubclassing {
             relation.removeObject(photo);
         }
         self.saveInBackground();
+        
         // Send a notification to the owner;
-//        var message = self.getProfileName()! + " just liked your " + product.getName()!;
-//        var query = AVInstallation.query();
-//        query.whereKey("userId", equalTo: product.getSeller()!.objectId);
-//        Shelf.sendPush(query, message: message);
+        if (like) {
+            var message = self.getProfileName()! + " just liked your photo";
+            photo.fetchIfNeededInBackgroundWithBlock { (photo, error) -> Void in
+                if let p = photo as? PQPhoto {
+                    
+                    var query = AVInstallation.query();
+                    query.whereKey("userId", equalTo: p.user?.objectId);
+                    
+                    PQ.sendPushWithCallBack(query, message: message, callback: { (success, error) -> Void in
+                        if let e = error {
+                            NSLog("Error sending push");
+                        } else {
+                            var push = PQPush(message: message, user: p.user!);
+                            push.saveInBackground();
+                        }
+                    });
+                    
+                } else {
+                    NSLog("Like Push not sent.");
+                }
+            }
+        }
     }
 
     func likePhotoWithBlock(photo: PQPhoto, like: Bool, block: (liked: Bool, error: NSError?) -> ()) {
@@ -196,11 +229,30 @@ public class PQUser : AVUser, AVSubclassing {
         self.saveInBackgroundWithBlock { (succeed, error) -> Void in
             block(liked: like, error: error);
         }
+        
         // Send a notification to the owner;
-//        var message = self.getProfileName()! + " just liked your " + product.getName()!;
-//        var query = AVInstallation.query();
-//        query.whereKey("userId", equalTo: product.getSeller()!.objectId);
-//        Shelf.sendPush(query, message: message);
+        if (like) {
+            var message = self.getProfileName()! + " just liked your photo";
+            photo.fetchIfNeededInBackgroundWithBlock { (photo, error) -> Void in
+                if let p = photo as? PQPhoto {
+                    
+                    var query = AVInstallation.query();
+                    query.whereKey("userId", equalTo: p.user?.objectId);
+                    
+                    PQ.sendPushWithCallBack(query, message: message, callback: { (success, error) -> Void in
+                        if let e = error {
+                            NSLog("Error sending push");
+                        } else {
+                            var push = PQPush(message: message, user: p.user!);
+                            push.saveInBackground();
+                        }
+                    });
+                    
+                } else {
+                    NSLog("Like Push not sent.");
+                }
+            }
+        }
     }
     
 //    func getAddressWithCallBack(callback: (address :SHAddress?, error: NSError?) -> ()) {

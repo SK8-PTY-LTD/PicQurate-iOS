@@ -74,7 +74,6 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     
     func reloadData() {
         if (self.chainArray.count > 0) {
-            NSLog(self.chainArray.last!.objectId!);
             self.imageView.file = self.chainArray.last?.photo!.file!;
             self.imageView.loadInBackground();
         }
@@ -89,11 +88,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func chainButtonClicked(sender: UIButton) {
         var chain = self.chainArray.last!
         PQ.currentUser.chainPhotoWithBlock(chain, block: { (success, error) -> () in
-            var query = PQUser.query();
-            query.whereKey("userId", equalTo: chain.user?.objectId);
-            PQ.sendPushWithCallBack(query, message: "\(PQ.currentUser.profileName) just chained your photo! " , callback: { (success, error) -> Void in
-                //Send push callback
-            })
+            
         });
         self.scrollView.scrollRectToVisible(CGRectMake(0, 0, self.view.frame.width, self.view.frame.width), animated: true);
         self.dismissImage();
@@ -114,12 +109,12 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
             self.indicatorImageView.image = UIImage(named: "icon_chain");
         }
         if (self.scrollView.contentOffset.x == 0) {
-            self.dismissImage();
-        } else if (self.scrollView.contentOffset.x == self.view.frame.width * 2) {
-            PQ.currentUser.chainPhotoWithBlock(self.chainArray.last!, block: { (success, error) -> () in
+            var chain = self.chainArray.last!
+            PQ.currentUser.chainPhotoWithBlock(chain, block: { (success, error) -> () in
                 
             });
-            NSLog("Dismissed");
+            self.dismissImage();
+        } else if (self.scrollView.contentOffset.x == self.view.frame.width * 2) {
             self.dismissImage();
         }
     }

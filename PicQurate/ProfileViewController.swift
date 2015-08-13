@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var flowLayout: CSStickyHeaderFlowLayout!
     var headerView: ProfileHeaderCollectionReusableView!
     
-    var user: PQUser?
+    var user: PQUser?;
     var imageArray: [PQPhoto] = [PQPhoto]();
     var column: Int = 1;
     

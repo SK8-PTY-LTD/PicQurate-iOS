@@ -11,7 +11,9 @@ import Foundation
 class PQPhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: AVImageView!
-    @IBOutlet weak var profileImageView: AVImageView!
+    @IBOutlet weak var profileImageView: AVImageView?
+    @IBOutlet weak var profileNameButton: UIButton?
+    @IBOutlet weak var topLikeButton: UIButton?
     @IBOutlet weak var likeButton: UIButton?
     @IBOutlet weak var chainButton: UIButton?
     @IBOutlet weak var locationButton: UIButton?
@@ -28,8 +30,22 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
             if let imageView = profileImageView {
                 NSLog("ImageView exists");
                 imageView.file = image;
-                
+                imageView.loadInBackground();
             }
+        }
+        if let label = profileNameButton {
+            label.setTitle(self.photo.user?.profileName, forState: .Normal);
+        }
+        if let button = topLikeButton {
+            PQ.currentUser.hasLikedPhotoithCallback(photo, callback: { (liked, error) -> () in
+                if (liked) {
+                    self.topLikeButton?.setBackgroundImage(UIImage(named: "like-icon-1"), forState: .Normal);
+                    self.likeButton?.setImage(UIImage(named: "like-icon-1"), forState: .Normal);
+                } else {
+                    self.topLikeButton?.setBackgroundImage(UIImage(named: "icon_like_1"), forState: .Normal);
+                    self.likeButton?.setImage(UIImage(named: "like-icon"), forState: .Normal);
+                }
+            });
         }
         
         if (self.cachedPhoto?.objectId == self.photo?.objectId) {

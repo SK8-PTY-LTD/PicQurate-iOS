@@ -181,6 +181,7 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         PQUser.registerSubclass();
         PQChain.registerSubclass();
         PQPhoto.registerSubclass();
+        PQPush.registerSubclass();
         
         AVOSCloud.useAVCloudUS();
         AVOSCloud.setApplicationId(PQ.Static.AV_APP_ID, clientKey: PQ.Static.AV_APP_KEY);
@@ -291,9 +292,6 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         notification.setQuery(query);
         notification.setMessage(message);
         notification.sendPushInBackgroundWithBlock(callback);
-        
-        var push = PQPush(message: message, user: PQ.currentUser);
-        push.saveInBackground();
     }
     
     func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {

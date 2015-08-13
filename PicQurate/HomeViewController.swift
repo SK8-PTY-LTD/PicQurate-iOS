@@ -10,6 +10,8 @@ import Foundation
 
 class HomeViewController: ViewPagerController, ViewPagerDelegate, ViewPagerDataSource {
     
+    @IBOutlet weak var genderButton: UIBarButtonItem!
+    
     var controller: HomeDetailViewController!;
     var gender: Bool = false;
     
@@ -77,10 +79,19 @@ class HomeViewController: ViewPagerController, ViewPagerDelegate, ViewPagerDataS
         }
     }
     
+    func viewPager(viewPager: ViewPagerController!, didChangeTabToIndex index: UInt) {
+        self.controller.displayMode = Int(index);
+    }
+    
     @IBAction func genderButtonClicked(sender: UIBarItem) {
         self.gender = !self.gender;
         self.controller.gender = !self.controller.gender;
         self.controller.reloadPhoto();
+        if (self.genderButton.image == UIImage(named: "icon-male")) {
+            self.genderButton.image = UIImage(named: "icon-female");
+        } else {
+            self.genderButton.image = UIImage(named: "icon-male");
+        }
     }
 }
 
@@ -156,10 +167,14 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func displayPhotoByDay() {
-        self.displayMode = 1;
+        NSLog("callllll");
+        self.displayMode = 9;
         var query = PQChain.query();
         query.orderByAscending("createdAt");
-        var yesterday = NSDate().dateByAddingTimeInterval(-86400.0);
+        var yesterday = NSDate().dateByAddingTimeInterval(-2 * 24 * 60 * 60);
+        NSLog("\(NSDate())");
+        NSLog("\(yesterday)");
+        
         query.whereKey("createdAt", greaterThan: yesterday);
         query.limit = 10;
         query.includeKey("photo.file");
@@ -175,6 +190,7 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
                 if let a = array as? [PQChain] {
                     self.chainArray1 = a;
                     self.collectionView.reloadData();
+                    NSLog("Called \(a.count)");
                     if (self.chainArray1.count > 0) {
                         self.headerView.imageView.file = self.chainArray1[0].photo?.file;
                         self.headerView.imageView.loadInBackground();
@@ -189,11 +205,12 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func displayPhotoByLocation() {
-        self.displayMode = 2;
+        NSLog("Lalala");
+        self.displayMode = 1;
         var query = PQChain.query();
-        query.whereKey("photo.user.gender", equalTo: self.gender);
+//        query.whereKey("photo.user.gender", equalTo: self.gender);
         query.orderByDescending("createdAt");
-        query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 100.0);
+        query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 10.0);
         query.limit = 10;
         query.includeKey("photo.file");
         if (self.gender) {

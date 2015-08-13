@@ -39,6 +39,7 @@
 		3C9B148B1AF4905C00BA5CB0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C84E6BC1AE9D0880056C1B8 /* CFNetwork.framework */; };
 		3C9B148F1AF4D46D00BA5CB0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B148E1AF4D46D00BA5CB0 /* EditProfileViewController.swift */; };
 		3C9B14911AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */; };
+		3C9C822E1B77BDD20076FA06 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9C822D1B77BDD20076FA06 /* NewsViewController.swift */; };
 		3CA0F1681AEBDA8800CBFBE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CA0F08C1AEBDA8800CBFBE8 /* Assets.xcassets */; };
 		3CA0F1691AEBDA8800CBFBE8 /* CIFilterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA0F08E1AEBDA8800CBFBE8 /* CIFilterExtension.swift */; };
 		3CA0F16A1AEBDA8800CBFBE8 /* IMGLYA15Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA0F08F1AEBDA8800CBFBE8 /* IMGLYA15Filter.swift */; };
@@ -272,6 +273,8 @@
 		3CBF211A1AEB16370000B9A3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF21191AEB16370000B9A3 /* CameraViewController.swift */; };
 		3CE2E3881AFF1D86000BBE20 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */; };
 		3CEE1AC71AF3A141005600D6 /* PQPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */; };
+		3CFCA34F1B7C00C200E6F7FC /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */; };
+		3CFCA3511B7C00C500E6F7FC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFCA3501B7C00C500E6F7FC /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -330,6 +333,7 @@
 		3C9B148C1AF4A99500BA5CB0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3C9B148E1AF4D46D00BA5CB0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		3C9B14901AF4F9B900BA5CB0 /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
+		3C9C822D1B77BDD20076FA06 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		3CA0F08C1AEBDA8800CBFBE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CA0F08E1AEBDA8800CBFBE8 /* CIFilterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIFilterExtension.swift; sourceTree = "<group>"; };
 		3CA0F08F1AEBDA8800CBFBE8 /* IMGLYA15Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMGLYA15Filter.swift; sourceTree = "<group>"; };
@@ -567,6 +571,9 @@
 		3CBF21191AEB16370000B9A3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQPhoto.swift; path = objects/PQPhoto.swift; sourceTree = "<group>"; };
+		3CFCA34D1B7C007100E6F7FC /* PicQurate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PicQurate.entitlements; sourceTree = "<group>"; };
+		3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		3CFCA3501B7C00C500E6F7FC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -574,8 +581,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CFCA34F1B7C00C200E6F7FC /* GameKit.framework in Frameworks */,
 				3C87F8041AE8C91300C9E172 /* CoreLocation.framework in Frameworks */,
 				3C9B148B1AF4905C00BA5CB0 /* CFNetwork.framework in Frameworks */,
+				3CFCA3511B7C00C500E6F7FC /* StoreKit.framework in Frameworks */,
 				3C87F8021AE8C90E00C9E172 /* CoreTelephony.framework in Frameworks */,
 				3C87F8001AE8C90800C9E172 /* MobileCoreServices.framework in Frameworks */,
 				3C87F7FF1AE8C90300C9E172 /* SystemConfiguration.framework in Frameworks */,
@@ -593,6 +602,8 @@
 		3C4D19111AE0D6C100613CAB = {
 			isa = PBXGroup;
 			children = (
+				3CFCA3501B7C00C500E6F7FC /* StoreKit.framework */,
+				3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */,
 				3C4D191C1AE0D6C100613CAB /* PicQurate */,
 				3C4D19321AE0D6C100613CAB /* PicQurateTests */,
 				3C4D191B1AE0D6C100613CAB /* Products */,
@@ -610,6 +621,7 @@
 		3C4D191C1AE0D6C100613CAB /* PicQurate */ = {
 			isa = PBXGroup;
 			children = (
+				3CFCA34D1B7C007100E6F7FC /* PicQurate.entitlements */,
 				3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */,
 				3C87F7F91AE8C42100C9E172 /* PQ.swift */,
 				3C93635A1AF86F0C001C3EE0 /* View */,
@@ -704,6 +716,7 @@
 		3C87F7FB1AE8C42600C9E172 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3C9C822D1B77BDD20076FA06 /* NewsViewController.swift */,
 				3C4D19211AE0D6C100613CAB /* LandingViewController.swift */,
 				3C5692321AE9FFD6006FA95D /* LoginViewController.swift */,
 				3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */,
@@ -1065,6 +1078,17 @@
 					3C4D19191AE0D6C100613CAB = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = YJE74QXLCC;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1300,6 +1324,7 @@
 				3CA0F16E1AEBDA8800CBFBE8 /* IMGLYBleachedFilter.swift in Sources */,
 				3C5692351AEA0720006FA95D /* HomeViewController.swift in Sources */,
 				3CA0F1751AEBDA8800CBFBE8 /* IMGLYBWFilter.swift in Sources */,
+				3C9C822E1B77BDD20076FA06 /* NewsViewController.swift in Sources */,
 				3CA0F1D51AEBDA8800CBFBE8 /* IMGLYTextDialogView.swift in Sources */,
 				3CA0F1861AEBDA8800CBFBE8 /* IMGLYCropDialogView.swift in Sources */,
 				3CA0F1CA1AEBDA8800CBFBE8 /* IMGLYStickerCollectionViewCell.swift in Sources */,
@@ -1468,7 +1493,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SK8 PTY LTD (YJE74QXLCC)";
+				CODE_SIGN_ENTITLEMENTS = PicQurate/PicQurate.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1481,7 +1507,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1492,7 +1518,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SK8 PTY LTD (YJE74QXLCC)";
+				CODE_SIGN_ENTITLEMENTS = PicQurate/PicQurate.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1505,7 +1532,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 			};
 			name = Release;
