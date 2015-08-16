@@ -30,8 +30,6 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.width);
         self.scrollView.contentSize = CGSizeMake(self.view.frame.width * 3, self.view.frame.width);
         
-//        var leftImageView = UIImageView
-        
         self.indicatorImageView.center.y = self.scrollView.center.y;
         self.indicatorImageView.image = UIImage(named: "icon_chain");
         self.view.addSubview(self.indicatorImageView);
@@ -45,14 +43,23 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     
     func downloadChains() {
         var query = PQChain.query();
+        
         query.limit = 10;
+        query.orderByDescending("createdAt");
         query.includeKey("photo.file");
-        //        query.whereKey("user", notEqualTo: PQ.currentUser);
+//        query.whereKey("user", notEqualTo: PQ.currentUser);
+//        query.whereKey("original.user", notEqualTo: PQ.currentUser);
+//        query.whereKey("original.original.user", notEqualTo: PQ.currentUser);
+//        query.whereKey("original.original.original.user", notEqualTo: PQ.currentUser);
+//        query.whereKey("original.original.original.original.user", notEqualTo: PQ.currentUser);
+        query.skip = 0 + Int(arc4random_uniform(UInt32(100 - 0 + 1)));
+        NSLog("Skipped \(query.skip) chains");
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
             } else {
                 if let a = array as? [PQChain] {
+                    NSLog("Chain downloaded: \(a.count)");
                     self.chainArray = a;
                 }
                 self.reloadData();
@@ -82,16 +89,11 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func dismissButtonClicked(sender: UIButton) {
         self.scrollView.scrollRectToVisible(CGRectMake(self.view.frame.width * 2, 0, self.view.frame.width, self.view.frame.width), animated: true);
-        self.dismissImage();
     }
     
     @IBAction func chainButtonClicked(sender: UIButton) {
         var chain = self.chainArray.last!
-        PQ.currentUser.chainPhotoWithBlock(chain, block: { (success, error) -> () in
-            
-        });
         self.scrollView.scrollRectToVisible(CGRectMake(0, 0, self.view.frame.width, self.view.frame.width), animated: true);
-        self.dismissImage();
     }
     
     //ScrollView delegate methods
@@ -109,9 +111,9 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
             self.indicatorImageView.image = UIImage(named: "icon_chain");
         }
         if (self.scrollView.contentOffset.x == 0) {
+            NSLog("Test");
             var chain = self.chainArray.last!
             PQ.currentUser.chainPhotoWithBlock(chain, block: { (success, error) -> () in
-                
             });
             self.dismissImage();
         } else if (self.scrollView.contentOffset.x == self.view.frame.width * 2) {

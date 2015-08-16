@@ -26,9 +26,7 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
         
         self.photo = photo;
         if let image = self.photo.user?.profileImage {
-            NSLog("Image exists");
             if let imageView = profileImageView {
-                NSLog("ImageView exists");
                 imageView.file = image;
                 imageView.loadInBackground();
             }

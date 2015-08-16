@@ -26,11 +26,14 @@ class PQPush : AVObject, AVSubclassing {
         self.objectId = pushId;
     }
     
-    init(message: String, user: PQUser) {
+    init(message: String, user: PQUser, photo: PQPhoto?) {
         super.init();
         self.sender = PQ.currentUser;
         self.user = user;
         self.message = message;
+        if (photo != nil){
+            self.photo = photo!
+        }
     }
     
     // ================================================================================
@@ -50,6 +53,7 @@ class PQPush : AVObject, AVSubclassing {
     @NSManaged var user: PQUser!
     @NSManaged var sender: PQUser!
     @NSManaged var message: String!
+    @NSManaged var photo: PQPhoto?
     
     // ================================================================================
     // Export class

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WJQ-dO-acF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WJQ-dO-acF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -295,153 +295,9 @@
                         <viewControllerLayoutGuide type="bottom" id="IOW-eQ-Ftp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lKN-6f-Ngl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-bn-W33">
-                                <rect key="frame" x="0.0" y="113" width="600" height="551"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="Der-ka-La6" customClass="CSStickyHeaderFlowLayout">
-                                    <size key="itemSize" width="300" height="360"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="COJ-CD-Rea" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="119" width="300" height="360"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vHV-ZU-hY6" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-                                                    </variation>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="vHV-ZU-hY6" firstAttribute="top" secondItem="COJ-CD-Rea" secondAttribute="topMargin" constant="-8" id="EAh-DD-rPI"/>
-                                            <constraint firstItem="vHV-ZU-hY6" firstAttribute="leading" secondItem="COJ-CD-Rea" secondAttribute="leadingMargin" constant="-8" id="O5q-8S-HH7"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="vHV-ZU-hY6" secondAttribute="trailing" constant="-8" id="Qms-he-kjM"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="vHV-ZU-hY6" secondAttribute="bottom" constant="-8" id="sKf-hX-2Jb"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="imageView" destination="vHV-ZU-hY6" id="gjA-Lj-xEh"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileViewCell" id="qem-Zk-Vat" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="300" y="119" width="300" height="360"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EEy-ax-87f" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="EEy-ax-87f" secondAttribute="height" multiplier="1:1" id="Wfg-Ma-m30"/>
-                                                    </constraints>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-                                                    </variation>
-                                                </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pR-iz-ytX">
-                                                    <rect key="frame" x="8" y="300" width="98" height="22"/>
-                                                    <state key="normal" title="0" image="like-icon">
-                                                        <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbu-Xj-hhp">
-                                                    <rect key="frame" x="106" y="300" width="97" height="22"/>
-                                                    <state key="normal" title="0" image="icon_chain_0">
-                                                        <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhE-Hu-aLX">
-                                                    <rect key="frame" x="203" y="300" width="98" height="22"/>
-                                                    <state key="normal" title="0" image="location-icon">
-                                                        <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-message" translatesAutoresizingMaskIntoConstraints="NO" id="caR-Eb-b52" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="330" width="21" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="2Y5-JT-Y38"/>
-                                                        <constraint firstAttribute="width" constant="21" id="ate-zX-v2r"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVk-QZ-LSa">
-                                                    <rect key="frame" x="29" y="322" width="263" height="72"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="72" id="WhW-kP-6ln"/>
-                                                    </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="jhE-Hu-aLX" secondAttribute="trailing" constant="-8" id="0E5-hW-5cU"/>
-                                            <constraint firstAttribute="trailing" secondItem="EEy-ax-87f" secondAttribute="trailing" id="AaO-80-CrV"/>
-                                            <constraint firstItem="gbu-Xj-hhp" firstAttribute="width" secondItem="1pR-iz-ytX" secondAttribute="width" id="BLe-Gb-phP"/>
-                                            <constraint firstItem="caR-Eb-b52" firstAttribute="leading" secondItem="qem-Zk-Vat" secondAttribute="leadingMargin" id="CVS-Os-eST"/>
-                                            <constraint firstItem="gbu-Xj-hhp" firstAttribute="leading" secondItem="1pR-iz-ytX" secondAttribute="trailing" id="DWk-NC-GQF"/>
-                                            <constraint firstItem="caR-Eb-b52" firstAttribute="top" secondItem="1pR-iz-ytX" secondAttribute="bottom" constant="8" id="Eyk-Fh-Ur1"/>
-                                            <constraint firstItem="NVk-QZ-LSa" firstAttribute="leading" secondItem="caR-Eb-b52" secondAttribute="trailing" id="JdL-bJ-bvk"/>
-                                            <constraint firstItem="jhE-Hu-aLX" firstAttribute="leading" secondItem="gbu-Xj-hhp" secondAttribute="trailing" id="PRi-LB-TSH"/>
-                                            <constraint firstItem="EEy-ax-87f" firstAttribute="top" secondItem="qem-Zk-Vat" secondAttribute="top" id="PtT-dl-3Jz"/>
-                                            <constraint firstItem="EEy-ax-87f" firstAttribute="leading" secondItem="qem-Zk-Vat" secondAttribute="leading" id="RW9-0H-5yA"/>
-                                            <constraint firstItem="caR-Eb-b52" firstAttribute="top" secondItem="NVk-QZ-LSa" secondAttribute="top" constant="8" id="YKq-fP-Fad"/>
-                                            <constraint firstItem="1pR-iz-ytX" firstAttribute="top" secondItem="EEy-ax-87f" secondAttribute="bottom" id="akW-sn-ZJA"/>
-                                            <constraint firstItem="NVk-QZ-LSa" firstAttribute="trailing" secondItem="qem-Zk-Vat" secondAttribute="trailingMargin" id="fdh-wj-CWX"/>
-                                            <constraint firstItem="gbu-Xj-hhp" firstAttribute="centerY" secondItem="jhE-Hu-aLX" secondAttribute="centerY" id="i8q-JN-KSy"/>
-                                            <constraint firstItem="gbu-Xj-hhp" firstAttribute="centerY" secondItem="1pR-iz-ytX" secondAttribute="centerY" id="lWy-zU-CtJ"/>
-                                            <constraint firstItem="gbu-Xj-hhp" firstAttribute="width" secondItem="jhE-Hu-aLX" secondAttribute="width" id="vA3-0d-rmm"/>
-                                            <constraint firstItem="1pR-iz-ytX" firstAttribute="leading" secondItem="qem-Zk-Vat" secondAttribute="leadingMargin" id="y2O-io-IAi"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="captionTextView" destination="NVk-QZ-LSa" id="KbW-9L-6OR"/>
-                                            <outlet property="chainButton" destination="gbu-Xj-hhp" id="zbZ-Ab-uMP"/>
-                                            <outlet property="imageView" destination="EEy-ax-87f" id="n96-Su-0b8"/>
-                                            <outlet property="likeButton" destination="1pR-iz-ytX" id="qoI-OM-01T"/>
-                                            <outlet property="locationButton" destination="jhE-Hu-aLX" id="oWP-Hq-etk"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="xUg-Bg-e0s" id="zcR-cq-znL"/>
-                                    <outlet property="delegate" destination="xUg-Bg-e0s" id="KPC-PT-X0H"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="5TI-bn-W33" secondAttribute="bottom" id="2aQ-t3-VMO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5TI-bn-W33" secondAttribute="trailing" constant="-16" id="FWu-ZN-CzS"/>
-                            <constraint firstItem="5TI-bn-W33" firstAttribute="leading" secondItem="lKN-6f-Ngl" secondAttribute="leadingMargin" constant="-16" id="JVX-Wm-oQh"/>
-                            <constraint firstItem="5TI-bn-W33" firstAttribute="leading" secondItem="lKN-6f-Ngl" secondAttribute="leading" id="YxU-8H-92b"/>
-                            <constraint firstAttribute="trailing" secondItem="5TI-bn-W33" secondAttribute="trailing" id="jDJ-Rm-rx0"/>
-                            <constraint firstItem="5TI-bn-W33" firstAttribute="top" secondItem="IKU-TX-ikL" secondAttribute="bottom" id="lbW-KB-JMr"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="FWu-ZN-CzS"/>
-                                <exclude reference="JVX-Wm-oQh"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="mpf-TY-iAE">
                         <nil key="title"/>
@@ -492,7 +348,6 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="Jnw-ng-EKU" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="300" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
@@ -519,7 +374,6 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileViewCell" id="Z8q-ki-YH5" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="300" y="64" width="300" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
@@ -562,21 +416,21 @@
                                                         <constraint firstAttribute="trailing" secondItem="qCg-4V-6ZS" secondAttribute="trailing" constant="8" id="xk7-0e-qBX"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-l4-EGb">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-l4-EGb">
                                                     <rect key="frame" x="8" y="362" width="98" height="22"/>
                                                     <state key="normal" title="0" image="like-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-Qd-Rg3">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-Qd-Rg3">
                                                     <rect key="frame" x="106" y="362" width="97" height="22"/>
                                                     <state key="normal" title="0" image="chain-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIa-KY-3Z2">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIa-KY-3Z2">
                                                     <rect key="frame" x="203" y="362" width="98" height="22"/>
                                                     <state key="normal" title="0" image="location-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -652,59 +506,50 @@
                                             <outlet property="topLikeButton" destination="qCg-4V-6ZS" id="yaq-vf-2nD"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="activityViewCell" id="4A1-lv-Ykh" customClass="PQActivityCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="424" width="300" height="78"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="activityViewCell" id="4A1-lv-Ykh" customClass="PQActivityCollectionViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="78"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8be-q3-f7Q" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="19" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="3yj-K6-K1p"/>
-                                                        <constraint firstAttribute="width" constant="40" id="qcQ-vl-jH4"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tch-Pd-miG">
-                                                    <rect key="frame" x="92" y="31" width="155" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aGA-dj-utA" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                                    <rect key="frame" x="252" y="19" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="DCB-oh-F4b"/>
-                                                        <constraint firstAttribute="width" constant="40" id="Flc-uP-uxU"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-Am-uAo">
-                                                    <rect key="frame" x="49" y="26" width="38" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-Am-uAo">
+                                                    <rect key="frame" x="72" y="17" width="46" height="30"/>
                                                     <state key="normal" title="Button">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aGA-dj-utA" customClass="AVImageView">
+                                                    <rect key="frame" x="242" y="8" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="CZ0-Gd-TRM"/>
+                                                        <constraint firstAttribute="height" constant="50" id="kh0-1b-pYa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8be-q3-f7Q" customClass="AVImageView">
+                                                    <rect key="frame" x="8" y="8" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="AjG-OO-UAM"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="fkV-Q4-WUW"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tch-Pd-miG">
+                                                    <rect key="frame" x="133" y="22" width="105" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="tch-Pd-miG" firstAttribute="leading" secondItem="kSw-Am-uAo" secondAttribute="trailing" constant="5" id="1Qn-b9-3nS"/>
-                                            <constraint firstAttribute="centerY" secondItem="aGA-dj-utA" secondAttribute="centerY" id="AMc-ww-x4L"/>
-                                            <constraint firstAttribute="centerY" secondItem="tch-Pd-miG" secondAttribute="centerY" id="BL7-BL-Iuo"/>
-                                            <constraint firstItem="aGA-dj-utA" firstAttribute="trailing" secondItem="4A1-lv-Ykh" secondAttribute="trailingMargin" id="Cz6-ce-2eE"/>
-                                            <constraint firstAttribute="centerY" secondItem="kSw-Am-uAo" secondAttribute="centerY" id="S14-1c-3lt"/>
-                                            <constraint firstItem="8be-q3-f7Q" firstAttribute="leading" secondItem="4A1-lv-Ykh" secondAttribute="leadingMargin" id="Uy6-6Q-sG0"/>
-                                            <constraint firstAttribute="centerY" secondItem="8be-q3-f7Q" secondAttribute="centerY" id="ek8-u5-CIO"/>
-                                            <constraint firstItem="kSw-Am-uAo" firstAttribute="leading" secondItem="8be-q3-f7Q" secondAttribute="trailing" constant="1" id="ng5-on-tFp"/>
-                                            <constraint firstItem="aGA-dj-utA" firstAttribute="leading" secondItem="tch-Pd-miG" secondAttribute="trailing" constant="5" id="t6M-gT-oqi"/>
+                                            <constraint firstItem="8be-q3-f7Q" firstAttribute="top" secondItem="4A1-lv-Ykh" secondAttribute="topMargin" id="0ic-NS-q5H"/>
+                                            <constraint firstItem="aGA-dj-utA" firstAttribute="trailing" secondItem="4A1-lv-Ykh" secondAttribute="trailingMargin" id="Fbm-lR-QyH"/>
+                                            <constraint firstItem="aGA-dj-utA" firstAttribute="top" secondItem="4A1-lv-Ykh" secondAttribute="topMargin" id="ow7-lY-Svm"/>
+                                            <constraint firstItem="8be-q3-f7Q" firstAttribute="leading" secondItem="4A1-lv-Ykh" secondAttribute="leadingMargin" id="z9o-Lo-47C"/>
                                         </constraints>
-                                        <size key="customSize" width="300" height="78"/>
                                         <connections>
-                                            <outlet property="photoImageView" destination="aGA-dj-utA" id="RpJ-wp-6ma"/>
                                             <outlet property="profileActionLabel" destination="tch-Pd-miG" id="ZRs-dU-kbz"/>
+                                            <outlet property="profileImageShow" destination="aGA-dj-utA" id="ss4-Hg-jbo"/>
                                             <outlet property="profileImageView" destination="8be-q3-f7Q" id="Tpe-Ke-tbH"/>
                                             <outlet property="profileNameButton" destination="kSw-Am-uAo" id="y86-UF-ajD"/>
                                         </connections>
@@ -818,7 +663,6 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="3Lh-Zf-rLR" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -880,14 +724,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LEj-Q0-Yv3" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LEj-Q0-Yv3" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="118" width="600" height="600"/>
-                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LEj-Q0-Yv3" secondAttribute="height" id="2hO-Af-v7g"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-qn-vCm">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-qn-vCm">
                                 <rect key="frame" x="16" y="727" width="190" height="22"/>
                                 <state key="normal" title="0" image="like-icon">
                                     <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -900,9 +743,9 @@
                                     <action selector="likeButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="L2s-jG-nfE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-qV-2bJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-qV-2bJ">
                                 <rect key="frame" x="205" y="726" width="190" height="24"/>
-                                <state key="normal" title="0" image="icon_chain_0">
+                                <state key="normal" title="0" image="icon_chian_0">
                                     <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -910,7 +753,7 @@
                                     <action selector="chainButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="ETW-bX-x6x"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOS-hT-pbA">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOS-hT-pbA">
                                 <rect key="frame" x="395" y="727" width="190" height="22"/>
                                 <state key="normal" title="0" image="icon_location">
                                     <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -920,7 +763,7 @@
                                     <action selector="locationButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="Hsy-bu-n5U"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-message" translatesAutoresizingMaskIntoConstraints="NO" id="hn7-51-hx5" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hn7-51-hx5" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                 <rect key="frame" x="16" y="766" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5Dx-im-Sx4"/>
@@ -1014,6 +857,7 @@
                         <outlet property="locationButton" destination="BOS-hT-pbA" id="d2U-Wp-8Yt"/>
                         <outlet property="photoImageView" destination="LEj-Q0-Yv3" id="sCB-Db-Ccl"/>
                         <outlet property="profileImageView" destination="bc6-UB-cAe" id="i7R-Fc-Nbc"/>
+                        <outlet property="profileImageView1" destination="hn7-51-hx5" id="MoQ-Xx-SDG"/>
                         <outlet property="profileNameButton" destination="XiJ-Th-QjJ" id="u7J-QB-YA6"/>
                         <outlet property="topLikeButton" destination="RgD-9n-E1T" id="u9y-AL-v18"/>
                         <segue destination="ZZy-Ue-Q0G" kind="show" identifier="segueToLikedUser" id="g0u-Mo-Vtm"/>
@@ -1024,10 +868,10 @@
             </objects>
             <point key="canvasLocation" x="4269" y="-244"/>
         </scene>
-        <!--Map View Controller-->
+        <!--View Controller-->
         <scene sceneID="iFq-Ca-Tdw">
             <objects>
-                <viewController id="Idb-p5-jdr" customClass="MapViewController" customModule="PicQurate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Idb-p5-jdr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="06j-7N-qJW"/>
                         <viewControllerLayoutGuide type="bottom" id="k2c-GP-v1X"/>
@@ -1036,24 +880,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kFe-5I-gOu">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kFe-5I-gOu">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Idb-p5-jdr" id="0Ov-FE-psn"/>
-                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="kFe-5I-gOu" secondAttribute="bottom" id="qIr-qg-gUJ"/>
-                            <constraint firstItem="kFe-5I-gOu" firstAttribute="top" secondItem="v1S-Og-QVs" secondAttribute="top" id="vek-DK-tLc"/>
-                            <constraint firstItem="kFe-5I-gOu" firstAttribute="leading" secondItem="v1S-Og-QVs" secondAttribute="leading" id="wMd-x8-0F1"/>
-                            <constraint firstAttribute="trailing" secondItem="kFe-5I-gOu" secondAttribute="trailing" id="yyv-In-5bF"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="mapView" destination="kFe-5I-gOu" id="iDP-81-sxy"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AF-Go-giP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1082,7 +914,6 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="xbS-ZA-nZO" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -1155,7 +986,6 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="b54-bH-LaG" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -1248,7 +1078,7 @@
                         <viewControllerLayoutGuide type="bottom" id="yzp-EK-LwI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6Xx-dh-00s">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mNo-Fi-TtK">
@@ -1262,7 +1092,6 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="qPM-yd-HSm" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="119" width="300" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
@@ -1289,7 +1118,6 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileViewCell" id="lhh-9U-1if" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="300" y="119" width="300" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
@@ -1305,7 +1133,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-OD-G7v">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-OD-G7v">
                                                     <rect key="frame" x="8" y="300" width="98" height="22"/>
                                                     <state key="normal" title="0" image="like-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -1314,12 +1142,12 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJo-Cl-chd">
                                                     <rect key="frame" x="106" y="300" width="97" height="22"/>
-                                                    <state key="normal" title="0" image="icon_chain_0">
+                                                    <state key="normal" title="0" image="chain-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-4N-1uZ">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-4N-1uZ">
                                                     <rect key="frame" x="203" y="300" width="98" height="22"/>
                                                     <state key="normal" title="0" image="location-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -1375,7 +1203,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sectionHeader" id="BTZ-Sb-L4y" customClass="ProfileCollectionViewSegmentCell" customModule="PicQurate" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="64" width="600" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bt7-Z8-gIA">
@@ -1396,7 +1224,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQz-Ca-SqL">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQz-Ca-SqL">
                                             <rect key="frame" x="38" y="10" width="31" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1434,7 +1262,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPI-q8-KJa">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPI-q8-KJa">
                                             <rect key="frame" x="274" y="3" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="28" id="DYI-s1-iwJ"/>
@@ -1444,7 +1272,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvR-Sd-AHc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvR-Sd-AHc">
                                             <rect key="frame" x="306" y="3" width="11" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1477,7 +1305,7 @@
                                                 <constraint firstAttribute="width" constant="1" id="S6m-sm-wdA"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biK-As-zqw">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biK-As-zqw">
                                             <rect key="frame" x="203" y="33" width="195" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="61l-gU-Fuh"/>
@@ -1490,14 +1318,14 @@
                                                 <action selector="segmentTwoSelected:" destination="BTZ-Sb-L4y" eventType="touchUpInside" id="v2A-qX-wxb"/>
                                             </connections>
                                         </button>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXO-7G-eYq">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HXO-7G-eYq">
                                             <rect key="frame" x="397" y="33" width="1" height="22"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="1" id="LtS-0J-72H"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcF-Ox-3t8">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcF-Ox-3t8">
                                             <rect key="frame" x="398" y="33" width="195" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="OF8-Sk-6XW"/>
@@ -1768,7 +1596,6 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="Coe-8h-Eiw" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="100" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -1872,10 +1699,8 @@
                                 <color key="sectionIndexBackgroundColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userCell" id="w4Y-Fv-2u9" customClass="UserTableViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="86" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w4Y-Fv-2u9" id="WIQ-dL-oY3">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KN4-rd-7Qm">
@@ -2032,10 +1857,8 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditProfileTableViewTextFieldCell" id="XLU-6h-n5u" customClass="EditProfileTableViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="124" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XLU-6h-n5u" id="V3D-9f-hpu">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="32q-MY-8DF">
@@ -2046,7 +1869,7 @@
                                                         <constraint firstAttribute="width" constant="28" id="iLj-Tc-ezS"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KQ1-LD-zrm">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KQ1-LD-zrm">
                                                     <rect key="frame" x="56" y="-1" width="536" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="ilu-Bp-R3p"/>
@@ -2068,10 +1891,8 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditProfileTableViewButtonCell" id="upT-Pe-4rm" customClass="EditProfileTableViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="156" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="upT-Pe-4rm" id="Qwn-av-uSp">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cIP-cu-6XG">
@@ -2109,10 +1930,8 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditProfileTableViewTextViewCell" id="Gg2-Ui-MqI" customClass="EditProfileTableViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="188" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gg2-Ui-MqI" id="bw0-Uv-YWD">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6E-qh-rPi">
@@ -2479,6 +2298,7 @@
         <image name="icon-message" width="25" height="24"/>
         <image name="icon_chain" width="64" height="64"/>
         <image name="icon_chain_0" width="25" height="24"/>
+        <image name="icon_chian_0" width="25" height="24"/>
         <image name="icon_clock_1" width="24" height="24"/>
         <image name="icon_dismiss" width="64" height="64"/>
         <image name="icon_like_0" width="26" height="23"/>

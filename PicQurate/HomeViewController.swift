@@ -167,7 +167,6 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func displayPhotoByDay() {
-        NSLog("callllll");
         self.displayMode = 9;
         var query = PQChain.query();
         query.orderByAscending("createdAt");
@@ -190,7 +189,7 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
                 if let a = array as? [PQChain] {
                     self.chainArray1 = a;
                     self.collectionView.reloadData();
-                    NSLog("Called \(a.count)");
+                    NSLog("Photo by daily count return \(a.count)");
                     if (self.chainArray1.count > 0) {
                         self.headerView.imageView.file = self.chainArray1[0].photo?.file;
                         self.headerView.imageView.loadInBackground();

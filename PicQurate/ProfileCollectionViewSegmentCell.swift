@@ -15,36 +15,34 @@ protocol ProfileCollectionViewSegmentCellDelegate {
 class ProfileCollectionViewSegmentCell: UICollectionReusableView {
     
     @IBOutlet weak var postsLabel: UILabel!;
+    @IBOutlet weak var timeSegmentButton: UIButton!
     @IBOutlet weak var chainSegmentButton: UIButton!
-    
     @IBOutlet weak var likeSegmentButton: UIButton!
-    
-    @IBOutlet weak var locationSegmentButton: UIButton!
     
     var delegate: ProfileCollectionViewSegmentCellDelegate!;
     
     @IBAction func segmentOneSelected(sender: UIButton) {
         self.delegate.segmentSelected(0);
         
-        likeSegmentButton.setImage(UIImage(named: "like-icon-1"), forState: .Normal);
-        chainSegmentButton.setImage(UIImage(named: "chain-icon"), forState: .Normal);
-        locationSegmentButton.setImage(UIImage(named: "location-icon"), forState: .Normal);
+        timeSegmentButton.setImage(UIImage(named: "icon_clock_1"), forState: .Normal);
+        chainSegmentButton.setImage(UIImage(named: "icon_chain_0"), forState: .Normal);
+        likeSegmentButton.setImage(UIImage(named: "icon_like_0"), forState: .Normal);
     }
     
     @IBAction func segmentTwoSelected(sender: UIButton) {
         self.delegate.segmentSelected(1);
         
-        likeSegmentButton.setImage(UIImage(named: "like-icon"), forState: .Normal);
-        chainSegmentButton.setImage(UIImage(named: "chain-icon-1"), forState: .Normal);
-        locationSegmentButton.setImage(UIImage(named: "location-icon"), forState: .Normal);
+        timeSegmentButton.setImage(UIImage(named: "icon_clock_0"), forState: .Normal);
+        chainSegmentButton.setImage(UIImage(named: "icon_chain_1"), forState: .Normal);
+        likeSegmentButton.setImage(UIImage(named: "icon_like_0"), forState: .Normal);
     }
     
     @IBAction func segmentThreeSelected(sender: UIButton) {
         self.delegate.segmentSelected(2);
         
-        likeSegmentButton.setImage(UIImage(named: "like-icon"), forState: .Normal);
-        chainSegmentButton.setImage(UIImage(named: "chain-icon"), forState: .Normal);
-        locationSegmentButton.setImage(UIImage(named: "location-icon-1"), forState: .Normal);
+        timeSegmentButton.setImage(UIImage(named: "icon_clock_0"), forState: .Normal);
+        chainSegmentButton.setImage(UIImage(named: "icon_chain_0"), forState: .Normal);
+        likeSegmentButton.setImage(UIImage(named: "icon_like_1"), forState: .Normal);
     }
     
 }

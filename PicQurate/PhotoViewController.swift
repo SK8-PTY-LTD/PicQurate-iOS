@@ -10,10 +10,12 @@ import Foundation
 import CoreLocation
 import MapKit
 
+var locationArray: [AVGeoPoint] = []
+var locationName: [String]  = []
+
 class PhotoViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: AVImageView!
-    @IBOutlet weak var profileImageView1: AVImageView!
     @IBOutlet weak var profileNameButton: UIButton!
     @IBOutlet weak var photoImageView: AVImageView!
     @IBOutlet weak var topLikeButton: UIButton!
@@ -21,6 +23,7 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var chainButton: UIButton?
     @IBOutlet weak var locationButton: UIButton?
     @IBOutlet weak var captionTextView: UITextView?
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     
     private var cachedPhoto: PQPhoto?
     var photo: PQPhoto!
@@ -38,8 +41,12 @@ class PhotoViewController: UIViewController {
         } else {
             self.cachedPhoto = photo;
             
+            var tapRecognizer = UITapGestureRecognizer(target: self, action: "photoImageViewTapped:");
+            tapRecognizer.numberOfTapsRequired = 2;
             self.photoImageView.file = photo.file;
             self.photoImageView.loadInBackground();
+            self.photoImageView.addGestureRecognizer(tapRecognizer);
+            
             
             PQ.currentUser.hasLikedPhotoithCallback(photo, callback: { (liked, error) -> () in
                 if let e = error {
@@ -90,10 +97,54 @@ class PhotoViewController: UIViewController {
                 }
             }
             
+            var query3 = PQChain.query();
+            query3.whereKey("photo", equalTo: self.photo);
+            query3.includeKey("original");
+            query3.includeKey("original.original");
+            query3.includeKey("original.original.original");
+            query3.includeKey("original.original.original.original");
+            query3.includeKey("user");
+            query3.includeKey("original.user");
+            query3.includeKey("original.original.user");
+            query3.includeKey("original.original.original.user");
+            query3.includeKey("original.original.original.original.user");
+            query3.getObjectInBackgroundWithId(self.photo.lastChainId, block: { (object, error) -> Void in
+                if let e = error {
+                    PQLog.e(e.localizedDescription);
+                } else {
+                    if let chain = object as? PQChain {
+                        
+                        var name = chain.user?.profileName;
+                        
+                        if (chain.location != nil) {
+                            locationName.append((chain.user?.profileName)!);
+                            locationArray.append(chain.location!);
+                        }
+                        if (chain.original?.location != nil) {
+                            locationName.append((chain.original?.user?.profileName)!);
+                            locationArray.append((chain.original?.location)!);
+                        }
+                        if (chain.original?.original?.location != nil) {
+                            locationName.append((chain.original?.original?.user?.profileName)!);
+                            locationArray.append((chain.original?.original?.location)!);
+                        }
+                        if (chain.original?.original?.original?.location != nil) {
+                            locationName.append((chain.original?.original?.original?.user?.profileName)!);
+                            locationArray.append((chain.original?.original?.original?.location)!);
+                        }
+                        if (chain.original?.original?.original?.original?.location != nil) {
+                            locationName.append((chain.original?.original?.original?.original?.user?.profileName)!);
+                            locationArray.append((chain.original?.original?.original?.original?.location)!);
+                        }
+                    } else {
+                        NSLog("error passing object to PQChain");
+                    }
+                }
+            })
+            
+            
             self.profileImageView.file = photo.user?.profileImage;
             self.profileImageView.loadInBackground();
-            self.profileImageView1.file = photo.user?.profileImage;
-            self.profileImageView1.loadInBackground();
             self.profileNameButton.setTitle(photo.user?.username, forState: .Normal);
             
             self.locationButton?.setTitle(self.photo.locationString, forState: .Normal);
@@ -158,7 +209,11 @@ class PhotoViewController: UIViewController {
         }
     }
     
-    
+    func photoImageViewTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .Ended {
+            topLikeButtonClicked(UIButton());
+        }
+    }
 
     
     

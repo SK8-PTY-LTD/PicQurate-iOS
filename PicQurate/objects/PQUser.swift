@@ -168,13 +168,14 @@ public class PQUser : AVUser, AVSubclassing {
         }
         
         // Send a notification to the owner;
-        var message = self.getProfileName()! + " just chained your photo";
+        var message = " just chained your photo";
         originalChain.fetchIfNeededInBackgroundWithBlock { (chain, error) -> Void in
             if let c = chain as? PQChain {
                 var query = AVInstallation.query();
                 query.whereKey("userId", equalTo: c.user?.objectId);
                 PQ.sendPushWithCallBack(query, message: message) { (success, error) -> Void in
-                    var push = PQPush(message: message, user: c.user!);
+                    var push = PQPush(message: message, user: c.user!, photo: c.photo);
+                    NSLog("c.photo:  \(c.photo)");
                     push.saveInBackground();
                 }
             } else {
@@ -206,7 +207,7 @@ public class PQUser : AVUser, AVSubclassing {
                         if let e = error {
                             NSLog("Error sending push");
                         } else {
-                            var push = PQPush(message: message, user: p.user!);
+                            var push = PQPush(message: message, user: p.user!, photo: p);
                             push.saveInBackground();
                         }
                     });
@@ -243,7 +244,7 @@ public class PQUser : AVUser, AVSubclassing {
                         if let e = error {
                             NSLog("Error sending push");
                         } else {
-                            var push = PQPush(message: message, user: p.user!);
+                            var push = PQPush(message: message, user: p.user!, photo: p);
                             push.saveInBackground();
                         }
                     });

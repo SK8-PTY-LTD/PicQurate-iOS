@@ -275,6 +275,8 @@
 		3CEE1AC71AF3A141005600D6 /* PQPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */; };
 		3CFCA34F1B7C00C200E6F7FC /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */; };
 		3CFCA3511B7C00C500E6F7FC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFCA3501B7C00C500E6F7FC /* StoreKit.framework */; };
+		9E4AB17D1B7CCAEA008887C8 /* PQActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4AB17C1B7CCAEA008887C8 /* PQActivityCollectionViewCell.swift */; };
+		9E5397311B7F28CA009D51E8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5397301B7F28CA009D51E8 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -574,6 +576,8 @@
 		3CFCA34D1B7C007100E6F7FC /* PicQurate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PicQurate.entitlements; sourceTree = "<group>"; };
 		3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		3CFCA3501B7C00C500E6F7FC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9E4AB17C1B7CCAEA008887C8 /* PQActivityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQActivityCollectionViewCell.swift; sourceTree = "<group>"; };
+		9E5397301B7F28CA009D51E8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -602,8 +606,6 @@
 		3C4D19111AE0D6C100613CAB = {
 			isa = PBXGroup;
 			children = (
-				3CFCA3501B7C00C500E6F7FC /* StoreKit.framework */,
-				3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */,
 				3C4D191C1AE0D6C100613CAB /* PicQurate */,
 				3C4D19321AE0D6C100613CAB /* PicQurateTests */,
 				3C4D191B1AE0D6C100613CAB /* Products */,
@@ -667,6 +669,8 @@
 			isa = PBXGroup;
 			children = (
 				3C87F8051AE8C91D00C9E172 /* libicucore.dylib */,
+				3CFCA3501B7C00C500E6F7FC /* StoreKit.framework */,
+				3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */,
 				3C9B148C1AF4A99500BA5CB0 /* MapKit.framework */,
 				3C84E6BC1AE9D0880056C1B8 /* CFNetwork.framework */,
 				3C87F8031AE8C91300C9E172 /* CoreLocation.framework */,
@@ -730,6 +734,7 @@
 				3C93635D1AFA484B001C3EE0 /* ChainHistoryViewController.swift */,
 				3C93635F1AFAD343001C3EE0 /* UserTableViewController.swift */,
 				3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */,
+				9E5397301B7F28CA009D51E8 /* MapViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -740,6 +745,7 @@
 				3C56922E1AE9F736006FA95D /* AVImageView.swift */,
 				3C9363671AFAEC54001C3EE0 /* HomeHeaderCollectionReusableView.xib */,
 				3CA1A5391AF7B2A300A5E2C9 /* PQPhotoCollectionViewCell.swift */,
+				9E4AB17C1B7CCAEA008887C8 /* PQActivityCollectionViewCell.swift */,
 				3CA1A5261AF70CB600A5E2C9 /* ProfileCollectionViewSegmentCell.swift */,
 				3CA1A5351AF7208800A5E2C9 /* ProfileHeaderCollectionReusableView.xib */,
 				3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */,
@@ -1281,6 +1287,7 @@
 				3CA0F1A61AEBDA8800CBFBE8 /* IMGLYKDynamicFilter.swift in Sources */,
 				3CA0F1881AEBDA8800CBFBE8 /* IMGLYCropFilter.swift in Sources */,
 				3CA0F18B1AEBDA8800CBFBE8 /* IMGLYEditorMainDialogViewController.swift in Sources */,
+				9E4AB17D1B7CCAEA008887C8 /* PQActivityCollectionViewCell.swift in Sources */,
 				3C5692311AE9F772006FA95D /* PQLog.swift in Sources */,
 				3CA0F16F1AEBDA8800CBFBE8 /* IMGLYBlissfulBlueFilter.swift in Sources */,
 				3CA0F1941AEBDA8800CBFBE8 /* IMGLYFilterSelectorView.swift in Sources */,
@@ -1297,6 +1304,7 @@
 				3CA0F1DA1AEBDA8800CBFBE8 /* IMGLYWinterFilter.swift in Sources */,
 				3CA0F1821AEBDA8800CBFBE8 /* IMGLYContrastDialogViewController.swift in Sources */,
 				3CA0F1B41AEBDA8800CBFBE8 /* IMGLYOrchidFilter.swift in Sources */,
+				9E5397311B7F28CA009D51E8 /* MapViewController.swift in Sources */,
 				3CA0F1871AEBDA8800CBFBE8 /* IMGLYCropDialogViewController.swift in Sources */,
 				3CA0F1761AEBDA8800CBFBE8 /* IMGLYCameraController.swift in Sources */,
 				3CA0F1C11AEBDA8800CBFBE8 /* IMGLYResponseFilter.swift in Sources */,
@@ -1507,7 +1515,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "372043e8-ae61-4407-b770-43725f186b8f";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1532,7 +1540,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "372043e8-ae61-4407-b770-43725f186b8f";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 			};
 			name = Release;
