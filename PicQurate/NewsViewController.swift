@@ -181,7 +181,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
             } else  if (selectedTab == 0 ){
                 layout.itemSize = CGSizeMake(itemWidth, itemWidth + 120);
             } else {
-                layout.itemSize = CGSizeMake(itemWidth, 56);
+                layout.itemSize = CGSizeMake(itemWidth, 80);
             }
         }
         self.collectionView.reloadData();
