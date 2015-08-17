@@ -8,96 +8,13 @@
 
 import Foundation
 
-class HomeViewController: ViewPagerController, ViewPagerDelegate, ViewPagerDataSource {
-    
-    @IBOutlet weak var genderButton: UIBarButtonItem!
-    
-    var controller: HomeDetailViewController!;
-    var gender: Bool = false;
-    
-    override func viewDidLoad() {
-        super.viewDidLoad();
-        
-        self.dataSource = self;
-        self.delegate = self;
-    }
-    
-    //pragma mark - ViewPagerDataSource
-    func numberOfTabsForViewPager(viewPager: ViewPagerController!) -> UInt {
-        return 2;
-    }
-    
-    func viewPager(viewPager: ViewPagerController!, viewForTabAtIndex index: UInt) -> UIView! {
-        var label = UILabel();
-        switch index {
-//        case 0:
-//            label.text = "World";
-        case 0:
-            label.text = "Daily";
-        case 1:
-            label.text = "Local";
-        default:
-            label.text = "New Tab";
-        }
-        label.sizeToFit();
-        
-        return label;
-    }
-    
-    func viewPager(viewPager: ViewPagerController!, contentViewControllerForTabAtIndex index: UInt) -> UIViewController! {
-        switch index {
-//        case 0:
-//            var VC = self.storyboard?.instantiateViewControllerWithIdentifier("HomeDetail1") as! HomeDetailViewController;
-//            self.controller = VC;
-//            VC.gender = self.gender;
-//            VC.displayPhotoByWorld();
-//            return VC;
-        case 0:
-            var VC = self.storyboard?.instantiateViewControllerWithIdentifier("HomeDetail2") as! HomeDetailViewController;
-            self.controller = VC;
-            VC.gender = self.gender;
-            VC.displayPhotoByDay();
-            return VC;
-        case 1:
-            var VC = self.storyboard?.instantiateViewControllerWithIdentifier("HomeDetail3") as! HomeDetailViewController;
-            self.controller = VC;
-            VC.gender = self.gender;
-            VC.displayPhotoByLocation();
-            return VC;
-        default:
-            break;
-        }
-        return controller;
-    }
-    
-    func viewPager(viewPager: ViewPagerController!, colorForComponent component: ViewPagerComponent, withDefault color: UIColor!) -> UIColor! {
-        switch component {
-        case ViewPagerComponent.Indicator:
-            return PQ.primaryColor;
-        default:
-            return color;
-        }
-    }
-    
-    func viewPager(viewPager: ViewPagerController!, didChangeTabToIndex index: UInt) {
-        self.controller.displayMode = Int(index);
-    }
-    
-    @IBAction func genderButtonClicked(sender: UIBarItem) {
-        self.gender = !self.gender;
-        self.controller.gender = !self.controller.gender;
-        self.controller.reloadPhoto();
-        if (self.genderButton.image == UIImage(named: "icon-male")) {
-            self.genderButton.image = UIImage(named: "icon-female");
-        } else {
-            self.genderButton.image = UIImage(named: "icon-male");
-        }
-    }
-}
-
-class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var genderButton: UIBarButtonItem!
+    @IBOutlet weak var dailyButton: UIButton!
+    @IBOutlet weak var localButton: UIButton!
+    
     var flowLayout: CSStickyHeaderFlowLayout!
     var headerView: HomeHeaderCollectionReusableView!
     
@@ -121,6 +38,32 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
         
     }
     
+    @IBAction func dailyButtonClicked(sender: UIButton) {
+        self.displayMode = 0;
+        self.dailyButton.setTitleColor(UIColor(hex: "#BE0004"), forState: .Normal);
+        self.localButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal);
+        displayPhotoByDay();
+    }
+    
+    @IBAction func localButtonClicked(sender: UIButton) {
+        self.displayMode = 1;
+        self.dailyButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal);
+        self.localButton.setTitleColor(UIColor(hex: "#BE0004"), forState: .Normal);
+        displayPhotoByLocation();
+    }
+    
+    
+    @IBAction func genderButtonClicked(sender: UIBarItem) {
+        self.gender = !self.gender;
+        self.reloadPhoto();
+        if (self.genderButton.image == UIImage(named: "icon-male")) {
+            self.genderButton.image = UIImage(named: "icon-female");
+        } else {
+            self.genderButton.image = UIImage(named: "icon-male");
+        }
+    }
+    
+
     func reloadPhoto() {
         //Display photo
         switch displayMode {
@@ -136,10 +79,10 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func displayPhotoByWorld() {
-        self.displayMode = 0;
         var query = PQChain.query();
         query.orderByDescending("createdAt");
-        query.includeKey("photo.file");
+        query.includeKey("photo");
+        query.includeKey("photo.user");
         if (self.gender) {
             query.whereKey("gender", equalTo: 1);
         } else {
@@ -167,7 +110,6 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func displayPhotoByDay() {
-        self.displayMode = 9;
         var query = PQChain.query();
         query.orderByAscending("createdAt");
         var yesterday = NSDate().dateByAddingTimeInterval(-2 * 24 * 60 * 60);
@@ -176,7 +118,8 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
         
         query.whereKey("createdAt", greaterThan: yesterday);
         query.limit = 10;
-        query.includeKey("photo.file");
+        query.includeKey("photo");
+        query.includeKey("photo.user");
         if (self.gender) {
             query.whereKey("gender", equalTo: 1);
         } else {
@@ -204,26 +147,28 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func displayPhotoByLocation() {
-        NSLog("Lalala");
-        self.displayMode = 1;
         var query = PQChain.query();
 //        query.whereKey("photo.user.gender", equalTo: self.gender);
         query.orderByDescending("createdAt");
-        query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 10.0);
+        NSLog("\(PQ.currentUser.location)");
+//        query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 10.0);
         query.limit = 10;
-        query.includeKey("photo.file");
+        query.includeKey("photo");
+        query.includeKey("photo.user");
         if (self.gender) {
             query.whereKey("gender", equalTo: 1);
         } else {
             query.whereKey("gender", equalTo: 0);
         }
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
+            NSLog("array: \(array.count)");
             if let e = error {
                 PQ.showError(e);
             } else {
                 if let a = array as? [PQChain] {
                     self.chainArray2 = a;
                     self.collectionView.reloadData();
+                    NSLog("chainArray2: \(a.count)");
                     if (self.chainArray2.count > 0) {
                         self.headerView.imageView.file = self.chainArray2[0].photo?.file;
                         self.headerView.imageView.loadInBackground();
@@ -240,11 +185,9 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
     func setColumns(numberOfColumns: Int) {
         self.column = numberOfColumns;
         var itemWidth = self.view.frame.size.width / CGFloat(self.column);
-        if (self.column != 1) {
-            self.flowLayout.itemSize = CGSizeMake(itemWidth-1, itemWidth-1);
-        } else {
-            self.flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth + 120);
-        }
+        self.flowLayout.itemSize = CGSizeMake(itemWidth-1, itemWidth-1);
+        NSLog("itemWidth: \(itemWidth)");
+        NSLog("collectionView: \(self.collectionView.frame.size)");
         self.collectionView.reloadData();
         self.collectionView.layoutIfNeeded();
     }
@@ -332,9 +275,11 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
 //            photo = self.chainArray0[indexPath.row + 1].photo!;
         case 0:
             photo = self.chainArray1[indexPath.row + 1].photo!;
+            NSLog("\(photo.file)");
             self.performSegueWithIdentifier("segueToPhoto", sender: photo);
         case 1:
             photo = self.chainArray2[indexPath.row + 1].photo!;
+            NSLog("\(photo.file)");
             self.performSegueWithIdentifier("segueToPhoto", sender: photo);
         default:
             break;
@@ -344,7 +289,9 @@ class HomeDetailViewController: UIViewController, UICollectionViewDataSource, UI
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToPhoto") {
             let VC = segue.destinationViewController as! PhotoViewController;
-            VC.initializeWithPhoto(sender as! PQPhoto);
+            VC.photo = sender as! PQPhoto;
+            
+//            VC.initializeWithPhoto(sender as! PQPhoto);
         }
     }
     

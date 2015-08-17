@@ -10,8 +10,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
-var locationArray: [AVGeoPoint] = []
-var locationName: [String]  = []
+
 
 class PhotoViewController: UIViewController {
     
@@ -24,6 +23,9 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var locationButton: UIButton?
     @IBOutlet weak var captionTextView: UITextView?
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
+    
+    var locationArray: [AVGeoPoint] = [];
+    var locationNameArray: [String]  = [];
     
     private var cachedPhoto: PQPhoto?
     var photo: PQPhoto!
@@ -43,6 +45,8 @@ class PhotoViewController: UIViewController {
             
             var tapRecognizer = UITapGestureRecognizer(target: self, action: "photoImageViewTapped:");
             tapRecognizer.numberOfTapsRequired = 2;
+            
+            NSLog("\(self.photoImageView) **** \(photo.file)");
             self.photoImageView.file = photo.file;
             self.photoImageView.loadInBackground();
             self.photoImageView.addGestureRecognizer(tapRecognizer);
@@ -117,24 +121,24 @@ class PhotoViewController: UIViewController {
                         var name = chain.user?.profileName;
                         
                         if (chain.location != nil) {
-                            locationName.append((chain.user?.profileName)!);
-                            locationArray.append(chain.location!);
+                            self.locationNameArray.append((chain.user?.profileName)!);
+                            self.locationArray.append(chain.location!);
                         }
                         if (chain.original?.location != nil) {
-                            locationName.append((chain.original?.user?.profileName)!);
-                            locationArray.append((chain.original?.location)!);
+                            self.locationNameArray.append((chain.original?.user?.profileName)!);
+                            self.locationArray.append((chain.original?.location)!);
                         }
                         if (chain.original?.original?.location != nil) {
-                            locationName.append((chain.original?.original?.user?.profileName)!);
-                            locationArray.append((chain.original?.original?.location)!);
+                            self.locationNameArray.append((chain.original?.original?.user?.profileName)!);
+                            self.locationArray.append((chain.original?.original?.location)!);
                         }
                         if (chain.original?.original?.original?.location != nil) {
-                            locationName.append((chain.original?.original?.original?.user?.profileName)!);
-                            locationArray.append((chain.original?.original?.original?.location)!);
+                            self.locationNameArray.append((chain.original?.original?.original?.user?.profileName)!);
+                            self.locationArray.append((chain.original?.original?.original?.location)!);
                         }
                         if (chain.original?.original?.original?.original?.location != nil) {
-                            locationName.append((chain.original?.original?.original?.original?.user?.profileName)!);
-                            locationArray.append((chain.original?.original?.original?.original?.location)!);
+                            self.locationNameArray.append((chain.original?.original?.original?.original?.user?.profileName)!);
+                            self.locationArray.append((chain.original?.original?.original?.original?.location)!);
                         }
                     } else {
                         NSLog("error passing object to PQChain");
@@ -173,6 +177,7 @@ class PhotoViewController: UIViewController {
     
     @IBAction func chainButtonClicked(sender: UIButton) {
         self.performSegueWithIdentifier("segueToChain", sender: self.photo);
+        
 //        if (photo.user == PQ.currentUser) {
 //            PQ.promote("You can't chain your own selfie!");
 //        } else {
@@ -203,9 +208,9 @@ class PhotoViewController: UIViewController {
             VC.title = "Like"
             VC.query = sender as! AVQuery;
         } else if (segue.identifier == "segueToChain") {
-//            var VC = segue.destinationViewController as! UserTableViewController;
-//            VC.title = "Like"
-//            VC.query = sender as! AVQuery;
+            var VC = segue.destinationViewController as! MapViewController;
+            VC.locationArray = self.locationArray;
+            VC.locationNameArray = self.locationNameArray;
         }
     }
     

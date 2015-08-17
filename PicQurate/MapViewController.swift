@@ -14,8 +14,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBOutlet weak var mapView: MKMapView!
     
+    var locationArray: [AVGeoPoint] = [];
+    var locationNameArray: [String]  = [];
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         self.navigationItem.title = "Chain Map"
@@ -23,9 +27,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         var locationPoints:[CLLocationCoordinate2D] = [];
         let latDelta:CLLocationDegrees = 100;
         let lonDelta: CLLocationDegrees = 100;
-        
-        
-        
         let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta);
 //                test polyline
 //                var newLocationArray: [CLLocationCoordinate2D] = [];
@@ -36,8 +37,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 //                newLocationArray.append(l1);
 //                newLocationArray.append(l2);
 //                newLocationArray.append(l3);
-        
-        for (var i = 0; i < locationName.count; i++){
+        for (var i = 0; i < locationNameArray.count; i++){
+            NSLog("i: \(i)");
+            NSLog("locationArray \(i) : \(locationArray[i])");
             let l = locationArray[i];
             NSLog("\(l.latitude) + \(l.longitude)");
             let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(l.latitude, l.longitude);
@@ -46,26 +48,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             let annotation = MKPointAnnotation();
             annotation.coordinate = location;
-            annotation.title = "\(locationName[i])";
+            annotation.title = "\(locationNameArray[i])";
             mapView.addAnnotation(annotation);
             
             locationPoints.append(location);
         }
         
-        var geodesic = MKGeodesicPolyline(coordinates: &locationPoints[0], count: locationPoints.count);
-        NSLog("geodesic: \(geodesic)");
-        self.mapView.addOverlay(geodesic);
+        NSLog("locationPoints: \(locationPoints.count)");
+        if locationPoints.count > 1 {
+            var geodesic = MKGeodesicPolyline(coordinates: &locationPoints[0], count: locationPoints.count);
+            NSLog("geodesic: \(geodesic)");
+            self.mapView.addOverlay(geodesic);
+        }
         
         for x in locationPoints {
             NSLog("Location in Array : \(x.latitude) ---- \(x.longitude)");
         }
+
+        UIView.animateWithDuration(1.5, animations: { () -> Void in
+            let region1 = MKCoordinateRegion(center: locationPoints[0], span: span)
+            self.mapView.setRegion(region1, animated: true)
+        })
         
-        //        UIView.animateWithDuration(1.5, animations: { () -> Void in
-        //            let region1 = MKCoordinateRegion(center: locationPoints[0], span: span)
-        //            self.mapView.setRegion(region1, animated: true)
-        //        })
-        
-        locationArray.removeAll(keepCapacity: false)
+//        locationArray = [];
+//        locationNameArray = [];
+    
         // Do any additional setup after loading the view.
         
     }
