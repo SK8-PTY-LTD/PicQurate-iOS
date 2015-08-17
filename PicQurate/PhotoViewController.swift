@@ -149,7 +149,8 @@ class PhotoViewController: UIViewController {
             
             self.profileImageView.file = photo.user?.profileImage;
             self.profileImageView.loadInBackground();
-            self.profileNameButton.setTitle(photo.user?.username, forState: .Normal);
+            self.profileNameButton.setTitle(photo.user?.profileName, forState: .Normal);
+            self.navigationItem.title = photo.user?.profileName;
             
             self.locationButton?.setTitle(self.photo.locationString, forState: .Normal);
             

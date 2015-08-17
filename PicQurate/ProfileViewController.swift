@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         if let user = self.user {
             //Check user
         } else if let user = PQ.currentUser {
-            self.user = PQ.currentUser;
+            self.user = user;
         } else {
             return;
         }
@@ -263,7 +263,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         } else if (segue.identifier == "segueToPhoto"){
             var VC = segue.destinationViewController as! PhotoViewController;
             VC.photo = sender as! PQPhoto;
-            VC.title = (sender as! PQPhoto).user?.profileName;
         }
     }
     

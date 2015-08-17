@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WJQ-dO-acF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WJQ-dO-acF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -389,7 +389,7 @@
                     <navigationItem key="navigationItem" id="mpf-TY-iAE">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="agR-pW-C5y">
-                            <rect key="frame" x="180" y="6" width="240" height="33"/>
+                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tagline" translatesAutoresizingMaskIntoConstraints="NO" id="QHk-Oc-DKz">
@@ -481,6 +481,12 @@
                                                                 <constraint firstAttribute="width" constant="40" id="1lX-po-ZQg"/>
                                                                 <constraint firstAttribute="height" constant="40" id="3Zj-cz-ZCL"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="20"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCg-4V-6ZS">
                                                             <rect key="frame" x="248" y="15" width="28" height="24"/>
@@ -509,21 +515,21 @@
                                                         <constraint firstAttribute="trailing" secondItem="qCg-4V-6ZS" secondAttribute="trailing" constant="8" id="xk7-0e-qBX"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-l4-EGb">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-l4-EGb">
                                                     <rect key="frame" x="8" y="362" width="98" height="22"/>
                                                     <state key="normal" title="0" image="like-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-Qd-Rg3">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-Qd-Rg3">
                                                     <rect key="frame" x="106" y="362" width="97" height="22"/>
                                                     <state key="normal" title="0" image="chain-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIa-KY-3Z2">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIa-KY-3Z2">
                                                     <rect key="frame" x="203" y="362" width="98" height="22"/>
                                                     <state key="normal" title="0" image="location-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -615,6 +621,12 @@
                                                                 <constraint firstAttribute="height" constant="40" id="3yj-K6-K1p"/>
                                                                 <constraint firstAttribute="width" constant="40" id="qcQ-vl-jH4"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="20"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aGA-dj-utA" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                             <rect key="frame" x="236" y="11" width="40" height="40"/>
@@ -623,11 +635,11 @@
                                                                 <constraint firstAttribute="height" constant="40" id="d8d-6R-oy2"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-Am-uAo">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-Am-uAo">
                                                             <rect key="frame" x="56" y="17" width="39" height="27"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                             <state key="normal" title="Button">
-                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
@@ -650,6 +662,11 @@
                                                         <constraint firstAttribute="trailing" secondItem="aGA-dj-utA" secondAttribute="trailing" constant="8" id="vhW-pL-L6d"/>
                                                         <constraint firstItem="8be-q3-f7Q" firstAttribute="leading" secondItem="2pn-VT-oBA" secondAttribute="leading" constant="8" id="yLK-PK-6iU"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -689,7 +706,7 @@
                     <navigationItem key="navigationItem" id="xWT-c9-jZV">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="5c7-aa-DHt">
-                            <rect key="frame" x="120" y="6" width="360" height="33"/>
+                            <rect key="frame" x="120" y="5.5" width="360" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypr-Ny-h1e">
@@ -849,7 +866,7 @@
                                     <constraint firstAttribute="width" secondItem="LEj-Q0-Yv3" secondAttribute="height" id="2hO-Af-v7g"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-qn-vCm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-qn-vCm">
                                 <rect key="frame" x="16" y="727" width="190" height="22"/>
                                 <state key="normal" title="0" image="like-icon">
                                     <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -862,7 +879,7 @@
                                     <action selector="likeButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="L2s-jG-nfE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-qV-2bJ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-qV-2bJ">
                                 <rect key="frame" x="205" y="726" width="190" height="24"/>
                                 <state key="normal" title="0" image="icon_chain_0">
                                     <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -872,7 +889,7 @@
                                     <action selector="chainButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="ETW-bX-x6x"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOS-hT-pbA">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOS-hT-pbA">
                                 <rect key="frame" x="395" y="727" width="190" height="22"/>
                                 <state key="normal" title="0" image="icon_location">
                                     <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -908,6 +925,12 @@
                                             <constraint firstAttribute="height" constant="40" id="7y7-T2-Xb8"/>
                                             <constraint firstAttribute="width" constant="40" id="r8n-y5-EwG"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgD-9n-E1T">
                                         <rect key="frame" x="564" y="15" width="28" height="24"/>
@@ -1267,7 +1290,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-OD-G7v">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-OD-G7v">
                                                     <rect key="frame" x="8" y="300" width="98" height="22"/>
                                                     <state key="normal" title="0" image="like-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -1281,7 +1304,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-4N-1uZ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-4N-1uZ">
                                                     <rect key="frame" x="203" y="300" width="98" height="22"/>
                                                     <state key="normal" title="0" image="location-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -1358,7 +1381,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQz-Ca-SqL">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQz-Ca-SqL">
                                             <rect key="frame" x="38" y="10" width="31" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1396,7 +1419,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPI-q8-KJa">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPI-q8-KJa">
                                             <rect key="frame" x="274" y="3" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="28" id="DYI-s1-iwJ"/>
@@ -1406,7 +1429,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvR-Sd-AHc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvR-Sd-AHc">
                                             <rect key="frame" x="306" y="3" width="11" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1439,7 +1462,7 @@
                                                 <constraint firstAttribute="width" constant="1" id="S6m-sm-wdA"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biK-As-zqw">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biK-As-zqw">
                                             <rect key="frame" x="203" y="33" width="195" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="61l-gU-Fuh"/>
@@ -1452,14 +1475,14 @@
                                                 <action selector="segmentTwoSelected:" destination="BTZ-Sb-L4y" eventType="touchUpInside" id="v2A-qX-wxb"/>
                                             </connections>
                                         </button>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HXO-7G-eYq">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXO-7G-eYq">
                                             <rect key="frame" x="397" y="33" width="1" height="22"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="1" id="LtS-0J-72H"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcF-Ox-3t8">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcF-Ox-3t8">
                                             <rect key="frame" x="398" y="33" width="195" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="OF8-Sk-6XW"/>
@@ -1641,14 +1664,20 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="irh-et-Bxr" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="14" width="32" height="32"/>
+                                        <rect key="frame" x="18" y="10" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="WnN-qK-vJW"/>
-                                            <constraint firstAttribute="width" constant="32" id="gpY-7U-Gib"/>
+                                            <constraint firstAttribute="height" constant="40" id="WnN-qK-vJW"/>
+                                            <constraint firstAttribute="width" constant="40" id="gpY-7U-Gib"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlr-kW-5oY">
-                                        <rect key="frame" x="58" y="14" width="0.0" height="32"/>
+                                        <rect key="frame" x="66" y="10" width="0.0" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1849,6 +1878,11 @@
                                                                 <constraint firstAttribute="width" constant="27" id="F7h-VO-gEL"/>
                                                                 <constraint firstAttribute="height" constant="27" id="she-fj-lJ1"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="13"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exQ-fe-ucc">
                                                             <rect key="frame" x="43" y="7" width="42" height="21"/>
@@ -1957,6 +1991,12 @@
                                             <state key="normal">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="40"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2008,7 +2048,7 @@
                                                         <constraint firstAttribute="width" constant="28" id="iLj-Tc-ezS"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KQ1-LD-zrm">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KQ1-LD-zrm">
                                                     <rect key="frame" x="56" y="-1" width="536" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="ilu-Bp-R3p"/>
@@ -2478,8 +2518,8 @@
         <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lLR-Rh-DwL"/>
         <segue reference="A46-ri-ynF"/>
         <segue reference="g0u-Mo-Vtm"/>
+        <segue reference="VPz-mc-4aY"/>
     </inferredMetricsTieBreakers>
 </document>

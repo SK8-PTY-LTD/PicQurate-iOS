@@ -70,7 +70,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     func dismissImage() {
         if (self.chainArray.count > 1) {
             self.chainArray.removeLast();
-        } else if (self.chainArray.count == 1) {
+        } else if (self.chainArray.count == 2) {
             self.chainArray.removeLast();
             self.downloadChains();
         } else  {

@@ -19,16 +19,13 @@ class PQActivityCollectionViewCell: UICollectionViewCell {
     var activity: PQPush!
     func initializeWithActivity(activity: PQPush){
         self.activity = activity;
-        activityView.layer.cornerRadius = 10
         
         
         if let image = self.activity.sender?.profileImage {
             NSLog("Image exists");
             if let imageView = profileImageView {
                 NSLog("ImageView exists");
-                imageView.layer.cornerRadius = 20
                 imageView.file = image;
-                imageView.clipsToBounds = true
                 imageView.loadInBackground();
             }
         }else{
