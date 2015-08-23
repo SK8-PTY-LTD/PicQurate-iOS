@@ -77,9 +77,18 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
             
             self.captionTextView?.text = self.photo.caption;
             
-            
         }
-        
-        
+    }
+    
+    @IBAction func topLikeButtonClicked(sender: UIButton) {
+        if (self.topLikeButton?.backgroundImageForState(.Normal) == UIImage(named: "icon_like_1")) {
+            PQ.currentUser.likePhoto(self.photo, like: true);
+            self.topLikeButton?.setBackgroundImage(UIImage(named: "like-icon-1"), forState: .Normal);
+            self.likeButton?.setImage(UIImage(named: "like-icon-1"), forState: .Normal);
+        } else {
+            PQ.currentUser.likePhoto(self.photo, like: false);
+            self.topLikeButton?.setBackgroundImage(UIImage(named: "icon_like_1"), forState: .Normal);
+            self.likeButton?.setImage(UIImage(named: "like-icon"), forState: .Normal);
+        }
     }
 }

@@ -59,16 +59,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             var geodesic = MKGeodesicPolyline(coordinates: &locationPoints[0], count: locationPoints.count);
             NSLog("geodesic: \(geodesic)");
             self.mapView.addOverlay(geodesic);
+            UIView.animateWithDuration(1.5, animations: { () -> Void in
+                let region1 = MKCoordinateRegion(center: locationPoints[0], span: span)
+                self.mapView.setRegion(region1, animated: true)
+            })
         }
         
         for x in locationPoints {
             NSLog("Location in Array : \(x.latitude) ---- \(x.longitude)");
         }
 
-        UIView.animateWithDuration(1.5, animations: { () -> Void in
-            let region1 = MKCoordinateRegion(center: locationPoints[0], span: span)
-            self.mapView.setRegion(region1, animated: true)
-        })
+
         
 //        locationArray = [];
 //        locationNameArray = [];

@@ -16,10 +16,13 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
     @IBOutlet weak var realNameTextField: UITextField!
     @IBOutlet weak var profileNameTextField: UITextField!
     @IBOutlet weak var urlTextField: UITextField!
-    @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var genderTextField: UITextField!
+    
+    var locationButton: UIButton!
+    var genderButton: UIButton!
+    var genderImageView: UIImageView!
     
     let locationManager = CLLocationManager()
     
@@ -66,10 +69,6 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         });
     }
     
-    @IBAction func locationButtonClicked() {
-        getLocation();
-    }
-    
     func getLocation() {
         if (self.locationManager.respondsToSelector(Selector("requestWhenInUseAuthorization"))) {
             self.locationManager.requestWhenInUseAuthorization();
@@ -78,6 +77,18 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         self.locationManager.distanceFilter = kCLDistanceFilterNone;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         self.locationManager.startUpdatingLocation();
+    }
+    
+    func chagneGender() {
+        if (PQ.currentUser.gender as Bool) {
+            PQ.currentUser.gender = false as Bool;
+            self.genderButton.setTitle("Female", forState: .Normal);
+            self.genderImageView.image = UIImage(named: "profile_female_icon");
+        } else {
+            PQ.currentUser.gender = true as Bool;
+            self.genderButton.setTitle("Male", forState: .Normal);
+            self.genderImageView.image = UIImage(named: "profile_male_icon");
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -137,7 +148,7 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         if (indexPath.section == 1) {
             return 64.0;
         } else {
-            return 32.0;
+            return 40.0;
         }
     }
     
@@ -163,18 +174,23 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.realNameTextField = cell.textfield;
                 self.realNameTextField.text = PQ.currentUser.realName;
                 cell.textfield.placeholder = "Full Name";
+                cell.imageView?.image = UIImage(named: "profile_fullname_icon");
             case 1:
                 self.profileNameTextField = cell.textfield;
                 self.profileNameTextField.text = PQ.currentUser.profileName;
                 cell.textfield.placeholder = "Username";
+                cell.imageView?.image = UIImage(named: "profile_username_icon");
             case 2:
                 self.urlTextField = cell.textfield;
                 self.urlTextField.text = PQ.currentUser.url;
                 cell.textfield.placeholder = "Website";
+                cell.imageView?.image = UIImage(named: "profile_website_icon");
             case 3:
                 cell = tableView.dequeueReusableCellWithIdentifier("EditProfileTableViewButtonCell") as! EditProfileTableViewCell;
                 self.locationButton = cell.button;
                 self.locationButton.setTitle(PQ.currentUser.locationString, forState: .Normal);
+                self.locationButton.addTarget(self, action: "getLocation", forControlEvents: UIControlEvents.TouchUpInside);
+                cell.imageView?.image = UIImage(named: "profile_location_icon");
             default:
                 break;
             }
@@ -188,14 +204,19 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.emailTextField = cell.textfield;
                 self.emailTextField.text = PQ.currentUser.email;
                 cell.textfield.placeholder = "Email";
+                cell.imageView?.image = UIImage(named: "profile_email_icon");
             case 1:
-                self.genderTextField = cell.textfield;
-                if (PQ.currentUser.gender) {
-                    self.genderTextField.text = "Male";
+                cell = tableView.dequeueReusableCellWithIdentifier("EditProfileTableViewButtonCell") as! EditProfileTableViewCell;
+                self.genderButton = cell.button;
+                self.genderButton.addTarget(self, action: "chagneGender", forControlEvents: UIControlEvents.TouchUpInside);
+                self.genderImageView = cell.imageView;
+                if (PQ.currentUser.gender as Bool) {
+                    self.genderButton.setTitle("Male", forState: .Normal);
+                    self.genderImageView.image = UIImage(named: "profile_male_icon");
                 } else {
-                    self.genderTextField.text = "Female";
+                    self.genderButton.setTitle("Female", forState: .Normal);
+                    self.genderImageView.image = UIImage(named: "profile_female_icon");
                 }
-                self.genderTextField.placeholder = "Gender";
             default:
                 break;
             }

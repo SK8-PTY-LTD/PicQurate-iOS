@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NewsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class NewsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ActivityToProfileProtocol {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var followingButton: UIButton!
@@ -20,6 +20,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var photoList = [PQPhoto]();
     var pushList = [PQPush]();
+    var profileUser: PQUser?;
     
     var selectedTab = 0;
     
@@ -27,6 +28,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad();
         
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
+        self.refreshFolloweeSection();
         
     }
     
@@ -61,7 +63,8 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
             var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("activityViewCell", forIndexPath: indexPath) as! PQActivityCollectionViewCell;
             NSLog("cell connect with activityviewcell")
             if pushList.count != 0 {
-            cell.initializeWithActivity(pushList[indexPath.row]);
+                cell.initializeWithActivity(pushList[indexPath.row]);
+                cell.delegate = self
             }
             return cell;
         default:
@@ -88,6 +91,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         var photoQuery = PQPhoto.query();
         photoQuery.orderByDescending("createdAt");
         photoQuery.whereKey("user.id", matchesKey: "followee.id", inQuery: followeeQuery);
+        photoQuery.includeKey("user");
         photoQuery.findObjectsInBackgroundWithBlock { (list, error) -> Void in
             if let e = error {
                 NSLog(e.localizedDescription);
@@ -109,6 +113,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         // Find all liked photos
         var likedPhotoQuery = PQ.currentUser.relationforKey("photoLiked").query();
         likedPhotoQuery.orderByDescending("createdAt");
+        likedPhotoQuery.includeKey("user");
         likedPhotoQuery.findObjectsInBackgroundWithBlock { (list, error) -> Void in
             if let e = error {
                 NSLog(e.localizedDescription);
@@ -186,5 +191,34 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         self.collectionView.reloadData();
         self.collectionView.layoutIfNeeded();
+    }
+    
+    func showProfile(user: PQUser){
+        self.performSegueWithIdentifier("segueToProfile", sender: user)
+        profileUser = user;
+        NSLog("user: \(user)");
+    }
+    
+//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("activityViewCell", forIndexPath: indexPath) as! PQActivityCollectionViewCell
+//        cell.profileNameButton.addTarget(self, action: "profileNameButtonToProfile:", forControlEvents: UIControlEvents.TouchUpInside);
+//        
+//    }
+//    
+//    func profileNameButtonToProfile(sender: UIButton){
+////        let profileName = sender.activity.sender;
+//        let point = sender.convertPoint(CGPointZero, toView: self.collectionView);
+//        let indexPath = self.collectionView.indexPathForItemAtPoint(point)
+//        let user = pushList[indexPath!.row].sender;
+//        self.performSegueWithIdentifier("segueToProfile", sender: user);
+//    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "segueToProfile"){
+            var VC = segue.destinationViewController as! ProfileViewController;
+            VC.user = sender as! PQUser;
+            NSLog("profileUser: \(profileUser)");
+//            VC.user = profileUser
+        }
     }
 }

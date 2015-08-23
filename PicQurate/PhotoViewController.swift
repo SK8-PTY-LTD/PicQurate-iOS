@@ -203,6 +203,10 @@ class PhotoViewController: UIViewController {
         }
     }
     
+    @IBAction func profileNameButtonClicked(sender: UIButton) {
+        self.performSegueWithIdentifier("segueToProfile", sender: sender);
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToLikedUser") {
             var VC = segue.destinationViewController as! UserTableViewController;
@@ -212,6 +216,11 @@ class PhotoViewController: UIViewController {
             var VC = segue.destinationViewController as! MapViewController;
             VC.locationArray = self.locationArray;
             VC.locationNameArray = self.locationNameArray;
+        } else if (segue.identifier == "segueToProfile") {
+            var VC = segue.destinationViewController as! ProfileViewController;
+            NSLog("sender: \(sender)");
+            VC.user = photo.user;
+            VC.title = photo.user!.profileName;
         }
     }
     

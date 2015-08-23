@@ -86,7 +86,8 @@ public class PQUser : AVUser, AVSubclassing {
                 var photo = PQPhoto(file: file);
                 photo.caption = caption;
                 photo.user = self;
-                photo.setValue(self.gender, forKey: "gender");
+                NSLog("User gender is \(self.gender)");
+                photo.gender = self.gender as Bool;
                 photo.location = PQ.currentUser.location;
                 photo.locationString = PQ.currentUser.locationString;
                 photo.saveInBackgroundWithBlock({ (success, error) -> Void in
@@ -122,7 +123,7 @@ public class PQUser : AVUser, AVSubclassing {
         
         var chain = PQChain(photo: photo);
         chain.user = self;
-        chain.setValue(self.gender, forKey: "gender");
+        chain.gender = photo.gender as Bool;
         chain.location = self.location;
         chain.locationString = self.locationString;
         
@@ -146,7 +147,7 @@ public class PQUser : AVUser, AVSubclassing {
         
         var chain = PQChain(photo: originalChain.photo!);
         chain.user = self;
-        chain.gender = originalChain.gender;
+        chain.gender = originalChain.gender as Bool;
         chain.original = originalChain;
         chain.location = self.location;
         chain.locationString = self.locationString;
@@ -331,7 +332,7 @@ public class PQUser : AVUser, AVSubclassing {
     @NSManaged var bio: String?
     @NSManaged var balance: Int
     @NSManaged var emailVerified: Bool
-    @NSManaged var gender: Bool
+    @NSManaged var gender: NSNumber
     @NSManaged var installationId: String?
     @NSManaged var location: AVGeoPoint?
     @NSManaged var locationString: String?

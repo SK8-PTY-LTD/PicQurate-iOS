@@ -8,8 +8,13 @@
 
 import Foundation
 
+protocol ActivityToProfileProtocol {
+    func showProfile(user: PQUser);
+}
+
 class PQActivityCollectionViewCell: UICollectionViewCell {
-    
+    var delegate: ActivityToProfileProtocol?
+//    var user: PQUser!
     @IBOutlet weak var profileImageView: AVImageView!
     @IBOutlet weak var profileNameButton: UIButton!
     @IBOutlet weak var profileActionLabel: UILabel!
@@ -19,7 +24,6 @@ class PQActivityCollectionViewCell: UICollectionViewCell {
     var activity: PQPush!
     func initializeWithActivity(activity: PQPush){
         self.activity = activity;
-        
         
         if let image = self.activity.sender?.profileImage {
             NSLog("Image exists");
@@ -51,6 +55,19 @@ class PQActivityCollectionViewCell: UICollectionViewCell {
             photoImageView!.loadInBackground()
         } else {
             NSLog("\(self.activity.photo): no photoImageView")
+        }
+    }
+
+//    func showProfile(user: PQUser){
+//        delegate?.showProfile(self.activity.sender);
+//    }
+    
+    @IBAction func profileNameButtonClicked(sender: UIButton) {
+        if let delegate = self.delegate {
+            delegate.showProfile(self.activity.sender);
+            NSLog("sender is \(self.activity.sender)");
+        }else{
+            NSLog("delegate is nil");
         }
     }
     

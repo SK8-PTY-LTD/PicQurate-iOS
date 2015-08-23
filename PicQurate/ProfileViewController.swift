@@ -219,7 +219,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        PQ.showError(error);
+//        PQ.showError(error);
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {

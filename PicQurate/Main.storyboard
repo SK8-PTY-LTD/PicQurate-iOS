@@ -19,6 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="vJ9-aN-IMC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tagline_reverse" translatesAutoresizingMaskIntoConstraints="NO" id="v1F-jr-4A7">
                                 <rect key="frame" x="200" y="68" width="200" height="52"/>
                                 <constraints>
@@ -68,9 +71,6 @@
                                     <rect key="frame" x="80" y="320" width="240" height="40"/>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="vJ9-aN-IMC">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -448,11 +448,11 @@
                                         <rect key="frame" x="0.0" y="64" width="300" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="358"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F1t-vv-PL0" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                                    <rect key="frame" x="2" y="2" width="296" height="356"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="358"/>
                                                     <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
@@ -462,11 +462,12 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottomMargin" secondItem="F1t-vv-PL0" secondAttribute="bottom" constant="-6" id="LRN-LA-AeW"/>
-                                            <constraint firstItem="F1t-vv-PL0" firstAttribute="top" secondItem="Jnw-ng-EKU" secondAttribute="topMargin" constant="-6" id="Wv3-Yf-SjH"/>
-                                            <constraint firstItem="F1t-vv-PL0" firstAttribute="leading" secondItem="Jnw-ng-EKU" secondAttribute="leadingMargin" constant="-6" id="tjl-1b-8U4"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="F1t-vv-PL0" secondAttribute="trailing" constant="-6" id="z6M-n0-uGh"/>
+                                            <constraint firstAttribute="trailing" secondItem="F1t-vv-PL0" secondAttribute="trailing" id="1fr-z5-8T1"/>
+                                            <constraint firstItem="F1t-vv-PL0" firstAttribute="leading" secondItem="Jnw-ng-EKU" secondAttribute="leading" id="Bfh-bZ-XEx"/>
+                                            <constraint firstItem="F1t-vv-PL0" firstAttribute="top" secondItem="Jnw-ng-EKU" secondAttribute="top" id="JYP-vW-3iw"/>
+                                            <constraint firstAttribute="bottom" secondItem="F1t-vv-PL0" secondAttribute="bottom" id="RSS-YO-FJO"/>
                                         </constraints>
+                                        <size key="customSize" width="300" height="358"/>
                                         <connections>
                                             <outlet property="imageView" destination="F1t-vv-PL0" id="Uqt-Qc-NfX"/>
                                         </connections>
@@ -475,13 +476,13 @@
                                         <rect key="frame" x="300" y="64" width="300" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="476"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GnS-cB-hSz">
                                                     <rect key="frame" x="8" y="8" width="284" height="54"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6YN-fy-4QU" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6YN-fy-4QU" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                             <rect key="frame" x="12" y="7" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="1lX-po-ZQg"/>
@@ -500,7 +501,7 @@
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="topLikeButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="kdV-ER-daC"/>
+                                                                <action selector="topLikeButtonClicked:" destination="Z8q-ki-YH5" eventType="touchUpInside" id="L7y-NY-n3d"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBH-bY-Mwa">
@@ -522,35 +523,35 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-l4-EGb">
-                                                    <rect key="frame" x="8" y="362" width="98" height="22"/>
+                                                    <rect key="frame" x="8" y="366" width="97.5" height="22"/>
                                                     <state key="normal" title="0" image="like-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-Qd-Rg3">
-                                                    <rect key="frame" x="106" y="362" width="97" height="22"/>
-                                                    <state key="normal" title="0" image="chain-icon">
+                                                    <rect key="frame" x="105.5" y="365" width="97" height="24"/>
+                                                    <state key="normal" title="0" image="icon_chain_0">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIa-KY-3Z2">
-                                                    <rect key="frame" x="203" y="362" width="98" height="22"/>
+                                                    <rect key="frame" x="202.5" y="366" width="97.5" height="22"/>
                                                     <state key="normal" title="0" image="location-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-message" translatesAutoresizingMaskIntoConstraints="NO" id="76x-SQ-7aS" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="392" width="21" height="21"/>
+                                                    <rect key="frame" x="8" y="396" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="6fM-hZ-kto"/>
                                                         <constraint firstAttribute="width" constant="21" id="eo3-B0-TmC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTK-hB-yHY">
-                                                    <rect key="frame" x="29" y="384" width="263" height="72"/>
+                                                    <rect key="frame" x="29" y="388" width="263" height="72"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="72" id="8xc-ID-Qlo"/>
@@ -592,9 +593,10 @@
                                             <constraint firstItem="hTK-hB-yHY" firstAttribute="leading" secondItem="76x-SQ-7aS" secondAttribute="trailing" id="eOT-ne-aTl"/>
                                             <constraint firstItem="Soq-l4-EGb" firstAttribute="leading" secondItem="Z8q-ki-YH5" secondAttribute="leadingMargin" id="j9N-UG-o0b"/>
                                             <constraint firstItem="GnS-cB-hSz" firstAttribute="top" secondItem="Z8q-ki-YH5" secondAttribute="topMargin" id="jZX-GO-QxG"/>
-                                            <constraint firstItem="Soq-l4-EGb" firstAttribute="top" secondItem="ig9-JL-KCv" secondAttribute="bottom" id="nfa-hm-rAI"/>
+                                            <constraint firstItem="Soq-l4-EGb" firstAttribute="top" secondItem="ig9-JL-KCv" secondAttribute="bottom" constant="4" id="nfa-hm-rAI"/>
                                             <constraint firstItem="kOW-Qd-Rg3" firstAttribute="centerY" secondItem="sIa-KY-3Z2" secondAttribute="centerY" id="w7q-OC-tTo"/>
                                         </constraints>
+                                        <size key="customSize" width="300" height="476"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="WOR-bl-XeF"/>
@@ -648,9 +650,12 @@
                                                                 <color key="titleColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="profileNameButtonClicked:" destination="4A1-lv-Ykh" eventType="touchUpInside" id="kFf-1g-SZM"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tch-Pd-miG">
-                                                            <rect key="frame" x="95" y="23.5" width="133" height="14.5"/>
+                                                            <rect key="frame" x="95" y="24" width="133" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -774,11 +779,12 @@
                         <outlet property="collectionView" destination="UbO-zl-n5e" id="mix-w9-YsO"/>
                         <outlet property="followingButton" destination="ypr-Ny-h1e" id="gBm-Rm-CMM"/>
                         <outlet property="likedButton" destination="ArI-Zc-Y4y" id="Hli-kh-yZC"/>
+                        <segue destination="xUg-Bg-e0s" kind="show" identifier="segueToProfile" id="nn0-nq-icu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6E-vw-9BU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2904" y="-244"/>
+            <point key="canvasLocation" x="2904" y="-245"/>
         </scene>
         <!--Home Detail View Controller-->
         <scene sceneID="9B3-t9-gDh">
@@ -886,7 +892,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-qV-2bJ">
-                                <rect key="frame" x="205.5" y="726" width="189" height="24"/>
+                                <rect key="frame" x="206" y="726" width="189" height="24"/>
                                 <state key="normal" title="0" image="icon_chain_0">
                                     <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -896,7 +902,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOS-hT-pbA">
-                                <rect key="frame" x="394.5" y="727" width="189.5" height="22"/>
+                                <rect key="frame" x="395" y="727" width="189" height="22"/>
                                 <state key="normal" title="0" image="icon_location">
                                     <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -925,7 +931,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuo-Hi-Nmu">
                                 <rect key="frame" x="0.0" y="64" width="600" height="54"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bc6-UB-cAe" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bc6-UB-cAe" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                         <rect key="frame" x="20" y="7" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="7y7-T2-Xb8"/>
@@ -952,6 +958,9 @@
                                         <state key="normal">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="profileNameButtonClicked:" destination="rpa-53-4pO" eventType="touchUpInside" id="okH-Z4-BXD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1009,6 +1018,7 @@
                         <outlet property="topLikeButton" destination="RgD-9n-E1T" id="u9y-AL-v18"/>
                         <segue destination="ZZy-Ue-Q0G" kind="show" identifier="segueToLikedUser" id="g0u-Mo-Vtm"/>
                         <segue destination="Idb-p5-jdr" kind="show" identifier="segueToChain" id="IfK-US-cVs"/>
+                        <segue destination="xUg-Bg-e0s" kind="show" identifier="segueToProfile" id="zvr-y4-sXE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oia-Gs-Olb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1297,21 +1307,21 @@
                                                     </variation>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-OD-G7v">
-                                                    <rect key="frame" x="8" y="300" width="97.5" height="22"/>
+                                                    <rect key="frame" x="8" y="300" width="98" height="22"/>
                                                     <state key="normal" title="0" image="like-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJo-Cl-chd">
-                                                    <rect key="frame" x="105.5" y="299" width="97" height="24"/>
+                                                    <rect key="frame" x="106" y="299" width="97" height="24"/>
                                                     <state key="normal" title="0" image="icon_chain_0">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-4N-1uZ">
-                                                    <rect key="frame" x="202.5" y="300" width="97.5" height="22"/>
+                                                    <rect key="frame" x="203" y="300" width="98" height="22"/>
                                                     <state key="normal" title="0" image="location-icon">
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1878,7 +1888,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KN4-rd-7Qm">
                                                     <rect key="frame" x="8" y="8" width="584" height="35"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VzW-cV-xXH" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="VzW-cV-xXH" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                             <rect key="frame" x="8" y="4" width="27" height="27"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="27" id="F7h-VO-gEL"/>
@@ -1981,7 +1991,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="32" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UNW-tQ-1bZ" customClass="TPKeyboardAvoidingTableView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UNW-tQ-1bZ" customClass="TPKeyboardAvoidingTableView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -2048,16 +2058,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="32q-MY-8DF">
-                                                    <rect key="frame" x="8" y="2" width="28" height="28"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="32q-MY-8DF" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="6" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="EsT-nB-gGP"/>
                                                         <constraint firstAttribute="width" constant="28" id="iLj-Tc-ezS"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KQ1-LD-zrm">
-                                                    <rect key="frame" x="56" y="-0.5" width="536" height="32"/>
+                                                    <rect key="frame" x="56" y="4" width="536" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="ilu-Bp-R3p"/>
                                                     </constraints>
@@ -2074,6 +2083,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imageView" destination="32q-MY-8DF" id="Gzu-iI-2b8"/>
                                             <outlet property="textfield" destination="KQ1-LD-zrm" id="vA0-59-Z8F"/>
                                         </connections>
                                     </tableViewCell>
@@ -2084,16 +2094,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cIP-cu-6XG">
-                                                    <rect key="frame" x="8" y="2" width="28" height="28"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cIP-cu-6XG" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="6" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="Kve-6e-H6r"/>
                                                         <constraint firstAttribute="height" constant="28" id="bIa-g0-gEZ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7s-fX-Lc5">
-                                                    <rect key="frame" x="56" y="0.0" width="536" height="32"/>
+                                                    <rect key="frame" x="56" y="4.5" width="536" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="13z-C6-L9h"/>
                                                     </constraints>
@@ -2101,9 +2110,6 @@
                                                         <color key="titleColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="locationButtonClicked" destination="oRl-74-xJc" eventType="touchUpInside" id="ZTo-FH-r5r"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -2116,6 +2122,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="button" destination="R7s-fX-Lc5" id="759-Z2-tMR"/>
+                                            <outlet property="imageView" destination="cIP-cu-6XG" id="ifc-RI-lo7"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditProfileTableViewTextViewCell" id="Gg2-Ui-MqI" customClass="EditProfileTableViewCell" customModule="PicQurate" customModuleProvider="target">
@@ -2126,7 +2133,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6E-qh-rPi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="40.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2494,13 +2501,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbg-WJ-YtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-130" y="440"/>
         </scene>
     </scenes>
     <resources>
         <image name="acheive_bronze" width="28" height="28"/>
         <image name="acheive_gold" width="28" height="28"/>
         <image name="acheive_silter" width="29" height="28"/>
-        <image name="chain-icon" width="19" height="18"/>
         <image name="default_profile" width="100" height="100"/>
         <image name="icon-female" width="18" height="28"/>
         <image name="icon-message" width="25" height="24"/>
@@ -2526,8 +2533,8 @@
         <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2fq-0F-wEU"/>
+        <segue reference="nn0-nq-icu"/>
+        <segue reference="ta3-m0-Ka4"/>
         <segue reference="g0u-Mo-Vtm"/>
-        <segue reference="VPz-mc-4aY"/>
     </inferredMetricsTieBreakers>
 </document>

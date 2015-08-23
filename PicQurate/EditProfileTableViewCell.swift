@@ -14,4 +14,5 @@ class EditProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var button: UIButton!;
     @IBOutlet weak var textView: UITextView!;
     
+    
 }

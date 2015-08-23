@@ -69,6 +69,8 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                                     if let e = error {
                                         PQ.showError(e);
                                     } else {
+                                        var fbLoginManager = FBSDKLoginManager();
+                                        fbLoginManager.logOut();
                                         PQ.promote("Password was incorrect. Please check your mailbox to reset pasasword");
                                     }
                                 });

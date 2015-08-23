@@ -25,6 +25,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var displayMode: Int = 0;
     var gender: Bool = false;
     
+     var refreshControl:UIRefreshControl!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad();
@@ -35,7 +37,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
         self.flowLayout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.width, 280);
         self.setColumns(2);
+        self.reloadPhoto();
+        self.refreshControl = UIRefreshControl();
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh");
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged);
+        self.collectionView.addSubview(refreshControl);
         
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        self.reloadPhoto();
+        self.refreshControl.endRefreshing()
     }
     
     @IBAction func dailyButtonClicked(sender: UIButton) {
@@ -54,13 +67,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     @IBAction func genderButtonClicked(sender: UIBarItem) {
-        self.gender = !self.gender;
-        self.reloadPhoto();
-        if (self.genderButton.image == UIImage(named: "icon-male")) {
+        if (self.gender) {
             self.genderButton.image = UIImage(named: "icon-female");
         } else {
             self.genderButton.image = UIImage(named: "icon-male");
         }
+        self.gender = !self.gender;
+        self.reloadPhoto();
     }
     
 
@@ -110,21 +123,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func displayPhotoByDay() {
+        var yesterday = NSDate().dateByAddingTimeInterval(-2 * 24 * 60 * 60);
+        
         var query = PQChain.query();
         query.orderByAscending("createdAt");
-        var yesterday = NSDate().dateByAddingTimeInterval(-2 * 24 * 60 * 60);
-        NSLog("\(NSDate())");
-        NSLog("\(yesterday)");
-        
         query.whereKey("createdAt", greaterThan: yesterday);
         query.limit = 10;
         query.includeKey("photo");
         query.includeKey("photo.user");
-        if (self.gender) {
-            query.whereKey("gender", equalTo: 1);
-        } else {
-            query.whereKey("gender", equalTo: 0);
-        }
+        query.whereKey("gender", equalTo: self.gender);
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
@@ -148,18 +155,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func displayPhotoByLocation() {
         var query = PQChain.query();
-//        query.whereKey("photo.user.gender", equalTo: self.gender);
         query.orderByDescending("createdAt");
-        NSLog("\(PQ.currentUser.location)");
-//        query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 10.0);
+        query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 100.0);
         query.limit = 10;
         query.includeKey("photo");
         query.includeKey("photo.user");
-        if (self.gender) {
-            query.whereKey("gender", equalTo: 1);
-        } else {
-            query.whereKey("gender", equalTo: 0);
-        }
+        query.whereKey("gender", equalTo: self.gender);
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             NSLog("array: \(array.count)");
             if let e = error {

@@ -71,9 +71,13 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
             var scaledImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             
-            var detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]);
+            var detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyLow]);
             var ciImage = CIImage(image: scaledImage);
             var features = detector.featuresInImage(ciImage);
+//            for (var i = 0; i < features.count; i++) {
+//                let feature = features[i] as! CIFaceFeature;
+//                NSLog("Month: \(feature.hasMouthPosition), Left eye: \(feature.hasLeftEyePosition), Right eye: \(feature.hasRightEyePosition)");
+//            }
             if (features.count == 0) {
                 PQ.promote("Hey dear, to upload a selfie, please have a face in it. :)");
                 self.activityIndicator.stopAnimating();
