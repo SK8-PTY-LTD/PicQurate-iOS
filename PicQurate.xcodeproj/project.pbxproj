@@ -1507,7 +1507,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
+				PROVISIONING_PROFILE = "372043e8-ae61-4407-b770-43725f186b8f";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1532,7 +1532,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
+				PROVISIONING_PROFILE = "372043e8-ae61-4407-b770-43725f186b8f";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 			};
 			name = Release;

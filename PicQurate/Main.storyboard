@@ -323,7 +323,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vHV-ZU-hY6" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
@@ -331,7 +330,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="vHV-ZU-hY6" firstAttribute="leading" secondItem="COJ-CD-Rea" secondAttribute="leading" id="Ca4-gb-l1b"/>
                                             <constraint firstAttribute="bottom" secondItem="vHV-ZU-hY6" secondAttribute="bottom" id="PFh-5o-YWu"/>
@@ -2533,8 +2531,8 @@
         <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nn0-nq-icu"/>
-        <segue reference="ta3-m0-Ka4"/>
+        <segue reference="A46-ri-ynF"/>
         <segue reference="g0u-Mo-Vtm"/>
+        <segue reference="nn0-nq-icu"/>
     </inferredMetricsTieBreakers>
 </document>
