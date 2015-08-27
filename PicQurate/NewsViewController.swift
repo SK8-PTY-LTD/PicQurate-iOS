@@ -28,6 +28,12 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad();
         
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
+        
+        //Anonymous user does not have an email
+        if (PQ.currentUser.email == nil) {
+            return;
+        }
+        
         self.refreshFolloweeSection();
         
     }
@@ -49,19 +55,15 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         switch selectedTab {
         case 0:
-            NSLog("Cell is IMAGEVIEWCELL");
             var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("profileViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
             cell.initializeWithPhoto(photoList[indexPath.row]);
             return cell;
         case 1:
-            NSLog("Cell is PROFILEVIEWCELL");
             var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
             cell.initializeWithPhoto(photoList[indexPath.row]);
             return cell;
         case 2:
-            NSLog("Cell is ActvityViewCELL");
             var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("activityViewCell", forIndexPath: indexPath) as! PQActivityCollectionViewCell;
-            NSLog("cell connect with activityviewcell")
             if pushList.count != 0 {
                 cell.initializeWithActivity(pushList[indexPath.row]);
                 cell.delegate = self

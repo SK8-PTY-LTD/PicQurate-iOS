@@ -27,11 +27,17 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         self.refreshLocation();
         
-        //Display user information
+        
+        //Anonymous user does not have an email
+        if (PQ.currentUser.email == nil) {
+            return;
+        }
+        
         if let user = self.user {
-            //Check user
-        } else if let user = PQ.currentUser {
-            self.user = user;
+            //Display other user information
+            self.navigationItem.rightBarButtonItem = nil;
+        } else if (PQ.currentUser.email != nil) {
+            self.user = PQ.currentUser;
         } else {
             return;
         }
@@ -235,7 +241,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                 for (var i = 0; i < placemarks.count; i++) {
                     var placemark = placemarks[i] as! CLPlacemark;
                     var geoPoint = AVGeoPoint(latitude: placemark.location.coordinate.latitude, longitude: placemark.location.coordinate.longitude);
-                    if let user = PQ.currentUser {
+                    if (PQ.currentUser.email != nil) {
                         PQ.currentUser.location = geoPoint;
                         PQ.currentUser.locationString = "\(placemark.administrativeArea), \(placemark.country)";
                         PQ.currentUser.saveEventually();

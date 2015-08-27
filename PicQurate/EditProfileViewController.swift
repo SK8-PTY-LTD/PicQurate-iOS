@@ -58,11 +58,6 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         PQ.currentUser.bio = self.bioTextView.text;
         PQ.currentUser.email = self.emailTextField.text;
         PQ.currentUser.username = self.emailTextField.text;
-//        if (PQ.currentUser.gender) {
-//            self.genderTextField.text = "Male";
-//        } else {
-//            self.genderTextField.text = "Female";
-//        }
         PQ.currentUser.saveInBackground();
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             //Do nothing
@@ -129,16 +124,13 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         AVUser.logOut();
         var fbLoginManager = FBSDKLoginManager();
         fbLoginManager.logOut();
-        PQ.currentUser = nil;
+        
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            //Do nothing
+            AVAnonymousUtils.logInWithBlock { (anonymousUser, error) -> Void in
+                PQ.currentUser = PQUser.currentUser();
+            }
         });
     }
-    
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        textField.resignFirstResponder();
-//        return true;
-//    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3;

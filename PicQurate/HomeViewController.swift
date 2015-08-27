@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var chainArray2: [PQChain] = [PQChain]();
     var column: Int = 2;
     var displayMode: Int = 0;
-    var gender: Bool = false;
+    var gender: NSNumber = false;
     
      var refreshControl:UIRefreshControl!
     
@@ -33,7 +33,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         var headerNib = UINib(nibName: "HomeHeaderCollectionReusableView", bundle: nil);
         self.collectionView.registerNib(headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header");
-        
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
         self.flowLayout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.width, 280);
         self.setColumns(2);
@@ -67,12 +66,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     @IBAction func genderButtonClicked(sender: UIBarItem) {
-        if (self.gender) {
+        if (self.gender == true) {
+            self.gender = false;
             self.genderButton.image = UIImage(named: "icon-female");
         } else {
+            self.gender = true;
             self.genderButton.image = UIImage(named: "icon-male");
         }
-        self.gender = !self.gender;
         self.reloadPhoto();
     }
     
@@ -96,12 +96,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         query.orderByDescending("createdAt");
         query.includeKey("photo");
         query.includeKey("photo.user");
-        if (self.gender) {
-            query.whereKey("gender", equalTo: 1);
-        } else {
-            query.whereKey("gender", equalTo: 0);
-        }
-        query.limit = 10;
+        query.whereKey("gender", equalTo: self.gender);
+        query.limit = 11;
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
@@ -126,9 +122,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         var yesterday = NSDate().dateByAddingTimeInterval(-2 * 24 * 60 * 60);
         
         var query = PQChain.query();
-        query.orderByAscending("createdAt");
+        query.orderByDescending("createdAt");
         query.whereKey("createdAt", greaterThan: yesterday);
-        query.limit = 10;
+        query.limit = 11;
         query.includeKey("photo");
         query.includeKey("photo.user");
         query.whereKey("gender", equalTo: self.gender);
@@ -156,8 +152,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func displayPhotoByLocation() {
         var query = PQChain.query();
         query.orderByDescending("createdAt");
-        query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 100.0);
-        query.limit = 10;
+        if (PQ.currentUser.email != nil) {
+            query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 100.0);
+        }
+        query.limit = 11;
         query.includeKey("photo");
         query.includeKey("photo.user");
         query.whereKey("gender", equalTo: self.gender);
@@ -187,8 +185,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.column = numberOfColumns;
         var itemWidth = self.view.frame.size.width / CGFloat(self.column);
         self.flowLayout.itemSize = CGSizeMake(itemWidth-1, itemWidth-1);
-        NSLog("itemWidth: \(itemWidth)");
-        NSLog("collectionView: \(self.collectionView.frame.size)");
         self.collectionView.reloadData();
         self.collectionView.layoutIfNeeded();
     }

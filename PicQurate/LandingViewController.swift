@@ -20,7 +20,7 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        if let user = PQ.currentUser {
+        if (PQ.currentUser != nil && PQ.currentUser.email != nil) {
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
                 
             });
@@ -48,58 +48,83 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                 var email = user["email"] as! String;
                 var id = user["id"] as! String;
                 var name = user["name"] as! String;
-                var gender = false;
+                var gender: NSNumber = false;
                 if (user["gender"] as! String == "male") {
                     gender = true;
                 } else {
                     gender = false;
                 }
                 
-                var user = PQUser(email: email, password: id, profileName: name);
-                user.gender = gender;
-                var urlString: String = "https://graph.facebook.com/" + id + "/picture?type=normal";
-                var data = NSData(contentsOfURL: NSURL(string: urlString)!);
-                var profileImage = UIImage(data: data!);
-                
-                user.signUpInBackgroundWithBlock({ (success, error) -> Void in
+                //Due to presence of EnableAutomaticUser *\& Anonymous User,
+                //1. Login with Faecbok Id
+                //2. If error, check if 3 Wrong password or 4 user does not exist
+                //3. Help user reset password
+                //4. Help user 'sign up', by providing attributes to anonymous user and save.
+                PQUser.logInWithUsernameInBackground(email, password: id, block: { (u, error) -> Void in
                     if let e = error {
-                        PQUser.logInWithUsernameInBackground(email, password: id, block: { (u, error) -> Void in
-                            if let e = error {
+                        if (e.code == 210) {
+                            //User exists with wrong password
+                            var alertController = UIAlertController(title: "Oops...", message: "This email had already linked to another PicQurate account. Would you like to reset the password?", preferredStyle: .Alert)
+                            var okAction = UIAlertAction(title: "OK!", style: UIAlertActionStyle.Default) {
+                                UIAlertAction in
+                                //Reset Password
                                 AVUser.requestPasswordResetForEmailInBackground(email, block: { (success, error) -> Void in
                                     if let e = error {
                                         PQ.showError(e);
                                     } else {
-                                        var fbLoginManager = FBSDKLoginManager();
-                                        fbLoginManager.logOut();
-                                        PQ.promote("Password was incorrect. Please check your mailbox to reset pasasword");
+                                        PQ.promote("An email is on its way to your inbox! Please check the instructions inside.");
                                     }
                                 });
-                            } else {
-                                var user = u as! PQUser;
-                                PQ.currentUser = user;
-                                NSLog("Facebook log in successful");
+                            }
+                            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+                                UIAlertAction in
+                                //Do nothing
+                            }
+                            alertController.addAction(okAction);
+                            alertController.addAction(cancelAction);
+                            self.presentViewController(alertController, animated: true, completion: nil);
+                        } else if (e.code == 211) {
+                            //User does not exist, save data to anonymous user
+                            PQ.currentUser.username = email;
+                            PQ.currentUser.email = email;
+                            PQ.currentUser.password = id;
+                            PQ.currentUser.profileName = name;
+                            PQ.currentUser.gender = gender;
+                            PQ.currentUser.signUpInBackgroundWithBlock({ (success, e) -> Void in
+                                var urlString: String = "https://graph.facebook.com/" + id + "/picture?type=normal";
+                                var data = NSData(contentsOfURL: NSURL(string: urlString)!);
+                                var profileImage = UIImage(data: data!);
+                                PQ.currentUser.setProfileUIImage(profileImage!);
+                                PQ.currentUser.saveInBackground();
+                                NSLog("Facebook sign up successful");
                                 if let method = PQ.delegate?.onUserRefreshed {
                                     method();
                                 }
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                            }
-                        });
+                                self.dismissViewControllerAnimated(true, completion: nil);
+                            })
+                        }
                     } else {
-                        NSLog("FB login success, setting profile image");
-                        user.setProfileUIImage(profileImage!);
+                        var user = u as! PQUser;
                         PQ.currentUser = user;
-                        NSLog("Facebook sign up successful");
+                        NSLog("Facebook log in successful");
                         if let method = PQ.delegate?.onUserRefreshed {
                             method();
                         }
                         self.dismissViewControllerAnimated(true, completion: nil);
                     }
-                })
-                
-                
+                    
+                    var fbLoginManager = FBSDKLoginManager();
+                    fbLoginManager.logOut();
+                });
                 
             }
         }
+    }
+    
+    @IBAction func skipButtonClicked(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        });
     }
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {

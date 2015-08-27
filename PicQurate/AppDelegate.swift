@@ -98,14 +98,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        if let currentUser = PQ.currentUser {
+        if (PQ.currentUser != nil && PQ.currentUser.email != nil) {
             var installation = AVInstallation.currentInstallation();
             installation.setDeviceTokenFromData(deviceToken);
-            installation.setObject(currentUser.objectId, forKey: "userId");
+            installation.setObject(PQ.currentUser.objectId, forKey: "userId");
             installation.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if (success) {
-                    currentUser.setInstallation(installation);
-                    currentUser.saveInBackground();
+                    PQ.currentUser.setInstallation(installation);
+                    PQ.currentUser.saveInBackground();
                 } else {
                     PQ.showError(error);
                 }

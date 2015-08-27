@@ -51,20 +51,21 @@ class PhotoViewController: UIViewController {
             self.photoImageView.loadInBackground();
             self.photoImageView.addGestureRecognizer(tapRecognizer);
             
-            
-            PQ.currentUser.hasLikedPhotoithCallback(photo, callback: { (liked, error) -> () in
-                if let e = error {
-                    //Do nothing
-                } else {
-                    if (liked) {
-                        self.topLikeButton.setBackgroundImage(UIImage(named: "like-icon-1"), forState: .Normal);
-                        self.likeButton.setImage(UIImage(named: "like-icon-1"), forState: .Normal);
+            if (PQ.currentUser.email != nil) {
+                PQ.currentUser.hasLikedPhotoithCallback(photo, callback: { (liked, error) -> () in
+                    if let e = error {
+                        //Do nothing
                     } else {
-                        self.topLikeButton.setBackgroundImage(UIImage(named: "icon_like_1"), forState: .Normal);
-                        self.likeButton.setImage(UIImage(named: "like-icon"), forState: .Normal);
+                        if (liked) {
+                            self.topLikeButton.setBackgroundImage(UIImage(named: "like-icon-1"), forState: .Normal);
+                            self.likeButton.setImage(UIImage(named: "like-icon-1"), forState: .Normal);
+                        } else {
+                            self.topLikeButton.setBackgroundImage(UIImage(named: "icon_like_1"), forState: .Normal);
+                            self.likeButton.setImage(UIImage(named: "like-icon"), forState: .Normal);
+                        }
                     }
-                }
-            })
+                });
+            }
             
             var query0 = PQ.currentUser.relationforKey("photoLiked").query();
             query0.whereKey("objectId", equalTo: self.photo.objectId);
@@ -121,23 +122,43 @@ class PhotoViewController: UIViewController {
                         var name = chain.user?.profileName;
                         
                         if (chain.location != nil) {
-                            self.locationNameArray.append((chain.user?.profileName)!);
+                            if let name = chain.user?.profileName {
+                                self.locationNameArray.append(name);
+                            } else {
+                                self.locationNameArray.append("Private user");
+                            }
                             self.locationArray.append(chain.location!);
                         }
                         if (chain.original?.location != nil) {
-                            self.locationNameArray.append((chain.original?.user?.profileName)!);
+                            if let name = chain.original?.user?.profileName {
+                                self.locationNameArray.append(name);
+                            } else {
+                                self.locationNameArray.append("Private user");
+                            }
                             self.locationArray.append((chain.original?.location)!);
                         }
                         if (chain.original?.original?.location != nil) {
-                            self.locationNameArray.append((chain.original?.original?.user?.profileName)!);
+                            if let name = chain.original?.original?.user?.profileName {
+                                self.locationNameArray.append(name);
+                            } else {
+                                self.locationNameArray.append("Private user");
+                            }
                             self.locationArray.append((chain.original?.original?.location)!);
                         }
                         if (chain.original?.original?.original?.location != nil) {
-                            self.locationNameArray.append((chain.original?.original?.original?.user?.profileName)!);
+                            if let name = chain.original?.original?.original?.user?.profileName {
+                                self.locationNameArray.append(name);
+                            } else {
+                                self.locationNameArray.append("Private user");
+                            }
                             self.locationArray.append((chain.original?.original?.original?.location)!);
                         }
                         if (chain.original?.original?.original?.original?.location != nil) {
-                            self.locationNameArray.append((chain.original?.original?.original?.original?.user?.profileName)!);
+                            if let name = chain.original?.original?.original?.original?.user?.profileName {
+                                self.locationNameArray.append(name);
+                            } else {
+                                self.locationNameArray.append("Private user");
+                            }
                             self.locationArray.append((chain.original?.original?.original?.original?.location)!);
                         }
                     } else {
@@ -161,11 +182,15 @@ class PhotoViewController: UIViewController {
     
     @IBAction func topLikeButtonClicked(sender: UIButton) {
         if (self.topLikeButton.backgroundImageForState(.Normal) == UIImage(named: "icon_like_1")) {
-            PQ.currentUser.likePhoto(self.photo, like: true);
+            if (PQ.currentUser.email != nil) {
+                PQ.currentUser.likePhoto(self.photo, like: true);
+            }
             self.topLikeButton.setBackgroundImage(UIImage(named: "like-icon-1"), forState: .Normal);
             self.likeButton.setImage(UIImage(named: "like-icon-1"), forState: .Normal);
         } else {
-            PQ.currentUser.likePhoto(self.photo, like: false);
+            if (PQ.currentUser.email != nil) {
+                PQ.currentUser.likePhoto(self.photo, like: false);
+            }
             self.topLikeButton.setBackgroundImage(UIImage(named: "icon_like_1"), forState: .Normal);
             self.likeButton.setImage(UIImage(named: "like-icon"), forState: .Normal);
         }

@@ -48,24 +48,25 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
         activityIndicator.startAnimating();
         
         //Saving profile image
-        var user = PQUser(email: email, password: passWord, profileName: username);
+        PQ.currentUser.username = email;
+        PQ.currentUser.email = email;
+        PQ.currentUser.password = passWord;
+        PQ.currentUser.profileName = username;
         if (self.genderSegmentControl.selectedSegmentIndex == 0) {
-            user.setValue(true, forKey: "gender");
+            PQ.currentUser.gender = true;
         } else if (self.genderSegmentControl.selectedSegmentIndex == 1) {
-            user.setValue(false, forKey: "gender");
+            PQ.currentUser.gender = false;
         }
-        //        user.setProfileImage(slider.slider.currentBackgroundImage!);
-        user.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
+        
+        PQ.currentUser.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
             if let e = error {
                 PQ.showError(e);
             } else {
-                var user = user;
                 if let image = self.profileImageButton.imageForState(.Normal) {
                     if image != UIImage(named: "default_profile") {
-                        user.setProfileUIImage(image);
+                        PQ.currentUser.setProfileUIImage(image);
                     }
                 }
-                PQ.currentUser = user;
                 NSLog("Email user sign up successful");
                 if let method = PQ.delegate?.onUserRefreshed {
                     method();

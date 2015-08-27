@@ -8,6 +8,8 @@ import UIKit
 
 class AVImageView: UIImageView {
     
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView?
+    
     let MINIMUM_WIDTH: CGFloat = 160;
     let MINIMUM_Height: CGFloat = 160;
     
@@ -36,6 +38,10 @@ class AVImageView: UIImageView {
         }
         
         if let imageFile = self.file {
+            
+            self.image = nil;
+            self.activityIndicatorView?.startAnimating();
+            
             imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
                 if let e = error {
                     NSLog(e.localizedDescription);
@@ -43,6 +49,7 @@ class AVImageView: UIImageView {
                     var image = UIImage(data: data);
                     self.image = image;
                 }
+                self.activityIndicatorView?.stopAnimating();
             });
 //            var width = self.frame.width;
 //            if (width < MINIMUM_WIDTH) {
@@ -114,6 +121,10 @@ class AVImageView: UIImageView {
             self.cachedfile = self.file;
         }
         
+        self.image = nil;
+        self.activityIndicatorView?.startAnimating();
+
+        
         if let imageFile = self.file {
             imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
                 if let e = error {
@@ -123,6 +134,7 @@ class AVImageView: UIImageView {
                     self.image = UIImage(data: data);
                     block(data, nil);
                 }
+                self.activityIndicatorView?.stopAnimating();
             });
 //            var width = self.frame.width;
 //            if (width < MINIMUM_WIDTH) {

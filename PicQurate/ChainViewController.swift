@@ -20,6 +20,10 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         
+        if (PQ.currentUser.email == nil) {
+            return;
+        }
+        
         self.profileImageView.file = PQ.currentUser.profileImage;
         self.profileImageView.loadInBackground();
         self.profileNameLabel.text = PQ.currentUser.profileName;
@@ -74,6 +78,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
             self.chainArray.removeLast();
             self.downloadChains();
         } else  {
+            self.downloadChains();
             NSLog("Image ran out");
         }
         self.reloadData();

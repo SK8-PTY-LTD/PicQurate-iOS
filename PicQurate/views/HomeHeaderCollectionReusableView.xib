@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -12,13 +12,22 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0QV-Ox-gNW" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="SzC-s3-Tz4" id="97A-kV-mbz"/>
+                    </connections>
                 </imageView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SzC-s3-Tz4">
+                    <rect key="frame" x="281.5" y="281.5" width="37" height="37"/>
+                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="SzC-s3-Tz4" firstAttribute="centerY" secondItem="0QV-Ox-gNW" secondAttribute="centerY" id="4vQ-TJ-fNw"/>
                 <constraint firstAttribute="trailing" secondItem="0QV-Ox-gNW" secondAttribute="trailing" id="BqE-Cw-deB"/>
                 <constraint firstAttribute="centerY" secondItem="0QV-Ox-gNW" secondAttribute="centerY" id="JLZ-dG-wnQ"/>
                 <constraint firstAttribute="centerX" secondItem="0QV-Ox-gNW" secondAttribute="centerX" id="Mpn-Bu-4ff"/>
+                <constraint firstItem="SzC-s3-Tz4" firstAttribute="centerX" secondItem="0QV-Ox-gNW" secondAttribute="centerX" id="NHT-FV-ruO"/>
                 <constraint firstItem="0QV-Ox-gNW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="amL-C8-Q4D"/>
                 <constraint firstAttribute="bottom" secondItem="0QV-Ox-gNW" secondAttribute="bottom" id="imS-8x-8f2"/>
                 <constraint firstItem="0QV-Ox-gNW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mU5-3H-qbx"/>

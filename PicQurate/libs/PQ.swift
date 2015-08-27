@@ -83,13 +83,10 @@ extension String {
 }
 
 @objc protocol PQProtocol: UITextFieldDelegate {
-    optional func onSMSVerified();
     optional func onUserRefreshed();
-    optional func onShopRefreshed();
-    optional func onSellerRefreshed();
 }
 
-class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
+class PQ: NSObject {
     
     // Workaround:
     struct Static {
@@ -99,67 +96,21 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         static let AV_APP_ID = "x4o5c93khy5wlgcyu2mr3qtnztjtwdbylpr3h8qk8c9mriow";
         static let AV_APP_KEY = "t61bgn6q39woxr48vgnf49upxauigarg2glj8ktvri32jesg";
         
-//        static let YTX_ACCOUNT_SID = "8a48b5514b0b8727014b114f547e037d";
-//        static let YTX_ACCOUNT_AUTH_TOKEN = "efe84f72028c4025ac83febe5f052fe7";
-//        static let YTX_APP_ID = "ID8a48b5514b0b8727014b22a0d0d5108d";
-        
-        //	public static ECChatManager MESSAGE_MANAGER;
-        //	public static ECGroupManager GROUP_MANAGER;
-        
-        // Verification code for mobile number verification
-        static var verificationCode: Int?;
-        
-        // Custom Variables required by PQ Library, but is dependent on End App
-        // Set them in init() method
-        
         static let PRIMARY_COLOR: UIColor = UIColor(hex: "#BE0004");
-//        static let ORANGE_SECONDARY: UIColor = UIColor(hex: "#ff9933");
-//        static let WHITE: UIColor = UIColor(hex: "#ffffff");
-//        static let GREY_LIGHTEST = UIColor(hex: "#f7f7f7");
-//        static let GREY: UIColor = UIColor(hex: "#dddddd");
-//        static let GREY_DARKEST: UIColor = UIColor(hex: "#777777");
-//        static let BLACK: UIColor = UIColor(hex: "#222222");
-        
-        // Static variables for easy use
-//        static var currentShop: SHShop?;
-//        static var currentSeller: PQUser?;
         
         static var currentUser: PQUser?;
-//        static var currentPurchase: SHPurchase?;
-//        static var admin: PQUser?;
         
         static var delegate: PQProtocol?;
-    }
-    
-    internal class var verificationCode: Int! {
-        get { return Static.verificationCode }
-        set { Static.verificationCode = newValue }
     }
     
     class var primaryColor: UIColor {
         get { return Static.PRIMARY_COLOR }
     }
-//
-//    class var currentSeller: PQUser! {
-//        get { return Static.currentSeller }
-//        set { Static.currentSeller = newValue }
-    //    }
-//    }
     
     class var currentUser: PQUser! {
         get { return Static.currentUser }
         set { Static.currentUser = newValue }
     }
-    
-//    class var currentPurchase: SHPurchase! {
-//        get { return Static.currentPurchase }
-//        set { Static.currentPurchase = newValue }
-//    }
-//    
-//    class var admin: PQUser! {
-//        get { return Static.admin }
-//        set { Static.admin = newValue }
-//    }
     
     class var delegate: PQProtocol? {
         get { return Static.delegate }
@@ -169,14 +120,6 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
     class func initialize(launchOption: [NSObject: AnyObject]!) {
         
         //When app starts, set up AV
-//        SHAddress.registerSubclass();
-//        SHCategory.registerSubclass();
-//        SHComment.registerSubclass();
-//        SHMembership.registerSubclass();
-//        SHProduct.registerSubclass();
-//        SHPurchase.registerSubclass();
-//        SHPurchaseEntry.registerSubclass();
-//        SHShop.registerSubclass();
         
         PQUser.registerSubclass();
         PQChain.registerSubclass();
@@ -187,10 +130,36 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         AVOSCloud.setApplicationId(PQ.Static.AV_APP_ID, clientKey: PQ.Static.AV_APP_KEY);
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOption);
         
+        PQUser.enableAutomaticUser();
+        
         if let user = PQUser.currentUser() {
             PQ.currentUser = user;
+        } else {
+            AVAnonymousUtils .logInWithBlock({ (anonymousUser, error) -> Void in
+                if let e = error {
+                    
+                } else {
+                    PQ.currentUser = PQUser.currentUser();
+                }
+            })
         }
         
+    }
+    
+    class func sendPush(query: AVQuery, message: String) -> NSError? {
+        var error: NSError?
+        var push = AVPush();
+        push.setQuery(query);
+        push.setMessage(message);
+        push.sendPush(&error)
+        return error;
+    }
+    
+    class func sendPushWithCallBack(query: AVQuery, message: String, callback: AVBooleanResultBlock) {
+        var notification = AVPush();
+        notification.setQuery(query);
+        notification.setMessage(message);
+        notification.sendPushInBackgroundWithBlock(callback);
     }
     
     class func showError(error: NSError) {
@@ -210,173 +179,6 @@ class PQ: NSObject, UITextFieldDelegate, UIAlertViewDelegate {
         alert.message = message
         alert.addButtonWithTitle("OK!")
         alert.show()
-    }
-    
-    class func sendSMS(receiver: String, message: String) -> NSError? {
-        var error: NSError?
-        var params = ["receiver": receiver, "message": message];
-        AVCloud.callFunction("sendSMS", withParameters: params, error: &error);
-        return error;
-    }
-    
-    class func sendSMSWithCallback(receiver: String, message: String, callback: (message: String, error: NSError?) -> ()) {
-        var params = ["receiver": receiver, "message": message];
-        AVCloud.callFunctionInBackground("sendSMS", withParameters: params) { (message, error) -> Void in
-            callback(message: message as! String, error: error);
-        }
-    }
-    
-    class func sendSMSVerificatonWithCallback(delegate: PQProtocol) {
-        
-        PQ.delegate = delegate;
-        
-        // Start an alert, asking number
-        let alert = UIAlertView()
-        alert.title = "What's your number?";
-        alert.message = "For your security, mobile verification is required. Please enter your number, starting with the country code. e.g. 86 134xxxx4876, 61 449xxx149, or 65 82xxxx13."
-        
-        // Set an TextView view to get user input
-        alert.alertViewStyle = UIAlertViewStyle.PlainTextInput;
-        let textField = alert.textFieldAtIndex(0);
-        textField?.placeholder = "8613482504876";
-        textField?.delegate = delegate;
-        textField?.keyboardType = UIKeyboardType.NumberPad;
-        
-        alert.addButtonWithTitle("Cancel")
-        alert.addButtonWithTitle("Send SMS")
-        
-        alert.delegate = self;
-        alert.show();
-        
-    }
-    
-    class func sendEmail(receiver: String, subject: String, message: String) -> NSError? {
-        var error: NSError?
-        var params = ["receiver": receiver, "subject": subject, "message": message];
-        AVCloud.callFunction("sendEmail", withParameters: params, error: &error);
-        return error;
-    }
-    
-    class func sendEmailWithCallBack(receiver: String, subject: String, message: String, callback: (email: String, error: NSError?) -> ()) {
-        var params = ["receiver": receiver, "subject": subject, "message": message];
-        AVCloud.callFunctionInBackground("sendEmail", withParameters: params) { (email, error) -> Void in
-            callback(email: email as! String, error: error);
-        };
-    }
-    
-    class func reportPhoto(photo: AVFile, message: String) {
-//        var emailMessage = PQ.currentUser.profileName! + " said: " + message + ". Please reply to :" + PQ.currentUser.email;
-//        PQ.sendEmail(PQ.currentShop.getEmail()!, subject: "New Feedback for photo: " + photo.url, message: emailMessage);
-//        
-//        var emailBody = PQ.currentUser.getProfileName()! + " reported photo " + photo.url + ", id: " + photo.url + ". Link: https://leancloud.cn/data.html?appid=x4o5c93khy5wlgcyu2mr3qtnztjtwdbylpr3h8qk8c9mriow#/";
-//        PQ.sendEmailWithCallBack("sk8tech@163.com", subject: "New Feedback for photo: " + product.objectId, message: emailBody, callback: { (email, error) -> () in
-//            if let e = error {
-//                PQ.showError(e);
-//            } else {
-//                PQ.promote("Thank you for your feedback! We will get back to you soon!");
-//            }
-//        });
-    }
-
-    class func sendPush(query: AVQuery, message: String) -> NSError? {
-        var error: NSError?
-        var push = AVPush();
-        push.setQuery(query);
-        push.setMessage(message);
-        push.sendPush(&error)
-        return error;
-    }
-    
-    class func sendPushWithCallBack(query: AVQuery, message: String, callback: AVBooleanResultBlock) {
-        var notification = AVPush();
-        notification.setQuery(query);
-        notification.setMessage(message);
-        notification.sendPushInBackgroundWithBlock(callback);
-    }
-    
-    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        var mobile: String?
-        if (alertView.title == "What's your number?") {
-            if (buttonIndex == 0) {
-                //Cancel tapped, do nothing
-            } else if (buttonIndex == 1) {
-                // Get user phone number, and check if it's valid
-                var testNumber = alertView.textFieldAtIndex(0)?.text;
-                var f = NSNumberFormatter();
-                
-                if let number = f.numberFromString(testNumber!) {
-                    // Call cloud function to send verification SMS
-                    PQ.verificationCode = Int((arc4random() * 9 + 1) * 100000)
-                    var message = "\(PQ.verificationCode) is your verification code from PQ, enjoy shopping! :)";
-                    mobile = "+\(number)"
-                    PQ.sendSMSWithCallback(mobile!, message: message, callback: { (message, error) -> () in
-                        if let e = error {
-                            PQ.promote("Verification SMS failed to send. Please try again later.");
-                        } else {
-                            var alert = UIAlertView()
-                            alert.title = "SMS on its way!"
-                            alert.message = "It should be there any second now. Please enter the verification code below."
-                            alert.addButtonWithTitle("Cancel")
-                            alert.addButtonWithTitle("Verify")
-                            let textField = alert.textFieldAtIndex(0);
-                            textField?.placeholder = "xxxxxx";
-                            textField?.delegate = self;
-                            textField?.keyboardType = UIKeyboardType.NumberPad;
-                            alert.delegate = self;
-                            alert.show();
-                        }
-                    })
-                    
-                } else {
-                    NSLog(testNumber!);
-                    //Phone number is not valid
-                    var alert = UIAlertView();
-                    alert.title = "Oops";
-                    alert.message = "Please enter a valid phone number, starting with the country code."
-                    alert.addButtonWithTitle("OK")
-                    alert.show();
-                }
-            }
-        } else if (alertView.title == "SMS on its way!") {
-            if (buttonIndex == 0) {
-                //Cancel tapped, do nothing
-            } else if (buttonIndex == 1) {
-                //Mobile phont verified
-                var verificationCode = alertView.textFieldAtIndex(0)?.text.toInt();
-                if (verificationCode == PQ.verificationCode) {
-                    PQ.currentUser?["mobileNumber"] = mobile;
-                    PQ.currentUser?.saveInBackgroundWithBlock({ (success, error) -> Void in
-                        if let e = error {
-                            PQ.showError(e);
-                        } else {
-                            if let method = PQ.delegate?.onSMSVerified {
-                                method();
-                            }
-                        }
-                    });
-                } else {
-                    PQ.promote("Invalid verification code.");
-                }
-            }
-            
-        }
-    }
-    
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
-        return true;
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        var newString = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string);
-        var expression = "^([0-9]+)?(\\.([0-9]{1,2})?)?$";
-        var regex : NSRegularExpression = NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!;
-        var numberOfMatches = regex.numberOfMatchesInString(newString, options: nil, range: NSRange(location: 0, length: count(newString.utf16)));
-        if (numberOfMatches == 0) {
-            return false;
-        } else {
-            return true;
-        }
     }
     
 }

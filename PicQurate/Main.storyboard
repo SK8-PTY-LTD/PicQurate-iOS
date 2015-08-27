@@ -71,9 +71,26 @@
                                     <rect key="frame" x="80" y="320" width="240" height="40"/>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNc-er-lkh">
+                                <rect key="frame" x="200" y="556" width="188" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="188" id="exb-zZ-VMy"/>
+                                    <constraint firstAttribute="height" constant="36" id="tul-z9-ijS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Skip for now">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hc5-e5-D1h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="rNc-er-lkh" secondAttribute="bottom" constant="8" id="0Df-3v-XOO"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="vJ9-aN-IMC" secondAttribute="bottom" id="0o1-9g-drw"/>
                             <constraint firstItem="yOW-Kg-ttT" firstAttribute="height" secondItem="KS0-xe-WZT" secondAttribute="height" id="3bx-X6-8Sz"/>
                             <constraint firstItem="vJ9-aN-IMC" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="3cL-l3-pUT"/>
@@ -93,6 +110,7 @@
                             <constraint firstItem="vJ9-aN-IMC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="fe3-e6-HDX"/>
                             <constraint firstAttribute="centerX" secondItem="n7L-GA-dhP" secondAttribute="centerX" id="gZG-H6-tpc"/>
                             <constraint firstAttribute="centerX" secondItem="yOW-Kg-ttT" secondAttribute="centerX" id="gq2-d6-SOp"/>
+                            <constraint firstAttribute="centerX" secondItem="rNc-er-lkh" secondAttribute="centerX" constant="6" id="pJS-G0-3ID"/>
                             <constraint firstItem="TGd-lf-Xbh" firstAttribute="top" secondItem="v1F-jr-4A7" secondAttribute="bottom" constant="32" id="rza-en-Imr"/>
                         </constraints>
                         <variation key="default">
@@ -304,48 +322,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-bn-W33">
-                                <rect key="frame" x="0.0" y="102" width="600" height="396"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="Der-ka-La6" customClass="CSStickyHeaderFlowLayout">
-                                    <size key="itemSize" width="300" height="300"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="COJ-CD-Rea" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="119" width="300" height="360"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vHV-ZU-hY6" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-                                                    </variation>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="vHV-ZU-hY6" firstAttribute="leading" secondItem="COJ-CD-Rea" secondAttribute="leading" id="Ca4-gb-l1b"/>
-                                            <constraint firstAttribute="bottom" secondItem="vHV-ZU-hY6" secondAttribute="bottom" id="PFh-5o-YWu"/>
-                                            <constraint firstAttribute="trailing" secondItem="vHV-ZU-hY6" secondAttribute="trailing" id="awx-p5-t3f"/>
-                                            <constraint firstItem="vHV-ZU-hY6" firstAttribute="top" secondItem="COJ-CD-Rea" secondAttribute="top" id="t8t-Xq-OJx"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="imageView" destination="vHV-ZU-hY6" id="gjA-Lj-xEh"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="LfO-fJ-9hx" id="XgV-3E-c5H"/>
-                                    <outlet property="delegate" destination="LfO-fJ-9hx" id="CnN-xa-2sb"/>
-                                </connections>
-                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Un-ie-NZV">
                                 <rect key="frame" x="0.0" y="64" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -374,19 +350,69 @@
                                     <action selector="localButtonClicked:" destination="LfO-fJ-9hx" eventType="touchUpInside" id="gyl-cs-xg5"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-bn-W33">
+                                <rect key="frame" x="0.0" y="102" width="600" height="449"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="Der-ka-La6" customClass="CSStickyHeaderFlowLayout">
+                                    <size key="itemSize" width="300" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageViewCell" id="COJ-CD-Rea" customClass="PQPhotoCollectionViewCell" customModule="PicQurate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="119" width="300" height="360"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vHV-ZU-hY6" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                                    </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="JYl-gu-W8p" id="NT9-DP-q5t"/>
+                                                    </connections>
+                                                </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JYl-gu-W8p">
+                                                    <rect key="frame" x="132" y="131" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="JYl-gu-W8p" firstAttribute="centerY" secondItem="vHV-ZU-hY6" secondAttribute="centerY" constant="-0.5" id="452-Y1-IQS"/>
+                                            <constraint firstItem="vHV-ZU-hY6" firstAttribute="leading" secondItem="COJ-CD-Rea" secondAttribute="leading" id="Ca4-gb-l1b"/>
+                                            <constraint firstAttribute="bottom" secondItem="vHV-ZU-hY6" secondAttribute="bottom" id="PFh-5o-YWu"/>
+                                            <constraint firstAttribute="trailing" secondItem="vHV-ZU-hY6" secondAttribute="trailing" id="awx-p5-t3f"/>
+                                            <constraint firstItem="vHV-ZU-hY6" firstAttribute="top" secondItem="COJ-CD-Rea" secondAttribute="top" id="t8t-Xq-OJx"/>
+                                            <constraint firstItem="JYl-gu-W8p" firstAttribute="centerX" secondItem="vHV-ZU-hY6" secondAttribute="centerX" constant="0.5" id="tBe-b2-hEW"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="vHV-ZU-hY6" id="gjA-Lj-xEh"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="LfO-fJ-9hx" id="XgV-3E-c5H"/>
+                                    <outlet property="delegate" destination="LfO-fJ-9hx" id="CnN-xa-2sb"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5TI-bn-W33" secondAttribute="trailing" id="S3h-fg-kw5"/>
-                            <constraint firstAttribute="bottom" secondItem="5TI-bn-W33" secondAttribute="bottom" constant="102" id="SF3-BW-ZXJ"/>
-                            <constraint firstItem="5TI-bn-W33" firstAttribute="leading" secondItem="lKN-6f-Ngl" secondAttribute="leading" id="avX-r5-Q2Z"/>
+                            <constraint firstItem="5TI-bn-W33" firstAttribute="width" secondItem="lKN-6f-Ngl" secondAttribute="width" id="amc-0q-TmZ"/>
+                            <constraint firstAttribute="centerX" secondItem="5TI-bn-W33" secondAttribute="centerX" id="awb-x3-ZgM"/>
                             <constraint firstItem="0Un-ie-NZV" firstAttribute="top" secondItem="IKU-TX-ikL" secondAttribute="bottom" id="bqs-8J-I9W"/>
+                            <constraint firstItem="IOW-eQ-Ftp" firstAttribute="top" secondItem="5TI-bn-W33" secondAttribute="bottom" id="caw-Iq-w4T"/>
                             <constraint firstItem="Wsy-Rs-1xH" firstAttribute="top" secondItem="IKU-TX-ikL" secondAttribute="bottom" id="f0A-0B-2yb"/>
                             <constraint firstItem="5TI-bn-W33" firstAttribute="top" secondItem="Wsy-Rs-1xH" secondAttribute="bottom" constant="8" id="gse-Rp-fMX"/>
                             <constraint firstItem="0Un-ie-NZV" firstAttribute="leading" secondItem="lKN-6f-Ngl" secondAttribute="leading" id="yUn-vz-ksy"/>
                             <constraint firstItem="Wsy-Rs-1xH" firstAttribute="leading" secondItem="0Un-ie-NZV" secondAttribute="trailing" id="ya7-W8-MJ7"/>
                             <constraint firstAttribute="trailing" secondItem="Wsy-Rs-1xH" secondAttribute="trailing" id="zHd-Qh-04X"/>
-                            <constraint firstAttribute="centerX" secondItem="5TI-bn-W33" secondAttribute="centerX" id="zYy-JQ-Fef"/>
                             <constraint firstItem="Wsy-Rs-1xH" firstAttribute="width" secondItem="0Un-ie-NZV" secondAttribute="width" id="zcN-1D-Udb"/>
                         </constraints>
                     </view>
@@ -451,11 +477,17 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F1t-vv-PL0" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="358"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="IiW-Vg-eGQ" id="aaO-yy-wom"/>
+                                                    </connections>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IiW-Vg-eGQ">
+                                                    <rect key="frame" x="132" y="160" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -464,6 +496,8 @@
                                             <constraint firstItem="F1t-vv-PL0" firstAttribute="leading" secondItem="Jnw-ng-EKU" secondAttribute="leading" id="Bfh-bZ-XEx"/>
                                             <constraint firstItem="F1t-vv-PL0" firstAttribute="top" secondItem="Jnw-ng-EKU" secondAttribute="top" id="JYP-vW-3iw"/>
                                             <constraint firstAttribute="bottom" secondItem="F1t-vv-PL0" secondAttribute="bottom" id="RSS-YO-FJO"/>
+                                            <constraint firstItem="IiW-Vg-eGQ" firstAttribute="centerX" secondItem="F1t-vv-PL0" secondAttribute="centerX" constant="0.5" id="abG-gn-T9p"/>
+                                            <constraint firstItem="IiW-Vg-eGQ" firstAttribute="centerY" secondItem="F1t-vv-PL0" secondAttribute="centerY" constant="-0.5" id="k79-sS-j2i"/>
                                         </constraints>
                                         <size key="customSize" width="300" height="358"/>
                                         <connections>
@@ -560,14 +594,20 @@
                                                 </textView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ig9-JL-KCv" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="62" width="300" height="300"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ig9-JL-KCv" secondAttribute="height" multiplier="1:1" id="OR9-C3-5Dv"/>
                                                     </constraints>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="VwT-aw-It0" id="JsK-Gq-ds3"/>
+                                                    </connections>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VwT-aw-It0">
+                                                    <rect key="frame" x="132" y="193.5" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -591,8 +631,10 @@
                                             <constraint firstItem="hTK-hB-yHY" firstAttribute="leading" secondItem="76x-SQ-7aS" secondAttribute="trailing" id="eOT-ne-aTl"/>
                                             <constraint firstItem="Soq-l4-EGb" firstAttribute="leading" secondItem="Z8q-ki-YH5" secondAttribute="leadingMargin" id="j9N-UG-o0b"/>
                                             <constraint firstItem="GnS-cB-hSz" firstAttribute="top" secondItem="Z8q-ki-YH5" secondAttribute="topMargin" id="jZX-GO-QxG"/>
+                                            <constraint firstItem="ig9-JL-KCv" firstAttribute="centerX" secondItem="VwT-aw-It0" secondAttribute="centerX" id="kmC-qe-emA"/>
                                             <constraint firstItem="Soq-l4-EGb" firstAttribute="top" secondItem="ig9-JL-KCv" secondAttribute="bottom" constant="4" id="nfa-hm-rAI"/>
                                             <constraint firstItem="kOW-Qd-Rg3" firstAttribute="centerY" secondItem="sIa-KY-3Z2" secondAttribute="centerY" id="w7q-OC-tTo"/>
+                                            <constraint firstItem="ig9-JL-KCv" firstAttribute="centerY" secondItem="VwT-aw-It0" secondAttribute="centerY" id="wOX-k6-AFJ"/>
                                         </constraints>
                                         <size key="customSize" width="300" height="476"/>
                                         <variation key="default">
@@ -819,13 +861,22 @@
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="SnU-FD-WQX" id="SBG-gf-F0k"/>
+                                                    </connections>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SnU-FD-WQX">
+                                                    <rect key="frame" x="132" y="131" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="SnU-FD-WQX" firstAttribute="centerY" secondItem="CIz-6M-10L" secondAttribute="centerY" constant="-0.5" id="7HC-2o-rjh"/>
                                             <constraint firstItem="CIz-6M-10L" firstAttribute="leading" secondItem="3Lh-Zf-rLR" secondAttribute="leadingMargin" constant="-8" id="BZT-g0-cDw"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="CIz-6M-10L" secondAttribute="bottom" constant="-8" id="Hg5-Bo-uip"/>
+                                            <constraint firstItem="SnU-FD-WQX" firstAttribute="centerX" secondItem="CIz-6M-10L" secondAttribute="centerX" constant="0.5" id="JBY-oU-foa"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="CIz-6M-10L" secondAttribute="trailing" constant="-8" id="u4h-NO-APm"/>
                                             <constraint firstItem="CIz-6M-10L" firstAttribute="top" secondItem="3Lh-Zf-rLR" secondAttribute="topMargin" constant="-8" id="wGl-SA-Sfj"/>
                                         </constraints>
@@ -875,6 +926,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LEj-Q0-Yv3" secondAttribute="height" id="2hO-Af-v7g"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="activityIndicatorView" destination="gbm-Al-aQd" id="jZH-AR-Iaa"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-qn-vCm">
                                 <rect key="frame" x="16" y="727" width="189.5" height="22"/>
@@ -972,6 +1026,10 @@
                                     <constraint firstAttribute="height" constant="54" id="sFa-ak-mzc"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gbm-Al-aQd">
+                                <rect key="frame" x="282" y="399" width="37" height="37"/>
+                                <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -981,7 +1039,9 @@
                             <constraint firstItem="Fuo-Hi-Nmu" firstAttribute="top" secondItem="DdB-kh-X48" secondAttribute="bottom" id="AEm-Ig-yDq"/>
                             <constraint firstAttribute="width" secondItem="Fuo-Hi-Nmu" secondAttribute="width" id="F9U-ct-Ics"/>
                             <constraint firstItem="yQO-3H-8q5" firstAttribute="top" secondItem="iGP-qV-2bJ" secondAttribute="bottom" constant="8" id="FgE-aw-R4S"/>
+                            <constraint firstItem="LEj-Q0-Yv3" firstAttribute="centerX" secondItem="gbm-Al-aQd" secondAttribute="centerX" constant="-0.5" id="H5x-XZ-xuy"/>
                             <constraint firstItem="iGP-qV-2bJ" firstAttribute="centerY" secondItem="tbv-qn-vCm" secondAttribute="centerY" id="L7y-8D-wVb"/>
+                            <constraint firstItem="LEj-Q0-Yv3" firstAttribute="centerY" secondItem="gbm-Al-aQd" secondAttribute="centerY" constant="0.5" id="Og1-cN-dhW"/>
                             <constraint firstItem="iGP-qV-2bJ" firstAttribute="centerY" secondItem="BOS-hT-pbA" secondAttribute="centerY" id="OmB-QR-aOV"/>
                             <constraint firstItem="iGP-qV-2bJ" firstAttribute="width" secondItem="tbv-qn-vCm" secondAttribute="width" id="PPr-79-r8a"/>
                             <constraint firstItem="yQO-3H-8q5" firstAttribute="trailing" secondItem="1AD-xB-fxh" secondAttribute="trailingMargin" id="QV7-0e-nnU"/>
@@ -1093,7 +1153,14 @@
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="ZMx-5I-j1O" id="JRP-Tw-KLB"/>
+                                                    </connections>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZMx-5I-j1O">
+                                                    <rect key="frame" x="132" y="131" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1102,6 +1169,8 @@
                                             <constraint firstItem="4My-c8-c4U" firstAttribute="leading" secondItem="xbS-ZA-nZO" secondAttribute="leadingMargin" constant="-8" id="do0-rJ-rIH"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="4My-c8-c4U" secondAttribute="trailing" constant="-8" id="f3t-7k-gkl"/>
                                             <constraint firstItem="4My-c8-c4U" firstAttribute="top" secondItem="xbS-ZA-nZO" secondAttribute="topMargin" constant="-8" id="gYw-5r-ue2"/>
+                                            <constraint firstItem="4My-c8-c4U" firstAttribute="centerY" secondItem="ZMx-5I-j1O" secondAttribute="centerY" constant="0.5" id="rPJ-UC-wPR"/>
+                                            <constraint firstItem="4My-c8-c4U" firstAttribute="centerX" secondItem="ZMx-5I-j1O" secondAttribute="centerX" constant="-0.5" id="tw5-rK-m80"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="4My-c8-c4U" id="Mvk-5a-p7K"/>
@@ -1166,15 +1235,24 @@
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="OBT-V6-Qom" id="qub-GP-a05"/>
+                                                    </connections>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="OBT-V6-Qom">
+                                                    <rect key="frame" x="132" y="131" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="CDJ-62-Jwr" firstAttribute="leading" secondItem="b54-bH-LaG" secondAttribute="leadingMargin" constant="-8" id="GbP-9M-RTe"/>
                                             <constraint firstItem="CDJ-62-Jwr" firstAttribute="top" secondItem="b54-bH-LaG" secondAttribute="topMargin" constant="-8" id="HFg-lo-ByQ"/>
+                                            <constraint firstItem="CDJ-62-Jwr" firstAttribute="centerX" secondItem="OBT-V6-Qom" secondAttribute="centerX" constant="-0.5" id="UHv-MZ-kBw"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="CDJ-62-Jwr" secondAttribute="bottom" constant="-8" id="UiY-en-mzb"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="CDJ-62-Jwr" secondAttribute="trailing" constant="-8" id="VvZ-lA-Qi9"/>
+                                            <constraint firstItem="CDJ-62-Jwr" firstAttribute="centerY" secondItem="OBT-V6-Qom" secondAttribute="centerY" constant="0.5" id="xi1-EJ-UFU"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="CDJ-62-Jwr" id="WUe-Je-WOt"/>
@@ -1269,11 +1347,17 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xna-Ey-PmK" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="Ryh-vd-dXS" id="7wG-w8-ZeB"/>
+                                                    </connections>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ryh-vd-dXS">
+                                                    <rect key="frame" x="132" y="161" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1281,7 +1365,9 @@
                                             <constraint firstItem="Xna-Ey-PmK" firstAttribute="top" secondItem="qPM-yd-HSm" secondAttribute="topMargin" constant="-8" id="2ee-qM-916"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Xna-Ey-PmK" secondAttribute="trailing" constant="-8" id="A8G-fh-FAu"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="Xna-Ey-PmK" secondAttribute="bottom" constant="-8" id="XQv-9h-GWp"/>
+                                            <constraint firstItem="Xna-Ey-PmK" firstAttribute="centerX" secondItem="Ryh-vd-dXS" secondAttribute="centerX" constant="-0.5" id="hOU-xZ-dPv"/>
                                             <constraint firstItem="Xna-Ey-PmK" firstAttribute="leading" secondItem="qPM-yd-HSm" secondAttribute="leadingMargin" constant="-8" id="wlB-Zh-ZfB"/>
+                                            <constraint firstItem="Xna-Ey-PmK" firstAttribute="centerY" secondItem="Ryh-vd-dXS" secondAttribute="centerY" constant="0.5" id="zaY-Ox-ZOU"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="Xna-Ey-PmK" id="uJM-sY-VuM"/>
@@ -1296,13 +1382,15 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-3T-RQ2" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Sgj-3T-RQ2" secondAttribute="height" multiplier="1:1" id="mQk-x9-jsy"/>
                                                     </constraints>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="pNS-do-BTH" id="Svl-IE-zgj"/>
+                                                    </connections>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-OD-G7v">
                                                     <rect key="frame" x="8" y="300" width="98" height="22"/>
@@ -1342,6 +1430,10 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="pNS-do-BTH">
+                                                    <rect key="frame" x="132" y="131" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1362,7 +1454,9 @@
                                             <constraint firstItem="lJo-Cl-chd" firstAttribute="leading" secondItem="0mu-OD-G7v" secondAttribute="trailing" id="e6O-DF-LiP"/>
                                             <constraint firstItem="0mu-OD-G7v" firstAttribute="top" secondItem="Sgj-3T-RQ2" secondAttribute="bottom" id="eCe-OO-ch0"/>
                                             <constraint firstItem="Yju-Rq-5tw" firstAttribute="top" secondItem="0mu-OD-G7v" secondAttribute="bottom" constant="8" id="g9F-r2-GDZ"/>
+                                            <constraint firstItem="pNS-do-BTH" firstAttribute="centerX" secondItem="Sgj-3T-RQ2" secondAttribute="centerX" constant="0.5" id="khE-Sa-hMw"/>
                                             <constraint firstItem="Yju-Rq-5tw" firstAttribute="top" secondItem="YjX-Qz-yHG" secondAttribute="top" constant="8" id="pFm-x6-nxo"/>
+                                            <constraint firstItem="pNS-do-BTH" firstAttribute="centerY" secondItem="Sgj-3T-RQ2" secondAttribute="centerY" constant="-0.5" id="uAZ-U6-BBi"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="captionTextView" destination="YjX-Qz-yHG" id="w0S-SY-smi"/>
@@ -1781,11 +1875,17 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gfg-SK-78P" customClass="AVImageView" customModule="PicQurate" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="activityIndicatorView" destination="Kx0-A3-FhO" id="2l3-Yj-LSX"/>
+                                                    </connections>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Kx0-A3-FhO">
+                                                    <rect key="frame" x="132" y="131" width="37" height="37"/>
+                                                    <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1793,7 +1893,9 @@
                                             <constraint firstAttribute="trailing" secondItem="Gfg-SK-78P" secondAttribute="trailing" id="BQX-Tt-Vj8"/>
                                             <constraint firstItem="Gfg-SK-78P" firstAttribute="top" secondItem="Coe-8h-Eiw" secondAttribute="top" id="Hxb-ix-x4i"/>
                                             <constraint firstAttribute="bottom" secondItem="Gfg-SK-78P" secondAttribute="bottom" id="Kn9-lR-oTl"/>
+                                            <constraint firstItem="Kx0-A3-FhO" firstAttribute="centerY" secondItem="Gfg-SK-78P" secondAttribute="centerY" constant="-0.5" id="PQk-dk-g9r"/>
                                             <constraint firstItem="Gfg-SK-78P" firstAttribute="leading" secondItem="Coe-8h-Eiw" secondAttribute="leading" id="doZ-uL-qtE"/>
+                                            <constraint firstItem="Kx0-A3-FhO" firstAttribute="centerX" secondItem="Gfg-SK-78P" secondAttribute="centerX" constant="0.5" id="whC-2D-SEG"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="Gfg-SK-78P" id="1BX-oX-OzF"/>
@@ -2532,7 +2634,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="A46-ri-ynF"/>
+        <segue reference="zvr-y4-sXE"/>
         <segue reference="g0u-Mo-Vtm"/>
-        <segue reference="nn0-nq-icu"/>
     </inferredMetricsTieBreakers>
 </document>
