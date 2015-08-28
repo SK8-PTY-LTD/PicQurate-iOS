@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ProfileCollectionViewSegmentCellDelegate, ProfileHeaderCollectionReusableViewDelegate, CLLocationManagerDelegate {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ProfileCollectionViewSegmentCellDelegate, ProfileHeaderCollectionReusableViewDelegate, CLLocationManagerDelegate, PhotoToProfileProtocol {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var flowLayout: CSStickyHeaderFlowLayout!
@@ -18,6 +18,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var user: PQUser?;
     var imageArray: [PQPhoto] = [PQPhoto]();
     var column: Int = 1;
+    
+    var locationArray: [AVGeoPoint] = [];
+    var locationNameArray: [String]  = [];
     
     let locationManager = CLLocationManager()
     
@@ -101,6 +104,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         var query = PQPhoto.query();
         query.whereKey("user", equalTo: user);
         query.orderByDescending("chain");
+
         query.findObjectsInBackgroundWithBlock({ (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
@@ -196,6 +200,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             var cell = collectionView.dequeueReusableCellWithReuseIdentifier("profileViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
             var photo = self.imageArray[indexPath.row];
             cell.initializeWithPhoto(photo);
+            cell.delegate = self
             return cell;
         } else {
             var cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
@@ -261,6 +266,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.performSegueWithIdentifier("segueToUserTableView", sender: [query, "Following"]);
     }
     
+    func showLocation(locationArray: [AVGeoPoint], locationNameArray: [String]) {
+        self.locationArray = locationArray;
+        self.locationNameArray = locationNameArray;
+        self.performSegueWithIdentifier("segueToMap", sender: self);
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToUserTableView") {
             var VC = segue.destinationViewController as! UserTableViewController;
@@ -269,6 +281,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         } else if (segue.identifier == "segueToPhoto"){
             var VC = segue.destinationViewController as! PhotoViewController;
             VC.photo = sender as! PQPhoto;
+        } else if (segue.identifier == "segueToMap") {
+            var VC = segue.destinationViewController as! MapViewController;
+            VC.locationArray = self.locationArray;
+            VC.locationNameArray = self.locationNameArray;
         }
     }
     

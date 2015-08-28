@@ -245,7 +245,7 @@ class PhotoViewController: UIViewController {
             var VC = segue.destinationViewController as! ProfileViewController;
             NSLog("sender: \(sender)");
             VC.user = photo.user;
-            VC.title = photo.user!.profileName;
+//            VC.title = photo.user!.profileName;
         }
     }
     

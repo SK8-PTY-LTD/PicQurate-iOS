@@ -33,14 +33,14 @@ class PQActivityCollectionViewCell: UICollectionViewCell {
                 imageView.loadInBackground();
             }
         }else{
-            NSLog("\(self.activity.sender.profileImage): no profileimageView");
+            NSLog("no profileimageView");
         }
         
-        if let name = self.activity.sender.profileName {
+        if let name = self.activity.sender?.profileName {
             profileNameButton.setTitle(name, forState: .Normal);
             profileNameButton.sizeThatFits(CGSize(width: 10, height: 20))
         } else {
-            NSLog("\(self.activity.sender.profileImage): no profileNameButton");
+            NSLog("no profileNameButton");
         }
         
         if let message = self.activity.message {
