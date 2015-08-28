@@ -1398,6 +1398,9 @@
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="likeButtonClicked:" destination="lhh-9U-1if" eventType="touchUpInside" id="qSO-C0-UEd"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJo-Cl-chd">
                                                     <rect key="frame" x="106" y="299" width="97" height="24"/>
@@ -1692,6 +1695,7 @@
                         <segue destination="ZZy-Ue-Q0G" kind="show" identifier="segueToUserTableView" id="KDR-Sx-1xB"/>
                         <segue destination="rpa-53-4pO" kind="show" identifier="segueToPhoto" id="ta3-m0-Ka4"/>
                         <segue destination="Idb-p5-jdr" kind="show" identifier="segueToMap" id="yCC-6W-pfu"/>
+                        <segue destination="ZZy-Ue-Q0G" kind="show" identifier="segueToLike" id="74a-f4-E7e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97l-Ay-XVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2637,9 +2641,9 @@
         <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nn0-nq-icu"/>
+        <segue reference="VPz-mc-4aY"/>
+        <segue reference="74a-f4-E7e"/>
         <segue reference="yCC-6W-pfu"/>
-        <segue reference="KDR-Sx-1xB"/>
         <segue reference="ta3-m0-Ka4"/>
     </inferredMetricsTieBreakers>
 </document>

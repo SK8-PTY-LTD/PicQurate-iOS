@@ -271,6 +271,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.locationNameArray = locationNameArray;
         self.performSegueWithIdentifier("segueToMap", sender: self);
     }
+    func showLike(query: AnyObject) {
+        self.performSegueWithIdentifier("segueToLike", sender: query);
+    }
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -285,6 +288,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             var VC = segue.destinationViewController as! MapViewController;
             VC.locationArray = self.locationArray;
             VC.locationNameArray = self.locationNameArray;
+        } else if(segue.identifier == "segueToLike"){
+            var VC = segue.destinationViewController as! UserTableViewController;
+            VC.title = "Like"
+            VC.query = sender as! AVQuery;
         }
     }
     

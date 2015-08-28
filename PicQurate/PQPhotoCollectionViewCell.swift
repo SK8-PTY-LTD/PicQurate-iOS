@@ -10,6 +10,7 @@ import Foundation
 
 protocol PhotoToProfileProtocol {
     func showLocation(locationArray: [AVGeoPoint], locationNameArray:[String]);
+    func showLike(query: AnyObject);
 }
 
 class PQPhotoCollectionViewCell: UICollectionViewCell {
@@ -60,7 +61,6 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
             
             self.imageView.file = photo.file;
             self.imageView.loadInBackground();
-            
             var query1 = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
             query1.countObjectsInBackgroundWithBlock { (count, error) -> Void in
                 if let e = error {
@@ -176,6 +176,13 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
         }else{
             NSLog("delegate is nil");
         }
-
+    }
+    @IBAction func likeButtonClicked(sender: UIButton) {
+        if let delegate = self.delegate {
+            var query = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
+            delegate.showLike(query);
+        } else {
+            NSLog("delegate is nil");
+        }
     }
 }
