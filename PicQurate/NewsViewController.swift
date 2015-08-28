@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NewsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ActivityToProfileProtocol {
+class NewsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ActivityToProfileProtocol, PhotoToProfileProtocol {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var followingButton: UIButton!
@@ -21,6 +21,8 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     var photoList = [PQPhoto]();
     var pushList = [PQPush]();
     var profileUser: PQUser?;
+    var locationArray: [AVGeoPoint] = [];
+    var locationNameArray: [String]  = [];
     
     var selectedTab = 0;
     
@@ -57,6 +59,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         case 0:
             var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("profileViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
             cell.initializeWithPhoto(photoList[indexPath.row]);
+            cell.delegate = self
             return cell;
         case 1:
             var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
@@ -215,12 +218,29 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        self.performSegueWithIdentifier("segueToProfile", sender: user);
 //    }
     
+    func showLocation(locationArray: [AVGeoPoint], locationNameArray: [String]) {
+        self.locationArray = locationArray;
+        self.locationNameArray = locationNameArray;
+        self.performSegueWithIdentifier("segueToMap", sender: self);
+    }
+    func showLike(query: AnyObject) {
+        self.performSegueWithIdentifier("segueToLike", sender: query);
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "segueToProfile"){
             var VC = segue.destinationViewController as! ProfileViewController;
             VC.user = sender as! PQUser;
             NSLog("profileUser: \(profileUser)");
 //            VC.user = profileUser
+        } else if (segue.identifier == "segueToMap") {
+            var VC = segue.destinationViewController as! MapViewController;
+            VC.locationArray = self.locationArray;
+            VC.locationNameArray = self.locationNameArray;
+        } else if(segue.identifier == "segueToLike"){
+            var VC = segue.destinationViewController as! UserTableViewController;
+            VC.title = "Like"
+            VC.query = sender as! AVQuery;
         }
     }
 }

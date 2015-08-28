@@ -560,6 +560,9 @@
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="likeButtonClicked:" destination="Z8q-ki-YH5" eventType="touchUpInside" id="p5W-gX-Fdf"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-Qd-Rg3">
                                                     <rect key="frame" x="106" y="365" width="97" height="24"/>
@@ -567,6 +570,9 @@
                                                         <color key="titleColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="chainButtonClicked:" destination="Z8q-ki-YH5" eventType="touchUpInside" id="v6V-Ct-fXF"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIa-KY-3Z2">
                                                     <rect key="frame" x="203" y="366" width="98" height="22"/>
@@ -820,6 +826,8 @@
                         <outlet property="followingButton" destination="ypr-Ny-h1e" id="gBm-Rm-CMM"/>
                         <outlet property="likedButton" destination="ArI-Zc-Y4y" id="Hli-kh-yZC"/>
                         <segue destination="xUg-Bg-e0s" kind="show" identifier="segueToProfile" id="nn0-nq-icu"/>
+                        <segue destination="Idb-p5-jdr" kind="show" identifier="segueToMap" id="Jvt-Gw-ONU"/>
+                        <segue destination="ZZy-Ue-Q0G" kind="show" identifier="segueToLike" id="h32-p8-g8D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6E-vw-9BU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2641,9 +2649,9 @@
         <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VPz-mc-4aY"/>
-        <segue reference="74a-f4-E7e"/>
-        <segue reference="yCC-6W-pfu"/>
+        <segue reference="nn0-nq-icu"/>
+        <segue reference="h32-p8-g8D"/>
+        <segue reference="Jvt-Gw-ONU"/>
         <segue reference="ta3-m0-Ka4"/>
     </inferredMetricsTieBreakers>
 </document>
