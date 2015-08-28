@@ -160,14 +160,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         query.includeKey("photo.user");
         query.whereKey("gender", equalTo: self.gender);
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
-            NSLog("array: \(array.count)");
             if let e = error {
                 PQ.showError(e);
             } else {
                 if let a = array as? [PQChain] {
                     self.chainArray2 = a;
                     self.collectionView.reloadData();
-                    NSLog("chainArray2: \(a.count)");
                     if (self.chainArray2.count > 0) {
                         self.headerView.imageView.file = self.chainArray2[0].photo?.file;
                         self.headerView.imageView.loadInBackground();

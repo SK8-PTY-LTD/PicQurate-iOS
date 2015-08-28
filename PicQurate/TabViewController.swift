@@ -33,7 +33,7 @@ class TabViewController: UITabBarController {
     }
     
     func cameraButtonClicked() {
-        if let user = PQ.currentUser {
+        if (PQ.currentUser != nil && PQ.currentUser.email != nil) {
             self.performSegueWithIdentifier("segueToUpload", sender: nil);
         } else {
             self.performSegueWithIdentifier("segueToLogin", sender: nil);
