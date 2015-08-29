@@ -24,6 +24,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     let locationManager = CLLocationManager()
     
+    var index = 0;
+    
     override func viewDidLoad() {
         
         super.viewDidLoad();
@@ -64,7 +66,24 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         
         if let user = self.user {
-            self.queryPhotoByHistory();
+            switch self.index{
+            case 0:
+                self.queryPhotoByHistory();
+                self.index = 0;
+                NSLog("self.queryPhotoByHistory()");
+            case 1:
+                self.queryPhotoByChain();
+                self.index = 1;
+                NSLog("self.queryPhotoByChain()");
+
+            case 2:
+                self.queryPhotoByLike();
+                self.index = 2;
+                NSLog("self.queryPhotoByLike()");
+
+            default:
+                break;
+            }
         }
     }
     
@@ -72,10 +91,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         switch index {
         case 0:
             queryPhotoByHistory();
+            self.index = 0;
         case 1:
             queryPhotoByChain();
+            self.index = 1;
         case 2:
             queryPhotoByLike();
+            self.index = 2;
         default:
             break;
         }
