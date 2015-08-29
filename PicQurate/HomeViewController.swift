@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HomeHeaderCollectionReusableViewProtocol {
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -142,6 +142,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     if (self.chainArray1.count > 0) {
                         self.headerView.imageView.file = self.chainArray1[0].photo?.file;
                         self.headerView.imageView.loadInBackground();
+                        self.headerView.delegate = self;
                     } else {
                         self.headerView.imageView.image = nil;
                     }
@@ -183,6 +184,28 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
         }
         self.activityIndicatorView.stopAnimating();
+    }
+    
+    func imageClicked() {
+        switch self.displayMode {
+//        case 0:
+//            if (self.chainArray0.count > 0) {
+//                self.headerView.imageView.file = self.chainArray0[0].photo?.file;
+//                self.headerView.imageView.loadInBackground();
+//            }
+        case 0:
+            if (self.chainArray1.count > 0) {
+                let photo = self.chainArray1[0].photo!;
+                self.performSegueWithIdentifier("segueToPhoto", sender: photo);
+            }
+        case 1:
+            if (self.chainArray2.count > 0) {
+                let photo = self.chainArray2[0].photo!;
+                self.performSegueWithIdentifier("segueToPhoto", sender: photo);
+            }
+        default:
+            break;
+        }
     }
     
     func setColumns(numberOfColumns: Int) {
@@ -276,11 +299,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //            photo = self.chainArray0[indexPath.row + 1].photo!;
         case 0:
             photo = self.chainArray1[indexPath.row + 1].photo!;
-            NSLog("\(photo.file)");
             self.performSegueWithIdentifier("segueToPhoto", sender: photo);
         case 1:
             photo = self.chainArray2[indexPath.row + 1].photo!;
-            NSLog("\(photo.file)");
             self.performSegueWithIdentifier("segueToPhoto", sender: photo);
         default:
             break;
@@ -298,8 +319,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
 }
 
+protocol HomeHeaderCollectionReusableViewProtocol {
+    func imageClicked();
+}
+
 class HomeHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var imageView: AVImageView!;
+    
+    var delegate: HomeHeaderCollectionReusableViewProtocol!
+    
+    @IBAction func imageClicked(sender: UIButton) {
+        self.delegate.imageClicked();
+    }
     
 }

@@ -40,7 +40,7 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
     func queryPhotoByDate() {
         var query = PQPhoto.query();
         query.orderByDescending("createdAt");
-//        query.whereKey("user", notEqualTo: PQ.currentUser);
+        query.whereKey("user", equalTo: PQ.currentUser);
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
@@ -48,7 +48,6 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
                 if let a = array as! [PQPhoto]! {
                     self.photoArray = a;
                     self.collectionView.reloadData();
-                    NSLog("date picture reload: \(self.photoArray)")
                 } else {
                     NSLog("Error downcasting [AnyObject] to [PQPhoto]");
                 }
@@ -59,7 +58,7 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
     func queryPhotoByPopularity() {
         var query = PQPhoto.query();
         query.orderByDescending("chain");
-//        query.whereKey("user", notEqualTo: PQ.currentUser);
+        query.whereKey("user", equalTo: PQ.currentUser);
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
@@ -67,7 +66,6 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
                 if let a = array as! [PQPhoto]! {
                     self.photoArray = a;
                     self.collectionView.reloadData();
-                    NSLog("popular picture reload: \(self.photoArray)");
                 } else {
                     NSLog("Error downcasting [AnyObject] to [PQPhoto]");
                 }

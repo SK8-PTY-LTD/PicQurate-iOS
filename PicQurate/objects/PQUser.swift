@@ -70,7 +70,7 @@ public class PQUser : AVUser, AVSubclassing {
     }
     
     func hasVerifiedEmail() -> Bool {
-        return self.emailVerified;
+        return self.emailVerified as Bool;
     }
     
     func uploadPhotoWithBlock(image: UIImage, caption: String, block: (success: Bool, error: NSError?) -> ()) {
@@ -331,7 +331,7 @@ public class PQUser : AVUser, AVSubclassing {
 //    @NSManaged var backgroundImage: AVFile?
     @NSManaged var bio: String?
     @NSManaged var balance: Int
-    @NSManaged var emailVerified: Bool
+    @NSManaged var emailVerified: NSNumber
     @NSManaged var gender: NSNumber
     @NSManaged var installationId: String?
     @NSManaged var location: AVGeoPoint?
@@ -426,7 +426,7 @@ public class PQUser : AVUser, AVSubclassing {
             if let e = error {
                 NSLog("Profile image failed to save, error: " + e.localizedDescription);
             } else {
-                self.setObject(imageFile, forKey:"profileImage");
+                self.profileImage = imageFile;
                 self.saveInBackground();
             }
         }

@@ -8,11 +8,13 @@
 
 import Foundation
 
-class ChainViewController: UIViewController, UIScrollViewDelegate {
+class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
     
     @IBOutlet weak var profileImageView: AVImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var chainButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
     
     var indicatorImageView: UIImageView = UIImageView(frame: CGRectMake(0, 0, 60, 60));
     var imageView: AVImageView!
@@ -20,13 +22,24 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         
+        super.viewDidLoad();
+        
+        //Anonymous user does not have an email
         if (PQ.currentUser.email == nil) {
+            self.scrollView.hidden = true;
+            self.chainButton.enabled = false;
+            self.dismissButton.enabled = false;
             return;
+        } else {
+            self.scrollView.hidden = false;
+            self.chainButton.enabled = true;
+            self.dismissButton.enabled = true;
         }
         
         self.profileImageView.file = PQ.currentUser.profileImage;
         self.profileImageView.loadInBackground();
         self.profileNameLabel.text = PQ.currentUser.profileName;
+        NSLog(PQ.currentUser.profileName!);
         
         //Config scroll view
         var contentSize = self.view.frame.size;
@@ -45,6 +58,25 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
         self.downloadChains();
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+        PQ.delegate = self;
+        
+        //Anonymous user does not have an email
+        if (PQ.currentUser.email == nil) {
+            self.scrollView.hidden = true;
+            self.chainButton.enabled = false;
+            self.dismissButton.enabled = false;
+            return;
+        } else {
+            self.scrollView.hidden = false;
+            self.chainButton.enabled = true;
+            self.dismissButton.enabled = true;
+        }
+
+        
+    }
+    
     func downloadChains() {
         var query = PQChain.query();
         
@@ -57,7 +89,6 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
 //        query.whereKey("original.original.original.user", notEqualTo: PQ.currentUser);
 //        query.whereKey("original.original.original.original.user", notEqualTo: PQ.currentUser);
         query.skip = 0 + Int(arc4random_uniform(UInt32(100 - 0 + 1)));
-        NSLog("Skipped \(query.skip) chains");
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
@@ -118,12 +149,20 @@ class ChainViewController: UIViewController, UIScrollViewDelegate {
         if (self.scrollView.contentOffset.x == 0) {
             NSLog("Test");
             var chain = self.chainArray.last!
-            PQ.currentUser.chainPhotoWithBlock(chain, block: { (success, error) -> () in
-            });
+            if (PQ.currentUser.email != nil) {
+                PQ.currentUser.chainPhotoWithBlock(chain, block: { (success, error) -> () in
+                    
+                });
+            }
             self.dismissImage();
         } else if (self.scrollView.contentOffset.x == self.view.frame.width * 2) {
             self.dismissImage();
         }
+    }
+    
+    func onUserRefreshed() {
+        NSLog("Called");
+        self.viewDidLoad();
     }
     
 }

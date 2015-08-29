@@ -51,21 +51,20 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
         PQ.currentUser.username = email;
         PQ.currentUser.email = email;
         PQ.currentUser.password = passWord;
-        PQ.currentUser.profileName = username;
+        PQ.currentUser.setObject(username, forKey: "profileName");
         if (self.genderSegmentControl.selectedSegmentIndex == 0) {
-            PQ.currentUser.gender = true;
+            PQ.currentUser.setObject(true as NSNumber, forKey: "gender");
         } else if (self.genderSegmentControl.selectedSegmentIndex == 1) {
-            PQ.currentUser.gender = false;
+            PQ.currentUser.setObject(false as NSNumber, forKey: "gender");
         }
         
         PQ.currentUser.signUpInBackgroundWithBlock { (succeeded, error) -> Void in
             if let e = error {
                 PQ.showError(e);
             } else {
+                PQ.currentUser = PQUser.currentUser();
                 if let image = self.profileImageButton.imageForState(.Normal) {
-                    if image != UIImage(named: "default_profile") {
-                        PQ.currentUser.setProfileUIImage(image);
-                    }
+                    PQ.currentUser.setProfileUIImage(image);
                 }
                 NSLog("Email user sign up successful");
                 if let method = PQ.delegate?.onUserRefreshed {

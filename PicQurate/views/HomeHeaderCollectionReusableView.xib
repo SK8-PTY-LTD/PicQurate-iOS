@@ -16,6 +16,15 @@
                         <outlet property="activityIndicatorView" destination="SzC-s3-Tz4" id="97A-kV-mbz"/>
                     </connections>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGp-YJ-bqs">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="imageClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Geq-cX-N94"/>
+                    </connections>
+                </button>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SzC-s3-Tz4">
                     <rect key="frame" x="282" y="282" width="37" height="37"/>
                     <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -28,8 +37,12 @@
                 <constraint firstAttribute="centerY" secondItem="0QV-Ox-gNW" secondAttribute="centerY" id="JLZ-dG-wnQ"/>
                 <constraint firstAttribute="centerX" secondItem="0QV-Ox-gNW" secondAttribute="centerX" id="Mpn-Bu-4ff"/>
                 <constraint firstItem="SzC-s3-Tz4" firstAttribute="centerX" secondItem="0QV-Ox-gNW" secondAttribute="centerX" id="NHT-FV-ruO"/>
+                <constraint firstItem="LGp-YJ-bqs" firstAttribute="centerX" secondItem="0QV-Ox-gNW" secondAttribute="centerX" id="QwQ-YZ-c7F"/>
+                <constraint firstItem="LGp-YJ-bqs" firstAttribute="centerY" secondItem="0QV-Ox-gNW" secondAttribute="centerY" id="Rdu-Ci-hdy"/>
+                <constraint firstItem="LGp-YJ-bqs" firstAttribute="width" secondItem="0QV-Ox-gNW" secondAttribute="width" id="Z1k-Rf-OZg"/>
                 <constraint firstItem="0QV-Ox-gNW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="amL-C8-Q4D"/>
                 <constraint firstAttribute="bottom" secondItem="0QV-Ox-gNW" secondAttribute="bottom" id="imS-8x-8f2"/>
+                <constraint firstItem="LGp-YJ-bqs" firstAttribute="height" secondItem="0QV-Ox-gNW" secondAttribute="height" id="lnK-ZN-s5U"/>
                 <constraint firstItem="0QV-Ox-gNW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mU5-3H-qbx"/>
             </constraints>
             <connections>

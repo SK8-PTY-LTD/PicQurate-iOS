@@ -133,7 +133,7 @@ class PQ: NSObject {
         PQUser.enableAutomaticUser();
         
         if let user = PQUser.currentUser() {
-            PQ.currentUser = user;
+            PQ.currentUser = user as PQUser;
         } else {
             AVAnonymousUtils .logInWithBlock({ (anonymousUser, error) -> Void in
                 if let e = error {

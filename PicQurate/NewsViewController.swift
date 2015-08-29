@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NewsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ActivityToProfileProtocol, PhotoToProfileProtocol {
+class NewsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ActivityToProfileProtocol, PhotoToProfileProtocol, PQProtocol {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var followingButton: UIButton!
@@ -36,8 +36,14 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
             return;
         }
         
+        
         self.refreshFolloweeSection();
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        PQ.delegate = self;
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -242,5 +248,10 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
             VC.title = "Like"
             VC.query = sender as! AVQuery;
         }
+    }
+    
+    func onUserRefreshed() {
+        //When user login
+        self.viewDidLoad();
     }
 }

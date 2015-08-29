@@ -122,6 +122,7 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
     
     @IBAction func logoutButtonClicked(sender: UIButton) {
         AVUser.logOut();
+        PQ.currentUser = PQUser();
         var fbLoginManager = FBSDKLoginManager();
         fbLoginManager.logOut();
         

@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ProfileCollectionViewSegmentCellDelegate, ProfileHeaderCollectionReusableViewDelegate, CLLocationManagerDelegate, PhotoToProfileProtocol {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ProfileCollectionViewSegmentCellDelegate, ProfileHeaderCollectionReusableViewDelegate, CLLocationManagerDelegate, PhotoToProfileProtocol, PQProtocol {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var flowLayout: CSStickyHeaderFlowLayout!
@@ -30,21 +30,24 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         super.viewDidLoad();
         
-        self.refreshLocation();
-        
-        
         //Anonymous user does not have an email
         if (PQ.currentUser.email == nil) {
             return;
         }
         
+        self.refreshLocation();
+        
+        
+        //Reload user information
         if let user = self.user {
-            //Display other user information
-            self.navigationItem.rightBarButtonItem = nil;
-        } else if (PQ.currentUser.email != nil) {
-            self.user = PQ.currentUser;
+            if (user.isUser(PQ.currentUser)) {
+                
+            } else {
+                //Display other user information
+                self.navigationItem.rightBarButtonItem = nil;
+            }
         } else {
-            return;
+            self.user = PQ.currentUser;
         }
         
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
@@ -54,15 +57,28 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.collectionView.registerNib(headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header");
     }
     
+    @IBAction func loginButtonClicked(sender: UIButton) {
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.performSegueWithIdentifier("segueToLogin", sender: nil);
+    }
+    
     override func viewDidAppear(animated: Bool) {
+        
+        PQ.delegate = self;
         
         //Reload user information
         if let user = self.user {
-            //Check user
-        } else if let user = PQ.currentUser {
-            self.user = PQ.currentUser;
+            if (PQ.currentUser.email == nil) {
+                self.collectionView.hidden = true;
+            } else {
+                if (user.isUser(PQ.currentUser)) {
+                } else {
+                    //Display other user information
+                    self.navigationItem.rightBarButtonItem = nil;
+                }
+                self.collectionView.hidden = false;
+            }
         } else {
-            return;
+            self.collectionView.hidden = true;
         }
         
         if let user = self.user {
@@ -70,20 +86,17 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             case 0:
                 self.queryPhotoByHistory();
                 self.index = 0;
-                NSLog("self.queryPhotoByHistory()");
             case 1:
                 self.queryPhotoByChain();
                 self.index = 1;
-                NSLog("self.queryPhotoByChain()");
 
             case 2:
                 self.queryPhotoByLike();
                 self.index = 2;
-                NSLog("self.queryPhotoByLike()");
-
             default:
                 break;
             }
+            self.headerView?.initWithUser(user);
         }
     }
     
@@ -174,7 +187,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func editButtonClicked(sender: UIBarButtonItem) {
-        if let user = PQ.currentUser {
+        if (PQ.currentUser != nil && PQ.currentUser.email != nil) {
             self.performSegueWithIdentifier("editProfileSegue", sender: nil);
         } else {
             var VC = self.parentViewController?.parentViewController as! TabViewController;
@@ -315,6 +328,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             VC.title = "Like"
             VC.query = sender as! AVQuery;
         }
+    }
+    
+    func onUserRefreshed() {
+        self.user = PQ.currentUser;
     }
     
 }
