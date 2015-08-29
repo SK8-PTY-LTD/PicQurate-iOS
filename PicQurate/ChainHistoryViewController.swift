@@ -8,9 +8,11 @@
 
 import Foundation
 
-class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, ProfileCollectionViewSegmentCellDelegate {
+class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var popularButton: UIButton!
     var flowLayout: CSStickyHeaderFlowLayout!
     var column = 2;
     
@@ -46,6 +48,7 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
                 if let a = array as! [PQPhoto]! {
                     self.photoArray = a;
                     self.collectionView.reloadData();
+                    NSLog("date picture reload: \(self.photoArray)")
                 } else {
                     NSLog("Error downcasting [AnyObject] to [PQPhoto]");
                 }
@@ -64,6 +67,7 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
                 if let a = array as! [PQPhoto]! {
                     self.photoArray = a;
                     self.collectionView.reloadData();
+                    NSLog("popular picture reload: \(self.photoArray)");
                 } else {
                     NSLog("Error downcasting [AnyObject] to [PQPhoto]");
                 }
@@ -71,32 +75,32 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
         }
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-//        if (kind == CSStickyHeaderParallaxHeader) {
-//            // Config Collection View header
-//            if let cell = self.headerView {
-//                return cell;
-//            } else {
-//                self.headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView;
-//                if let user = self.user {
-//                    self.headerView.initWithUser(user);
-//                    return self.headerView;
-//                } else {
-//                    return UICollectionReusableView();
-//                }
-//                
-//            }
-//        } else
-        if (kind == UICollectionElementKindSectionHeader) {
-            // Config Collection View section header
-            var cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as! ProfileCollectionViewSegmentCell;
-            cell.delegate = self;
-            return cell;
-        } else {
-            // other custom supplementary views
-            return UICollectionReusableView();
-        }
-    }
+//    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+////        if (kind == CSStickyHeaderParallaxHeader) {
+////            // Config Collection View header
+////            if let cell = self.headerView {
+////                return cell;
+////            } else {
+////                self.headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView;
+////                if let user = self.user {
+////                    self.headerView.initWithUser(user);
+////                    return self.headerView;
+////                } else {
+////                    return UICollectionReusableView();
+////                }
+////                
+////            }
+////        } else
+//        if (kind == UICollectionElementKindSectionHeader) {
+//            // Config Collection View section header
+//            var cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as! ProfileCollectionViewSegmentCell;
+//            cell.delegate = self;
+//            return cell;
+//        } else {
+//            // other custom supplementary views
+//            return UICollectionReusableView();
+//        }
+//    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.photoArray.count;
@@ -116,12 +120,26 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
     func segmentSelected(index: Int) {
         switch index {
         case 0:
+            NSLog("0");
             self.queryPhotoByDate();
         case 1:
+            NSLog("1");
             self.queryPhotoByPopularity();
         default:
             break;
         }
+    }
+    @IBAction func dateButtonClicked(sender: UIButton) {
+        dateButton.setTitleColor(UIColor(hex: "#BE0004"), forState: .Normal);
+        popularButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal);
+        segmentSelected(0);
+        NSLog("datebbutton clicked");
+    }
+    @IBAction func popularButtonClicked(sender: UIButton) {
+        dateButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal);
+        popularButton.setTitleColor(UIColor(hex: "#BE0004"), forState: .Normal);
+        segmentSelected(1);
+        NSLog("popularbutton clicked");
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -10,6 +10,7 @@ import Foundation
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var genderButton: UIBarButtonItem!
     @IBOutlet weak var dailyButton: UIButton!
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         
         super.viewDidLoad();
+//        self.activityIndicatorView.startAnimating();
         
         var headerNib = UINib(nibName: "HomeHeaderCollectionReusableView", bundle: nil);
         self.collectionView.registerNib(headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header");
@@ -41,7 +43,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh");
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged);
         self.collectionView.addSubview(refreshControl);
-        
     }
     
     func refresh(sender:AnyObject)
@@ -119,6 +120,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func displayPhotoByDay() {
+        self.activityIndicatorView.startAnimating();
         var yesterday = NSDate().dateByAddingTimeInterval(-2 * 24 * 60 * 60);
         
         var query = PQChain.query();
@@ -136,12 +138,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     self.chainArray1 = a;
                     self.collectionView.reloadData();
                     NSLog("Photo by daily count return \(a.count)");
+                    
                     if (self.chainArray1.count > 0) {
                         self.headerView.imageView.file = self.chainArray1[0].photo?.file;
                         self.headerView.imageView.loadInBackground();
                     } else {
                         self.headerView.imageView.image = nil;
                     }
+                self.activityIndicatorView.stopAnimating();
                 } else {
                     PQLog.e("Error downcasint [AnyObject] to [PQChain]");
                 }
@@ -150,6 +154,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func displayPhotoByLocation() {
+        self.activityIndicatorView.startAnimating();
         var query = PQChain.query();
         query.orderByDescending("createdAt");
         if (PQ.currentUser.email != nil) {
@@ -177,6 +182,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
             }
         }
+        self.activityIndicatorView.stopAnimating();
     }
     
     func setColumns(numberOfColumns: Int) {

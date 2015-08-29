@@ -401,9 +401,15 @@
                                     <outlet property="delegate" destination="LfO-fJ-9hx" id="CnN-xa-2sb"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vq6-r7-fi3">
+                                <rect key="frame" x="281" y="282" width="37" height="37"/>
+                                <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="vq6-r7-fi3" secondAttribute="centerY" id="V78-Ih-OFx"/>
+                            <constraint firstAttribute="centerX" secondItem="vq6-r7-fi3" secondAttribute="centerX" id="aha-5o-DSe"/>
                             <constraint firstItem="5TI-bn-W33" firstAttribute="width" secondItem="lKN-6f-Ngl" secondAttribute="width" id="amc-0q-TmZ"/>
                             <constraint firstAttribute="centerX" secondItem="5TI-bn-W33" secondAttribute="centerX" id="awb-x3-ZgM"/>
                             <constraint firstItem="0Un-ie-NZV" firstAttribute="top" secondItem="IKU-TX-ikL" secondAttribute="bottom" id="bqs-8J-I9W"/>
@@ -435,6 +441,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="vq6-r7-fi3" id="e47-CV-JDz"/>
                         <outlet property="collectionView" destination="5TI-bn-W33" id="Ue5-Bl-TpW"/>
                         <outlet property="dailyButton" destination="0Un-ie-NZV" id="8pE-ra-vKq"/>
                         <outlet property="genderButton" destination="vL1-Yc-LBF" id="AcJ-G9-j7m"/>
@@ -1872,12 +1879,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sL1-2M-UFK">
+                                <rect key="frame" x="308" y="64" width="292" height="30"/>
+                                <state key="normal" title="Popular">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="popularButtonClicked:" destination="5Qk-Ch-zGm" eventType="touchUpInside" id="YZi-Ek-YyV"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gqe-mm-pMd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="102" width="600" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="uBT-gI-u5t" customClass="CSStickyHeaderFlowLayout">
                                     <size key="itemSize" width="300" height="300"/>
-                                    <size key="headerReferenceSize" width="50" height="36"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
@@ -1918,58 +1934,74 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sectionHeader" id="ceU-3d-tiL" customClass="ProfileCollectionViewSegmentCell" customModule="PicQurate" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="64" width="600" height="36"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UZ-Rh-NOb">
-                                            <rect key="frame" x="173" y="1" width="63" height="34"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <state key="normal" title="Date">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="segmentOneSelected:" destination="ceU-3d-tiL" eventType="touchUpInside" id="hTM-QD-Bcv"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lee-OB-WLR">
-                                            <rect key="frame" x="365" y="1" width="63" height="34"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <state key="normal" title="Popular">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="segmentTwoSelected:" destination="ceU-3d-tiL" eventType="touchUpInside" id="y2E-aA-Bhn"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="3UZ-Rh-NOb" secondAttribute="centerY" id="GOB-wy-cbP"/>
-                                        <constraint firstAttribute="centerX" secondItem="3UZ-Rh-NOb" secondAttribute="centerX" constant="96" id="Jwa-6D-vk3"/>
-                                        <constraint firstAttribute="centerX" secondItem="lee-OB-WLR" secondAttribute="centerX" constant="-96" id="bD9-Cg-UX8"/>
-                                        <constraint firstAttribute="centerY" secondItem="lee-OB-WLR" secondAttribute="centerY" id="es7-lH-Nw4"/>
-                                        <constraint firstItem="lee-OB-WLR" firstAttribute="width" secondItem="3UZ-Rh-NOb" secondAttribute="width" id="p0V-70-WkS"/>
-                                    </constraints>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="5Qk-Ch-zGm" id="sSR-Ga-2a6"/>
                                     <outlet property="delegate" destination="5Qk-Ch-zGm" id="6go-gi-t18"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Neu-iJ-WaQ">
+                                <rect key="frame" x="0.0" y="64" width="300" height="30"/>
+                                <state key="normal" title="Date">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dateButtonClicked:" destination="5Qk-Ch-zGm" eventType="touchUpInside" id="V0U-Ti-bZO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="gqe-mm-pMd" secondAttribute="centerX" id="Nfa-45-b8Z"/>
-                            <constraint firstAttribute="centerY" secondItem="gqe-mm-pMd" secondAttribute="centerY" id="TED-49-XYP"/>
-                            <constraint firstAttribute="width" secondItem="gqe-mm-pMd" secondAttribute="width" id="mKT-Am-syC"/>
-                            <constraint firstAttribute="height" secondItem="gqe-mm-pMd" secondAttribute="height" id="sNG-ch-9Ze"/>
+                            <constraint firstItem="sL1-2M-UFK" firstAttribute="top" secondItem="p82-Ql-Ygl" secondAttribute="bottom" id="19h-qY-h7m"/>
+                            <constraint firstItem="gqe-mm-pMd" firstAttribute="top" secondItem="sL1-2M-UFK" secondAttribute="bottom" constant="8" id="1Av-cL-Tmr"/>
+                            <constraint firstItem="sL1-2M-UFK" firstAttribute="height" secondItem="Neu-iJ-WaQ" secondAttribute="height" id="4ln-Jh-XmB"/>
+                            <constraint firstAttribute="centerY" secondItem="sL1-2M-UFK" secondAttribute="centerY" constant="221" id="86u-1y-sv6"/>
+                            <constraint firstItem="sL1-2M-UFK" firstAttribute="leading" secondItem="Neu-iJ-WaQ" secondAttribute="trailing" constant="196" id="Eoe-xS-H68"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sL1-2M-UFK" secondAttribute="trailing" constant="136" id="Hj9-A2-yUC"/>
+                            <constraint firstItem="gqe-mm-pMd" firstAttribute="leading" secondItem="LZC-tl-ZlE" secondAttribute="leadingMargin" constant="-16" id="KAb-44-Lo3"/>
+                            <constraint firstItem="gqe-mm-pMd" firstAttribute="leading" secondItem="LZC-tl-ZlE" secondAttribute="leadingMargin" constant="-16" id="LB0-KE-hcV"/>
+                            <constraint firstItem="sL1-2M-UFK" firstAttribute="leading" secondItem="Neu-iJ-WaQ" secondAttribute="trailing" id="MbV-mm-JNZ"/>
+                            <constraint firstAttribute="width" secondItem="gqe-mm-pMd" secondAttribute="width" id="N4X-Ja-KaW"/>
+                            <constraint firstItem="Neu-iJ-WaQ" firstAttribute="top" secondItem="p82-Ql-Ygl" secondAttribute="bottom" id="QxC-GS-cyu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sL1-2M-UFK" secondAttribute="trailing" constant="-16" id="S4t-ke-2uc"/>
+                            <constraint firstItem="Neu-iJ-WaQ" firstAttribute="leading" secondItem="LZC-tl-ZlE" secondAttribute="leadingMargin" constant="151" id="TLH-03-nWh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gqe-mm-pMd" secondAttribute="trailing" constant="-16" id="WBr-JM-yTF"/>
+                            <constraint firstItem="sL1-2M-UFK" firstAttribute="height" secondItem="Neu-iJ-WaQ" secondAttribute="height" id="Wsi-Xl-Pg8"/>
+                            <constraint firstItem="Neu-iJ-WaQ" firstAttribute="top" secondItem="p82-Ql-Ygl" secondAttribute="bottom" id="Y2b-hm-WWn"/>
+                            <constraint firstAttribute="centerY" secondItem="Neu-iJ-WaQ" secondAttribute="centerY" constant="221" id="Yfd-Ik-1JT"/>
+                            <constraint firstItem="Neu-iJ-WaQ" firstAttribute="leading" secondItem="LZC-tl-ZlE" secondAttribute="leadingMargin" constant="-16" id="Yop-Ao-O1C"/>
+                            <constraint firstItem="sL1-2M-UFK" firstAttribute="leading" secondItem="Neu-iJ-WaQ" secondAttribute="trailing" constant="8" id="aul-af-hMO"/>
+                            <constraint firstItem="gqe-mm-pMd" firstAttribute="top" secondItem="sL1-2M-UFK" secondAttribute="bottom" constant="8" id="bfA-O6-296"/>
+                            <constraint firstAttribute="centerX" secondItem="gqe-mm-pMd" secondAttribute="centerX" id="eH9-HV-kF4"/>
+                            <constraint firstItem="sL1-2M-UFK" firstAttribute="top" secondItem="p82-Ql-Ygl" secondAttribute="bottom" id="gFw-TC-fug"/>
+                            <constraint firstItem="sL1-2M-UFK" firstAttribute="width" secondItem="Neu-iJ-WaQ" secondAttribute="width" id="gHx-xc-X8i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gqe-mm-pMd" secondAttribute="trailing" constant="-16" id="jFO-tz-M1p"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="gqe-mm-pMd" secondAttribute="bottom" id="kvU-cv-spw"/>
+                            <constraint firstItem="gqe-mm-pMd" firstAttribute="bottom" secondItem="LZC-tl-ZlE" secondAttribute="bottomMargin" id="zu2-o8-L2m"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QxC-GS-cyu"/>
+                                <exclude reference="TLH-03-nWh"/>
+                                <exclude reference="Yfd-Ik-1JT"/>
+                                <exclude reference="LB0-KE-hcV"/>
+                                <exclude reference="N4X-Ja-KaW"/>
+                                <exclude reference="bfA-O6-296"/>
+                                <exclude reference="eH9-HV-kF4"/>
+                                <exclude reference="jFO-tz-M1p"/>
+                                <exclude reference="kvU-cv-spw"/>
+                                <exclude reference="19h-qY-h7m"/>
+                                <exclude reference="86u-1y-sv6"/>
+                                <exclude reference="Eoe-xS-H68"/>
+                                <exclude reference="Hj9-A2-yUC"/>
+                                <exclude reference="Wsi-Xl-Pg8"/>
+                                <exclude reference="aul-af-hMO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="gqe-mm-pMd" id="aVb-l1-JNx"/>
+                        <outlet property="dateButton" destination="Neu-iJ-WaQ" id="1oS-qq-AZR"/>
+                        <outlet property="popularButton" destination="sL1-2M-UFK" id="eu8-he-o5N"/>
                         <segue destination="rpa-53-4pO" kind="show" identifier="segueToPhoto" id="2fq-0F-wEU"/>
                     </connections>
                 </viewController>
@@ -2294,7 +2326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTm-tp-gA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3584" y="1848"/>
+            <point key="canvasLocation" x="3584" y="1926"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="VGu-m6-muv">
@@ -2649,9 +2681,9 @@
         <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nn0-nq-icu"/>
-        <segue reference="h32-p8-g8D"/>
-        <segue reference="Jvt-Gw-ONU"/>
-        <segue reference="ta3-m0-Ka4"/>
+        <segue reference="2fq-0F-wEU"/>
+        <segue reference="VPz-mc-4aY"/>
+        <segue reference="KDR-Sx-1xB"/>
+        <segue reference="yCC-6W-pfu"/>
     </inferredMetricsTieBreakers>
 </document>
