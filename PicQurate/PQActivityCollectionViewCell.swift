@@ -44,8 +44,8 @@ class PQActivityCollectionViewCell: UICollectionViewCell {
         }
         
         if let message = self.activity.message {
-            profileActionLabel.text = message
-            NSLog(message)
+            profileActionLabel.text = message;
+            NSLog(message);
         } else {
             NSLog("\(self.activity.message): no profileActionLabel")
         }

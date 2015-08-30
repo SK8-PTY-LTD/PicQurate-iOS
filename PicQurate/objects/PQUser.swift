@@ -234,7 +234,7 @@ public class PQUser : AVUser, AVSubclassing {
         
         // Send a notification to the owner;
         if (like) {
-            var message = self.getProfileName()! + " just liked your photo";
+            var message = " just liked your photo";
             photo.fetchIfNeededInBackgroundWithBlock { (photo, error) -> Void in
                 if let p = photo as? PQPhoto {
                     
