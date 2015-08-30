@@ -36,8 +36,12 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
             self.dismissButton.enabled = true;
         }
         
+        if let profileImageCreated = PQ.currentUser.profileImage {
         self.profileImageView.file = PQ.currentUser.profileImage;
         self.profileImageView.loadInBackground();
+        }else{
+            NSLog("current user has no profile Image");
+        }
         self.profileNameLabel.text = PQ.currentUser.profileName;
         NSLog(PQ.currentUser.profileName!);
         
