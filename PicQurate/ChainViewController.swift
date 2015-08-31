@@ -37,9 +37,11 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
         }
         
         if let profileImageCreated = PQ.currentUser.profileImage {
-        self.profileImageView.file = PQ.currentUser.profileImage;
-        self.profileImageView.loadInBackground();
+            self.profileImageView.file = PQ.currentUser.profileImage;
+            self.profileImageView.loadInBackground();
         }else{
+            self.profileImageView.image = UIImage(named: "logo");
+            self.profileImageView.loadInBackground();
             NSLog("current user has no profile Image");
         }
         self.profileNameLabel.text = PQ.currentUser.profileName;
