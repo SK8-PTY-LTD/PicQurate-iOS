@@ -770,7 +770,7 @@
                     <navigationItem key="navigationItem" id="xWT-c9-jZV">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="5c7-aa-DHt">
-                            <rect key="frame" x="120" y="5.5" width="360" height="33"/>
+                            <rect key="frame" x="120" y="6" width="360" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypr-Ny-h1e">
@@ -2706,8 +2706,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2fq-0F-wEU"/>
+        <segue reference="Jvt-Gw-ONU"/>
+        <segue reference="h32-p8-g8D"/>
         <segue reference="nn0-nq-icu"/>
-        <segue reference="yCC-6W-pfu"/>
-        <segue reference="KDR-Sx-1xB"/>
     </inferredMetricsTieBreakers>
 </document>

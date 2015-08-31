@@ -33,6 +33,7 @@ class PQActivityCollectionViewCell: UICollectionViewCell {
                 imageView.loadInBackground();
             }
         }else{
+            profileImageView.image = UIImage(named: "logo");
             NSLog("no profileimageView");
         }
         
