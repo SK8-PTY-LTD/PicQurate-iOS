@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
+class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImageButton: UIButton!
@@ -24,7 +24,9 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
     var genderButton: UIButton!
     var genderImageView: UIImageView!
     
-    let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager();
+    let imagePickerController = UIImagePickerController();
+    var isFullScreen = false;
     
     override func viewDidLoad() {
         
@@ -132,6 +134,99 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
             }
         });
     }
+    
+    
+    @IBAction func profileImageButtonClicked(sender: UIButton) {
+        self.imagePickerController.delegate = self;
+        self.imagePickerController.allowsEditing = true;
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
+            let alertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet);
+            var popover = alertController.popoverPresentationController;
+            if (popover != nil){
+                popover?.sourceView = sender;
+                popover?.sourceRect = sender.bounds;
+                popover?.permittedArrowDirections = UIPopoverArrowDirection.Any;
+            }
+            
+            let cameraAction: UIAlertAction = UIAlertAction(title: "take a photo", style: .Default) { (action: UIAlertAction!) -> Void in
+                self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera;
+                self.presentViewController(self.imagePickerController, animated: true, completion: nil);
+            }
+            alertController.addAction(cameraAction);
+            
+            let photoLibraryAction: UIAlertAction = UIAlertAction(title: "choose from gallery", style: .Default) { (action: UIAlertAction!) -> Void in
+                self.imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+                self.imagePickerController.navigationBar.barTintColor = UIColor(red: 171/255, green: 202/255, blue: 41/255, alpha: 1.0);
+                self.imagePickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
+                self.imagePickerController.navigationBar.tintColor = UIColor.whiteColor();
+                self.presentViewController(self.imagePickerController, animated: true, completion: nil);
+            }
+            alertController.addAction(photoLibraryAction);
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil);
+            alertController.addAction(cancelAction);
+            
+            presentViewController(alertController, animated: true, completion: nil);
+            
+        }else{
+            let alertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet);
+            var popover = alertController.popoverPresentationController
+            if (popover != nil){
+                popover?.sourceView = sender;
+                popover?.sourceRect = sender.bounds;
+                popover?.permittedArrowDirections = UIPopoverArrowDirection.Any;
+            }
+            
+            let photoLibraryAction: UIAlertAction = UIAlertAction(title: "choose from gallery", style: .Default) { (action: UIAlertAction!) -> Void in
+                self.imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+                self.imagePickerController.navigationBar.barTintColor = UIColor(red: 171/255, green: 202/255, blue: 41/255, alpha: 1.0);
+                self.imagePickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
+                self.imagePickerController.navigationBar.tintColor = UIColor.whiteColor();
+                self.presentViewController(self.imagePickerController, animated: true, completion: nil);
+            }
+            alertController.addAction(photoLibraryAction);
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "cancel", style: .Cancel, handler: nil);
+            alertController.addAction(cancelAction);
+            
+            presentViewController(alertController, animated: true, completion: nil);
+        }
+
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        picker.dismissViewControllerAnimated(true, completion: nil);
+        var image:UIImage!
+        if(picker.allowsEditing){
+            image = info[UIImagePickerControllerEditedImage] as! UIImage
+        } else {
+            image = info[UIImagePickerControllerEditedImage] as! UIImage
+        }
+        self.saveImage(image, newSize: CGSize(width: 256, height: 256), percent: 0.5, imageName: "currentImage.png")
+        let fullPath: String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent("currentImage.png")
+        println("fullPath=\(fullPath)")
+        let savedImage: UIImage = UIImage(contentsOfFile: fullPath)!
+        self.isFullScreen = false
+        //save image to server
+        PQ.currentUser.setProfileUIImage(image);
+    
+    }
+    
+    func saveImage(currentImage: UIImage, newSize: CGSize, percent: CGFloat, imageName: String){
+        UIGraphicsBeginImageContext(newSize)
+        currentImage.drawInRect(CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let imageData: NSData = UIImageJPEGRepresentation(newImage, percent)
+        let fullPath: String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent(imageName)
+        imageData.writeToFile(fullPath, atomically: false)
+    }
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3;

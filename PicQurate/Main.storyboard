@@ -2342,6 +2342,9 @@
                                                     <integer key="value" value="40"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="profileImageButtonClicked:" destination="oRl-74-xJc" eventType="touchUpInside" id="r4h-Lo-yjW"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <animations/>
