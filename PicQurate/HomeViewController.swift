@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var column: Int = 2;
     var displayMode: Int = 0;
     var gender: NSNumber = false;
+    var numOfImage = 0;
     
      var refreshControl:UIRefreshControl!
     
@@ -106,6 +107,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 if let a = array as? [PQChain] {
                     self.chainArray0 = a;
                     self.collectionView.reloadData();
+                    NSLog("Photo by local count return \(a.count)");
+                    self.numOfImage = a.count;
                     if (self.chainArray0.count > 0) {
                         self.headerView.imageView.file = self.chainArray0[0].photo?.file;
                         self.headerView.imageView.loadInBackground();
@@ -138,6 +141,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     self.chainArray1 = a;
                     self.collectionView.reloadData();
                     NSLog("Photo by daily count return \(a.count)");
+                    self.numOfImage = a.count;
                     
                     if (self.chainArray1.count > 0) {
                         self.headerView.imageView.file = self.chainArray1[0].photo?.file;
@@ -187,6 +191,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func imageClicked() {
+        if numOfImage != 0 {
         switch self.displayMode {
 //        case 0:
 //            if (self.chainArray0.count > 0) {
@@ -206,6 +211,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         default:
             break;
         }
+        }else{
+            NSLog("num of image is 0, cant click image");
+        }
     }
     
     func setColumns(numberOfColumns: Int) {
@@ -223,6 +231,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 return cell;
             } else {
                 self.headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! HomeHeaderCollectionReusableView;
+                self.headerView.numOfImage = self.numOfImage;
                 switch self.displayMode {
 //                case 0:
 //                    if (self.chainArray0.count > 0) {
@@ -329,8 +338,12 @@ class HomeHeaderCollectionReusableView: UICollectionReusableView {
     
     var delegate: HomeHeaderCollectionReusableViewProtocol!
     
+    var numOfImage = 0;
+    
     @IBAction func imageClicked(sender: UIButton) {
+        if numOfImage != 0{
         self.delegate.imageClicked();
+        }
     }
     
 }
