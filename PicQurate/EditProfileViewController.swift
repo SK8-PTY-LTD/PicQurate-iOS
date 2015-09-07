@@ -202,14 +202,14 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         } else {
             image = info[UIImagePickerControllerEditedImage] as! UIImage
         }
-        self.saveImage(image, newSize: CGSize(width: 256, height: 256), percent: 0.5, imageName: "currentImage.png")
+        self.saveImage(image, newSize: CGSize(width: 640, height: 640), percent: 0.5, imageName: "currentImage.png")
         let fullPath: String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent("currentImage.png")
         println("fullPath=\(fullPath)")
         let savedImage: UIImage = UIImage(contentsOfFile: fullPath)!
         self.isFullScreen = false
         //save image to server
         PQ.currentUser.setProfileUIImage(image);
-    
+        self.profileImageButton.setBackgroundImage(image, forState: .Normal);
     }
     
     func saveImage(currentImage: UIImage, newSize: CGSize, percent: CGFloat, imageName: String){
