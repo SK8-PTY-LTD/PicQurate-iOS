@@ -11,6 +11,7 @@ import Foundation
 protocol PhotoToProfileProtocol {
     func showLocation(locationArray: [AVGeoPoint], locationNameArray:[String]);
     func showLike(query: AnyObject);
+    func showProfile(user: PQUser);
 }
 
 class PQPhotoCollectionViewCell: UICollectionViewCell {
@@ -187,4 +188,13 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
             NSLog("delegate is nil");
         }
     }
+    @IBAction func profileNameButtonClicked(sender: UIButton) {
+        if let delegate = self.delegate {
+            delegate.showProfile(self.photo.user!);
+            NSLog("sender is \(self.photo.user)");
+        }else{
+            NSLog("delegate is nil");
+        }
+    }
+    
 }

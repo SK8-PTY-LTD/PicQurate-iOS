@@ -309,7 +309,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func showLike(query: AnyObject) {
         self.performSegueWithIdentifier("segueToLike", sender: query);
     }
-
+    func showProfile(user: PQUser) {
+        self.performSegueWithIdentifier("segueToProfile", sender: user);
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToUserTableView") {
@@ -327,6 +329,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             var VC = segue.destinationViewController as! UserTableViewController;
             VC.title = "Like"
             VC.query = sender as! AVQuery;
+        } else if(segue.identifier == "segueToProfile"){
+            var VC = segue.destinationViewController as! ProfileViewController;
+            VC.user = sender as! PQUser;
         }
     }
     

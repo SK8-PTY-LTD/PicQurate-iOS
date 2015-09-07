@@ -232,7 +232,6 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     func showLike(query: AnyObject) {
         self.performSegueWithIdentifier("segueToLike", sender: query);
     }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "segueToProfile"){
             var VC = segue.destinationViewController as! ProfileViewController;
