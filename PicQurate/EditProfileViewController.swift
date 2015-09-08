@@ -27,6 +27,7 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
     let locationManager = CLLocationManager();
     let imagePickerController = UIImagePickerController();
     var isFullScreen = false;
+    var imageWidth: CGFloat = 320.0;
     
     override func viewDidLoad() {
         
@@ -202,25 +203,50 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         } else {
             image = info[UIImagePickerControllerEditedImage] as! UIImage
         }
-        self.saveImage(image, newSize: CGSize(width: 640, height: 640), percent: 0.5, imageName: "currentImage.png")
-        let fullPath: String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent("currentImage.png")
-        println("fullPath=\(fullPath)")
-        let savedImage: UIImage = UIImage(contentsOfFile: fullPath)!
-        self.isFullScreen = false
+image.drawInRect(CGRect(x: 0, y: 0, width: 640, height: 640));
+//        self.saveImage(image, newSize: CGSize(width: 640, height: 640), percent: 0.5, imageName: "currentImage.png")
+//        let fullPath: String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent("currentImage.png")
+//        println("fullPath=\(fullPath)")
+//        let savedImage: UIImage = UIImage(contentsOfFile: fullPath)!
+//        self.isFullScreen = false
         //save image to server
-        PQ.currentUser.setProfileUIImage(image);
-        self.profileImageButton.setBackgroundImage(image, forState: .Normal);
+        var originalWidth = image.size.width;
+        var originalHeight = image.size.height;
+        var cropRect: CGRect?
+        var scale: CGFloat?
+        if (originalWidth <= originalHeight) {
+            var difference = (originalHeight - originalWidth) / 2;
+            var y = difference;
+            cropRect = CGRectMake(0, y, image.size.width, image.size.width);
+            scale = 640/image.size.width;
+        } else {
+            var difference = (originalWidth - originalHeight) / 2;
+            var x = difference;
+            cropRect = CGRectMake(x, 0, image.size.height, image.size.height);
+            scale = 640/image.size.height;
+        }
+        var imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect!);
+        var croppedImage = UIImage(CGImage: imageRef, scale: scale!, orientation: image.imageOrientation);
+        //Scaling
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(imageWidth, imageWidth), false, 0.0);
+        croppedImage?.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
+        var scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSLog("image size is \(image.size) \n scaledImage size is \(scaledImage.size)");
+        PQ.currentUser.setProfileUIImage(scaledImage);
+        self.profileImageButton.setBackgroundImage(scaledImage, forState: .Normal);
     }
     
-    func saveImage(currentImage: UIImage, newSize: CGSize, percent: CGFloat, imageName: String){
-        UIGraphicsBeginImageContext(newSize)
-        currentImage.drawInRect(CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        let imageData: NSData = UIImageJPEGRepresentation(newImage, percent)
-        let fullPath: String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent(imageName)
-        imageData.writeToFile(fullPath, atomically: false)
-    }
+//    func saveImage(currentImage: UIImage, newSize: CGSize, percent: CGFloat, imageName: String){
+//        UIGraphicsBeginImageContext(newSize)
+//        currentImage.drawInRect(CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+//        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        let imageData: NSData = UIImageJPEGRepresentation(newImage, percent)
+//        let fullPath: String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent(imageName)
+//        imageData.writeToFile(fullPath, atomically: false)
+//    }
 
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)

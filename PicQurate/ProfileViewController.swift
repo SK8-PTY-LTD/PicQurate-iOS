@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         
         super.viewDidLoad();
-        self.collectionView.reloadData();
+//        self.collectionView.reloadData();
         //Anonymous user does not have an email
         if (PQ.currentUser.email == nil) {
             return;
