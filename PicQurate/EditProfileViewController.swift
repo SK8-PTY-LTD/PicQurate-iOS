@@ -45,7 +45,7 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
     
     @IBAction func saveButtonClicked(sender: UIBarButtonItem) {
         //Save user info
-        PQ.currentUser.setProfileUIImage(self.profileImageButton.backgroundImageForState(.Normal)!);
+//        PQ.currentUser.setProfileUIImage(self.profileImageButton.backgroundImageForState(.Normal)!);
         PQ.currentUser.realName = self.realNameTextField.text;
         PQ.currentUser.profileName = self.profileNameTextField.text;
         if let urlString = self.urlTextField.text {

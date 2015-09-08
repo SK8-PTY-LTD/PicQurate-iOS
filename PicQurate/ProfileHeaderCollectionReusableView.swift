@@ -37,12 +37,13 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         
         self.user = user;
         
-        if let file = self.profileImageView.file {
-            //ImageView already loaded, do not reload.
-        } else {
+//        if let file = self.profileImageView.file {
+//            //ImageView already loaded, do not reload.
+//        } else {
             self.profileImageView.file = self.user!.profileImage;
             self.profileImageView.loadInBackground();
-        }
+        NSLog("profile image has been reloaded");
+//        }
         
         var query1 = self.user!.followeeQuery();
         var count1 = query1.countObjects();

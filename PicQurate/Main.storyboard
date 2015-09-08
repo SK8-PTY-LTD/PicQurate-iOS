@@ -2897,9 +2897,9 @@
         <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A46-ri-ynF"/>
-        <segue reference="h32-p8-g8D"/>
         <segue reference="nn0-nq-icu"/>
-        <segue reference="Jvt-Gw-ONU"/>
+        <segue reference="KDR-Sx-1xB"/>
+        <segue reference="ta3-m0-Ka4"/>
+        <segue reference="yCC-6W-pfu"/>
     </inferredMetricsTieBreakers>
 </document>
