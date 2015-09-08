@@ -2346,11 +2346,20 @@
                                                 <action selector="profileImageButtonClicked:" destination="oRl-74-xJc" eventType="touchUpInside" id="r4h-Lo-yjW"/>
                                             </connections>
                                         </button>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1Zn-nu-6en">
+                                            <rect key="frame" x="282" y="32" width="37" height="37"/>
+                                            <animations/>
+                                            <color key="color" red="0.74509803919999995" green="0.1843137255" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="1Zn-nu-6en" firstAttribute="width" secondItem="fMB-HT-YMB" secondAttribute="width" id="8lw-Fi-P5b"/>
+                                        <constraint firstItem="1Zn-nu-6en" firstAttribute="centerX" secondItem="fMB-HT-YMB" secondAttribute="centerX" constant="0.5" id="K34-PG-dfm"/>
                                         <constraint firstAttribute="centerX" secondItem="fMB-HT-YMB" secondAttribute="centerX" id="QOP-fJ-f6y"/>
+                                        <constraint firstItem="1Zn-nu-6en" firstAttribute="centerY" secondItem="fMB-HT-YMB" secondAttribute="centerY" constant="-0.5" id="qaS-7k-fhD"/>
+                                        <constraint firstItem="1Zn-nu-6en" firstAttribute="height" secondItem="fMB-HT-YMB" secondAttribute="height" id="s5v-JS-b6G"/>
                                         <constraint firstAttribute="centerY" secondItem="fMB-HT-YMB" secondAttribute="centerY" id="tIG-Fj-fWu"/>
                                     </constraints>
                                 </view>
@@ -2517,6 +2526,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="1Zn-nu-6en" id="14H-Op-y4S"/>
                         <outlet property="profileImageButton" destination="fMB-HT-YMB" id="Y0p-Oz-nsb"/>
                         <outlet property="tableView" destination="UNW-tQ-1bZ" id="JBy-cn-Wqo"/>
                     </connections>
@@ -2897,9 +2907,9 @@
         <image name="view-more-icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Jvt-Gw-ONU"/>
+        <segue reference="A46-ri-ynF"/>
+        <segue reference="h32-p8-g8D"/>
         <segue reference="nn0-nq-icu"/>
-        <segue reference="KDR-Sx-1xB"/>
-        <segue reference="ta3-m0-Ka4"/>
-        <segue reference="yCC-6W-pfu"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,6 +19,7 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var genderTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var locationButton: UIButton!
     var genderButton: UIButton!
@@ -227,15 +228,42 @@ image.drawInRect(CGRect(x: 0, y: 0, width: 640, height: 640));
         }
         var imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect!);
         var croppedImage = UIImage(CGImage: imageRef, scale: scale!, orientation: image.imageOrientation);
-        //Scaling
+        //Scalings
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(imageWidth, imageWidth), false, 0.0);
         croppedImage?.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
         var scaledImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
         NSLog("image size is \(image.size) \n scaledImage size is \(scaledImage.size)");
-        PQ.currentUser.setProfileUIImage(scaledImage);
-        self.profileImageButton.setBackgroundImage(scaledImage, forState: .Normal);
+//        PQ.currentUser.setProfileUIImage(scaledImage);
+        activityIndicator.startAnimating();
+        var imageFile: AVFile = AVFile.fileWithName("profile.jpg", data: UIImageJPEGRepresentation(scaledImage, 1.0)) as! AVFile;
+        imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
+            if let e = error {
+                NSLog("Profile image failed to save, error: " + e.localizedDescription);
+            } else {
+                PQ.currentUser.profileImage = imageFile;
+                PQ.currentUser.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    if let e = error{
+                        NSLog("Current UserProfile image failed to save, error: " + e.localizedDescription);
+                    } else{
+                        NSLog("Success");
+                        self.activityIndicator.stopAnimating();
+                        self.profileImageButton.setBackgroundImage(scaledImage, forState: UIControlState.Normal);
+                    }
+                })
+//                self.saveInBackground();
+            }
+        }
+
+//        PQ.currentUser.profileImage!.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+//            if(succeeded){
+//                NSLog("success");
+//            }else{
+//                NSLog("error occurs");
+//            }
+//        }
+//        self.profileImageButton.setBackgroundImage(scaledImage, forState: .Normal);
     }
     
 //    func saveImage(currentImage: UIImage, newSize: CGSize, percent: CGFloat, imageName: String){
