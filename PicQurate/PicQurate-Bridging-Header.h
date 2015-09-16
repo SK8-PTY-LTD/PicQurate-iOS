@@ -10,3 +10,4 @@
 #import "LUTToNSDataConverter.h"
 #import "UIImage+IMGLYKitAdditions.h"
 #import "CSStickyHeaderFlowLayout.h"
+#import "KairosSDK.h"

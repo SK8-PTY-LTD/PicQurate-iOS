@@ -130,6 +130,8 @@ class PQ: NSObject {
         AVOSCloud.setApplicationId(PQ.Static.AV_APP_ID, clientKey: PQ.Static.AV_APP_KEY);
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOption);
         
+        KairosSDK.initWithAppId("ffec8a45", appKey: "bb447e7afdec83d6b87dfbd0ec304cd0")
+        
         PQUser.enableAutomaticUser();
         
         if let user = PQUser.currentUser() {

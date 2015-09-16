@@ -120,26 +120,17 @@ public class PQUser : AVUser, AVSubclassing {
         var relation = self.relationforKey("photoChained");
         relation.addObject(photo);
         
-        var chainArray = [PQChain]();
-        for (var i = 0; i < 3; i++) {
-            var chain = PQChain(photo: photo);
-            chain.user = self;
-            chain.shares = 0;
-            chain.gender = photo.gender as Bool;
-            chain.location = self.location;
-            chain.locationString = self.locationString;
-            chainArray[i] = chain;
-        }
+        var chain = PQChain(photo: photo);
+        chain.user = self;
+        chain.shares = 0;
+        chain.gender = photo.gender as Bool;
+        chain.location = self.location;
+        chain.locationString = self.locationString;
         
         self.saveInBackground();
-        AVObject.saveAllInBackground(chainArray, block: { (success, error) -> Void in
-            if let e = error{
-                block(success: false, error: e);
-            } else {
-                //Successful
-                block(success: success, error: nil);
-            }
-        });
+        chain.saveInBackgroundWithBlock { (success, error) -> Void in
+            block(success: success, error: error);
+        }
     }
     
     func chainPhotoWithBlock(originalChain: PQChain, block: (success: Bool, error: NSError?) -> ()) {
@@ -147,28 +138,18 @@ public class PQUser : AVUser, AVSubclassing {
         var relation = self.relationforKey("photoChained");
         relation.addObject(originalChain.photo);
         
-        var chainArray = [PQChain]();
-        for (var i = 0; i < 3; i++) {
-            var chain = PQChain(photo: originalChain.photo!);
-            chain.user = self;
-            chain.shares = 0;
-            chain.gender = originalChain.gender as Bool;
-            chain.original = originalChain;
-            chain.location = self.location;
-            chain.locationString = self.locationString;
-            chainArray.append(chain);
-        }
-        
+        var chain = PQChain(photo: originalChain.photo!);
+        chain.user = self;
+        chain.shares = 0;
+        chain.gender = originalChain.gender as Bool;
+        chain.original = originalChain;
+        chain.location = self.location;
+        chain.locationString = self.locationString;
         
         self.saveInBackground();
-        AVObject.saveAllInBackground(chainArray, block: { (success, error) -> Void in
-            if let e = error{
-                block(success: false, error: e);
-            } else {
-                //Successful
-                block(success: success, error: nil);
-            }
-        });
+        chain.saveInBackgroundWithBlock { (success, error) -> Void in
+            block(success: success, error: error);
+        }
         
         // Send a notification to the owner;
         var message = " just chained your photo";

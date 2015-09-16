@@ -13,6 +13,14 @@
 		3C4D19221AE0D6C100613CAB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19211AE0D6C100613CAB /* LandingViewController.swift */; };
 		3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19261AE0D6C100613CAB /* Images.xcassets */; };
 		3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */; };
+		3C51EB661BA9E2B5006D40A4 /* libKairosSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB651BA9E2B5006D40A4 /* libKairosSDK.a */; };
+		3C51EB681BA9E2D7006D40A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB671BA9E2D7006D40A4 /* UIKit.framework */; };
+		3C51EB6A1BA9E2DC006D40A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB691BA9E2DC006D40A4 /* Foundation.framework */; };
+		3C51EB6C1BA9E2E2006D40A4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB6B1BA9E2E2006D40A4 /* CoreImage.framework */; };
+		3C51EB6E1BA9E2E8006D40A4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB6D1BA9E2E8006D40A4 /* CoreMedia.framework */; };
+		3C51EB701BA9E2ED006D40A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB6F1BA9E2ED006D40A4 /* CoreGraphics.framework */; };
+		3C51EB721BA9E2F3006D40A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB711BA9E2F3006D40A4 /* AVFoundation.framework */; };
+		3C51EB741BA9E2F9006D40A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB731BA9E2F9006D40A4 /* AudioToolbox.framework */; };
 		3C51FECB1BA65AB000A491D2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */; };
 		3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56922E1AE9F736006FA95D /* AVImageView.swift */; };
 		3C5692311AE9F772006FA95D /* PQLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692301AE9F772006FA95D /* PQLog.swift */; };
@@ -304,6 +312,15 @@
 		3C4D19291AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3C4D19341AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicQurateTests.swift; sourceTree = "<group>"; };
+		3C51EB641BA9E2B5006D40A4 /* KairosSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KairosSDK.h; sourceTree = "<group>"; };
+		3C51EB651BA9E2B5006D40A4 /* libKairosSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKairosSDK.a; sourceTree = "<group>"; };
+		3C51EB671BA9E2D7006D40A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3C51EB691BA9E2DC006D40A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3C51EB6B1BA9E2E2006D40A4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		3C51EB6D1BA9E2E8006D40A4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		3C51EB6F1BA9E2ED006D40A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3C51EB711BA9E2F3006D40A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3C51EB731BA9E2F9006D40A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		3C56922E1AE9F736006FA95D /* AVImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVImageView.swift; path = objects/AVImageView.swift; sourceTree = "<group>"; };
 		3C5692301AE9F772006FA95D /* PQLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQLog.swift; path = objects/PQLog.swift; sourceTree = "<group>"; };
@@ -588,6 +605,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C51EB741BA9E2F9006D40A4 /* AudioToolbox.framework in Frameworks */,
+				3C51EB721BA9E2F3006D40A4 /* AVFoundation.framework in Frameworks */,
+				3C51EB701BA9E2ED006D40A4 /* CoreGraphics.framework in Frameworks */,
+				3C51EB6E1BA9E2E8006D40A4 /* CoreMedia.framework in Frameworks */,
+				3C51EB6C1BA9E2E2006D40A4 /* CoreImage.framework in Frameworks */,
+				3C51EB6A1BA9E2DC006D40A4 /* Foundation.framework in Frameworks */,
+				3C51EB681BA9E2D7006D40A4 /* UIKit.framework in Frameworks */,
 				3C51FECB1BA65AB000A491D2 /* libsqlite3.0.dylib in Frameworks */,
 				3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */,
 				3C87F8041AE8C91300C9E172 /* CoreLocation.framework in Frameworks */,
@@ -597,6 +621,7 @@
 				3CFCA34F1B7C00C200E6F7FC /* GameKit.framework in Frameworks */,
 				3C9B148B1AF4905C00BA5CB0 /* CFNetwork.framework in Frameworks */,
 				3CFCA3511B7C00C500E6F7FC /* StoreKit.framework in Frameworks */,
+				3C51EB661BA9E2B5006D40A4 /* libKairosSDK.a in Frameworks */,
 				3C87F7FD1AE8C57F00C9E172 /* Bolts.framework in Frameworks */,
 				3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */,
 				3C59ED7B1AE7EC1300383EF0 /* FBSDKLoginKit.framework in Frameworks */,
@@ -610,6 +635,13 @@
 		3C4D19111AE0D6C100613CAB = {
 			isa = PBXGroup;
 			children = (
+				3C51EB731BA9E2F9006D40A4 /* AudioToolbox.framework */,
+				3C51EB711BA9E2F3006D40A4 /* AVFoundation.framework */,
+				3C51EB6F1BA9E2ED006D40A4 /* CoreGraphics.framework */,
+				3C51EB6D1BA9E2E8006D40A4 /* CoreMedia.framework */,
+				3C51EB6B1BA9E2E2006D40A4 /* CoreImage.framework */,
+				3C51EB691BA9E2DC006D40A4 /* Foundation.framework */,
+				3C51EB671BA9E2D7006D40A4 /* UIKit.framework */,
 				3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */,
 				3C4D191C1AE0D6C100613CAB /* PicQurate */,
 				3C4D19321AE0D6C100613CAB /* PicQurateTests */,
@@ -670,6 +702,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3C51EB631BA9E2B5006D40A4 /* Kairos-SDK-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3C51EB641BA9E2B5006D40A4 /* KairosSDK.h */,
+				3C51EB651BA9E2B5006D40A4 /* libKairosSDK.a */,
+			);
+			name = "Kairos-SDK-iOS";
+			path = "libs/Kairos-SDK-iOS";
+			sourceTree = "<group>";
+		};
 		3C5692581AEA27B5006FA95D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,6 +728,7 @@
 				3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */,
 				3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */,
 				3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */,
+				3C51EB631BA9E2B5006D40A4 /* Kairos-SDK-iOS */,
 				3CA1A5281AF71F6E00A5E2C9 /* StickyHeader */,
 				3CA0F08B1AEBDA8800CBFBE8 /* imgly */,
 				3CBF20F81AEA57150000B9A3 /* ICViewPager */,
@@ -1511,10 +1554,14 @@
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PicQurate/libs/Kairos-SDK-iOS",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
+				PROVISIONING_PROFILE = "372043e8-ae61-4407-b770-43725f186b8f";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1538,9 +1585,13 @@
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PicQurate/libs/Kairos-SDK-iOS",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
+				PROVISIONING_PROFILE = "372043e8-ae61-4407-b770-43725f186b8f";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 			};
 			name = Release;

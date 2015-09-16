@@ -74,26 +74,39 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
             var detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyLow]);
             var ciImage = CIImage(image: scaledImage);
             var features = detector.featuresInImage(ciImage);
-//            for (var i = 0; i < features.count; i++) {
-//                let feature = features[i] as! CIFaceFeature;
-//                NSLog("Month: \(feature.hasMouthPosition), Left eye: \(feature.hasLeftEyePosition), Right eye: \(feature.hasRightEyePosition)");
+            //Old iOS Default Facial Detection
+//            if (features.count == 0) {
+//                PQ.promote("Hey dear, to upload a selfie, please have a face in it. :)");
+//                self.activityIndicator.stopAnimating();
+//                return;
 //            }
-            if (features.count == 0) {
-                PQ.promote("Hey dear, to upload a selfie, please have a face in it. :)");
-                self.activityIndicator.stopAnimating();
-                return;
-            }
-            
-            PQ.currentUser.uploadPhotoWithBlock(scaledImage, caption: self.textView.text, block: { (success, error) -> () in
-                if let e = error{
-                    PQ.showError(e);
+            //New KairosSDK Facial Detection
+            KairosSDK.detectWithImage(scaledImage, selector: nil, success: { (response) -> Void in
+                if let e = response["Errors"] {
+                    PQ.promote("Hey dear, to upload a selfie, please have a face in it. :)");
                     self.activityIndicator.stopAnimating();
+                    return;
                 } else {
-                    self.activityIndicator.stopAnimating();
-                    PQ.promote("Photo chained!");
-                    self.dismissViewControllerAnimated(true, completion: nil);
+                    //Successfully detected facec
+                    PQ.currentUser.uploadPhotoWithBlock(scaledImage, caption: self.textView.text, block: { (success, error) -> () in
+                        if let e = error{
+                            PQ.showError(e);
+                            self.activityIndicator.stopAnimating();
+                        } else {
+                            self.activityIndicator.stopAnimating();
+                            PQ.promote("Photo chained!");
+                            self.dismissViewControllerAnimated(true, completion: nil);
+                        }
+                    });
+
                 }
-            });
+                
+                }, failure: { (response) -> Void in
+                    //Failed to detect face
+                    PQ.promote("Hey dear, to upload a selfie, please have a face in it. :)");
+                    self.activityIndicator.stopAnimating();
+                    return;
+            })
         } else {
             PQ.promote("Please take a photo");
             self.activityIndicator.stopAnimating();
