@@ -130,14 +130,14 @@ typedef NS_ENUM(int, AVReportPolicy){
 
 
 /** 开启统计,默认以AV_BATCH方式发送log. 1.4.3以后不再需要，请前往在线配置进行配置。
- https://cn.avoscloud.com/stat.html?appid=YOUR_APP_ID&os=ios#/statconfig/trans_strategoy
+ https://leancloud.cn/stat.html?appid=YOUR_APP_ID&os=ios#/statconfig/trans_strategoy
  */
 
 + (void)start AVDeprecated("1.4.3以后不再需要，请前往在线配置进行配置");
 
 /** 开启统计,默认以AV_BATCH方式发送log. 1.4.3以后不再需要，请前往在线配置进行配置。
- https://cn.avoscloud.com/stat.html?appid=YOUR_APP_ID&os=ios#/statconfig/trans_strategoy
- 
+ https://leancloud.cn/stat.html?appid=YOUR_APP_ID&os=ios#/statconfig/trans_strategoy
+
  @param rp 发送策略.
  @param cid 渠道名称,为nil或@""时,默认会被被当作@"App Store"渠道
  */

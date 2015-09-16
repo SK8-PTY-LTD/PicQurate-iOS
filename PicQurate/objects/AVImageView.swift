@@ -30,7 +30,7 @@ class AVImageView: UIImageView {
     
     func loadInBackground() {
         
-        if (self.cachedfile?.objectId == self.file?.objectId && self.image != nil) {
+        if (self.cachedfile?.objectId == self.file?.objectId && self.image != nil && self.image != UIImage(named: "logo")) {
             //Image already loaded, do nothing
             return;
         } else {
@@ -166,7 +166,6 @@ class AVImageView: UIImageView {
             PQLog.e("Error loading image: file hadn't been set.");
         }
     }
-    
     
 }
 

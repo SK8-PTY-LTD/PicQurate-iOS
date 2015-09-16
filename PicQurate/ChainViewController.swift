@@ -12,6 +12,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
     
     @IBOutlet weak var profileImageView: AVImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet weak var secondImageView: AVImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var chainButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
@@ -36,14 +37,6 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
             self.dismissButton.enabled = true;
         }
         
-        if let profileImageCreated = PQ.currentUser.profileImage {
-            self.profileImageView.file = PQ.currentUser.profileImage;
-            self.profileImageView.loadInBackground();
-        }else{
-            self.profileImageView.image = UIImage(named: "logo");
-            self.profileImageView.loadInBackground();
-            NSLog("current user has no profile Image");
-        }
         self.profileNameLabel.text = PQ.currentUser.profileName;
         NSLog(PQ.currentUser.profileName!);
         
@@ -84,26 +77,36 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
     }
     
     func downloadChains() {
+        
         var query = PQChain.query();
         
-        query.limit = 10;
-        query.orderByDescending("createdAt");
-        query.includeKey("photo.file");
+        query.orderByAscending("shares");
+        query.whereKey("shares", lessThan: NSNumber(int: 4));
+        query.includeKey("photo");
+        query.includeKey("photo.user");
+        query.whereKey("objectId", doesNotMatchKey: "objectId", inQuery: PQ.currentUser.relationforKey("photoChained").query());
 //        query.whereKey("user", notEqualTo: PQ.currentUser);
 //        query.whereKey("original.user", notEqualTo: PQ.currentUser);
 //        query.whereKey("original.original.user", notEqualTo: PQ.currentUser);
 //        query.whereKey("original.original.original.user", notEqualTo: PQ.currentUser);
 //        query.whereKey("original.original.original.original.user", notEqualTo: PQ.currentUser);
-        query.skip = 0 + Int(arc4random_uniform(UInt32(100 - 0 + 1)));
+//        query.skip = 0 + Int(arc4random_uniform(UInt32(100 - 0 + 1)));
+        query.limit = 10;
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
             } else {
-                if let a = array as? [PQChain] {
-                    NSLog("Chain downloaded: \(a.count)");
-                    self.chainArray = a;
+                NSLog("greaterThan returns \(array.count)");
+                self.chainArray = [PQChain]();
+                for (var i = 0; i < array.count; i++) {
+                    var chain = array[i] as! PQChain;
+                    NSLog("Chain share \(chain.shares)");
+                    chain.incrementKey("shares", byAmount: 1);
+                    self.chainArray.append(chain);
+                    AVObject.saveAllInBackground(self.chainArray);
                 }
                 self.reloadData();
+                
             }
         }
     }
@@ -123,8 +126,19 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
     
     func reloadData() {
         if (self.chainArray.count > 0) {
+            if let imageFile = self.chainArray.last?.photo?.user?.profileImage {
+                self.profileImageView.file = imageFile;
+                self.profileImageView.loadInBackground();
+            } else {
+                self.profileImageView.image = UIImage(named: "logo");
+            }
+            self.profileNameLabel.text = self.chainArray.last?.photo?.user?.profileName;
             self.imageView.file = self.chainArray.last?.photo!.file!;
             self.imageView.loadInBackground();
+        }
+        if (self.chainArray.count > 1) {
+            self.secondImageView.file = self.chainArray[(self.chainArray.count-1) - 1].photo?.file;
+            self.secondImageView.loadInBackground();
         }
         scrollView.scrollRectToVisible(CGRectMake(self.view.frame.width, 0, self.view.frame.width, self.view.frame.width), animated: false);
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15A262e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -26,9 +26,16 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="activityIndicatorView" destination="q1R-n4-1bW" id="KTa-0c-BMI"/>
+                            </connections>
                         </imageView>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="q1R-n4-1bW">
+                            <rect key="frame" x="42" y="41" width="37" height="37"/>
+                            <color key="color" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="following" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoH-i0-hRv">
-                            <rect key="frame" x="183" y="64" width="50" height="15"/>
+                            <rect key="frame" x="183" y="64" width="50" height="14.5"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,7 +45,7 @@
                             </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="acheivement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0l-ej-q7a">
-                            <rect key="frame" x="241" y="64" width="71" height="15"/>
+                            <rect key="frame" x="241" y="64" width="71" height="14.5"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -63,7 +70,7 @@
                             </variation>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="followers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwy-8e-hz3">
-                            <rect key="frame" x="116" y="64" width="51" height="15"/>
+                            <rect key="frame" x="116" y="64" width="50.5" height="14.5"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -118,12 +125,14 @@
                         <constraint firstItem="uEL-7L-ops" firstAttribute="leading" secondItem="jA6-Wq-mZY" secondAttribute="trailing" constant="160" id="9qk-V4-Ona"/>
                         <constraint firstItem="e0l-ej-q7a" firstAttribute="centerX" secondItem="uEL-7L-ops" secondAttribute="centerX" id="BHc-jn-sAk"/>
                         <constraint firstItem="VoH-i0-hRv" firstAttribute="leading" secondItem="iwy-8e-hz3" secondAttribute="trailing" constant="16" id="BHd-8w-qNP"/>
+                        <constraint firstItem="q1R-n4-1bW" firstAttribute="centerX" secondItem="jA6-Wq-mZY" secondAttribute="centerX" constant="0.5" id="Pp3-8j-pAv"/>
                         <constraint firstItem="uEL-7L-ops" firstAttribute="top" secondItem="jA6-Wq-mZY" secondAttribute="top" id="V4L-hT-4yQ"/>
                         <constraint firstAttribute="centerY" secondItem="jA6-Wq-mZY" secondAttribute="centerY" id="XzC-ZP-O69"/>
                         <constraint firstItem="iwy-8e-hz3" firstAttribute="top" secondItem="JzE-R6-q7o" secondAttribute="bottom" id="ca8-JI-BBI"/>
                         <constraint firstItem="e0l-ej-q7a" firstAttribute="leading" secondItem="VoH-i0-hRv" secondAttribute="trailing" constant="8" id="eKp-XC-VYR"/>
                         <constraint firstItem="VoH-i0-hRv" firstAttribute="top" secondItem="zcr-3Q-MR7" secondAttribute="bottom" id="hXL-C4-lx0"/>
                         <constraint firstItem="e0l-ej-q7a" firstAttribute="height" secondItem="VoH-i0-hRv" secondAttribute="height" id="kS4-NW-ERJ"/>
+                        <constraint firstItem="q1R-n4-1bW" firstAttribute="centerY" secondItem="jA6-Wq-mZY" secondAttribute="centerY" constant="-0.5" id="nmj-hB-gcc"/>
                         <constraint firstItem="e0l-ej-q7a" firstAttribute="top" secondItem="VoH-i0-hRv" secondAttribute="top" id="svs-r5-AaX"/>
                         <constraint firstItem="iwy-8e-hz3" firstAttribute="height" secondItem="VoH-i0-hRv" secondAttribute="height" id="t7n-Tf-jEi"/>
                         <constraint firstItem="jA6-Wq-mZY" firstAttribute="leading" secondItem="ZR5-My-l5c" secondAttribute="leading" constant="24" id="uix-Kk-rJp">
@@ -137,7 +146,7 @@
                     <rect key="frame" x="0.0" y="120" width="600" height="160"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jack Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ej5-yt-Elw">
-                            <rect key="frame" x="20" y="8" width="102" height="26"/>
+                            <rect key="frame" x="20" y="8" width="102" height="25.5"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                             <color key="textColor" red="0.74509803919999995" green="0.0" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -175,8 +184,8 @@
                                 <rect key="frame" x="304" y="0.0" width="21" height="22"/>
                             </variation>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sam-55-0jr">
-                            <rect key="frame" x="14" y="42" width="578" height="78"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sam-55-0jr">
+                            <rect key="frame" x="14" y="42" width="578" height="77.5"/>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <string key="text">My name is Jack Song, this is a brief description of my profile. My name is Jack Song, this is a brief description of my profile. My name is Jack Song, this is a brief description of my profile. </string>
@@ -214,7 +223,7 @@
                                 <action selector="locationClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Q6b-a4-r15"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="qpts" translatesAutoresizingMaskIntoConstraints="NO" id="ilc-1Q-2LE">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qpts" translatesAutoresizingMaskIntoConstraints="NO" id="ilc-1Q-2LE">
                             <rect key="frame" x="252" y="21" width="49" height="21"/>
                             <animations/>
                         </imageView>

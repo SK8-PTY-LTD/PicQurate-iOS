@@ -100,7 +100,6 @@ public class PQUser : AVUser, AVSubclassing {
                                 block(success: false, error: e);
                             } else {
                                 //Successful
-                                photo.lastChainId = chain!.objectId;
                                 photo.saveInBackgroundWithBlock({ (success, error) -> Void in
                                     if let e = error{
                                         block(success: false, error: e);
@@ -116,57 +115,60 @@ public class PQUser : AVUser, AVSubclassing {
         })
     }
     
-    private func initiateChainWithBlock(photo: PQPhoto, block: (chain: PQChain?, error: NSError?) -> ()) {
+    private func initiateChainWithBlock(photo: PQPhoto, block: (success: Bool, error: NSError?) -> ()) {
         
         var relation = self.relationforKey("photoChained");
         relation.addObject(photo);
         
-        var chain = PQChain(photo: photo);
-        chain.user = self;
-        chain.gender = photo.gender as Bool;
-        chain.location = self.location;
-        chain.locationString = self.locationString;
+        var chainArray = [PQChain]();
+        for (var i = 0; i < 3; i++) {
+            var chain = PQChain(photo: photo);
+            chain.user = self;
+            chain.shares = 0;
+            chain.gender = photo.gender as Bool;
+            chain.location = self.location;
+            chain.locationString = self.locationString;
+            chainArray[i] = chain;
+        }
         
         self.saveInBackground();
-        chain.saveInBackgroundWithBlock { (success, error) -> Void in
+        AVObject.saveAllInBackground(chainArray, block: { (success, error) -> Void in
             if let e = error{
-                block(chain: nil, error: e);
+                block(success: false, error: e);
             } else {
                 //Successful
-                block(chain: chain, error: nil);
-                chain.photo?.lastChainId = chain.objectId;
-                chain.photo?.saveInBackground();
+                block(success: success, error: nil);
             }
-        }
+        });
     }
     
-    func chainPhotoWithBlock(originalChain: PQChain, block: (chain: PQChain?, error: NSError?) -> ()) {
+    func chainPhotoWithBlock(originalChain: PQChain, block: (success: Bool, error: NSError?) -> ()) {
         // Add product to like query
         var relation = self.relationforKey("photoChained");
         relation.addObject(originalChain.photo);
         
-        var chain = PQChain(photo: originalChain.photo!);
-        chain.user = self;
-        chain.gender = originalChain.gender as Bool;
-        chain.original = originalChain;
-        chain.location = self.location;
-        chain.locationString = self.locationString;
+        var chainArray = [PQChain]();
+        for (var i = 0; i < 3; i++) {
+            var chain = PQChain(photo: originalChain.photo!);
+            chain.user = self;
+            chain.shares = 0;
+            chain.gender = originalChain.gender as Bool;
+            chain.original = originalChain;
+            chain.location = self.location;
+            chain.locationString = self.locationString;
+            chainArray.append(chain);
+        }
+        
         
         self.saveInBackground();
-        chain.saveInBackgroundWithBlock { (success, error) -> Void in
-            if let e = error {
-                block(chain: chain, error: e);
+        AVObject.saveAllInBackground(chainArray, block: { (success, error) -> Void in
+            if let e = error{
+                block(success: false, error: e);
             } else {
-                chain.photo?.lastChainId = chain.objectId;
-                chain.photo?.saveInBackgroundWithBlock({ (success, error) -> Void in
-                    if let e = error {
-                        block(chain: nil, error: e);
-                    } else {
-                        block(chain: chain, error: nil);
-                    }
-                });
+                //Successful
+                block(success: success, error: nil);
             }
-        }
+        });
         
         // Send a notification to the owner;
         var message = " just chained your photo";

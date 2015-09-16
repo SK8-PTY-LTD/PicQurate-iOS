@@ -28,6 +28,15 @@ A AVOS Cloud Framework User Object that is a local representation of a user pers
  */
 + (instancetype)currentUser;
 
+/*!
+ * change the current login user manually.
+ *  @param newUser 新的 AVUser 实例
+ *  @param save 是否需要把 newUser 保存到本地缓存。如果 newUser==nil && save==YES，则会清除本地缓存
+ * Note: 请注意不要随意调用这个函数！
+ */
++(void)changeCurrentUser:(AVUser *)newUser
+                    save:(BOOL)save;
+
 /// The session token for the AVUser. This is set by the server upon successful authentication.
 @property (nonatomic, retain) NSString *sessionToken;
 
@@ -270,6 +279,20 @@ A AVOS Cloud Framework User Object that is a local representation of a user pers
 +(void)resetPasswordWithSmsCode:(NSString *)code
                     newPassword:(NSString *)password
                           block:(AVBooleanResultBlock)block;
+
+/*!
+ *  用 sessionToken 来登录用户
+ *  @param sessionToken sessionToken
+ *  @param block        回调结果
+ */
++ (void)becomeWithSessionTokenInBackground:(NSString *)sessionToken block:(AVUserResultBlock)block;
+/*!
+ *  用 sessionToken 来登录用户
+ *  @param sessionToken sessionToken
+ *  @param error        回调错误
+ *  @return 登录的用户对象
+ */
++ (instancetype)becomeWithSessionToken:(NSString *)sessionToken error:(NSError **)error;
 
 /** @name Querying for Users */
 

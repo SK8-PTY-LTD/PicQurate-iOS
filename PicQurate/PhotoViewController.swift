@@ -113,59 +113,59 @@ class PhotoViewController: UIViewController {
             query3.includeKey("original.original.user");
             query3.includeKey("original.original.original.user");
             query3.includeKey("original.original.original.original.user");
-            query3.getObjectInBackgroundWithId(self.photo.lastChainId, block: { (object, error) -> Void in
-                if let e = error {
-                    PQLog.e(e.localizedDescription);
-                } else {
-                    if let chain = object as? PQChain {
-                        
-                        var name = chain.user?.profileName;
-                        
-                        if (chain.location != nil) {
-                            if let name = chain.user?.profileName {
-                                self.locationNameArray.append(name);
-                            } else {
-                                self.locationNameArray.append("Private user");
-                            }
-                            self.locationArray.append(chain.location!);
-                        }
-                        if (chain.original?.location != nil) {
-                            if let name = chain.original?.user?.profileName {
-                                self.locationNameArray.append(name);
-                            } else {
-                                self.locationNameArray.append("Private user");
-                            }
-                            self.locationArray.append((chain.original?.location)!);
-                        }
-                        if (chain.original?.original?.location != nil) {
-                            if let name = chain.original?.original?.user?.profileName {
-                                self.locationNameArray.append(name);
-                            } else {
-                                self.locationNameArray.append("Private user");
-                            }
-                            self.locationArray.append((chain.original?.original?.location)!);
-                        }
-                        if (chain.original?.original?.original?.location != nil) {
-                            if let name = chain.original?.original?.original?.user?.profileName {
-                                self.locationNameArray.append(name);
-                            } else {
-                                self.locationNameArray.append("Private user");
-                            }
-                            self.locationArray.append((chain.original?.original?.original?.location)!);
-                        }
-                        if (chain.original?.original?.original?.original?.location != nil) {
-                            if let name = chain.original?.original?.original?.original?.user?.profileName {
-                                self.locationNameArray.append(name);
-                            } else {
-                                self.locationNameArray.append("Private user");
-                            }
-                            self.locationArray.append((chain.original?.original?.original?.original?.location)!);
-                        }
-                    } else {
-                        NSLog("error passing object to PQChain");
-                    }
-                }
-            })
+//            query3.getObjectInBackgroundWithId(self.photo.lastChainId, block: { (object, error) -> Void in
+//                if let e = error {
+//                    PQLog.e(e.localizedDescription);
+//                } else {
+//                    if let chain = object as? PQChain {
+//                        
+//                        var name = chain.user?.profileName;
+//                        
+//                        if (chain.location != nil) {
+//                            if let name = chain.user?.profileName {
+//                                self.locationNameArray.append(name);
+//                            } else {
+//                                self.locationNameArray.append("Private user");
+//                            }
+//                            self.locationArray.append(chain.location!);
+//                        }
+//                        if (chain.original?.location != nil) {
+//                            if let name = chain.original?.user?.profileName {
+//                                self.locationNameArray.append(name);
+//                            } else {
+//                                self.locationNameArray.append("Private user");
+//                            }
+//                            self.locationArray.append((chain.original?.location)!);
+//                        }
+//                        if (chain.original?.original?.location != nil) {
+//                            if let name = chain.original?.original?.user?.profileName {
+//                                self.locationNameArray.append(name);
+//                            } else {
+//                                self.locationNameArray.append("Private user");
+//                            }
+//                            self.locationArray.append((chain.original?.original?.location)!);
+//                        }
+//                        if (chain.original?.original?.original?.location != nil) {
+//                            if let name = chain.original?.original?.original?.user?.profileName {
+//                                self.locationNameArray.append(name);
+//                            } else {
+//                                self.locationNameArray.append("Private user");
+//                            }
+//                            self.locationArray.append((chain.original?.original?.original?.location)!);
+//                        }
+//                        if (chain.original?.original?.original?.original?.location != nil) {
+//                            if let name = chain.original?.original?.original?.original?.user?.profileName {
+//                                self.locationNameArray.append(name);
+//                            } else {
+//                                self.locationNameArray.append("Private user");
+//                            }
+//                            self.locationArray.append((chain.original?.original?.original?.original?.location)!);
+//                        }
+//                    } else {
+//                        NSLog("error passing object to PQChain");
+//                    }
+//                }
+//            })
             
             
             self.profileImageView.file = photo.user?.profileImage;

@@ -17,7 +17,6 @@
     typedef AVJSONRequestOperation AFJSONRequestOperation;
     typedef AVXMLRequestOperation AFXMLRequestOperation;
     typedef AVURLConnectionOperation AFURLConnectionOperation;
-    typedef AVPropertyListRequestOperation AFPropertyListRequestOperation;
     typedef AVHTTPClient AFHTTPClient;
     typedef AVImageRequestOperation AFImageRequestOperation;
     typedef AVNetworkActivityIndicatorManager AFNetworkActivityIndicatorManager;

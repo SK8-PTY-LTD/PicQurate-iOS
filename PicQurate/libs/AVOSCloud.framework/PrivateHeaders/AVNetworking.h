@@ -31,7 +31,6 @@
     #import "AVHTTPRequestOperation.h"
     #import "AVJSONRequestOperation.h"
     #import "AVXMLRequestOperation.h"
-    #import "AVPropertyListRequestOperation.h"
     #import "AVHTTPClient.h"
 
     #import "AVImageRequestOperation.h"

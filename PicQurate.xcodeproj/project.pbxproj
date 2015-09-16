@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1388791BA6586700A48183 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1388781BA6586700A48183 /* AVOSCloud.framework */; };
 		3C33BAEB1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */; };
 		3C4D19201AE0D6C100613CAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D191F1AE0D6C100613CAB /* AppDelegate.swift */; };
 		3C4D19221AE0D6C100613CAB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D19211AE0D6C100613CAB /* LandingViewController.swift */; };
 		3C4D19271AE0D6C100613CAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19261AE0D6C100613CAB /* Images.xcassets */; };
 		3C4D192A1AE0D6C100613CAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D19281AE0D6C100613CAB /* LaunchScreen.xib */; };
+		3C51FECB1BA65AB000A491D2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */; };
 		3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56922E1AE9F736006FA95D /* AVImageView.swift */; };
 		3C5692311AE9F772006FA95D /* PQLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692301AE9F772006FA95D /* PQLog.swift */; };
 		3C5692331AE9FFD6006FA95D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692321AE9FFD6006FA95D /* LoginViewController.swift */; };
@@ -267,7 +269,6 @@
 		3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */; };
 		3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F8051AE8C91D00C9E172 /* libicucore.dylib */; };
 		3CB7B7FD1AE90C2B00FBC677 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */; };
-		3CBF20F71AEA56F00000B9A3 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBF20F61AEA56F00000B9A3 /* AVOSCloud.framework */; };
 		3CBF20FB1AEA57150000B9A3 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF20FA1AEA57150000B9A3 /* ViewPagerController.m */; };
 		3CBF211A1AEB16370000B9A3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF21191AEB16370000B9A3 /* CameraViewController.swift */; };
 		3CE2E3881AFF1D86000BBE20 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */; };
@@ -280,18 +281,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3CBF21181AEB15AE0000B9A3 /* CopyFiles */ = {
+		3CBF21181AEB15AE0000B9A3 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C1388781BA6586700A48183 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVOSCloud.framework; path = libs/AVOSCloud.framework; sourceTree = "<group>"; };
 		3C33BAEA1AF5CDAF00CA2E84 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		3C4D191A1AE0D6C100613CAB /* PicQurate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicQurate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D191E1AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -301,6 +304,7 @@
 		3C4D19291AE0D6C100613CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3C4D19341AE0D6C100613CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C4D19351AE0D6C100613CAB /* PicQurateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicQurateTests.swift; sourceTree = "<group>"; };
+		3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		3C56922E1AE9F736006FA95D /* AVImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVImageView.swift; path = objects/AVImageView.swift; sourceTree = "<group>"; };
 		3C5692301AE9F772006FA95D /* PQLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQLog.swift; path = objects/PQLog.swift; sourceTree = "<group>"; };
 		3C5692321AE9FFD6006FA95D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -566,7 +570,6 @@
 		3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = libs/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		3CBF20F61AEA56F00000B9A3 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVOSCloud.framework; path = libs/AVOSCloud.framework; sourceTree = "<group>"; };
 		3CBF20F91AEA57150000B9A3 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
 		3CBF20FA1AEA57150000B9A3 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		3CBF21191AEB16370000B9A3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -585,18 +588,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CFCA34F1B7C00C200E6F7FC /* GameKit.framework in Frameworks */,
+				3C51FECB1BA65AB000A491D2 /* libsqlite3.0.dylib in Frameworks */,
+				3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */,
 				3C87F8041AE8C91300C9E172 /* CoreLocation.framework in Frameworks */,
-				3C9B148B1AF4905C00BA5CB0 /* CFNetwork.framework in Frameworks */,
-				3CFCA3511B7C00C500E6F7FC /* StoreKit.framework in Frameworks */,
 				3C87F8021AE8C90E00C9E172 /* CoreTelephony.framework in Frameworks */,
 				3C87F8001AE8C90800C9E172 /* MobileCoreServices.framework in Frameworks */,
 				3C87F7FF1AE8C90300C9E172 /* SystemConfiguration.framework in Frameworks */,
-				3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */,
-				3CBF20F71AEA56F00000B9A3 /* AVOSCloud.framework in Frameworks */,
+				3CFCA34F1B7C00C200E6F7FC /* GameKit.framework in Frameworks */,
+				3C9B148B1AF4905C00BA5CB0 /* CFNetwork.framework in Frameworks */,
+				3CFCA3511B7C00C500E6F7FC /* StoreKit.framework in Frameworks */,
 				3C87F7FD1AE8C57F00C9E172 /* Bolts.framework in Frameworks */,
 				3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */,
 				3C59ED7B1AE7EC1300383EF0 /* FBSDKLoginKit.framework in Frameworks */,
+				3C1388791BA6586700A48183 /* AVOSCloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +610,7 @@
 		3C4D19111AE0D6C100613CAB = {
 			isa = PBXGroup;
 			children = (
+				3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */,
 				3C4D191C1AE0D6C100613CAB /* PicQurate */,
 				3C4D19321AE0D6C100613CAB /* PicQurateTests */,
 				3C4D191B1AE0D6C100613CAB /* Products */,
@@ -669,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				3C87F8051AE8C91D00C9E172 /* libicucore.dylib */,
+				3C1388781BA6586700A48183 /* AVOSCloud.framework */,
 				3CFCA3501B7C00C500E6F7FC /* StoreKit.framework */,
 				3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */,
 				3C9B148C1AF4A99500BA5CB0 /* MapKit.framework */,
@@ -677,7 +683,6 @@
 				3C87F8011AE8C90E00C9E172 /* CoreTelephony.framework */,
 				3C87F7FE1AE8C90300C9E172 /* SystemConfiguration.framework */,
 				3C87F7FC1AE8C57F00C9E172 /* Bolts.framework */,
-				3CBF20F61AEA56F00000B9A3 /* AVOSCloud.framework */,
 				3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */,
 				3C59ED7A1AE7EC1300383EF0 /* FBSDKLoginKit.framework */,
 				3C5FD83A1AE7945F001F86F0 /* MobileCoreServices.framework */,
@@ -1061,7 +1066,7 @@
 				3C4D19161AE0D6C100613CAB /* Sources */,
 				3C4D19171AE0D6C100613CAB /* Frameworks */,
 				3C4D19181AE0D6C100613CAB /* Resources */,
-				3CBF21181AEB15AE0000B9A3 /* CopyFiles */,
+				3CBF21181AEB15AE0000B9A3 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -1501,13 +1506,15 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PicQurate",
 					"$(PROJECT_DIR)/PicQurate/libs",
+					"/Users/XujieSong/Documents/SK8Tech/Dropbox/#SK8Tech/Tech/iOS/Library/LeanCloud",
 				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "372043e8-ae61-4407-b770-43725f186b8f";
+				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1526,13 +1533,14 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PicQurate",
 					"$(PROJECT_DIR)/PicQurate/libs",
+					"/Users/XujieSong/Documents/SK8Tech/Dropbox/#SK8Tech/Tech/iOS/Library/LeanCloud",
 				);
 				INFOPLIST_FILE = PicQurate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "372043e8-ae61-4407-b770-43725f186b8f";
+				PROVISIONING_PROFILE = "d7abec8e-68f9-4e27-b63a-38aa6fa1004c";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicQurate/PicQurate-Bridging-Header.h";
 			};
 			name = Release;

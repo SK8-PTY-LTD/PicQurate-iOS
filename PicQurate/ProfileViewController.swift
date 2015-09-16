@@ -43,12 +43,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             if (user.isUser(PQ.currentUser)) {
                 
             } else {
-                //Display other user information
+                //Display other user information j
                 self.navigationItem.rightBarButtonItem = nil;
             }
         } else {
             self.user = PQ.currentUser;
         }
+        self.collectionView.hidden = false;
         
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
         self.flowLayout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.width, 280);

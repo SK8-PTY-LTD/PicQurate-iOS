@@ -18,9 +18,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var locationNameArray: [String]  = [];
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad();
         
+        self.mapView.zoomEnabled = false;
         
         self.navigationItem.title = "Chain Map"
         
