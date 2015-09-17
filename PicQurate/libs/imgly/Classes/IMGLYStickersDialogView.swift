@@ -27,7 +27,7 @@ public class IMGLYStickersDialogView: UIView {
         setup()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -67,9 +67,9 @@ public class IMGLYStickersDialogView: UIView {
     // MARK: - Helpers
     
     private func scaledImageSize() -> CGSize {
-        var widthRatio = self.previewImageView.bounds.size.width / self.previewImageView.image!.size.width
-        var heightRatio = self.previewImageView.bounds.size.height / self.previewImageView.image!.size.height
-        var scale = min(widthRatio, heightRatio)
+        let widthRatio = self.previewImageView.bounds.size.width / self.previewImageView.image!.size.width
+        let heightRatio = self.previewImageView.bounds.size.height / self.previewImageView.image!.size.height
+        let scale = min(widthRatio, heightRatio)
         var size = CGSizeZero
         size.width = scale * self.previewImageView.image!.size.width
         size.height = scale * self.previewImageView.image!.size.height

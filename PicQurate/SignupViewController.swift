@@ -28,21 +28,21 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
             return
         }
         //Check if sign up criteria is good enough
-        var email : String = self.emailTextField.text;
+        let email : String = self.emailTextField.text!;
         if (!StringIsValidEmail(email)) {
             return
         }
         
-        var passWord = self.passwordTextField.text;
-        if (count(passWord) < 8) {
-            var alert = UIAlertView()
+        let passWord = self.passwordTextField.text!;
+        if (passWord.characters.count < 8) {
+            let alert = UIAlertView()
             alert.message = "Please choose a longer password, minimum 8 character"
             alert.addButtonWithTitle("OK!")
             alert.show()
             return
         }
         
-        var username = self.usernameTextField.text;
+        let username = self.usernameTextField.text;
         
         //If it's logging in/Signing up, and criteria is good
         activityIndicator.startAnimating();
@@ -90,12 +90,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
     
     func StringIsValidEmail(email : String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        var emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         let result = emailTest.evaluateWithObject(email)
         if result {
             return result
         } else {
-            var alert = UIAlertView()
+            let alert = UIAlertView()
             alert.message = "Please enter a valid email!"
             alert.addButtonWithTitle("OK!")
             alert.show()
@@ -105,25 +105,25 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIActionSheet
     
     @IBAction func profileImageViewClicked(sender: UIButton) {
         //Check if sign up criteria is good enough
-        var alert = UIActionSheet();
+        let alert = UIActionSheet();
         alert.title = "Pick your profile image from: "
         alert.delegate = self
         alert.addButtonWithTitle("Camera")
         alert.addButtonWithTitle("Photo Albums")
         alert.addButtonWithTitle("Cancel")
-        alert.showInView(self.view.superview);
+        alert.showInView(self.view.superview!);
     }
     
     func actionSheet(actionSheet: UIActionSheet, didDismissWithButtonIndex buttonIndex: Int) {
         if (buttonIndex == 0) {
-            var picker = UIImagePickerController();
+            let picker = UIImagePickerController();
             picker.delegate = self;
             picker.allowsEditing = true;
             picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera)!;
             picker.sourceType = UIImagePickerControllerSourceType.Camera;
             self.presentViewController(picker, animated: true, completion: nil);
         } else if (buttonIndex == 1) {
-            var picker = UIImagePickerController();
+            let picker = UIImagePickerController();
             picker.delegate = self;
             picker.allowsEditing = true;
             picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;

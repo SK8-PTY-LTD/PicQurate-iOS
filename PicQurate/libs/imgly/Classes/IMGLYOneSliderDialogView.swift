@@ -31,14 +31,14 @@ public class IMGLYOneSliderDialogView: UIView {
         setup()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: - View connection
     public func setup() {
-        var containerViewHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
+        let containerViewHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
         containerViewHelper.loadXib("IMGLYOneSliderDialogView", view:self)
         containerViewHelper.addContentViewAndSetupConstraints(hostView: self, contentView: self.contentView)
     }

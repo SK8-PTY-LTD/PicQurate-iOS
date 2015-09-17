@@ -45,16 +45,16 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         NSLog("profile image has been reloaded");
 //        }
         
-        var query1 = self.user!.followeeQuery();
-        var count1 = query1.countObjects();
+        let query1 = self.user!.followeeQuery();
+        let count1 = query1.countObjects();
         self.followingButton.setTitle("\(count1)", forState: .Normal);
-        var query2 = self.user!.followerQuery();
-        var count2 = query2.countObjects();
+        let query2 = self.user!.followerQuery();
+        let count2 = query2.countObjects();
         self.followerButton.setTitle("\(count2)", forState: .Normal);
         if let currentUser = PQ.currentUser {
-            var query3 = currentUser.followeeQuery();
+            let query3 = currentUser.followeeQuery();
             query3.whereKey("objectId", equalTo: self.user!.objectId);
-            var count3 = query3.countObjects();
+            let count3 = query3.countObjects();
             if (count3 == 1) {
                 self.followButton.setTitle("Unfollow", forState: .Normal);
             } else {
@@ -94,10 +94,10 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
             self.followButton.setTitle("Follow", forState: .Normal);
             PQ.currentUser.unfollow(user!.objectId, andCallback: nil);
             //Send push to notify user
-            var pushQuery = AVInstallation.query();
+            let pushQuery = AVInstallation.query();
             pushQuery.whereKey("userId", equalTo: user!.objectId);
             
-            var push = AVPush();
+            let push = AVPush();
             push.setQuery(pushQuery);
             push.setMessage(user!.profileName! + " just started following you.");
             push.setData(["userId": user!.objectId, "badge": "Increment"]);
@@ -107,7 +107,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBAction func urlClicked(sender: UIButton) {
         if let urlString = PQ.currentUser.url {
-            var url = NSURL(string: urlString);
+            let url = NSURL(string: urlString);
             UIApplication.sharedApplication().openURL(url!);
         }
     }

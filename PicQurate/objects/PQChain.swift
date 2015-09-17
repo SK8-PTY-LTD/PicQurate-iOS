@@ -41,7 +41,7 @@ class PQChain : AVObject, AVSubclassing {
     
     func getUserWithBlock(block: (user: PQUser?, error: NSError?) -> ()) {
         if let user = self.user {
-            var query = PQUser.query();
+            let query = PQUser.query();
             query.getObjectInBackgroundWithId(user.objectId, block: { (user, error) -> Void in
                 block(user: user as? PQUser, error: error);
             })

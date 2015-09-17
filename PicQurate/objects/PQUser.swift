@@ -56,14 +56,14 @@ public class PQUser : AVUser, AVSubclassing {
     }
     
     func hasLikedPhotoithCallback(photo: PQPhoto, callback: (liked :Bool, error: NSError?) -> ()) {
-        var query = self.relationforKey("photoLiked").query();
-        var photoId = photo.objectId;
+        let query = self.relationforKey("photoLiked").query();
+        let photoId = photo.objectId;
         query.whereKey("objectId", equalTo:photoId);
         query.countObjectsInBackgroundWithBlock { (count, error) -> Void in
             if let e = error {
                 callback(liked: false, error: e);
             } else {
-                var liked = (count == 1);
+                let liked = (count == 1);
                 callback(liked: liked, error: nil);
             }
         }
@@ -75,7 +75,7 @@ public class PQUser : AVUser, AVSubclassing {
     
     func uploadPhotoWithBlock(image: UIImage, caption: String, block: (success: Bool, error: NSError?) -> ()) {
         //Save file
-        var file = AVFile.fileWithName("photo.jpg", data: UIImageJPEGRepresentation(image, 1.0)) as! AVFile;
+        let file = AVFile.fileWithName("photo.jpg", data: UIImageJPEGRepresentation(image, 1.0)) as! AVFile;
         file.saveInBackgroundWithBlock({ (success, error) -> Void in
             if let e = error {
                 block(success: false, error: e);
@@ -83,7 +83,7 @@ public class PQUser : AVUser, AVSubclassing {
                 //Set lastPhoto
                 
                 //Save PQPhoto
-                var photo = PQPhoto(file: file);
+                let photo = PQPhoto(file: file);
                 photo.caption = caption;
                 photo.user = self;
                 NSLog("User gender is \(self.gender)");
@@ -117,10 +117,10 @@ public class PQUser : AVUser, AVSubclassing {
     
     private func initiateChainWithBlock(photo: PQPhoto, block: (success: Bool, error: NSError?) -> ()) {
         
-        var relation = self.relationforKey("photoChained");
+        let relation = self.relationforKey("photoChained");
         relation.addObject(photo);
         
-        var chain = PQChain(photo: photo);
+        let chain = PQChain(photo: photo);
         chain.user = self;
         chain.shares = 0;
         chain.gender = photo.gender as Bool;
@@ -135,10 +135,10 @@ public class PQUser : AVUser, AVSubclassing {
     
     func chainPhotoWithBlock(originalChain: PQChain, block: (success: Bool, error: NSError?) -> ()) {
         // Add product to like query
-        var relation = self.relationforKey("photoChained");
+        let relation = self.relationforKey("photoChained");
         relation.addObject(originalChain.photo);
         
-        var chain = PQChain(photo: originalChain.photo!);
+        let chain = PQChain(photo: originalChain.photo!);
         chain.user = self;
         chain.shares = 0;
         chain.gender = originalChain.gender as Bool;
@@ -152,13 +152,13 @@ public class PQUser : AVUser, AVSubclassing {
         }
         
         // Send a notification to the owner;
-        var message = " just chained your photo";
+        let message = " just chained your photo";
         originalChain.fetchIfNeededInBackgroundWithBlock { (chain, error) -> Void in
             if let c = chain as? PQChain {
-                var query = AVInstallation.query();
+                let query = AVInstallation.query();
                 query.whereKey("userId", equalTo: c.user?.objectId);
                 PQ.sendPushWithCallBack(query, message: message) { (success, error) -> Void in
-                    var push = PQPush(message: message, user: c.user!, photo: c.photo);
+                    let push = PQPush(message: message, user: c.user!, photo: c.photo);
                     NSLog("c.photo:  \(c.photo)");
                     push.saveInBackground();
                 }
@@ -170,7 +170,7 @@ public class PQUser : AVUser, AVSubclassing {
     
     func likePhoto(photo: PQPhoto, like: Bool) {
         // Add product to like query
-        var relation = self.relationforKey("photoLiked");
+        let relation = self.relationforKey("photoLiked");
         if (like) {
             relation.addObject(photo);
         } else {
@@ -180,18 +180,18 @@ public class PQUser : AVUser, AVSubclassing {
         
         // Send a notification to the owner;
         if (like) {
-            var message = self.getProfileName()! + " just liked your photo";
+            let message = self.getProfileName()! + " just liked your photo";
             photo.fetchIfNeededInBackgroundWithBlock { (photo, error) -> Void in
                 if let p = photo as? PQPhoto {
                     
-                    var query = AVInstallation.query();
+                    let query = AVInstallation.query();
                     query.whereKey("userId", equalTo: p.user?.objectId);
                     
                     PQ.sendPushWithCallBack(query, message: message, callback: { (success, error) -> Void in
-                        if let e = error {
+                        if let _ = error {
                             NSLog("Error sending push");
                         } else {
-                            var push = PQPush(message: message, user: p.user!, photo: p);
+                            let push = PQPush(message: message, user: p.user!, photo: p);
                             push.saveInBackground();
                         }
                     });
@@ -205,7 +205,7 @@ public class PQUser : AVUser, AVSubclassing {
 
     func likePhotoWithBlock(photo: PQPhoto, like: Bool, block: (liked: Bool, error: NSError?) -> ()) {
         // Add product to like query
-        var relation = self.relationforKey("photoLiked");
+        let relation = self.relationforKey("photoLiked");
         if (like) {
             relation.addObject(photo);
         } else {
@@ -217,18 +217,18 @@ public class PQUser : AVUser, AVSubclassing {
         
         // Send a notification to the owner;
         if (like) {
-            var message = " just liked your photo";
+            let message = " just liked your photo";
             photo.fetchIfNeededInBackgroundWithBlock { (photo, error) -> Void in
                 if let p = photo as? PQPhoto {
                     
-                    var query = AVInstallation.query();
+                    let query = AVInstallation.query();
                     query.whereKey("userId", equalTo: p.user?.objectId);
                     
                     PQ.sendPushWithCallBack(query, message: message, callback: { (success, error) -> Void in
-                        if let e = error {
+                        if let _ = error {
                             NSLog("Error sending push");
                         } else {
-                            var push = PQPush(message: message, user: p.user!, photo: p);
+                            let push = PQPush(message: message, user: p.user!, photo: p);
                             push.saveInBackground();
                         }
                     });
@@ -372,10 +372,10 @@ public class PQUser : AVUser, AVSubclassing {
     
     func getInstallation() -> AVInstallation {
         if let installationId: String = self.objectForKey("installationId") as? String {
-            var installation = AVInstallation(withoutDataWithObjectId: installationId);
+            let installation = AVInstallation(withoutDataWithObjectId: installationId);
             return installation;
         } else {
-            var installation = AVInstallation.currentInstallation();
+            let installation = AVInstallation.currentInstallation();
             self.setInstallation(installation);
             return installation;
         }
@@ -383,7 +383,7 @@ public class PQUser : AVUser, AVSubclassing {
     
     func setInstallation(installation: AVInstallation) {
         if let installationId = installation.objectId {
-            self.setObject(installation.objectId, forKey: "installationId");
+            self.setObject(installationId, forKey: "installationId");
         } else {
             NSLog("Installation is nil");
         }
@@ -404,7 +404,7 @@ public class PQUser : AVUser, AVSubclassing {
     }
 
     func setProfileUIImage(profileImage: UIImage) {
-        var imageFile: AVFile = AVFile.fileWithName("profile.jpg", data: UIImageJPEGRepresentation(profileImage, 1.0)) as! AVFile;
+        let imageFile: AVFile = AVFile.fileWithName("profile.jpg", data: UIImageJPEGRepresentation(profileImage, 1.0)) as! AVFile;
         imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
             if let e = error {
                 NSLog("Profile image failed to save, error: " + e.localizedDescription);

@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad();
 //        self.activityIndicatorView.startAnimating();
         
-        var headerNib = UINib(nibName: "HomeHeaderCollectionReusableView", bundle: nil);
+        let headerNib = UINib(nibName: "HomeHeaderCollectionReusableView", bundle: nil);
         self.collectionView.registerNib(headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header");
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
         self.flowLayout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.width, 280);
@@ -93,7 +93,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func displayPhotoByWorld() {
-        var query = PQChain.query();
+        let query = PQChain.query();
         query.orderByDescending("createdAt");
         query.includeKey("photo");
         query.includeKey("photo.user");
@@ -122,16 +122,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func displayPhotoByDay() {
         self.activityIndicatorView.startAnimating();
-        var yesterday = NSDate().dateByAddingTimeInterval(-2 * 24 * 60 * 60);
+        let yesterday = NSDate().dateByAddingTimeInterval(-2 * 24 * 60 * 60);
         
-        var query = PQChain.query();
+        let query = PQChain.query();
         query.orderByDescending("createdAt");
         query.whereKey("createdAt", greaterThan: yesterday);
         query.limit = 11;
         query.includeKey("photo");
         query.includeKey("photo.user");
         query.whereKey("gender", equalTo: self.gender);
-        query.orderByDescending("numberOfChains");
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
             if let e = error {
                 PQ.showError(e);
@@ -158,7 +157,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func displayPhotoByLocation() {
         self.activityIndicatorView.startAnimating();
-        var query = PQChain.query();
+        
+        let query = PQChain.query();
         query.orderByDescending("createdAt");
         if (PQ.currentUser.email != nil) {
             query.whereKey("location", nearGeoPoint: PQ.currentUser.location, withinKilometers: 100.0);
@@ -212,7 +212,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func setColumns(numberOfColumns: Int) {
         self.column = numberOfColumns;
-        var itemWidth = self.view.frame.size.width / CGFloat(self.column);
+        let itemWidth = self.view.frame.size.width / CGFloat(self.column);
         self.flowLayout.itemSize = CGSizeMake(itemWidth-1, itemWidth-1);
         self.collectionView.reloadData();
         self.collectionView.layoutIfNeeded();
@@ -280,7 +280,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
         switch self.displayMode {
 //        case 0:
 //            cell.initializeWithPhoto(self.chainArray0[indexPath.row + 1].photo!);

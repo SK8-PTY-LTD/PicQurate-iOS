@@ -58,7 +58,7 @@ public class IMGLYEditorMainDialogViewController: UIViewController, UIViewContro
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        var editorView = self.view as? IMGLYEditorMainDialogView
+        let editorView = self.view as? IMGLYEditorMainDialogView
         if editorView == nil {
             fatalError("Editor view not set !")
         }
@@ -70,7 +70,7 @@ public class IMGLYEditorMainDialogViewController: UIViewController, UIViewContro
     
     // MARK:-IMGLYEditorMainDialogViewDelegate
     public func menuButtonPressed(buttonType:IMGLYMainMenuButtonType) {
-        var viewController = IMGLYInstanceFactory.sharedInstance.viewControllerForButtonType(buttonType)
+        let viewController = IMGLYInstanceFactory.sharedInstance.viewControllerForButtonType(buttonType)
         if (buttonType == IMGLYMainMenuButtonType.Magic) {
             fixedFilterStack_!.enhancementFilter!.enabled = !fixedFilterStack_!.enhancementFilter!.enabled
             updatePreviewImage()
@@ -92,7 +92,7 @@ public class IMGLYEditorMainDialogViewController: UIViewController, UIViewContro
     
     public func doneButtonPressed() {
         hiResImage! = hiResImage!.imgly_rotateImageToMatchOrientation()
-        var filteredHiResImage = IMGLYPhotoProcessor.processWithUIImage(hiResImage!, filters:fixedFilterStack_!.activeFilters)
+        let filteredHiResImage = IMGLYPhotoProcessor.processWithUIImage(hiResImage!, filters:fixedFilterStack_!.activeFilters)
         self.dismissViewControllerAnimated(false, completion: {
             self.completionBlock?(IMGLYEditorResult.Done, filteredHiResImage)
         })
@@ -109,7 +109,7 @@ public class IMGLYEditorMainDialogViewController: UIViewController, UIViewContro
     public func subEditorCompletionBlock(result:IMGLYEditorResult, image:UIImage?) {
         if result == IMGLYEditorResult.Done {
             self.loResImage_ = image
-            var editorView = self.view as? IMGLYEditorMainDialogView
+            let editorView = self.view as? IMGLYEditorMainDialogView
             editorView?.imagePreview.image = self.loResImage_
         }
     }
@@ -135,7 +135,7 @@ public class IMGLYEditorMainDialogViewController: UIViewController, UIViewContro
     }
     
     private func updatePreviewImage() {
-        var editorView = self.view as? IMGLYEditorMainDialogView
+        let editorView = self.view as? IMGLYEditorMainDialogView
         if editorView == nil {
             fatalError("Editor view not set !")
         }

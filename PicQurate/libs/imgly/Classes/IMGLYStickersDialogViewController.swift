@@ -130,7 +130,7 @@ public class IMGLYStickersDialogViewController: UIViewController, IMGLYSubEditor
         dialogView_!.stickersClipView.addSubview(imageView)
         imageView.transform = CGAffineTransformMakeScale(0, 0)
         
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: nil, animations: { () -> Void in
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: { () -> Void in
             imageView.transform = CGAffineTransformIdentity
         }, completion: nil)
     }

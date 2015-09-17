@@ -39,7 +39,7 @@ public class IMGLYTiltshiftFilter : CIFilter {
     private var rect_ = CGRectZero
     
     /// Returns a CIImage object that encapsulates the operations configured in the filter. (read-only)
-    public override var outputImage: CIImage! {
+    public override var outputImage: CIImage {
         get {
             if inputImage == nil {
                 return CIImage.emptyImage()
@@ -48,7 +48,7 @@ public class IMGLYTiltshiftFilter : CIFilter {
                 return inputImage!
             }
             
-            rect_ = inputImage!.extent()
+            rect_ = inputImage!.extent
             imageSize_ = rect_.size
             calcScaleVector()
             calculateCenterAndRadius()
@@ -82,8 +82,8 @@ public class IMGLYTiltshiftFilter : CIFilter {
     private func calculateCenterAndRadius() {
         center_ = CGPointMake((controlPoint1.x + controlPoint2.x) * 0.5,
             (controlPoint1.y + controlPoint2.y) * 0.5);
-        var midVectorX = (center_.x - controlPoint1.x) * scaleVector_.x
-        var midVectorY = (center_.y - controlPoint1.y) * scaleVector_.y
+        let midVectorX = (center_.x - controlPoint1.x) * scaleVector_.x
+        let midVectorY = (center_.y - controlPoint1.y) * scaleVector_.y
         radius_ = sqrt(midVectorX * midVectorX + midVectorY * midVectorY)
     }
     

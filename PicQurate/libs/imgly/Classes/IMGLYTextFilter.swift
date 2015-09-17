@@ -28,12 +28,12 @@ public class IMGLYTextFilter : CIFilter {
         super.init()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     /// Returns a CIImage object that encapsulates the operations configured in the filter. (read-only)
-    public override var outputImage: CIImage! {
+    public override var outputImage: CIImage {
         get {
             if inputImage == nil {
                 return CIImage.emptyImage()
@@ -52,15 +52,15 @@ public class IMGLYTextFilter : CIFilter {
     }
     
     private func createTextImage() -> UIImage {
-        var rect = inputImage!.extent()
-        var imageSize = rect.size
+        let rect = inputImage!.extent
+        let imageSize = rect.size
         UIGraphicsBeginImageContext(imageSize)
         UIColor(white: 1.0, alpha: 0.0).setFill()
         UIRectFill(CGRectMake(0, 0, imageSize.width, imageSize.height))
-        var font = UIFont(name:fontName, size:fontScaleFactor * imageSize.height)
+        let font = UIFont(name:fontName, size:fontScaleFactor * imageSize.height)
         text.drawAtPoint(CGPointMake(position.x * imageSize.width, position.y * imageSize.height),
             withAttributes: [NSFontAttributeName:font!, NSForegroundColorAttributeName:color])
-        var image = UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
         return image
     }

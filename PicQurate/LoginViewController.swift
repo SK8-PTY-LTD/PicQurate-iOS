@@ -25,11 +25,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         //Check if sign up criteria is good enough
-        var email : String = self.emailTextField.text;
-        if (!StringIsValidEmail(email)) {
+        let email = self.emailTextField.text;
+        if (!StringIsValidEmail(email!)) {
             return
         }
-        var passWord = self.passwordTextField.text;
+        let passWord = self.passwordTextField.text;
         
         activityIndicator.startAnimating()
         
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if let e = error {
                 PQ.showError(e);
             } else {
-                var user = user as! PQUser;
+                let user = user as! PQUser;
                 PQ.currentUser = user;
                 NSLog("Email user log in successful");
                 if let method = PQ.delegate?.onUserRefreshed {
@@ -64,12 +64,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func StringIsValidEmail(email : String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        var emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         let result = emailTest.evaluateWithObject(email)
         if result {
             return result
         } else {
-            var alert = UIAlertView()
+            let alert = UIAlertView()
             alert.message = "Please enter a valid email!"
             alert.addButtonWithTitle("OK!")
             alert.show()

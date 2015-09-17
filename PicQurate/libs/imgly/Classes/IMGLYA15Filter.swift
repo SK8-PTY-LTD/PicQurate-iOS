@@ -15,7 +15,7 @@ public class IMGLYA15Filter: IMGLYResponseFilter {
         self.displayName = "A15"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

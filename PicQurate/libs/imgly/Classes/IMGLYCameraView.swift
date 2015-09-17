@@ -58,7 +58,7 @@ public class IMGLYCameraView: UIView {
         setup()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -67,7 +67,7 @@ public class IMGLYCameraView: UIView {
     @IBOutlet public var contentView: UIView!
     
     public func setup() {
-        var containerViewHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
+        let containerViewHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
         containerViewHelper.loadXib("IMGLYCameraView", view:self)
         containerViewHelper.addContentViewAndSetupConstraints(hostView: self, contentView: self.contentView)
         //setLastImageFromRollAsPreview()
@@ -126,11 +126,11 @@ public class IMGLYCameraView: UIView {
     }
     
     public func setLastImageFromRollAsPreview() {
-        var fetchOptions: PHFetchOptions = PHFetchOptions()
+        let fetchOptions: PHFetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        var fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)
+        let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)
         if (fetchResult.lastObject != nil) {
-            var lastAsset: PHAsset = fetchResult.lastObject as! PHAsset
+            let lastAsset: PHAsset = fetchResult.lastObject as! PHAsset
             PHImageManager.defaultManager().requestImageForAsset(lastAsset, targetSize: CGSizeMake(100, 100), contentMode: PHImageContentMode.AspectFill, options: PHImageRequestOptions()) { (result, info) -> Void in
                 self.selectFromCameraRollButton!.imageView?.contentMode = .ScaleAspectFill
                 self.selectFromCameraRollButton!.setImage(result, forState: UIControlState.Normal)

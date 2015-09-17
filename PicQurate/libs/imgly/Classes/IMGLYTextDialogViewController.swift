@@ -136,7 +136,7 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
     private func configureFontSelector() {
         fontSelector_ = IMGLYFontSelector(frame: CGRectZero)
         fontSelector_!.selectorDelegate = self
-        var containerViewHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
+        let containerViewHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
         containerViewHelper.addContentViewAndSetupConstraints(hostView: dialogView_!, contentView: fontSelector_!)
     }
     
@@ -155,7 +155,7 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
     
     func keyboardWasShown(aNotification:NSNotification) {
         var info = aNotification.userInfo
-        var temp = (aNotification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
+        let temp = (aNotification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
         keyboardSize_ = temp!.size
         layoutTextInput()
         showTextInput()
@@ -163,13 +163,13 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
     
     // MARK:- gesture setup
     private func addPanGestureRecognizerToTextInput() {
-        var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handleTextInputPan:")
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handleTextInputPan:")
         panGestureRecognizer.delegate = self
         textLabel_!.addGestureRecognizer(panGestureRecognizer)
     }
     
     private func addPinchGestureRecognizerToTextLabel() {
-        var pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinchGesture:")
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinchGesture:")
         view.addGestureRecognizer(pinchGestureRecognizer)
     }
     
@@ -239,7 +239,7 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
     
     // MARK:- gesture handling
     public func handleTextInputPan(recognizer:UIPanGestureRecognizer) {
-        var location = recognizer.locationInView(textLabelClipView_)
+        let location = recognizer.locationInView(textLabelClipView_)
         if recognizer.state == UIGestureRecognizerState.Began {
             panOffset_ = recognizer.locationInView(textLabel_!)
         }
@@ -256,13 +256,13 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
         }
         
         if recognizer.numberOfTouches() > 1 {
-            var point1 = recognizer.locationOfTouch(0, inView:view)
-            var point2 = recognizer.locationOfTouch(1, inView:view)
+            let point1 = recognizer.locationOfTouch(0, inView:view)
+            let point2 = recognizer.locationOfTouch(1, inView:view)
             if  !beganTwoFingerPitch_ {
                 beganTwoFingerPitch_ = true
                 distanceAtPinchBegin_ = calculateNewFontSizeBasedOnDistanceBetweenPoint(point1, and:point2)
             }
-            var distance = calculateNewFontSizeBasedOnDistanceBetweenPoint(point1, and:point2)
+            let distance = calculateNewFontSizeBasedOnDistanceBetweenPoint(point1, and:point2)
             currentTextSize_ = fontSizeAtPinchBegin_ - (distanceAtPinchBegin_ - distance) / 2.0
             currentTextSize_ = max(kMinimumFontSize_, currentTextSize_)
             currentTextSize_ = min(maximumFontSize_, currentTextSize_)
@@ -273,13 +273,13 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
     
     // MARK:- tools
     private func calculateNewFontSizeBasedOnDistanceBetweenPoint(point1:CGPoint, and point2:CGPoint) -> CGFloat {
-        var diffX = point1.x - point2.x
-        var diffY = point1.y - point2.y
+        let diffX = point1.x - point2.x
+        let diffY = point1.y - point2.y
         return sqrt(diffX * diffX + diffY  * diffY)
     }
     
     private func transformedTextPosition() -> CGPoint {
-        var scaledSize = scaledImageSize()
+        let scaledSize = scaledImageSize()
         var position = textLabel_!.frame.origin
         position.x = position.x / scaledSize.width
         position.y = position.y / scaledSize.height
@@ -287,9 +287,9 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
     }
     
     private func scaledImageSize() -> CGSize {
-        var widthRatio = dialogView_!.previewImageView.bounds.size.width / dialogView_!.previewImageView.image!.size.width
-        var heightRatio = dialogView_!.previewImageView.bounds.size.height / dialogView_!.previewImageView.image!.size.height
-        var scale = min(widthRatio, heightRatio)
+        let widthRatio = dialogView_!.previewImageView.bounds.size.width / dialogView_!.previewImageView.image!.size.width
+        let heightRatio = dialogView_!.previewImageView.bounds.size.height / dialogView_!.previewImageView.image!.size.height
+        let scale = min(widthRatio, heightRatio)
         var size = CGSizeZero
         size.width = scale * dialogView_!.previewImageView.image!.size.width
         size.height = scale * dialogView_!.previewImageView.image!.size.height
@@ -338,7 +338,7 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
         currentTextSize_ = 1.0
         var size = CGSizeZero
         if !textLabel_!.text!.isEmpty {
-            do {
+            repeat {
                 currentTextSize_ += 1.0
                 textLabel_!.font = UIFont(name:fontName_, size:currentTextSize_)
                 size = textLabel_!.text!.sizeWithAttributes([NSFontAttributeName:textLabel_!.font])
@@ -351,7 +351,7 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
         var size = CGSizeZero
         if !textLabel_!.text!.isEmpty {
             maximumFontSize_ = currentTextSize_
-            do {
+            repeat {
                 maximumFontSize_ += 1.0
                 textLabel_!.font = UIFont(name:fontName_, size:maximumFontSize_)
                 size = textLabel_!.text!.sizeWithAttributes([NSFontAttributeName:textLabel_!.font])
@@ -372,11 +372,11 @@ IMGLYTextDialogViewDelegate, IMGLYFontSelectorDelegate, UITextFieldDelegate, UIG
     
     private func updateTextLabelFrameForCurrentFont() {
         // resize and keep the text centred
-        var frame = textLabel_!.frame
+        let frame = textLabel_!.frame
         textLabel_!.sizeToFit()
         
-        var diffX = frame.size.width - textLabel_!.frame.size.width
-        var diffY = frame.size.height - textLabel_!.frame.size.height
+        let diffX = frame.size.width - textLabel_!.frame.size.width
+        let diffY = frame.size.height - textLabel_!.frame.size.height
         textLabel_!.frame.origin.x += (diffX / 2.0)
         textLabel_!.frame.origin.y += (diffY / 2.0)
     }

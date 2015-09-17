@@ -15,7 +15,7 @@ public class IMGLYFoodFilter: IMGLYResponseFilter {
         self.displayName = "Food"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

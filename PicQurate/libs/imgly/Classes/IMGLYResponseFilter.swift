@@ -31,8 +31,8 @@ public class IMGLYResponseFilter: CIFilter, IMGLYFilterTypeProtocol {
             return responseName_
         }
         set(newName) {
-            responseName_ = newName as! String
-            var converter = LUTToNSDataConverter()
+            responseName_ = newName as String
+            let converter = LUTToNSDataConverter()
             colorCubeData_ = converter.colorCubeDataFromLUT(responseName_)
         }
     }
@@ -52,11 +52,11 @@ public class IMGLYResponseFilter: CIFilter, IMGLYFilterTypeProtocol {
         colorCubeData_ = nil
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    public override var outputImage: CIImage! {
+    public override var outputImage: CIImage {
         get {
             if inputImage == nil {
                 return CIImage.emptyImage()

@@ -8,14 +8,14 @@
 
 import UIKit
 
-@objc public class IMGLYContainerViewHelper {
+public class IMGLYContainerViewHelper {
     // MARK: - View connection
     public func loadXib(name:String, view:UIView) {
         NSBundle(forClass: IMGLYContainerViewHelper.self).loadNibNamed(name, owner: view, options: nil)
     }
     
-    public func addContentViewAndSetupConstraints(#hostView:UIView, contentView:UIView) {
-        contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    public func addContentViewAndSetupConstraints(hostView hostView:UIView, contentView:UIView) {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         hostView.addSubview(contentView)
         setupContraintsForContentView(contentView, hostView: hostView)
     }
@@ -28,7 +28,7 @@ import UIKit
     }
     
     private func addEdgeConstraint(edge:NSLayoutAttribute, superview:UIView, subview:UIView) {
-        var constraint = NSLayoutConstraint(item: subview, attribute: edge, relatedBy: NSLayoutRelation.Equal,
+        let constraint = NSLayoutConstraint(item: subview, attribute: edge, relatedBy: NSLayoutRelation.Equal,
             toItem: superview, attribute: edge, multiplier: 1, constant: 0)
         superview.addConstraints([constraint])
     }

@@ -17,13 +17,13 @@ class AVImageView: UIImageView {
     private var cachedfile: AVFile?;
     internal var scale: CGFloat = UIScreen.mainScreen().scale;
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame);
-        if let imageFile = self.file {
+        if let _ = self.file {
             self.loadInBackground();
         }
     }
@@ -46,7 +46,7 @@ class AVImageView: UIImageView {
                 if let e = error {
                     NSLog(e.localizedDescription);
                 } else {
-                    var image = UIImage(data: data);
+                    let image = UIImage(data: data);
                     self.image = image;
                 }
                 self.activityIndicatorView?.stopAnimating();

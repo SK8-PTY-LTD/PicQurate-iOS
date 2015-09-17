@@ -85,7 +85,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     /**
     Call this in view did load of your view controller.
     
-    :param: cameraPosition The camera position.
+    - parameter cameraPosition: The camera position.
     */
     public func setupWithCameraPosition(cameraPosition:AVCaptureDevicePosition) {
         #if !((arch(i386) || arch(x86_64)) && os(iOS))
@@ -108,7 +108,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
             let window = (UIApplication.sharedApplication().delegate?.window!)!
             glContext_ = EAGLContext(API:EAGLRenderingAPI.OpenGLES2)
             videoPreviewView = GLKView(frame: CGRectZero, context: glContext_)
-            videoPreviewView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+            videoPreviewView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             
             if (self.cameraPosition_ == AVCaptureDevicePosition.Back) {
                 let transformation = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
@@ -168,7 +168,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
         }
         
         dispatch_async(captureSessionQueue_!) {
-            var videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+            let videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
             self.videoDevice_  = nil
             
             for device in videoDevices {
@@ -181,7 +181,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
             
             let preset = AVCaptureSessionPresetPhoto;
             if !self.videoDevice_!.supportsAVCaptureSessionPreset(preset) {
-                println("Session preset not supported")
+                print("Session preset not supported")
                 return
             }
             self.setupCaptureSessionWithPreset(preset)
@@ -216,15 +216,20 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     
     private func setupCaptureSessionWithPreset(preset:NSString!) {
         self.captureSession_ = AVCaptureSession()
-        self.captureSession_!.sessionPreset = preset as! String
+        self.captureSession_!.sessionPreset = preset as String
         self.captureSession_?.beginConfiguration()
     }
     
     private func addVideoInput() {
         var error : NSError? = nil
-        self.videoDeviceInput_ = AVCaptureDeviceInput(device: self.videoDevice_, error: &error)
+        do {
+            self.videoDeviceInput_ = try AVCaptureDeviceInput(device: self.videoDevice_)
+        } catch let error1 as NSError {
+            error = error1
+            self.videoDeviceInput_ = nil
+        }
         if self.videoDeviceInput_ == nil {
-            println("Error \(error?.description)")
+            print("Error \(error?.description)")
         }
         self.captureSession_!.addInput(videoDeviceInput_)
     }
@@ -258,12 +263,12 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     
     /**
     Use this function to determin weather a camera with the desired position is available.
-    :param: cameraPosition The desired camera position.
+    - parameter cameraPosition: The desired camera position.
     
-    :returns: True is a camera with the specified position is available, false otherwise.
+    - returns: True is a camera with the specified position is available, false otherwise.
     */
     public func isCameraPresentWithPosition(cameraPosition:AVCaptureDevicePosition) -> Bool {
-        var videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+        let videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
         var foundMatch = false
         
         for device in videoDevices {
@@ -278,17 +283,17 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     Use this function to determin weather more than one camera is available.
     Within the SDK this method is used to determin if the toggle button is visible.
     
-    :returns: True if more than one camera is present, false otherwise.
+    - returns: True if more than one camera is present, false otherwise.
     */
     public func isMoreThanOneCameraPresent() -> Bool {
-        var videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+        let videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
         return (videoDevices.count > 1)
     }
     
     /**
     Check if the current device has a flash.
     
-    :returns: True if a flash is presen, false otherwise.
+    - returns: True if a flash is presen, false otherwise.
     */
     public func isFlashPresent() -> Bool {
         #if !((arch(i386) || arch(x86_64)) && os(iOS))
@@ -358,7 +363,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
         #if !((arch(i386) || arch(x86_64)) && os(iOS))
             var error:NSError? = nil
             self.captureSession_?.beginConfiguration()
-            videoDevice_!.lockForConfiguration(&error)
+            videoDevice_!.lockForConfiguration()
             videoDevice_!.flashMode = supportedFlashModes_[flashModeIndex_]
             videoDevice_!.unlockForConfiguration()
             self.captureSession_?.commitConfiguration()
@@ -387,12 +392,12 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
         if supportedFlashModes_.count == 0 {
             return
         }
-        var flashMode = supportedFlashModes_[flashModeIndex_]
+        let flashMode = supportedFlashModes_[flashModeIndex_]
         var matched = false
         
         // if the selected mode is still supported choose it again
         for var i = 0; i < supportedFlashModes_.count; i++ {
-            var mode = supportedFlashModes_[i]
+            let mode = supportedFlashModes_[i]
             if mode == flashMode {
                 flashModeIndex_ = i
                 matched = true
@@ -409,7 +414,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     /**
     Takes a photo and hands it over to the completion block.
     
-    :param: completion A completion block that has an image and an error as parameters.
+    - parameter completion: A completion block that has an image and an error as parameters.
     If the image was taken sucessfuly, the error is nil.
     */
     public func takePhoto(completion:((image: UIImage?, error: NSError?) -> Void)?) {
@@ -477,7 +482,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
             filteredImage = sourceImage
         }
         
-        let sourceExtent = sourceImage.extent()
+        let sourceExtent = sourceImage.extent
         let targetRect = CGRect(x: 0, y: 0, width: videoPreviewView.drawableWidth, height: videoPreviewView.drawableHeight)
         
         videoPreviewFrame = fitRect(sourceExtent, intoTargetRect: targetRect, withContentMode: .ScaleAspectFit)
@@ -597,7 +602,11 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     
     private func updateFocusAndExposurePoints(pointOfInterest: CGPoint) {
         var error:NSError? = nil
-        videoDevice_!.lockForConfiguration(&error)
+        do {
+            try videoDevice_!.lockForConfiguration()
+        } catch let error1 as NSError {
+            error = error1
+        }
         
         if isFocusPointSupported {
             videoDevice_!.focusPointOfInterest = pointOfInterest
@@ -614,7 +623,11 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     
     private func resetFocusAndExposurePoints() {
         var error:NSError? = nil
-        videoDevice_!.lockForConfiguration(&error)
+        do {
+            try videoDevice_!.lockForConfiguration()
+        } catch let error1 as NSError {
+            error = error1
+        }
         
         if isFocusPointSupported {
             videoDevice_!.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
@@ -643,7 +656,7 @@ public class IMGLYCameraController: NSObject, AVCaptureVideoDataOutputSampleBuff
     
     // MARK: - KVO
     
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         updateFocusIndicatorLayer()
     }
     

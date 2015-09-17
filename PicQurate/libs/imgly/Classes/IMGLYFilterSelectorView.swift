@@ -43,7 +43,7 @@ public class IMGLYFilterSelectorView: UIView {
         //      commonInit()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //       commonInit()
     }
@@ -60,12 +60,12 @@ public class IMGLYFilterSelectorView: UIView {
     }
     
     private func addScrollView() {
-        var scrollViewFrame = CGRectMake(0, 0, 768, self.frame.height)
+        let scrollViewFrame = CGRectMake(0, 0, 768, self.frame.height)
         scrollView_ = UIScrollView(frame: scrollViewFrame)
         scrollView_!.showsHorizontalScrollIndicator = false
         scrollView_!.showsVerticalScrollIndicator = false
         self.addSubview(scrollView_!)
-        var constraintHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
+        let constraintHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
         constraintHelper.addContentViewAndSetupConstraints(hostView: self, contentView: scrollView_!)
     }
     
@@ -78,29 +78,29 @@ public class IMGLYFilterSelectorView: UIView {
     }
     
     private func addButtonForFilter(type:IMGLYFilterType, index:Int) {
-        var button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let button = UIButton(type: UIButtonType.Custom)
         button.addTarget(self, action:"filterButtonTouchedUpInside:", forControlEvents: UIControlEvents.TouchUpInside)
         button.layer.cornerRadius = 3
         button.clipsToBounds = true
         button.tag = type.rawValue
         self.scrollView_!.addSubview(button)
         
-        var label = UILabel()
+        let label = UILabel()
         label.textAlignment = NSTextAlignment.Center
         label.textColor = UIColor(white: 0.5, alpha: 1.0)
         label.font = UIFont(name: "Helvetica Neue", size:11.0)
         self.scrollView_!.addSubview(label)
         
-        var activity = UIActivityIndicatorView()
+        let activity = UIActivityIndicatorView()
         activity.startAnimating()
         self.scrollView_!.addSubview(activity)
         
-        var image = UIImage(named: "nonePreview", inBundle: NSBundle(forClass: IMGLYFilterSelectorView.self), compatibleWithTraitCollection:nil)
+        let image = UIImage(named: "nonePreview", inBundle: NSBundle(forClass: IMGLYFilterSelectorView.self), compatibleWithTraitCollection:nil)
         dispatch_async(contextQueue_!, {
             autoreleasepool {
                 var actualFilter:CIFilter? = IMGLYInstanceFactory.sharedInstance.effectFilterWithType(type)
                 var filteredImage:UIImage? = IMGLYPhotoProcessor.processWithUIImage(image!, filters: [actualFilter!])
-                var text = actualFilter!.displayName
+                let text = actualFilter!.displayName
                 actualFilter = nil
                 dispatch_async(dispatch_get_main_queue(), {
                     activity.stopAnimating()
@@ -116,14 +116,14 @@ public class IMGLYFilterSelectorView: UIView {
     private func rearrangeViews() {
         var xOffset:CGFloat = 5
         for var index = 0; index < availableFilterList_.count; index++ {
-            var button = scrollView_!.subviews[index * 3] as! UIView
+            let button = scrollView_!.subviews[index * 3] 
             button.frame = CGRectMake(xOffset, kIMGLYPreviewImageOffsetY, kIMGLYPreviewButtonSize, kIMGLYPreviewButtonSize)
             
             let filter = availableFilterList_[index]
-            var label = scrollView_!.subviews[index * 3 + 1] as! UILabel
+            let label = scrollView_!.subviews[index * 3 + 1] as! UILabel
             label.frame = CGRectMake(xOffset, kIMGLYPreviewButtonSize + kIMGLYPreviewImageOffsetY, kIMGLYPreviewButtonSize, kIMGLYPreviewImageTextHeight);
             
-            var activity = scrollView_!.subviews[index * 3 + 2] as! UIView
+            let activity = scrollView_!.subviews[index * 3 + 2] 
             activity.frame = button.frame
             xOffset += kIMGLYPreviewImageDistance + kIMGLYPreviewButtonSize
         }
@@ -144,13 +144,13 @@ public class IMGLYFilterSelectorView: UIView {
     }
     
     private func setFirstFilterAsActive() {
-        var button = scrollView_!.subviews[0] as! UIButton
+        let button = scrollView_!.subviews[0] as! UIButton
         filterButtonTouchedUpInside(button)
     }
     
     public func filterButtonTouchedUpInside(button:UIButton) {
-        var index = button.tag
-        var filterType = IMGLYFilterType(rawValue: index)!
+        let index = button.tag
+        let filterType = IMGLYFilterType(rawValue: index)!
         if filterType == activeFilterType_ {
             return
         }
@@ -168,9 +168,9 @@ public class IMGLYFilterSelectorView: UIView {
     }
     
     private func autoscrollLeftIfNeededFromXPosition(xPosition:CGFloat) {
-        var bottonPositionOnScreenX = xPosition - scrollView_!.contentOffset.x
+        let bottonPositionOnScreenX = xPosition - scrollView_!.contentOffset.x
         if bottonPositionOnScreenX < kIMGLYPreviewButtonSize {
-            var cellWidth = kIMGLYPreviewButtonSize + kIMGLYPreviewImageDistance
+            let cellWidth = kIMGLYPreviewButtonSize + kIMGLYPreviewImageDistance
             var cellNumber = scrollView_!.contentOffset.x / cellWidth
             cellNumber = CGFloat(floorf(Float(cellNumber)))
             if bottonPositionOnScreenX <= (kIMGLYPreviewImageDistance / 2.0) {
@@ -183,9 +183,9 @@ public class IMGLYFilterSelectorView: UIView {
     }
     
     private func autoscrollRightIfNeededFromXPosition(xPosition:CGFloat) {
-        var bottonPositionOnScreenX = xPosition - scrollView_!.contentOffset.x
+        let bottonPositionOnScreenX = xPosition - scrollView_!.contentOffset.x
         if bottonPositionOnScreenX > (scrollView_!.frame.size.width - kIMGLYPreviewButtonSize) {
-            var cellWidth = kIMGLYPreviewButtonSize + kIMGLYPreviewImageDistance
+            let cellWidth = kIMGLYPreviewButtonSize + kIMGLYPreviewImageDistance
             var cellNumber = scrollView_!.contentOffset.x / cellWidth
             cellNumber = CGFloat(ceilf(Float(cellNumber))) + 1
             var newOffsetX = cellNumber * cellWidth

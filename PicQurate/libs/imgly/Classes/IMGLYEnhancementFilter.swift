@@ -28,7 +28,7 @@ public class IMGLYEnhancementFilter : CIFilter {
     private var enhancedImage:CIImage? = nil
     
     /// Returns a CIImage object that encapsulates the operations configured in the filter. (read-only)
-    public override var outputImage: CIImage! {
+    public override var outputImage: CIImage {
         get {
             if inputImage == nil {
                 return CIImage.emptyImage()
@@ -45,7 +45,7 @@ public class IMGLYEnhancementFilter : CIFilter {
             }
             
             var intermediateImage = inputImage
-            var filters = intermediateImage!.autoAdjustmentFiltersWithOptions([kCIImageAutoAdjustRedEye:NSNumber(bool: false)])
+            let filters = intermediateImage!.autoAdjustmentFiltersWithOptions([kCIImageAutoAdjustRedEye:NSNumber(bool: false)])
             for filter in filters {
                 filter.setValue(intermediateImage, forKey: kCIInputImageKey)
                 intermediateImage = filter.outputImage

@@ -78,7 +78,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
     
     func downloadChains() {
         
-        var query = PQChain.query();
+        let query = PQChain.query();
         
         query.orderByAscending("shares");
         query.whereKey("shares", lessThan: NSNumber(int: 4));
@@ -99,7 +99,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
                 NSLog("greaterThan returns \(array.count)");
                 self.chainArray = [PQChain]();
                 for (var i = 0; i < array.count; i++) {
-                    var chain = array[i] as! PQChain;
+                    let chain = array[i] as! PQChain;
                     NSLog("Chain share \(chain.shares)");
                     chain.incrementKey("shares", byAmount: 1);
                     self.chainArray.append(chain);
@@ -148,7 +148,6 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
     }
     
     @IBAction func chainButtonClicked(sender: UIButton) {
-        var chain = self.chainArray.last!
         self.scrollView.scrollRectToVisible(CGRectMake(0, 0, self.view.frame.width, self.view.frame.width), animated: true);
     }
     
@@ -168,7 +167,7 @@ class ChainViewController: UIViewController, UIScrollViewDelegate, PQProtocol {
         }
         if (self.scrollView.contentOffset.x == 0) {
             NSLog("Test");
-            var chain = self.chainArray.last!
+            let chain = self.chainArray.last!
             if (PQ.currentUser.email != nil) {
                 PQ.currentUser.chainPhotoWithBlock(chain, block: { (success, error) -> () in
                     

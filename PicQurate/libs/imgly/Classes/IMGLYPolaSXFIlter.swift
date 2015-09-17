@@ -15,7 +15,7 @@ public class IMGLYPolaSXFilter: IMGLYResponseFilter {
         self.displayName = "SX"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

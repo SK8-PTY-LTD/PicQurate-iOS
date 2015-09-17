@@ -23,12 +23,12 @@ public class IMGLYStickerFilter: CIFilter {
         super.init()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     /// Returns a CIImage object that encapsulates the operations configured in the filter. (read-only)
-    public override var outputImage: CIImage! {
+    public override var outputImage: CIImage {
         get {
             if inputImage == nil {
                 return CIImage.emptyImage()
@@ -48,14 +48,14 @@ public class IMGLYStickerFilter: CIFilter {
     }
     
     private func createStickerImage() -> UIImage {
-        var rect = inputImage!.extent()
-        var imageSize = rect.size
+        let rect = inputImage!.extent
+        let imageSize = rect.size
         UIGraphicsBeginImageContext(imageSize)
         UIColor(white: 1.0, alpha: 0.0).setFill()
         UIRectFill(CGRectMake(0, 0, imageSize.width, imageSize.height))
 
         sticker?.drawInRect(CGRect(x: position.x * imageSize.width, y: position.y * imageSize.height, width: size.width * imageSize.width, height: size.height * imageSize.height))
-        var image = UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
         return image
     }

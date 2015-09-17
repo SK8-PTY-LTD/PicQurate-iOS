@@ -13,7 +13,7 @@ import GLKit
   A singleton that is out to create objects. It is used within the SDK to 
   create filters, views, viewcontrollers and such.
 */
-@objc public class IMGLYInstanceFactory {
+public class IMGLYInstanceFactory {
     public class var sharedInstance : IMGLYInstanceFactory {
         struct Static {
             static let instance : IMGLYInstanceFactory = IMGLYInstanceFactory()
@@ -24,9 +24,9 @@ import GLKit
     /**
     Creates a response filter with the specified type.
     
-    :param: type The type of the filter that should be created.
+    - parameter type: The type of the filter that should be created.
     
-    :returns: A CIFilter object that realizes the desired filter.
+    - returns: A CIFilter object that realizes the desired filter.
     */
     public func effectFilterWithType(type:IMGLYFilterType) -> CIFilter? {
         switch(type) {
@@ -174,7 +174,7 @@ import GLKit
     /**
     Creates a text filter.
     
-    :returns: A text filter
+    - returns: A text filter
     */
     public func textFilter() -> IMGLYTextFilter {
         return IMGLYTextFilter()
@@ -183,7 +183,7 @@ import GLKit
     /**
     Creates a sticker filter.
     
-    :returns: A sticker filter
+    - returns: A sticker filter
     */
     public func stickerFilter() -> IMGLYStickerFilter {
         return IMGLYStickerFilter()
@@ -192,7 +192,7 @@ import GLKit
     /**
     Creates a crop filter.
     
-    :returns: A crop filter
+    - returns: A crop filter
     */
     public func orientationCropFilter() -> IMGLYOrientationCropFilter {
         return IMGLYOrientationCropFilter()
@@ -201,7 +201,7 @@ import GLKit
     /**
     Creates a tiltshift filter.
     
-    :returns: A tiltshift filter.
+    - returns: A tiltshift filter.
     */
     public func tiltShiftFilter() -> IMGLYTiltshiftFilter {
         return IMGLYTiltshiftFilter()
@@ -210,7 +210,7 @@ import GLKit
     /**
     Creates a color-adjustment filter.
     
-    :returns: A color-adjustment filter.
+    - returns: A color-adjustment filter.
     */
     public func colorAdjustmentFilter() -> IMGLYContrastBrightnessSaturationFilter {
         return IMGLYContrastBrightnessSaturationFilter()
@@ -219,7 +219,7 @@ import GLKit
     /**
     Creates an enhancement filter.
     
-    :returns: A enhancement filter.
+    - returns: A enhancement filter.
     */
     public func enhancementFilter() -> IMGLYEnhancementFilter {
         return IMGLYEnhancementFilter()
@@ -228,7 +228,7 @@ import GLKit
     /**
     Returns the list of filters, that should be available in the dialogs.
     Change this list to select the set of filters you want to present to the user.
-    :returns: An array of filter types.
+    - returns: An array of filter types.
     */
     public func availableFilterList() -> [IMGLYFilterType] {
         return [IMGLYFilterType.None,
@@ -307,9 +307,9 @@ import GLKit
     Return the viewcontroller acording to the button-type.
     This is used by the main menu.
     
-    :param: type The type of the button pressed.
+    - parameter type: The type of the button pressed.
     
-    :returns: A viewcontroller acording to the button-type.
+    - returns: A viewcontroller acording to the button-type.
     */
     public func viewControllerForButtonType(type:IMGLYMainMenuButtonType) -> IMGLYSubEditorViewControllerProtocol? {
         switch (type) {
@@ -379,9 +379,9 @@ import GLKit
     Return the view according to the button-type.
     This is used by the main menu.
     
-    :param: type The type of the button pressed.
+    - parameter type: The type of the button pressed.
     
-    :returns: A view acording to the button-type.
+    - returns: A view acording to the button-type.
     */
 
     public func viewForButtonType(type:IMGLYMainMenuButtonType) -> UIView? {
@@ -412,7 +412,7 @@ import GLKit
     }
     
     public func filterDialogView() -> IMGLYFilterDialogView {
-        var dialog = IMGLYFilterDialogView(frame: CGRectZero)
+        let dialog = IMGLYFilterDialogView(frame: CGRectZero)
         return dialog
     }
     
@@ -421,27 +421,27 @@ import GLKit
     }
     
     public func focusDialogView() -> IMGLYFocusDialogView {
-        var dialog = IMGLYFocusDialogView(frame: CGRectZero)
+        let dialog = IMGLYFocusDialogView(frame: CGRectZero)
         return dialog
     }
     
     public func oneSliderDialogView() -> IMGLYOneSliderDialogView {
-        var dialog = IMGLYOneSliderDialogView(frame: CGRectZero)
+        let dialog = IMGLYOneSliderDialogView(frame: CGRectZero)
         return dialog
     }
     
     public func cropDialogView() -> IMGLYCropDialogView {
-        var dialog = IMGLYCropDialogView(frame: CGRectZero)
+        let dialog = IMGLYCropDialogView(frame: CGRectZero)
         return dialog
     }
     
     public func textDialogView() -> IMGLYTextDialogView {
-        var dialog = IMGLYTextDialogView(frame: CGRectZero)
+        let dialog = IMGLYTextDialogView(frame: CGRectZero)
         return dialog
     }
 
     public func orientationDialogView() -> IMGLYOrientationDialogView {
-        var dialog = IMGLYOrientationDialogView(frame:CGRectZero)
+        let dialog = IMGLYOrientationDialogView(frame:CGRectZero)
         return dialog
     }
     
@@ -460,7 +460,7 @@ import GLKit
     Returns a list that determins what fonts will be available within
     the text-dialog.
     
-    :returns: An array of fontnames.
+    - returns: An array of fontnames.
     */
     public func availableFontsList() -> [String] {
         return ["AmericanTypewriter",

@@ -73,7 +73,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     private var filteredImage_:UIImage?
     private let cropRectComponent = IMGLYInstanceFactory.sharedInstance.cropRectComponent()
 
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -112,7 +112,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     // MARK:- gestures setup
     private func addGestureRecognizerToTransparentView() {
         self.dialogView_?.transperentRectView.userInteractionEnabled = true
-        var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
         panGestureRecognizer.delegate = self
         self.dialogView_?.transperentRectView.addGestureRecognizer(panGestureRecognizer)
     }
@@ -126,7 +126,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     
     private func addGestureRecognizerToAnchor(anchor:UIImageView) {
         anchor.userInteractionEnabled = true
-        var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
         panGestureRecognizer.delegate = self
         anchor.addGestureRecognizer(panGestureRecognizer)
     }
@@ -152,7 +152,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     
     // MARK: top left
     public func handlePanOnTopLeft(recognizer:UIPanGestureRecognizer) {
-        var location = recognizer.locationInView(dialogView_!.transperentRectView)
+        let location = recognizer.locationInView(dialogView_!.transperentRectView)
         var sizeX = cropRectComponent.bottomRightAnchor_!.center.x - location.x
         var sizeY = cropRectComponent.bottomRightAnchor_!.center.y - location.y
         
@@ -207,7 +207,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     
     // MARK: top right
     private func handlePanOnTopRight(recognizer:UIPanGestureRecognizer) {
-        var location = recognizer.locationInView(dialogView_!.transperentRectView)
+        let location = recognizer.locationInView(dialogView_!.transperentRectView)
         var sizeX = cropRectComponent.bottomLeftAnchor_!.center.x - location.x
         var sizeY = cropRectComponent.bottomLeftAnchor_!.center.y - location.y
         
@@ -261,7 +261,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     
     // MARK: bottom left
     private func handlePanOnBottomLeft(recognizer:UIPanGestureRecognizer) {
-        var location = recognizer.locationInView(dialogView_!.transperentRectView)
+        let location = recognizer.locationInView(dialogView_!.transperentRectView)
         var sizeX = cropRectComponent.topRightAnchor_!.center.x - location.x
         var sizeY = cropRectComponent.topRightAnchor_!.center.y - location.y
         
@@ -310,7 +310,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     
     // MARK: bottom right
     private func handlePanOnBottomRight(recognizer:UIPanGestureRecognizer) {
-        var location = recognizer.locationInView(dialogView_!.transperentRectView)
+        let location = recognizer.locationInView(dialogView_!.transperentRectView)
         var sizeX = cropRectComponent.topLeftAnchor_!.center.x - location.x
         var sizeY = cropRectComponent.topLeftAnchor_!.center.y - location.y
         sizeX = CGFloat(abs(Int(sizeX)))
@@ -355,10 +355,10 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     
     // MARK: rect itself
     private func handlePanOnTransparentView(recognizer:UIPanGestureRecognizer) {
-        var location = recognizer.locationInView(self.dialogView_!.transperentRectView)
+        let location = recognizer.locationInView(self.dialogView_!.transperentRectView)
         if isPointInRect(cropRectComponent.cropRect, point: location) {
             calculateDragOffsetOnNewDrag(recognizer:recognizer)
-            var newLocation = clampedLocationToBounds(location)
+            let newLocation = clampedLocationToBounds(location)
             var rect = cropRectComponent.cropRect
             rect.origin.x = newLocation.x - dragOffset_.x
             rect.origin.y = newLocation.y - dragOffset_.y
@@ -367,21 +367,21 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
         }
     }
     
-    private func calculateDragOffsetOnNewDrag(#recognizer:UIPanGestureRecognizer) {
-        var location = recognizer.locationInView(self.dialogView_?.transperentRectView)
+    private func calculateDragOffsetOnNewDrag(recognizer recognizer:UIPanGestureRecognizer) {
+        let location = recognizer.locationInView(self.dialogView_?.transperentRectView)
         if recognizer.state == UIGestureRecognizerState.Began {
             dragOffset_ = CGPointMake(location.x - cropRectComponent.cropRect.origin.x, location.y - cropRectComponent.cropRect.origin.y)
         }
     }
     
     private func clampedLocationToBounds(location:CGPoint) -> CGPoint {
-        var rect = cropRectComponent.cropRect
+        let rect = cropRectComponent.cropRect
         var locationX = location.x
         var locationY = location.y
-        var left = locationX - dragOffset_.x
-        var right = left + rect.size.width
-        var top  = locationY - dragOffset_.y
-        var bottom = top + rect.size.height
+        let left = locationX - dragOffset_.x
+        let right = left + rect.size.width
+        let top  = locationY - dragOffset_.y
+        let bottom = top + rect.size.height
         
         if left < cropRectLeftBound_ {
             locationX = cropRectLeftBound_ + dragOffset_.x
@@ -401,28 +401,28 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     
     // MARK:- helpers
     private func isPointInRect(rect:CGRect, point:CGPoint) -> Bool {
-        var top = rect.origin.y
-        var bottom = top + rect.size.height
-        var left = rect.origin.x
-        var right = left + rect.size.width
-        var inRectXAxis = point.x > left && point.x < right
-        var inRectYAxis = point.y > top && point.y < bottom
+        let top = rect.origin.y
+        let bottom = top + rect.size.height
+        let left = rect.origin.x
+        let right = left + rect.size.width
+        let inRectXAxis = point.x > left && point.x < right
+        let inRectYAxis = point.y > top && point.y < bottom
         return (inRectXAxis && inRectYAxis)
     }
     
     private func normalizedCropRect() -> CGRect {
         reCalculateCropRectBounds()
-        var boundWidth = cropRectRightBound_ - cropRectLeftBound_
-        var boundHeight = cropRectBottomBound_ - cropRectTopBound_
-        var x = (cropRectComponent.cropRect.origin.x - cropRectLeftBound_) / boundWidth
-        var y = (cropRectComponent.cropRect.origin.y - cropRectTopBound_) / boundHeight
+        let boundWidth = cropRectRightBound_ - cropRectLeftBound_
+        let boundHeight = cropRectBottomBound_ - cropRectTopBound_
+        let x = (cropRectComponent.cropRect.origin.x - cropRectLeftBound_) / boundWidth
+        let y = (cropRectComponent.cropRect.origin.y - cropRectTopBound_) / boundHeight
         return CGRectMake(x, y, cropRectComponent.cropRect.size.width / boundWidth, cropRectComponent.cropRect.size.height / boundHeight)
     }
     
     private func reCalculateCropRectBounds() {
-        var size = scaledImageSize()
-        var width = dialogView_!.transperentRectView.frame.size.width
-        var height = dialogView_!.transperentRectView.frame.size.height
+        let size = scaledImageSize()
+        let width = dialogView_!.transperentRectView.frame.size.width
+        let height = dialogView_!.transperentRectView.frame.size.height
         cropRectLeftBound_ = (width - size.width) / 2.0
         cropRectRightBound_ = width - cropRectLeftBound_
         cropRectTopBound_ = (height - size.height) / 2.0
@@ -430,9 +430,9 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     }
     
     private func scaledImageSize() -> CGSize {
-        var widthRatio = dialogView_!.previewImageView.bounds.size.width / dialogView_!.previewImageView.image!.size.width
-        var heightRatio = dialogView_!.previewImageView.bounds.size.height / dialogView_!.previewImageView.image!.size.height
-        var scale = min(widthRatio, heightRatio)
+        let widthRatio = dialogView_!.previewImageView.bounds.size.width / dialogView_!.previewImageView.image!.size.width
+        let heightRatio = dialogView_!.previewImageView.bounds.size.height / dialogView_!.previewImageView.image!.size.height
+        let scale = min(widthRatio, heightRatio)
         var size = CGSizeZero
         size.width = scale * dialogView_!.previewImageView.image!.size.width
         size.height = scale * dialogView_!.previewImageView.image!.size.height
@@ -454,7 +454,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     // MARK:- IMGLYCropDialogViewDelegate
     public func doneButtonPressed() {
         if self.completionHandler != nil {
-            var rect = normalizedCropRect()
+            let rect = normalizedCropRect()
             fixedFilterStack!.orientationCropFilter!.cropRect = rect
             filteredImage_ = IMGLYPhotoProcessor.processWithUIImage(previewImage!, filters: fixedFilterStack!.activeFilters)
             self.completionHandler?(IMGLYEditorResult.Done, filteredImage_)
@@ -520,7 +520,7 @@ IMGLYSubEditorViewControllerProtocol, IMGLYCropDialogViewDelegate {
     }
     
     private func setCropRectForSelectionRatio() {
-        var size = CGSizeMake(cropRectRightBound_ - cropRectLeftBound_,
+        let size = CGSizeMake(cropRectRightBound_ - cropRectLeftBound_,
             cropRectBottomBound_ - cropRectTopBound_)
         var rectWidth = size.width
         var rectHeight = rectWidth

@@ -12,20 +12,20 @@ import Foundation
     func onPhotoTaken(image: UIImage);
 }
 
-class CameraViewController: IMGLYCameraViewController {
-    
-    var delegate:CameraViewControllerDelegate?
-    
-    @objc override
-    func image(image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafePointer<Void>) {
-        cameraView!.setLastImageFromRollAsPreview();
-        //Custom methods
-        self.dismissViewControllerAnimated(false, completion: { () -> Void in
-            self.delegate?.onPhotoTaken(image);
-        });
-    }
-    
-}
+//class CameraViewController: IMGLYCameraViewController {
+//    
+//    var delegate:CameraViewControllerDelegate?
+//    
+//    @objc override
+//    func image(image: UIImage, didFinishSavingWithError: NSError, contextInfo:UnsafePointer<Void>) {
+//        cameraView!.setLastImageFromRollAsPreview();
+//        //Custom methods
+//        self.dismissViewControllerAnimated(false, completion: { () -> Void in
+//            self.delegate?.onPhotoTaken(image);
+//        });
+//    }
+//    
+//}
 
 class CameraNoFilterViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -45,12 +45,12 @@ class CameraNoFilterViewController: UIViewController, UINavigationControllerDele
         self.pickerReference.dismissViewControllerAnimated(true, completion: { () -> Void in
             //Croping
             NSLog("Image size \(image.size)");
-            var cropRect = CGRectMake((image.size.height-image.size.width), 0, image.size.width, image.size.width);
+            let cropRect = CGRectMake((image.size.height-image.size.width), 0, image.size.width, image.size.width);
             NSLog("Crop size \(cropRect)");
-            var imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect);
-            var croppedImage = UIImage(CGImage: imageRef, scale: image.scale, orientation: image.imageOrientation);
+            let imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect);
+            let croppedImage = UIImage(CGImage: imageRef!, scale: image.scale, orientation: image.imageOrientation);
             //Resizing
-            croppedImage!.resize(CGSizeMake(self.image_size, self.image_size), completionHandler: { (resizedImage, data) -> () in
+            croppedImage.resize(CGSizeMake(self.image_size, self.image_size), completionHandler: { (resizedImage, data) -> () in
                 NSLog("Cropped & Resized Image size \(resizedImage.size)");
                 self.delegate?.onPhotoTaken(resizedImage);
             });

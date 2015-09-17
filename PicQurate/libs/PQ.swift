@@ -11,7 +11,7 @@ import Foundation
 extension UIImage {
     public func resize(size:CGSize, completionHandler:(resizedImage:UIImage, data:NSData)->()) {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { () -> Void in
-            var newSize:CGSize = size
+            let newSize:CGSize = size
             let rect = CGRectMake(0, 0, newSize.width, newSize.height)
             UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
             self.drawInRect(rect)
@@ -19,7 +19,7 @@ extension UIImage {
             UIGraphicsEndImageContext()
             let imageData = UIImageJPEGRepresentation(newImage, 0.5)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completionHandler(resizedImage: newImage, data:imageData)
+                completionHandler(resizedImage: newImage, data:imageData!)
             })
         })
     }
@@ -38,10 +38,10 @@ extension UIColor {
         var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substringFromIndex(advance(cString.startIndex, 1))
+            cString = cString.substringFromIndex(cString.startIndex.advancedBy(1))
         }
         
-        if (count(cString) != 6) {
+        if (cString.characters.count != 6) {
             self.init(
                 red: CGFloat(255.0) / 255.0,
                 green: CGFloat(102.0) / 255.0,
@@ -68,10 +68,10 @@ extension UIColor {
         var alpha: CGFloat = 0.0;
         self.getRed(&red, green: &green, blue: &blue, alpha: &alpha);
         
-        var redString = String(Int(red), radix: 16);
-        var greenString = String(Int(green), radix: 16);
-        var blueString = String(Int(blue), radix: 16);
-        var hex = "#" + redString + greenString + blueString;
+        let redString = String(Int(red), radix: 16);
+        let greenString = String(Int(green), radix: 16);
+        let blueString = String(Int(blue), radix: 16);
+        let hex = "#" + redString + greenString + blueString;
         return hex;
     }
 }
@@ -138,7 +138,7 @@ class PQ: NSObject {
             PQ.currentUser = user as PQUser;
         } else {
             AVAnonymousUtils .logInWithBlock({ (anonymousUser, error) -> Void in
-                if let e = error {
+                if let _ = error {
                     
                 } else {
                     PQ.currentUser = PQUser.currentUser();
@@ -150,15 +150,19 @@ class PQ: NSObject {
     
     class func sendPush(query: AVQuery, message: String) -> NSError? {
         var error: NSError?
-        var push = AVPush();
+        let push = AVPush();
         push.setQuery(query);
         push.setMessage(message);
-        push.sendPush(&error)
+        do {
+            try push.sendPush()
+        } catch let error1 as NSError {
+            error = error1
+        }
         return error;
     }
     
     class func sendPushWithCallBack(query: AVQuery, message: String, callback: AVBooleanResultBlock) {
-        var notification = AVPush();
+        let notification = AVPush();
         notification.setQuery(query);
         notification.setMessage(message);
         notification.sendPushInBackgroundWithBlock(callback);
@@ -166,7 +170,7 @@ class PQ: NSObject {
     
     class func showError(error: NSError) {
         NSLog("Error: " + error.localizedDescription);
-        var errorString = error.localizedDescription;
+        let errorString = error.localizedDescription;
         let alert = UIAlertView()
         alert.title = "Oops";
         alert.message = errorString

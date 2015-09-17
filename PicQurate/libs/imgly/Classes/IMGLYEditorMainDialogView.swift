@@ -64,7 +64,7 @@ public class IMGLYEditorMainDialogView: UIView {
         setup()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -72,7 +72,7 @@ public class IMGLYEditorMainDialogView: UIView {
     // MARK: - View connection
     public func setup() {
         NSBundle(forClass: IMGLYEditorMainDialogView.self).loadNibNamed("IMGLYEditorMainDialogView", owner: self, options: nil)
-        self.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.contentView)
         self.addEdgeConstraint(NSLayoutAttribute.Left, superview: self, subview: self.contentView)
         self.addEdgeConstraint(NSLayoutAttribute.Right, superview: self, subview: self.contentView)
@@ -95,7 +95,7 @@ public class IMGLYEditorMainDialogView: UIView {
     }
     
     public func addEdgeConstraint(edge:NSLayoutAttribute, superview:UIView, subview:UIView) {
-        var constraint = NSLayoutConstraint(item: subview, attribute: edge, relatedBy: NSLayoutRelation.Equal, toItem: superview, attribute: edge, multiplier: 1, constant: 0)
+        let constraint = NSLayoutConstraint(item: subview, attribute: edge, relatedBy: NSLayoutRelation.Equal, toItem: superview, attribute: edge, multiplier: 1, constant: 0)
         superview.addConstraints([constraint])
     }
     

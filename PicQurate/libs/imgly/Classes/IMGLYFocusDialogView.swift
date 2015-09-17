@@ -27,14 +27,14 @@ public class IMGLYFocusDialogView:UIView {
         commonInit()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
     
     // MARK: - View connection
     public func commonInit() {
-        var containerViewHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
+        let containerViewHelper = IMGLYInstanceFactory.sharedInstance.containerViewHelper()
         containerViewHelper.loadXib("IMGLYFocusDialogView", view:self)
         containerViewHelper.addContentViewAndSetupConstraints(hostView: self, contentView: self.contentView)
     }

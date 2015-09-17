@@ -15,7 +15,7 @@ public class IMGLYOrchidFilter: IMGLYResponseFilter {
         self.displayName = "Orchid"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

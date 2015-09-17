@@ -57,7 +57,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         NSLog("locationPoints: \(locationPoints.count)");
         if locationPoints.count > 1 {
-            var geodesic = MKGeodesicPolyline(coordinates: &locationPoints[0], count: locationPoints.count);
+            let geodesic = MKGeodesicPolyline(coordinates: &locationPoints[0], count: locationPoints.count);
             NSLog("geodesic: \(geodesic)");
             self.mapView.addOverlay(geodesic);
             UIView.animateWithDuration(1.5, animations: { () -> Void in
@@ -79,15 +79,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
-            var polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRenderer.strokeColor = UIColor.blueColor()
             polylineRenderer.lineWidth = 5
             return polylineRenderer
+        } else {
+            return MKPolylineRenderer();
         }
-        
-        return nil
     }
     
     override func didReceiveMemoryWarning() {

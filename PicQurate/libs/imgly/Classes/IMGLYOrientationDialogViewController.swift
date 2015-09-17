@@ -138,7 +138,7 @@ public class IMGLYOrientationDialogViewController: UIViewController, IMGLYSubEdi
     private func rotateCropRectLeft() {
         moveCropRectMidToOrigin()
         // rotatate
-        var tempRect = cropRect_
+        let tempRect = cropRect_
         cropRect_.origin.x = tempRect.origin.y
         cropRect_.origin.y = -tempRect.origin.x
         cropRect_.size.width = tempRect.size.height
@@ -156,7 +156,7 @@ public class IMGLYOrientationDialogViewController: UIViewController, IMGLYSubEdi
     private func rotateCropRectRight() {
         moveCropRectMidToOrigin()
         // rotatate
-        var tempRect = cropRect_
+        let tempRect = cropRect_
         cropRect_.origin.x = -tempRect.origin.y
         cropRect_.origin.y = tempRect.origin.x
         cropRect_.size.width = -tempRect.size.height
@@ -203,21 +203,21 @@ public class IMGLYOrientationDialogViewController: UIViewController, IMGLYSubEdi
     // MARK:- crop rect placement
     private func layoutCropRectViews() {
         reCalculateCropRectBounds()
-        var viewWidth = cropRectRightBound_ - cropRectLeftBound_
-        var viewHeight = cropRectBottomBound_ - cropRectTopBound_
-        var x = cropRectLeftBound_ + viewWidth * cropRect_.origin.x
-        var y = cropRectTopBound_ + viewHeight * cropRect_.origin.y
-        var width = viewWidth * cropRect_.size.width
-        var height = viewHeight * cropRect_.size.height
-        var rect = CGRectMake(x, y, width, height)
+        let viewWidth = cropRectRightBound_ - cropRectLeftBound_
+        let viewHeight = cropRectBottomBound_ - cropRectTopBound_
+        let x = cropRectLeftBound_ + viewWidth * cropRect_.origin.x
+        let y = cropRectTopBound_ + viewHeight * cropRect_.origin.y
+        let width = viewWidth * cropRect_.size.width
+        let height = viewHeight * cropRect_.size.height
+        let rect = CGRectMake(x, y, width, height)
         cropRectComponent.cropRect = rect
         cropRectComponent.layoutViewsForCropRect()
     }
     
     private func reCalculateCropRectBounds() {
-        var size = scaledImageSize()
-        var width = dialogView_!.transperentRectView.frame.size.width
-        var height = dialogView_!.transperentRectView.frame.size.height
+        let size = scaledImageSize()
+        let width = dialogView_!.transperentRectView.frame.size.width
+        let height = dialogView_!.transperentRectView.frame.size.height
         cropRectLeftBound_ = (width - size.width) / 2.0
         cropRectRightBound_ = width - cropRectLeftBound_
         cropRectTopBound_ = (height - size.height) / 2.0
@@ -225,9 +225,9 @@ public class IMGLYOrientationDialogViewController: UIViewController, IMGLYSubEdi
     }
     
     private func scaledImageSize() -> CGSize {
-        var widthRatio = dialogView_!.previewImageView.bounds.size.width / dialogView_!.previewImageView.image!.size.width
-        var heightRatio = dialogView_!.previewImageView.bounds.size.height / dialogView_!.previewImageView.image!.size.height
-        var scale = min(widthRatio, heightRatio)
+        let widthRatio = dialogView_!.previewImageView.bounds.size.width / dialogView_!.previewImageView.image!.size.width
+        let heightRatio = dialogView_!.previewImageView.bounds.size.height / dialogView_!.previewImageView.image!.size.height
+        let scale = min(widthRatio, heightRatio)
         var size = CGSizeZero
         size.width = scale * dialogView_!.previewImageView.image!.size.width
         size.height = scale * dialogView_!.previewImageView.image!.size.height

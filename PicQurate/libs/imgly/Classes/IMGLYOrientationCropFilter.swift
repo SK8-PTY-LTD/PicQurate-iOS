@@ -34,7 +34,7 @@ public class IMGLYOrientationCropFilter : CIFilter {
     private var flipVertical_ = false
     private var flipHorizontal_ = false
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.displayName = "OrientationCropFilter"
     }
@@ -45,7 +45,7 @@ public class IMGLYOrientationCropFilter : CIFilter {
     }
     
     /// Returns a CIImage object that encapsulates the operations configured in the filter. (read-only)
-    public override var outputImage: CIImage! {
+    public override var outputImage: CIImage {
         get {
             if inputImage == nil {
                 return CIImage.emptyImage()
@@ -59,11 +59,11 @@ public class IMGLYOrientationCropFilter : CIFilter {
             filter.setValue(inputImage!, forKey: kCIInputImageKey)
             filter.setValue(NSValue(CGAffineTransform: flipTransformation), forKey: kCIInputTransformKey)
             var transformedImage = filter!.outputImage
-            var tempCGImage = CIContext(options: nil).createCGImage(transformedImage!, fromRect: transformedImage!.extent())
+            var tempCGImage = CIContext(options: nil).createCGImage(transformedImage!, fromRect: transformedImage!.extent)
             var tempCIImage = CIImage(CGImage: tempCGImage)
             var cropFilter = IMGLYCropFilter()
             cropFilter.cropRect = cropRect
-            cropFilter.setValue(tempCIImage!, forKey: kCIInputImageKey)
+            cropFilter.setValue(tempCIImage, forKey: kCIInputImageKey)
             var croppedImage = cropFilter.outputImage
             return croppedImage
         }

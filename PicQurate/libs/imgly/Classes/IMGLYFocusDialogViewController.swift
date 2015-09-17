@@ -107,9 +107,9 @@ IMGLYFocusDialogViewDelegate, IMGLYGradientViewDelegate {
     }
     
     private func layoutCircleGradientView() {
-        var size = scaledImageSize()
-        var xOffset = (dialogView!.frame.size.width - size.width) / 2.0
-        var yOffset = (dialogView!.frame.size.height - size.height ) / 2.0
+        let size = scaledImageSize()
+        let xOffset = (dialogView!.frame.size.width - size.width) / 2.0
+        let yOffset = (dialogView!.frame.size.height - size.height ) / 2.0
         circleGradientView_!.frame = CGRectMake(xOffset,
             yOffset - gradientViewYOffset,
             size.width,
@@ -118,9 +118,9 @@ IMGLYFocusDialogViewDelegate, IMGLYGradientViewDelegate {
     }
     
     private func layoutBoxGradientView() {
-        var size = scaledImageSize()
-        var xOffset = (dialogView!.frame.size.width - size.width) / 2.0
-        var yOffset = (dialogView!.frame.size.height - size.height ) / 2.0
+        let size = scaledImageSize()
+        let xOffset = (dialogView!.frame.size.width - size.width) / 2.0
+        let yOffset = (dialogView!.frame.size.height - size.height ) / 2.0
         boxGradientView_!.frame = CGRectMake(xOffset,
             yOffset - gradientViewYOffset,
             size.width,
@@ -129,9 +129,9 @@ IMGLYFocusDialogViewDelegate, IMGLYGradientViewDelegate {
     }
     
     private func scaledImageSize() -> CGSize {
-        var widthRatio = dialogView_!.previewImageView.bounds.size.width / previewImage!.size.width
-        var heightRatio = dialogView_!.previewImageView.bounds.size.height / previewImage!.size.height
-        var scale = min(widthRatio, heightRatio)
+        let widthRatio = dialogView_!.previewImageView.bounds.size.width / previewImage!.size.width
+        let heightRatio = dialogView_!.previewImageView.bounds.size.height / previewImage!.size.height
+        let scale = min(widthRatio, heightRatio)
         var size = CGSizeZero
         size.width = scale * previewImage!.size.width
         size.height = scale * previewImage!.size.height

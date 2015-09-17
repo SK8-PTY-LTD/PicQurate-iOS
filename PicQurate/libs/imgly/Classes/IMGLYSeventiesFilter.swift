@@ -15,7 +15,7 @@ public class IMGLYSeventiesFilter: IMGLYResponseFilter {
         self.displayName = "70s"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

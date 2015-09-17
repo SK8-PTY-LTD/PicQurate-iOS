@@ -28,7 +28,7 @@ public class IMGLYTextColorSelectorView: UIScrollView {
         commonInit()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -57,7 +57,7 @@ public class IMGLYTextColorSelectorView: UIScrollView {
     
     private func configureColorButtons() {
         for color in colorArray_ {
-            var button = IMGLYColorButton(frame: CGRectZero)
+            let button = IMGLYColorButton(frame: CGRectZero)
             self.addSubview(button)
             button.addTarget(self, action: "colorButtonTouchedUpInside:", forControlEvents: UIControlEvents.TouchUpInside)
             buttonArray_.append(button)
@@ -74,7 +74,7 @@ public class IMGLYTextColorSelectorView: UIScrollView {
     private func layoutColorButtons() {
         var xPosition = kButtonXPositionOffset
         for var i = 0;i < colorArray_.count; i++ {
-            var button =  buttonArray_[i]
+            let button =  buttonArray_[i]
             button.frame = CGRectMake(xPosition,
                 kButtonYPosition,
                 kButtonSideLength,

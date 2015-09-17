@@ -15,7 +15,7 @@ public class IMGLYHighContrastFilter: IMGLYResponseFilter {
         self.displayName = "Hicon"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

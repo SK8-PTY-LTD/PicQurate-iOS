@@ -45,9 +45,9 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let e = error {
                 PQ.showError(e);
             } else {
-                var email = user["email"] as! String;
-                var id = user["id"] as! String;
-                var name = user["name"] as! String;
+                let email = user["email"] as! String;
+                let id = user["id"] as! String;
+                let name = user["name"] as! String;
                 var gender: NSNumber = false;
                 if (user["gender"] as! String == "male") {
                     gender = true;
@@ -64,8 +64,8 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                     if let e = error {
                         if (e.code == 210) {
                             //User exists with wrong password
-                            var alertController = UIAlertController(title: "Oops...", message: "This email had already linked to another PicQurate account. Would you like to reset the password?", preferredStyle: .Alert)
-                            var okAction = UIAlertAction(title: "OK!", style: UIAlertActionStyle.Default) {
+                            let alertController = UIAlertController(title: "Oops...", message: "This email had already linked to another PicQurate account. Would you like to reset the password?", preferredStyle: .Alert)
+                            let okAction = UIAlertAction(title: "OK!", style: UIAlertActionStyle.Default) {
                                 UIAlertAction in
                                 //Reset Password
                                 AVUser.requestPasswordResetForEmailInBackground(email, block: { (success, error) -> Void in
@@ -76,7 +76,7 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                                     }
                                 });
                             }
-                            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+                            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
                                 UIAlertAction in
                                 //Do nothing
                             }
@@ -91,9 +91,9 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                             PQ.currentUser.profileName = name;
                             PQ.currentUser.gender = gender;
                             PQ.currentUser.signUpInBackgroundWithBlock({ (success, e) -> Void in
-                                var urlString: String = "https://graph.facebook.com/" + id + "/picture?type=normal";
-                                var data = NSData(contentsOfURL: NSURL(string: urlString)!);
-                                var profileImage = UIImage(data: data!);
+                                let urlString: String = "https://graph.facebook.com/" + id + "/picture?type=normal";
+                                let data = NSData(contentsOfURL: NSURL(string: urlString)!);
+                                let profileImage = UIImage(data: data!);
                                 PQ.currentUser.setProfileUIImage(profileImage!);
                                 PQ.currentUser.saveInBackground();
                                 NSLog("Facebook sign up successful");
@@ -104,7 +104,7 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                             })
                         }
                     } else {
-                        var user = u as! PQUser;
+                        let user = u as! PQUser;
                         PQ.currentUser = user;
                         NSLog("Facebook log in successful");
                         if let method = PQ.delegate?.onUserRefreshed {
@@ -113,7 +113,7 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
                         self.dismissViewControllerAnimated(true, completion: nil);
                     }
                     
-                    var fbLoginManager = FBSDKLoginManager();
+                    let fbLoginManager = FBSDKLoginManager();
                     fbLoginManager.logOut();
                 });
                 

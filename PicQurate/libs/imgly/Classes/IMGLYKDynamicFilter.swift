@@ -15,7 +15,7 @@ public class IMGLYKDynamicFilter: IMGLYResponseFilter {
         self.displayName = "Dynamic"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

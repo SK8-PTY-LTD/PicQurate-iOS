@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
         self.flowLayout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.width, 280);
         
-        var headerNib = UINib(nibName: "ProfileHeaderCollectionReusableView", bundle: nil);
+        let headerNib = UINib(nibName: "ProfileHeaderCollectionReusableView", bundle: nil);
         self.collectionView.registerNib(headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header");
     }
     
@@ -118,7 +118,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func queryPhotoByHistory() {
-        var query = PQPhoto.query();
+        let query = PQPhoto.query();
         query.whereKey("user", equalTo: user);
         query.includeKey("user.profileImage");
         query.orderByDescending("createdAt");
@@ -137,7 +137,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func queryPhotoByChain() {
-        var query = PQPhoto.query();
+        let query = PQPhoto.query();
         query.whereKey("user", equalTo: user);
         query.orderByDescending("chain");
 
@@ -156,7 +156,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func queryPhotoByLike() {
-        var query = PQPhoto.query();
+        let query = PQPhoto.query();
         query.whereKey("user", equalTo: user);
         query.orderByDescending("chain");
         query.findObjectsInBackgroundWithBlock({ (array, error) -> Void in
@@ -175,7 +175,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func setColumns(numberOfColumns: Int) {
         self.column = numberOfColumns;
-        var itemWidth = self.view.frame.size.width / CGFloat(self.column);
+        let itemWidth = self.view.frame.size.width / CGFloat(self.column);
         if let layout = self.flowLayout {
             if (self.column != 1) {
                 layout.itemSize = CGSizeMake(itemWidth-1, itemWidth-1);
@@ -191,7 +191,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         if (PQ.currentUser != nil && PQ.currentUser.email != nil) {
             self.performSegueWithIdentifier("editProfileSegue", sender: nil);
         } else {
-            var VC = self.parentViewController?.parentViewController as! TabViewController;
+            let VC = self.parentViewController?.parentViewController as! TabViewController;
             VC.performSegueWithIdentifier("segueToLogin", sender: nil);
         }
     }
@@ -214,7 +214,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
         } else if (kind == UICollectionElementKindSectionHeader) {
             // Config Collection View section header
-            var cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as! ProfileCollectionViewSegmentCell;
+            let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as! ProfileCollectionViewSegmentCell;
             cell.delegate = self;
             return cell;
         } else {
@@ -233,21 +233,21 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if (self.column == 1) {
-            var cell = collectionView.dequeueReusableCellWithReuseIdentifier("profileViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
-            var photo = self.imageArray[indexPath.row];
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("profileViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
+            let photo = self.imageArray[indexPath.row];
             cell.initializeWithPhoto(photo);
             cell.delegate = self
             return cell;
         } else {
-            var cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
-            var photo = self.imageArray[indexPath.row];
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
+            let photo = self.imageArray[indexPath.row];
             cell.initializeWithPhoto(photo);
             return cell;
         }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var photo = self.imageArray[indexPath.row];
+        let photo = self.imageArray[indexPath.row];
         self.performSegueWithIdentifier("segueToPhoto", sender: photo);
     }
     
@@ -261,30 +261,30 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.locationManager.startUpdatingLocation();
     }
     
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         refreshLocation();
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 //        PQ.showError(error);
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var newLocation = locations.last as! CLLocation;
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newLocation = locations.last!;
         NSLog("Got location: \(newLocation.coordinate.latitude) \(newLocation.coordinate.longitude)");
         manager.stopUpdatingLocation();
         //Get place mark
-        var geoCoder = CLGeocoder();
+        let geoCoder = CLGeocoder();
         geoCoder.reverseGeocodeLocation(newLocation, completionHandler: { (placemarks, error) -> Void in
             if let e = error {
                 NSLog(e.localizedDescription);
             } else {
-                for (var i = 0; i < placemarks.count; i++) {
-                    var placemark = placemarks[i] as! CLPlacemark;
-                    var geoPoint = AVGeoPoint(latitude: placemark.location.coordinate.latitude, longitude: placemark.location.coordinate.longitude);
+                for (var i = 0; i < placemarks!.count; i++) {
+                    let placemark = placemarks![i] ;
+                    let geoPoint = AVGeoPoint(latitude: placemark.location!.coordinate.latitude, longitude: placemark.location!.coordinate.longitude);
                     if (PQ.currentUser.email != nil) {
                         PQ.currentUser.location = geoPoint;
-                        PQ.currentUser.locationString = "\(placemark.administrativeArea), \(placemark.country)";
+                        PQ.currentUser.locationString = "\(placemark.administrativeArea!), \(placemark.country!)";
                         PQ.currentUser.saveEventually();
                     }
                 }
@@ -293,12 +293,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func followerButtonClicked() {
-        var query = AVUser.followerQuery(self.user?.objectId);
+        let query = AVUser.followerQuery(self.user?.objectId);
         self.performSegueWithIdentifier("segueToUserTableView", sender: [query, "Follower"]);
     }
     
     func followeeButtonClicked() {
-        var query = AVUser.followeeQuery(self.user?.objectId);
+        let query = AVUser.followeeQuery(self.user?.objectId);
         self.performSegueWithIdentifier("segueToUserTableView", sender: [query, "Following"]);
     }
     
@@ -316,23 +316,23 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToUserTableView") {
-            var VC = segue.destinationViewController as! UserTableViewController;
+            let VC = segue.destinationViewController as! UserTableViewController;
             VC.query = (sender as! [AnyObject])[0] as! AVQuery;
             VC.title = (sender as! [AnyObject])[1] as? String;
         } else if (segue.identifier == "segueToPhoto"){
-            var VC = segue.destinationViewController as! PhotoViewController;
+            let VC = segue.destinationViewController as! PhotoViewController;
             VC.photo = sender as! PQPhoto;
         } else if (segue.identifier == "segueToMap") {
-            var VC = segue.destinationViewController as! MapViewController;
+            let VC = segue.destinationViewController as! MapViewController;
             VC.locationArray = self.locationArray;
             VC.locationNameArray = self.locationNameArray;
         } else if(segue.identifier == "segueToLike"){
-            var VC = segue.destinationViewController as! UserTableViewController;
+            let VC = segue.destinationViewController as! UserTableViewController;
             VC.title = "Like"
             VC.query = sender as! AVQuery;
         } else if(segue.identifier == "segueToProfile"){
-            var VC = segue.destinationViewController as! ProfileViewController;
-            VC.user = sender as! PQUser;
+            let VC = segue.destinationViewController as! ProfileViewController;
+            VC.user = (sender as! PQUser);
         }
     }
     

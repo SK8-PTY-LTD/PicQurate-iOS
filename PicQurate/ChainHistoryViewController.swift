@@ -23,7 +23,7 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
         //Set up collection view
         self.flowLayout = self.collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout;
         
-        var itemWidth = self.view.frame.size.width / CGFloat(self.column);
+        let itemWidth = self.view.frame.size.width / CGFloat(self.column);
         if (self.column != 1) {
             self.flowLayout.itemSize = CGSizeMake(itemWidth-1, itemWidth-1);
         } else {
@@ -38,7 +38,7 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func queryPhotoByDate() {
-        var query = PQPhoto.query();
+        let query = PQPhoto.query();
         query.orderByDescending("createdAt");
         query.whereKey("user", equalTo: PQ.currentUser);
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
@@ -56,7 +56,7 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func queryPhotoByPopularity() {
-        var query = PQPhoto.query();
+        let query = PQPhoto.query();
         query.orderByDescending("chain");
         query.whereKey("user", equalTo: PQ.currentUser);
         query.findObjectsInBackgroundWithBlock { (array, error) -> Void in
@@ -105,13 +105,13 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
         cell.initializeWithPhoto(self.photoArray[indexPath.row]);
         return cell;
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var photo = self.photoArray[indexPath.row];
+        let photo = self.photoArray[indexPath.row];
         self.performSegueWithIdentifier("segueToPhoto", sender: photo);
     }
     
@@ -142,7 +142,7 @@ class ChainHistoryViewController: UIViewController, UICollectionViewDataSource, 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToPhoto"){
-            var VC = segue.destinationViewController as! PhotoViewController;
+            let VC = segue.destinationViewController as! PhotoViewController;
             VC.photo = sender as! PQPhoto;
             VC.title = (sender as! PQPhoto).user?.profileName;
         }

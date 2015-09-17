@@ -15,7 +15,7 @@ public class IMGLYSteelFilter: IMGLYResponseFilter {
         self.displayName = "Steel"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

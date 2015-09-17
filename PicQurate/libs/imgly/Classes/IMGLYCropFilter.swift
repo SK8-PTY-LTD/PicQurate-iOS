@@ -24,17 +24,17 @@ public class IMGLYCropFilter : CIFilter {
         super.init()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     /// Returns a CIImage object that encapsulates the operations configured in the filter. (read-only)
-    public override var outputImage: CIImage! {
+    public override var outputImage: CIImage {
         get {
             if inputImage == nil {
                 return CIImage.emptyImage()
             }
-            var rect = inputImage!.extent()
+            var rect = inputImage!.extent
             // important: CICrop has its coordinate system upside-down
             // so we need to reverse that 
             var scaledRect = CGRectMake(cropRect.origin.x * rect.width,

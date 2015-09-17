@@ -24,22 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if application.respondsToSelector(notificationSelector) {
             // iOS 8 Notifications
-            var types = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-            var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+            let types: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+            let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
             application.registerUserNotificationSettings(settings);
             application.registerForRemoteNotifications();
         } else {
             // iOS < 8 Notifications
-            var types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound | UIRemoteNotificationType.Alert
+            let types: UIRemoteNotificationType = [UIRemoteNotificationType.Badge, UIRemoteNotificationType.Sound, UIRemoteNotificationType.Alert]
             application.registerForRemoteNotificationTypes(types);
         }
         
         // Extract the notification data
         if let notificatinoPayload = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject] {
             if let userId = notificatinoPayload["userId"] as? String{
-                var storyboard = UIStoryboard(name: "Main", bundle: nil);
-                var VC = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController;
-                var user = PQUser(userId: userId);
+                let storyboard = UIStoryboard(name: "Main", bundle: nil);
+                let VC = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController;
+                let user = PQUser(userId: userId);
                 user.fetchInBackgroundWithBlock({ (downloadedUser, error) -> Void in
                     if let e = error {
                         PQ.showError(e);
@@ -77,9 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         //Clear push notification badge
-        var num = application.applicationIconBadgeNumber;
+        let num = application.applicationIconBadgeNumber;
         if (num != 0) {
-            var currentInstallation = AVInstallation.currentInstallation();
+            let currentInstallation = AVInstallation.currentInstallation();
             currentInstallation.badge = 0;
             currentInstallation.saveEventually();
             application.applicationIconBadgeNumber = 0;
@@ -93,13 +93,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation);
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         if (PQ.currentUser != nil && PQ.currentUser.email != nil) {
-            var installation = AVInstallation.currentInstallation();
+            let installation = AVInstallation.currentInstallation();
             installation.setDeviceTokenFromData(deviceToken);
             installation.setObject(PQ.currentUser.objectId, forKey: "userId");
             installation.saveInBackgroundWithBlock({ (success, error) -> Void in

@@ -43,7 +43,7 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
         if let label = profileNameButton {
             label.setTitle(self.photo.user?.profileName, forState: .Normal);
         }
-        if let button = topLikeButton {
+        if let _ = topLikeButton {
             if (PQ.currentUser != nil && PQ.currentUser.email != nil) {
                 PQ.currentUser.hasLikedPhotoithCallback(photo, callback: { (liked, error) -> () in
                     if (liked) {
@@ -64,7 +64,7 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
             
             self.imageView.file = photo.file;
             self.imageView.loadInBackground();
-            var query1 = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
+            let query1 = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
             query1.countObjectsInBackgroundWithBlock { (count, error) -> Void in
                 if let e = error {
                     PQLog.e(e.localizedDescription);
@@ -73,7 +73,7 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
                 }
             }
             
-            var query2 = PQChain.query();
+            let query2 = PQChain.query();
             query2.whereKey("photo", equalTo: self.photo);
             query2.countObjectsInBackgroundWithBlock { (count, error) -> Void in
                 if let e = error {
@@ -83,7 +83,7 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
                 }
             }
             
-            var query3 = PQChain.query();
+            let query3 = PQChain.query();
             query3.whereKey("photo", equalTo: self.photo);
             query3.includeKey("original");
             query3.includeKey("original.original");
@@ -182,7 +182,7 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
     }
     @IBAction func likeButtonClicked(sender: UIButton) {
         if let delegate = self.delegate {
-            var query = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
+            let query = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
             delegate.showLike(query);
         } else {
             NSLog("delegate is nil");

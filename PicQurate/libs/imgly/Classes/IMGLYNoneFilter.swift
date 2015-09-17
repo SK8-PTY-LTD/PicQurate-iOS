@@ -13,7 +13,7 @@ import GLKit
 *  A filter that does nothing. It is used within the fixed-filterstack.
 */
 public class IMGLYNoneFilter : IMGLYResponseFilter {
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.displayName = "None"
     }
@@ -24,7 +24,7 @@ public class IMGLYNoneFilter : IMGLYResponseFilter {
     }
     
     /// Returns a CIImage object that encapsulates the operations configured in the filter. (read-only)
-    public override var outputImage: CIImage! {
+    public override var outputImage: CIImage {
         get {
             if inputImage == nil {
                 return CIImage.emptyImage()

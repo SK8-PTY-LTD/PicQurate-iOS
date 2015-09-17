@@ -43,7 +43,7 @@ class PhotoViewController: UIViewController {
         } else {
             self.cachedPhoto = photo;
             
-            var tapRecognizer = UITapGestureRecognizer(target: self, action: "photoImageViewTapped:");
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: "photoImageViewTapped:");
             tapRecognizer.numberOfTapsRequired = 2;
             
             NSLog("\(self.photoImageView) **** \(photo.file)");
@@ -53,7 +53,7 @@ class PhotoViewController: UIViewController {
             
             if (PQ.currentUser.email != nil) {
                 PQ.currentUser.hasLikedPhotoithCallback(photo, callback: { (liked, error) -> () in
-                    if let e = error {
+                    if let _ = error {
                         //Do nothing
                     } else {
                         if (liked) {
@@ -67,7 +67,7 @@ class PhotoViewController: UIViewController {
                 });
             }
             
-            var query0 = PQ.currentUser.relationforKey("photoLiked").query();
+            let query0 = PQ.currentUser.relationforKey("photoLiked").query();
             query0.whereKey("objectId", equalTo: self.photo.objectId);
             query0.countObjectsInBackgroundWithBlock({ (count, error) -> Void in
                 if let e = error {
@@ -83,7 +83,7 @@ class PhotoViewController: UIViewController {
                 }
             })
             
-            var query1 = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
+            let query1 = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
             query1.countObjectsInBackgroundWithBlock { (count, error) -> Void in
                 if let e = error {
                     PQLog.e(e.localizedDescription);
@@ -92,7 +92,7 @@ class PhotoViewController: UIViewController {
                 }
             }
             
-            var query2 = PQChain.query();
+            let query2 = PQChain.query();
             query2.whereKey("photo", equalTo: self.photo);
             query2.countObjectsInBackgroundWithBlock { (count, error) -> Void in
                 if let e = error {
@@ -102,7 +102,7 @@ class PhotoViewController: UIViewController {
                 }
             }
             
-            var query3 = PQChain.query();
+            let query3 = PQChain.query();
             query3.whereKey("photo", equalTo: self.photo);
             query3.includeKey("original");
             query3.includeKey("original.original");
@@ -197,7 +197,7 @@ class PhotoViewController: UIViewController {
     }
     
     @IBAction func likeButtonClicked(sender: UIButton) {
-        var query = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
+        let query = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
         self.performSegueWithIdentifier("segueToLikedUser", sender: query);
     }
     
@@ -220,9 +220,9 @@ class PhotoViewController: UIViewController {
     
     @IBAction func locationButtonClicked(sender: UIButton) {
         if let location = self.photo.location {
-            var coord = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude), longitude: CLLocationDegrees(location.longitude));
-            var placemark = MKPlacemark(coordinate: coord, addressDictionary: nil);
-            var mapItem = MKMapItem(placemark: placemark);
+            let coord = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude), longitude: CLLocationDegrees(location.longitude));
+            let placemark = MKPlacemark(coordinate: coord, addressDictionary: nil);
+            let mapItem = MKMapItem(placemark: placemark);
             mapItem.name = PQ.currentUser.profileName;
             mapItem.openInMapsWithLaunchOptions(nil);
         }
@@ -234,15 +234,15 @@ class PhotoViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToLikedUser") {
-            var VC = segue.destinationViewController as! UserTableViewController;
+            let VC = segue.destinationViewController as! UserTableViewController;
             VC.title = "Like"
             VC.query = sender as! AVQuery;
         } else if (segue.identifier == "segueToChain") {
-            var VC = segue.destinationViewController as! MapViewController;
+            let VC = segue.destinationViewController as! MapViewController;
             VC.locationArray = self.locationArray;
             VC.locationNameArray = self.locationNameArray;
         } else if (segue.identifier == "segueToProfile") {
-            var VC = segue.destinationViewController as! ProfileViewController;
+            let VC = segue.destinationViewController as! ProfileViewController;
             NSLog("sender: \(sender)");
             VC.user = photo.user;
 //            VC.title = photo.user!.profileName;

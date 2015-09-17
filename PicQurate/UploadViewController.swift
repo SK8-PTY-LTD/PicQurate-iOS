@@ -48,32 +48,32 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
         self.activityIndicator.startAnimating();
         if let image = self.imageButton.backgroundImageForState(.Normal) {
             //Croping
-            var originalWidth = image.size.width;
-            var originalHeight = image.size.height;
+            let originalWidth = image.size.width;
+            let originalHeight = image.size.height;
             var cropRect: CGRect?
             var scale: CGFloat?
             if (originalWidth <= originalHeight) {
-                var difference = (originalHeight - originalWidth) / 2;
-                var y = difference;
+                let difference = (originalHeight - originalWidth) / 2;
+                let y = difference;
                 cropRect = CGRectMake(0, y, image.size.width, image.size.width);
                 scale = 640/image.size.width;
             } else {
-                var difference = (originalWidth - originalHeight) / 2;
-                var x = difference;
+                let difference = (originalWidth - originalHeight) / 2;
+                let x = difference;
                 cropRect = CGRectMake(x, 0, image.size.height, image.size.height);
                 scale = 640/image.size.height;
             }
-            var imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect!);
-            var croppedImage = UIImage(CGImage: imageRef, scale: scale!, orientation: image.imageOrientation);
+            let imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect!);
+            let croppedImage = UIImage(CGImage: imageRef!, scale: scale!, orientation: image.imageOrientation);
             //Scaling
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(imageWidth, imageWidth), false, 0.0);
-            croppedImage?.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
-            var scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+            croppedImage.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
+            let scaledImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             
-            var detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyLow]);
-            var ciImage = CIImage(image: scaledImage);
-            var features = detector.featuresInImage(ciImage);
+            let detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyLow]);
+            let ciImage = CIImage(image: scaledImage);
+            _ = detector.featuresInImage(ciImage!);
             //Old iOS Default Facial Detection
 //            if (features.count == 0) {
 //                PQ.promote("Hey dear, to upload a selfie, please have a face in it. :)");
@@ -82,7 +82,7 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
 //            }
             //New KairosSDK Facial Detection
             KairosSDK.detectWithImage(scaledImage, selector: nil, success: { (response) -> Void in
-                if let e = response["Errors"] {
+                if let _ = response["Errors"] {
                     PQ.promote("Hey dear, to upload a selfie, please have a face in it. :)");
                     self.activityIndicator.stopAnimating();
                     return;
@@ -142,7 +142,7 @@ class UploadViewController: UIViewController, UITextViewDelegate, CameraViewCont
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToCamera") {
-            var VC = segue.destinationViewController as! CameraViewController;
+            let VC = segue.destinationViewController as! CameraNoFilterViewController;
             VC.delegate = self;
         }
     }

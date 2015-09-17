@@ -16,7 +16,7 @@ import GLKit
     That way we make sure the order of filters stays the same, and we don't to take 
     care about creating the single filters.
 */
-@objc public class IMGLYFixedFilterStack {
+public class IMGLYFixedFilterStack {
     public var enhancementFilter:IMGLYEnhancementFilter?
     public var orientationCropFilter:IMGLYOrientationCropFilter?
     public var effectFilter:IMGLYResponseFilter?
@@ -63,7 +63,7 @@ import GLKit
         activeFilters_ += stickerFilters
     }
     
-    private func appendFilterIfValid(#filter:CIFilter?) {
+    private func appendFilterIfValid(filter filter:CIFilter?) {
         if filter != nil {
             activeFilters_.append(filter!)
         }

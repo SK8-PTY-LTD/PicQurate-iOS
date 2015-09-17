@@ -15,7 +15,7 @@ public class IMGLYFrontFilter: IMGLYResponseFilter {
         self.displayName = "Front"
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

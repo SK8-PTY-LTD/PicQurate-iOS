@@ -27,7 +27,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate, IMGLYCameraCont
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.extendedLayoutIncludesOpaqueBars = true;
         UIApplication.sharedApplication().statusBarHidden = true;
@@ -126,7 +126,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate, IMGLYCameraCont
     }
     
     // MARK:- UIImagePickerControllerDelegate
-    public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             image_ = image
         }

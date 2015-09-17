@@ -90,7 +90,7 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         //Authorization status changed, get location
         //        if (CLAuthorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse || CLAuthorizationStatus == CLAuthorizationStatus.AuthorizedAlways) {
         //            getLocation();
@@ -98,23 +98,23 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         getLocation();
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         PQ.showError(error);
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var newLocation = locations.last as! CLLocation;
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newLocation = locations.last!;
         NSLog("Got location: \(newLocation.coordinate.latitude) \(newLocation.coordinate.longitude)");
         manager.stopUpdatingLocation();
         //Get place mark
-        var geoCoder = CLGeocoder();
+        let geoCoder = CLGeocoder();
         geoCoder.reverseGeocodeLocation(newLocation, completionHandler: { (placemarks, error) -> Void in
             if let e = error {
                 NSLog(e.localizedDescription);
             } else {
-                for (var i = 0; i < placemarks.count; i++) {
-                    var placemark = placemarks[i] as! CLPlacemark;
-                    var geoPoint = AVGeoPoint(latitude: placemark.location.coordinate.latitude, longitude: placemark.location.coordinate.longitude);
+                for (var i = 0; i < placemarks!.count; i++) {
+                    let placemark = placemarks![i];
+                    let geoPoint = AVGeoPoint(latitude: placemark.location!.coordinate.latitude, longitude: placemark.location!.coordinate.longitude);
                     PQ.currentUser.location = geoPoint;
                     PQ.currentUser.locationString = "\(placemark.administrativeArea), \(placemark.country)";
                     PQ.currentUser.saveEventually();
@@ -127,7 +127,7 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
     @IBAction func logoutButtonClicked(sender: UIButton) {
         AVUser.logOut();
         PQ.currentUser = PQUser();
-        var fbLoginManager = FBSDKLoginManager();
+        let fbLoginManager = FBSDKLoginManager();
         fbLoginManager.logOut();
         
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
@@ -143,20 +143,20 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
         self.imagePickerController.allowsEditing = true;
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
             let alertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet);
-            var popover = alertController.popoverPresentationController;
+            let popover = alertController.popoverPresentationController;
             if (popover != nil){
                 popover?.sourceView = sender;
                 popover?.sourceRect = sender.bounds;
                 popover?.permittedArrowDirections = UIPopoverArrowDirection.Any;
             }
             
-            let cameraAction: UIAlertAction = UIAlertAction(title: "take a photo", style: .Default) { (action: UIAlertAction!) -> Void in
+            let cameraAction: UIAlertAction = UIAlertAction(title: "take a photo", style: .Default) { (action: UIAlertAction) -> Void in
                 self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera;
                 self.presentViewController(self.imagePickerController, animated: true, completion: nil);
             }
             alertController.addAction(cameraAction);
             
-            let photoLibraryAction: UIAlertAction = UIAlertAction(title: "choose from gallery", style: .Default) { (action: UIAlertAction!) -> Void in
+            let photoLibraryAction: UIAlertAction = UIAlertAction(title: "choose from gallery", style: .Default) { (action: UIAlertAction) -> Void in
                 self.imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
                 self.imagePickerController.navigationBar.barTintColor = UIColor(red: 171/255, green: 202/255, blue: 41/255, alpha: 1.0);
                 self.imagePickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
@@ -172,14 +172,14 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
             
         }else{
             let alertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet);
-            var popover = alertController.popoverPresentationController
+            let popover = alertController.popoverPresentationController
             if (popover != nil){
                 popover?.sourceView = sender;
                 popover?.sourceRect = sender.bounds;
                 popover?.permittedArrowDirections = UIPopoverArrowDirection.Any;
             }
             
-            let photoLibraryAction: UIAlertAction = UIAlertAction(title: "choose from gallery", style: .Default) { (action: UIAlertAction!) -> Void in
+            let photoLibraryAction: UIAlertAction = UIAlertAction(title: "choose from gallery", style: .Default) { (action: UIAlertAction) -> Void in
                 self.imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
                 self.imagePickerController.navigationBar.barTintColor = UIColor(red: 171/255, green: 202/255, blue: 41/255, alpha: 1.0);
                 self.imagePickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
@@ -196,7 +196,7 @@ class EditProfileViewController: UIViewController, CLLocationManagerDelegate, UI
 
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         picker.dismissViewControllerAnimated(true, completion: nil);
         var image:UIImage!
         if(picker.allowsEditing){
@@ -211,33 +211,33 @@ image.drawInRect(CGRect(x: 0, y: 0, width: 640, height: 640));
 //        let savedImage: UIImage = UIImage(contentsOfFile: fullPath)!
 //        self.isFullScreen = false
         //save image to server
-        var originalWidth = image.size.width;
-        var originalHeight = image.size.height;
+        let originalWidth = image.size.width;
+        let originalHeight = image.size.height;
         var cropRect: CGRect?
         var scale: CGFloat?
         if (originalWidth <= originalHeight) {
-            var difference = (originalHeight - originalWidth) / 2;
-            var y = difference;
+            let difference = (originalHeight - originalWidth) / 2;
+            let y = difference;
             cropRect = CGRectMake(0, y, image.size.width, image.size.width);
             scale = 640/image.size.width;
         } else {
-            var difference = (originalWidth - originalHeight) / 2;
-            var x = difference;
+            let difference = (originalWidth - originalHeight) / 2;
+            let x = difference;
             cropRect = CGRectMake(x, 0, image.size.height, image.size.height);
             scale = 640/image.size.height;
         }
-        var imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect!);
-        var croppedImage = UIImage(CGImage: imageRef, scale: scale!, orientation: image.imageOrientation);
+        let imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect!);
+        let croppedImage = UIImage(CGImage: imageRef!, scale: scale!, orientation: image.imageOrientation);
         //Scalings
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(imageWidth, imageWidth), false, 0.0);
-        croppedImage?.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
-        var scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+        croppedImage.drawInRect(CGRectMake(0, 0, imageWidth, imageWidth));
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
         NSLog("image size is \(image.size) \n scaledImage size is \(scaledImage.size)");
 //        PQ.currentUser.setProfileUIImage(scaledImage);
         activityIndicator.startAnimating();
-        var imageFile: AVFile = AVFile.fileWithName("profile.jpg", data: UIImageJPEGRepresentation(scaledImage, 1.0)) as! AVFile;
+        let imageFile: AVFile = AVFile.fileWithName("profile.jpg", data: UIImageJPEGRepresentation(scaledImage, 1.0)) as! AVFile;
         imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
             if let e = error {
                 NSLog("Profile image failed to save, error: " + e.localizedDescription);

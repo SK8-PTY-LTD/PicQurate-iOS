@@ -19,7 +19,7 @@ class UserTableViewCell: UITableViewCell {
         
         self.user = user;
         
-        if let file = self.profileImageView.file {
+        if let _ = self.profileImageView.file {
             //ImageView already loaded, do not reload.
         } else {
             self.profileImageView.file = self.user!.profileImage;

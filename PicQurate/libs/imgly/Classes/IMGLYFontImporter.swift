@@ -14,7 +14,7 @@ import CoreText
   Provides functions to import font added as resource. It also registers them,
   so that the application can load them like any other pre-installed font.
 */
-@objc public class IMGLYFontImporter {
+public class IMGLYFontImporter {
     private static var fontsRegistred:Bool = false
     
     /**
@@ -30,13 +30,13 @@ import CoreText
     
     private func importFontsWithExtension(ext:String) {
         let paths = NSBundle(forClass: IMGLYFontImporter.self).pathsForResourcesOfType(ext, inDirectory: nil)
-        for fontPath in paths as! [String] {
+        for fontPath in paths {
             let data: NSData? = NSFileManager.defaultManager().contentsAtPath(fontPath)
             var error: Unmanaged<CFError>?
             var provider = CGDataProviderCreateWithCFData(data as! CFDataRef)
             var font = CGFontCreateWithDataProvider(provider)
             if (!CTFontManagerRegisterGraphicsFont(font, &error)) {
-                println("Failed to register font, error: \(error)")
+                print("Failed to register font, error: \(error)")
                 return
             }
         }

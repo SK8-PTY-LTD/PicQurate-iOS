@@ -63,16 +63,16 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         switch selectedTab {
         case 0:
-            var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("profileViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("profileViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
             cell.initializeWithPhoto(photoList[indexPath.row]);
             cell.delegate = self
             return cell;
         case 1:
-            var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
             cell.initializeWithPhoto(photoList[indexPath.row]);
             return cell;
         case 2:
-            var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("activityViewCell", forIndexPath: indexPath) as! PQActivityCollectionViewCell;
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("activityViewCell", forIndexPath: indexPath) as! PQActivityCollectionViewCell;
             if pushList.count != 0 {
                 cell.initializeWithActivity(pushList[indexPath.row]);
                 cell.delegate = self
@@ -95,11 +95,11 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         // Find all followee
         selectedTab = 0;
         NSLog("following Button Pressed");
-        var followeeQuery = AVQuery(className: "_Followee");
+        let followeeQuery = AVQuery(className: "_Followee");
         followeeQuery.whereKey("user", equalTo: PQ.currentUser);
         
         // Find all posts by followee
-        var photoQuery = PQPhoto.query();
+        let photoQuery = PQPhoto.query();
         photoQuery.orderByDescending("createdAt");
         photoQuery.whereKey("user.id", matchesKey: "followee.id", inQuery: followeeQuery);
         photoQuery.includeKey("user");
@@ -122,7 +122,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         NSLog("like Button Pressed");
         selectedTab = 1;
         // Find all liked photos
-        var likedPhotoQuery = PQ.currentUser.relationforKey("photoLiked").query();
+        let likedPhotoQuery = PQ.currentUser.relationforKey("photoLiked").query();
         likedPhotoQuery.orderByDescending("createdAt");
         likedPhotoQuery.includeKey("user");
         likedPhotoQuery.findObjectsInBackgroundWithBlock { (list, error) -> Void in
@@ -143,7 +143,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     func refreshActivitySection() {
         NSLog("activity Button Pressed");
         selectedTab = 2;
-        var query = PQPush.query();
+        let query = PQPush.query();
         query.whereKey("user", equalTo: PQ.currentUser);
         query.orderByDescending("createdAt");
         query.includeKey("user");
@@ -190,7 +190,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func setColumns(numberOfColumns: Int) {
         self.column = numberOfColumns;
-        var itemWidth = self.view.frame.size.width / CGFloat(self.column);
+        let itemWidth = self.view.frame.size.width / CGFloat(self.column);
         if let layout = self.flowLayout {
             if (self.column != 1 ) {
                 layout.itemSize = CGSizeMake(itemWidth, itemWidth);
@@ -234,16 +234,16 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "segueToProfile"){
-            var VC = segue.destinationViewController as! ProfileViewController;
-            VC.user = sender as! PQUser;
+            let VC = segue.destinationViewController as! ProfileViewController;
+            VC.user = sender as? PQUser;
             NSLog("profileUser: \(profileUser)");
 //            VC.user = profileUser
         } else if (segue.identifier == "segueToMap") {
-            var VC = segue.destinationViewController as! MapViewController;
+            let VC = segue.destinationViewController as! MapViewController;
             VC.locationArray = self.locationArray;
             VC.locationNameArray = self.locationNameArray;
         } else if(segue.identifier == "segueToLike"){
-            var VC = segue.destinationViewController as! UserTableViewController;
+            let VC = segue.destinationViewController as! UserTableViewController;
             VC.title = "Like"
             VC.query = sender as! AVQuery;
         }

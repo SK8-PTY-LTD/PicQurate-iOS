@@ -43,7 +43,7 @@ class UserTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath) as! UserTableViewCell;
+        let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath) as! UserTableViewCell;
         let user = self.userArray[indexPath.row];
         cell.initWithUser(user);
         return cell;
@@ -56,8 +56,8 @@ class UserTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToProfile") {
-            var VC = segue.destinationViewController as! ProfileViewController;
-            var user = sender as! PQUser;
+            let VC = segue.destinationViewController as! ProfileViewController;
+            let user = sender as! PQUser;
             VC.user = user;
             VC.title = user.profileName;
         }

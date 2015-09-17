@@ -11,14 +11,14 @@ import Foundation
 class TabViewController: UITabBarController {
     
     override func viewWillAppear(animated: Bool) {
-        var button = UIButton()
-        var buttonImage = UIImage(named: "tab_camera_0");
+        let button = UIButton()
+        let buttonImage = UIImage(named: "tab_camera_0");
         button.frame = CGRectMake(0.0, 0.0, self.tabBar.frame.width/5, self.tabBar.frame.height);
         button.setBackgroundImage(buttonImage!, forState: .Normal);
         //        button.setBackgroundImage(highlightImage!, forState: .Highlighted);
         //        [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
         
-        var heightDifference = buttonImage!.size.height - self.tabBar.frame.size.height;
+        let heightDifference = buttonImage!.size.height - self.tabBar.frame.size.height;
         if (heightDifference < 0) {
             button.center = self.tabBar.center;
         } else {
@@ -42,11 +42,11 @@ class TabViewController: UITabBarController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToUpload") {
-            var VC = segue.destinationViewController as! UploadViewController;
+//            var VC = segue.destinationViewController as! UploadViewController;
         }
     }
     
-    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         if (PQ.currentUser != nil && PQ.currentUser.email != nil) {
             //User logged in, do nothing
         } else {
