@@ -1,0 +1,166 @@
+/* Portrait tablet to landscape and desktop */
+@media only screen and (max-width: 880px) {
+	.navbar{clear:both;}
+}
+
+@media (min-width: 1200px) {
+}
+
+@media (min-width: 980px) {	
+.navbar .nav > { position:relative;}
+.navbar .nav > li { position:relative;}
+.navbar .nav > li > a{}
+/*--COMMON SITE NAVIGATION DROPMENU--*/
+ul.nav li a:hover{z-index:9999;}
+ul.nav li:hover{z-index:9999;}
+ul.nav li:hover > a{ background:none; text-shadow:1px 1px 1px #ccc;}
+ul.nav :hover ul{left:auto;top:59px;margin:0;padding:0;}
+ul.nav ul, ul.nav:hover ul ul{position:absolute;left:-9999px;top:-9999px;height:0;text-align:right;margin:0;padding:0;list-style:none;}
+ul.nav :hover ul{ width:200px; left:0; padding:0; margin:0; height:auto; display:inline-block; background:url(../images/white_bg.png) repeat 0 0; z-index:9999;}
+ul.nav :hover ul li { width:100%; display:inline-block; height:auto!important; line-height:normal; border:none; padding:0; margin:0;}
+ul.nav :hover ul li:first-child {}
+ul.nav :hover ul li:last-child {}
+ul.nav :hover ul li a { text-transform:none; text-align:left; color:#000; float:left; padding:3px 8px 5px; height:auto!important; line-height:22px!Important; display:block !important; letter-spacing:0.3px; border:none;
+    -webkit-transition:all 0.2s ease-in-out;
+    -moz-transition:all 0.2s ease-in-out;
+    -o-transition:all 0.2s ease-in-out;
+    transition:all 0.2s ease-in-out;
+	filter:none !important;
+}
+ul.nav :hover ul li a:hover, ul.nav :hover ul li a:focus {text-decoration:none; text-shadow:none; color:#000; background:none; box-shadow:none;}
+}
+
+@media (max-width: 979px) {
+#logo a{ float:none; margin:0 6px;}
+.navbar-toggle{ background:#243f6c; margin-top:-54px; margin-right:10px; margin-bottom:10px;}
+.navbar-toggle .menuText{ color:#fff;}
+.navbar-toggle:hover, navbar-toggle:focus{ background:#a283bc;}
+.navbar-toggle:hover .menuText{ text-shadow:1px 1px 1px #795795;}
+.navbar{float:right; padding:0; margin: 2px 0 !important; width: 100%;}
+.navbar-collapse{ border:none; box-shadow:none;}
+.navbar .nav{
+padding:0;
+}
+
+.collapse.in{ margin:5px;}
+
+.collapse.in ul {
+	background:#f9f9f9;
+	z-index:999;
+}
+.navbar .nav ul{ margin:0 10px;}
+}
+
+@media (min-width: 979px) and (max-width: 1200px) {
+.navbar .nav > li > a{ font-size:13px;}
+ul.nav :hover ul li a { font-size:13px;}
+.navbar .nav > li { position:relative; margin-left:18px;}
+.navbar{ padding-left:0; margin-left:0;}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+.footer-area p{ font-size:12px;}
+.footer-area .footer-right ul li{ font-size:12px; padding:0 8px 0 12px;}
+.feature-box .feature-icon.tea-icon{ margin-left:-12px;}
+.home-top p{font-size:20px; line-height:30px; padding-top:0; padding-bottom:21px;}
+#header{background:url(../images/header-bg-ipad.jpg) no-repeat center 0 #032265;}
+.header-bottom{overflow:hidden;}
+}
+
+@media (min-width: 768px) {
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+.rightPadding{ padding-right:5px !important;}
+.leftPadding{ padding-left:5px !important;}
+
+.fleft { float:none;}
+.fright { float:none;}
+
+.row [class*="col-"] { padding-left:10px !important; padding-right:10px !important;}
+.row .row [class*="col-"]{ padding-left:0 !important; padding-right:0 !important;}
+
+.navbar .nav{
+width:100%;
+}
+.navbar .nav li{ background:none; border:none; margin:0;}
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+	background:#ececec;
+}
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:focus {
+	background:#ececec;
+}
+.navbar .nav > .active > a:hover {
+	background:#ececec;
+}
+.nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a{ color:#fff;}
+.collapse.in ul.dropdown-menu a{ font-size:14px; border-radius:2px;}
+.navbar .nav ul li a{ display:block; text-decoration:none; color:#fff; padding:3px 8px 5px;}
+.navbar .nav ul li a:hover{ background:#24a0cf; border-radius:5px; box-shadow:0 1px 1px #145873 inset;}
+
+#logo{ float:none;}
+
+.feature-box{ text-align:center;}
+.feature-box .feature-icon{ margin-top:20px;}
+
+.header-top, .header-right{ text-align:center;}
+
+.footer-area p, .footer-area .footer-right{ text-align:center; font-size:13px; padding-top:5px;}
+
+.header-right span, .header-right a{ margin:5px 5px 0;}
+.home-top p{font-size:20px; line-height:30px; padding-top:0; padding-bottom:21px;}
+.header-right{padding-top:5px;}
+#header{background:url(../images/header-bg-small.jpg) no-repeat center 0 #032265;}
+.header-bottom{overflow:hidden;}
+.play-video-area p.download-on-appstore a{font-size:20px;}
+
+.inner-bottom p.download-on-appstore a{font-size:20px;}
+}
+
+@media (max-width: 568px) {
+.slvj-lightbox iframe{ max-height:280px;}
+.play-video-area p.download-on-appstore{padding:30px 0 0 0;}
+.play-video-area p.download-on-appstore a{display:block; padding:31px 0 28px; text-align:center;}
+.play-video-area{padding-bottom:70px;}
+
+.footer-area p{display:block; width:100%;} 
+
+.inner-bottom p.download-on-appstore a{display:block; padding:31px 0 28px; text-align:center;}
+}
+
+@media (min-width: 568px) and (max-width: 767px) {
+}
+
+@media (min-width: 480px) and (max-width: 567px) {
+}
+
+@media (max-width: 480px) {
+}
+
+/* Landscape phones and down */
+@media (max-width: 479px) {
+.headerTop{ text-align:center;}
+
+/*.home-top{padding:61px 0 30px;}*/
+#logo{ float:none;}
+#logo img{ max-width:50%;}
+.selectLanguage{ float:none; padding-left:0; padding-top:15px;}
+.headerRight{ float:none; text-align:center; margin:0;}
+#loginBox{ top:32px; right:30px;}
+.navbar-toggle{ width:100%; margin:5px 0 0;}
+.header-bottom h1{font-size:38px;}
+.footer-area p{display:block; width:100%;} 
+
+.play-video-area p.download-on-appstore a{font-size:15px; padding:20px 0;}
+
+.inner-bottom p.download-on-appstore a{font-size:15px; padding:20px 0;}
+}
+
+@media (min-width: 321px) and (max-width: 479px) {
+}
+
+@media (max-width: 320px) {
+}
