@@ -133,7 +133,7 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     @IBAction func termsButtonClicked(sender: UIButton) {
-        UIApplication.sharedApplication().openURL(NSURL(string:"http://picqurate.com/terms/")!);
+        UIApplication.sharedApplication().openURL(NSURL(string:"http://picqurate.com/EULA")!);
     }
 }
 

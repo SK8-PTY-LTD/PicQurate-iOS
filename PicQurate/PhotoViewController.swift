@@ -32,6 +32,21 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         self.initializeWithPhoto(photo);
+        
+        let barButton = UIBarButtonItem(title: "Report", style: .Plain, target: self, action: "reportPhoto:");
+        self.navigationItem.rightBarButtonItem = barButton;
+        
+    }
+    
+    func reportPhoto(sender: UIBarButtonItem) {
+        let emailBody = "\(PQ.currentUser.profileName) reported Photo, id: \(self.photo.objectId). Link: https://avoscloud.us/data.html?appid=x4o5c93khy5wlgcyu2mr3qtnztjtwdbylpr3h8qk8c9mriow#/Photo.";
+        let params = ["emal": PQ.currentUser.email, "message": emailBody, "name": PQ.currentUser.profileName, "receiver": "sk8tech@163.com", "subject": "Reporting photo from PicQurate"];
+        AVCloud.callFunctionInBackground("sendEmail", withParameters: params) { (email, error) -> Void in
+            if let e = error {
+                NSLog("\(e)");
+            }
+        };
+        PQ.promote("Thank you for you feedback! We'll get back to you soon!");
     }
     
     func initializeWithPhoto(photo: PQPhoto) {

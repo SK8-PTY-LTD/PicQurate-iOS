@@ -70,6 +70,7 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
         case 1:
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("imageViewCell", forIndexPath: indexPath) as! PQPhotoCollectionViewCell;
             cell.initializeWithPhoto(photoList[indexPath.row]);
+            cell.delegate = self;
             return cell;
         case 2:
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("activityViewCell", forIndexPath: indexPath) as! PQActivityCollectionViewCell;
@@ -232,12 +233,17 @@ class NewsViewController: UIViewController, UICollectionViewDataSource, UICollec
     func showLike(query: AnyObject) {
         self.performSegueWithIdentifier("segueToLike", sender: query);
     }
+    
+    func showPhoto(photo: PQPhoto) {
+        self.performSegueWithIdentifier("segueToPhoto", sender: photo);
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "segueToProfile"){
             let VC = segue.destinationViewController as! ProfileViewController;
             VC.user = sender as? PQUser;
-            NSLog("profileUser: \(profileUser)");
-//            VC.user = profileUser
+        } else if (segue.identifier == "segueToPhoto"){
+            let VC = segue.destinationViewController as! PhotoViewController;
+            VC.photo = sender as! PQPhoto;
         } else if (segue.identifier == "segueToMap") {
             let VC = segue.destinationViewController as! MapViewController;
             VC.locationArray = self.locationArray;

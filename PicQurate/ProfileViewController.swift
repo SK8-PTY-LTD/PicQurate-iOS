@@ -314,6 +314,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.performSegueWithIdentifier("segueToProfile", sender: user);
     }
     
+    func showPhoto(photo: PQPhoto) {
+        self.performSegueWithIdentifier("segueToPhoto", sender: photo);
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "segueToUserTableView") {
             let VC = segue.destinationViewController as! UserTableViewController;

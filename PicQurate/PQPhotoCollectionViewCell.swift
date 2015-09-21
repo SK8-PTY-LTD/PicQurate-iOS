@@ -12,6 +12,7 @@ protocol PhotoToProfileProtocol {
     func showLocation(locationArray: [AVGeoPoint], locationNameArray:[String]);
     func showLike(query: AnyObject);
     func showProfile(user: PQUser);
+    func showPhoto(photo: PQPhoto);
 }
 
 class PQPhotoCollectionViewCell: UICollectionViewCell {
@@ -64,6 +65,9 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
             
             self.imageView.file = photo.file;
             self.imageView.loadInBackground();
+            self.imageView.userInteractionEnabled = true;
+            let tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap:"));
+            self.imageView.addGestureRecognizer(tapGesture);
             let query1 = AVRelation.reverseQuery("_User", relationKey: "photoLiked", childObject: self.photo);
             query1.countObjectsInBackgroundWithBlock { (count, error) -> Void in
                 if let e = error {
@@ -195,6 +199,10 @@ class PQPhotoCollectionViewCell: UICollectionViewCell {
         }else{
             NSLog("delegate is nil");
         }
+    }
+    
+    func handleTap(sender : UIView) {
+        self.delegate?.showPhoto(self.photo);
     }
     
 }
