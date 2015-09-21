@@ -21,7 +21,6 @@
 		3C51EB701BA9E2ED006D40A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB6F1BA9E2ED006D40A4 /* CoreGraphics.framework */; };
 		3C51EB721BA9E2F3006D40A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB711BA9E2F3006D40A4 /* AVFoundation.framework */; };
 		3C51EB741BA9E2F9006D40A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51EB731BA9E2F9006D40A4 /* AudioToolbox.framework */; };
-		3C51FECB1BA65AB000A491D2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */; };
 		3C56922F1AE9F736006FA95D /* AVImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56922E1AE9F736006FA95D /* AVImageView.swift */; };
 		3C5692311AE9F772006FA95D /* PQLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692301AE9F772006FA95D /* PQLog.swift */; };
 		3C5692331AE9FFD6006FA95D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5692321AE9FFD6006FA95D /* LoginViewController.swift */; };
@@ -61,10 +60,11 @@
 		3CB088691AF300D200A15ADE /* PQChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB088681AF300D200A15ADE /* PQChain.swift */; };
 		3CB0886B1AF30A6A00A15ADE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0886A1AF30A6A00A15ADE /* ProfileViewController.swift */; };
 		3CB3F1751AE7E6CC00BADB8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB3F1741AE7E6CC00BADB8C /* FBSDKCoreKit.framework */; };
-		3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C87F8051AE8C91D00C9E172 /* libicucore.dylib */; };
 		3CB7B7FD1AE90C2B00FBC677 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7B7FC1AE90C2B00FBC677 /* SignupViewController.swift */; };
 		3CBF20FB1AEA57150000B9A3 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF20FA1AEA57150000B9A3 /* ViewPagerController.m */; };
 		3CBF211A1AEB16370000B9A3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF21191AEB16370000B9A3 /* CameraViewController.swift */; };
+		3CDEAD8D1BAFC33200524F8D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDEAD8C1BAFC33200524F8D /* libsqlite3.0.tbd */; };
+		3CDEAD8F1BAFC34800524F8D /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDEAD8E1BAFC34800524F8D /* libicucore.tbd */; };
 		3CE2E3881AFF1D86000BBE20 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */; };
 		3CEE1AC71AF3A141005600D6 /* PQPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */; };
 		3CFCA34F1B7C00C200E6F7FC /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFCA34E1B7C00C200E6F7FC /* GameKit.framework */; };
@@ -107,7 +107,6 @@
 		3C51EB6F1BA9E2ED006D40A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3C51EB711BA9E2F3006D40A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3C51EB731BA9E2F9006D40A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		3C56922E1AE9F736006FA95D /* AVImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVImageView.swift; path = objects/AVImageView.swift; sourceTree = "<group>"; };
 		3C5692301AE9F772006FA95D /* PQLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQLog.swift; path = objects/PQLog.swift; sourceTree = "<group>"; };
 		3C5692321AE9FFD6006FA95D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +131,6 @@
 		3C87F7FE1AE8C90300C9E172 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3C87F8011AE8C90E00C9E172 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3C87F8031AE8C91300C9E172 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		3C87F8051AE8C91D00C9E172 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		3C93635B1AF9952A001C3EE0 /* ChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainViewController.swift; sourceTree = "<group>"; };
 		3C93635D1AFA484B001C3EE0 /* ChainHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainHistoryViewController.swift; sourceTree = "<group>"; };
 		3C93635F1AFAD343001C3EE0 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +158,8 @@
 		3CBF20F91AEA57150000B9A3 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
 		3CBF20FA1AEA57150000B9A3 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		3CBF21191AEB16370000B9A3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		3CDEAD8C1BAFC33200524F8D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		3CDEAD8E1BAFC34800524F8D /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		3CE2E3871AFF1D86000BBE20 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3CEE1AC61AF3A141005600D6 /* PQPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQPhoto.swift; path = objects/PQPhoto.swift; sourceTree = "<group>"; };
 		3CFCA34D1B7C007100E6F7FC /* PicQurate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PicQurate.entitlements; sourceTree = "<group>"; };
@@ -175,6 +175,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CDEAD8F1BAFC34800524F8D /* libicucore.tbd in Frameworks */,
+				3CDEAD8D1BAFC33200524F8D /* libsqlite3.0.tbd in Frameworks */,
 				3C51EB741BA9E2F9006D40A4 /* AudioToolbox.framework in Frameworks */,
 				3C51EB721BA9E2F3006D40A4 /* AVFoundation.framework in Frameworks */,
 				3C51EB701BA9E2ED006D40A4 /* CoreGraphics.framework in Frameworks */,
@@ -182,8 +184,6 @@
 				3C51EB6C1BA9E2E2006D40A4 /* CoreImage.framework in Frameworks */,
 				3C51EB6A1BA9E2DC006D40A4 /* Foundation.framework in Frameworks */,
 				3C51EB681BA9E2D7006D40A4 /* UIKit.framework in Frameworks */,
-				3C51FECB1BA65AB000A491D2 /* libsqlite3.0.dylib in Frameworks */,
-				3CB7B7FB1AE8FDA000FBC677 /* libicucore.dylib in Frameworks */,
 				3C87F8041AE8C91300C9E172 /* CoreLocation.framework in Frameworks */,
 				3C87F8021AE8C90E00C9E172 /* CoreTelephony.framework in Frameworks */,
 				3C87F8001AE8C90800C9E172 /* MobileCoreServices.framework in Frameworks */,
@@ -277,8 +277,8 @@
 		3C5692581AEA27B5006FA95D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				3C51FECA1BA65AB000A491D2 /* libsqlite3.0.dylib */,
-				3C87F8051AE8C91D00C9E172 /* libicucore.dylib */,
+				3CDEAD8C1BAFC33200524F8D /* libsqlite3.0.tbd */,
+				3CDEAD8E1BAFC34800524F8D /* libicucore.tbd */,
 				3C51EB731BA9E2F9006D40A4 /* AudioToolbox.framework */,
 				3C51EB711BA9E2F3006D40A4 /* AVFoundation.framework */,
 				3C51EB6F1BA9E2ED006D40A4 /* CoreGraphics.framework */,

@@ -132,5 +132,8 @@ class LandingViewController: UIViewController, FBSDKLoginButtonDelegate {
         NSLog("Facebook user logged out");
     }
 
+    @IBAction func termsButtonClicked(sender: UIButton) {
+        UIApplication.sharedApplication().openURL(NSURL(string:"http://picqurate.com/terms/")!);
+    }
 }
 
