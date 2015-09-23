@@ -134,7 +134,7 @@ filter:alpha(opacity=50); /* For IE8 and earlier */
 
 /* Home Page
 ------------------------------------*/
-.home-top{ background:url(images/map-bg.jpg) no-repeat center bottom; padding:91px 0 30px;}
+.home-top{ background:url(images/map-bg.jpg) no-repeat center bottom;}
 .home-top h2{ font-family:'bigjohn', sans-serif; font-size:30px; text-transform:uppercase; color:#4cb0fb;}
 .home-top p{ font-size:22px; font-weight:300; line-height:36px; color:#222; padding-top:21px;}
 .home-top .mapPin01{ margin-top:30px;}
